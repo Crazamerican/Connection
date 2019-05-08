@@ -19,28 +19,34 @@ public class HorizontalMovement : MonoBehaviour {
 
         //Use the two store floats to create a new Vector2 variable movement.
         Vector2 movement = new Vector2(moveHorizontal, 0);
+        //colliders test if these overlaping circles collide with anything, and list the colliders
+        //three colliders for two corners on side of box and midpoint inbetween them
         Collider2D[] collider = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed, movement.y * speed), 0.01f);
         Collider2D[] collider2 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed, movement.y * speed + 0.5f), 0.01f);
         Collider2D[] collider3 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed, movement.y * speed - 0.48f), 0.01f);
+        //if moving right
         if (moveHorizontal > 0)
         {
+            //test colliders of the character's movement to the right
             collider = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed + 0.5f, movement.y * speed), 0.01f);
             collider2 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed + 0.5f, movement.y * speed + 0.5f), 0.01f);
             collider3 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed + 0.5f, movement.y * speed - 0.48f), 0.01f);
         } else if (moveHorizontal < 0)
         {
+            //test colliders of the character's movement to the left
             collider = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed - 0.5f, movement.y * speed), 0.01f);
             collider2 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed - 0.5f, movement.y * speed + 0.5f), 0.01f);
             collider3 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed - 0.5f, movement.y * speed - 0.48f), 0.01f);
         }
         bool col = false;
+        //goes through everything that collided with 
         foreach (var collide in collider)
         {
             if (collide.tag != "Player")
             {
                 if (collide.tag != "Ground")
                 {
-                    //Debug.Log(collide);
+                    //if this collider isn't the Player and isn't the ground
                     col = true;
                 }
             }
@@ -56,21 +62,25 @@ public class HorizontalMovement : MonoBehaviour {
         {
             if (collide3.tag != "Player" && collide3.tag != "Ground")
             {
-                //Debug.Log(collide);
                 col = true;
             }
         }
+        //if at the left edge of screen (-18 is the left side of the screen)
         if ((transform.position.x + movement.x * speed) <= -18)
         {
             col = true;
             transform.position = new Vector3(-18, transform.position.y);
         }
+        //if no collision was found
         if (col == false)
         {
+            //if going right and not at right edge of screen)
             if (cam.WorldToScreenPoint(transform.position).x <= cam.pixelWidth - 20 && moveHorizontal > 0)
             {
                 transform.position = transform.position + new Vector3(movement.x * speed, movement.y * speed);
-            } else if (cam.WorldToScreenPoint(transform.position).x >= 20 && moveHorizontal < 0)
+            }
+            //if going left and not at left edge of screen)
+            else if (cam.WorldToScreenPoint(transform.position).x >= 20 && moveHorizontal < 0)
             {
                 transform.position = transform.position + new Vector3(movement.x * speed, movement.y * speed);
             }
