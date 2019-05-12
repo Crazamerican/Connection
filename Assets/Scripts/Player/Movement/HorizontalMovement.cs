@@ -5,10 +5,12 @@ using UnityEngine;
 public class HorizontalMovement : MonoBehaviour {
     public float speed;
     public Camera cam;
+    bool unlock;
 
     // Use this for initialization
     void Start()
     {
+        unlock = false;
     }
 
     //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
@@ -46,21 +48,28 @@ public class HorizontalMovement : MonoBehaviour {
             {
                 if (collide.tag != "Ground")
                 {
-                    //if this collider isn't the Player and isn't the ground
-                    col = true;
+                    if (collide.tag != "Key")
+                    {
+                        if (collide.tag != "Door")
+                        {
+                            //if this collider isn't the Player, ground, or key, or door
+                            //the door tag isn't actually attached to the door just the door group for key checking
+                            col = true;
+                        }
+                    }
                 }
             }
         }
         foreach (var collide2 in collider2)
         {
-            if (collide2.tag != "Player" && collide2.tag != "Ground")
+            if (collide2.tag != "Player" && collide2.tag != "Ground" && collide2.tag != "Key" && collide2.tag != "Door")
             {
                 col = true;
             }
         }
         foreach (var collide3 in collider3)
         {
-            if (collide3.tag != "Player" && collide3.tag != "Ground")
+            if (collide3.tag != "Player" && collide3.tag != "Ground" && collide3.tag != "Key" && collide3.tag != "Door")
             {
                 col = true;
             }
@@ -86,5 +95,21 @@ public class HorizontalMovement : MonoBehaviour {
             }
         }
         //transform.position = transform.position + new Vector3(movement.x * speed, movement.y * speed);
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Key")
+        {
+            unlock = true;
+            Destroy(other.gameObject);
+        }
+        if (other.tag == "Door")
+        {
+            if (unlock == true)
+            {
+                Destroy(other.gameObject);
+                unlock = false;
+            }
+        }
     }
 }
