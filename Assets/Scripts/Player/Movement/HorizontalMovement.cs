@@ -44,32 +44,45 @@ public class HorizontalMovement : MonoBehaviour {
         //goes through everything that collided with 
         foreach (var collide in collider)
         {
-            if (collide.tag != "Player")
+            //if (collide.tag != "Player")
+            //{
+            //    if (collide.tag != "Ground")
+            //    {
+            //        if (collide.tag != "Key")
+            //        {
+            //            if (collide.tag != "Door")
+            //            {
+            //                //if this collider isn't the Player, ground, or key, or door
+            //                //the door tag isn't actually attached to the door just the door group for key checking
+            //                col = true;
+            //            }
+            //        }
+            //    }
+            //}
+
+            if (collide.gameObject.GetComponent<Collideable>())
             {
-                if (collide.tag != "Ground")
-                {
-                    if (collide.tag != "Key")
-                    {
-                        if (collide.tag != "Door")
-                        {
-                            //if this collider isn't the Player, ground, or key, or door
-                            //the door tag isn't actually attached to the door just the door group for key checking
-                            col = true;
-                        }
-                    }
-                }
+                col = true;
             }
         }
         foreach (var collide2 in collider2)
         {
-            if (collide2.tag != "Player" && collide2.tag != "Ground" && collide2.tag != "Key" && collide2.tag != "Door")
+            //if (collide2.tag != "Player" && collide2.tag != "Ground" && collide2.tag != "Key" && collide2.tag != "Door")
+            //{
+            //    col = true;
+            //}
+            if (collide2.gameObject.GetComponent<Collideable>())
             {
                 col = true;
             }
         }
         foreach (var collide3 in collider3)
         {
-            if (collide3.tag != "Player" && collide3.tag != "Ground" && collide3.tag != "Key" && collide3.tag != "Door")
+            //if (collide3.tag != "Player" && collide3.tag != "Ground" && collide3.tag != "Key" && collide3.tag != "Door")
+            //{
+            //    col = true;
+            //}
+            if (collide3.gameObject.GetComponent<Collideable>())
             {
                 col = true;
             }
@@ -96,20 +109,20 @@ public class HorizontalMovement : MonoBehaviour {
         }
         //transform.position = transform.position + new Vector3(movement.x * speed, movement.y * speed);
     }
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.tag == "Key")
-        {
-            unlock = true;
-            Destroy(other.gameObject);
-        }
-        if (other.tag == "Door")
-        {
-            if (unlock == true)
-            {
-                Destroy(other.gameObject);
-                unlock = false;
-            }
-        }
-    }
+    //private void OnTriggerEnter2D(Collider2D other)
+    //{
+    //    if (other.tag == "Key")
+    //    {
+    //        unlock = true;
+    //        Destroy(other.gameObject);
+    //    }
+    //    if (other.tag == "Door")
+    //    {
+    //        if (unlock == true)
+    //        {
+    //            Destroy(other.gameObject);
+    //            unlock = false;
+    //        }
+    //    }
+    //}
 }
