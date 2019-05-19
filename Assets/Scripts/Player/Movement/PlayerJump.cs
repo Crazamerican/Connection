@@ -22,14 +22,14 @@ public class PlayerJump : PlayerGravity {
         {
             velocity.y = jumpTakeOffSpeed;
         }
-        else if (Input.GetButtonUp("Jump"))
+        /*else if (Input.GetButtonUp("Jump"))
         {
             //makes it so holding jump button makes characters jump higher
             if (velocity.y > 0)
             {
-                velocity.y = velocity.y * 0.5f;
+                velocity.y = velocity.y * 1f;
             }
-        }
+        }*/
 
         targetVelocity = move * maxSpeed;
     }
