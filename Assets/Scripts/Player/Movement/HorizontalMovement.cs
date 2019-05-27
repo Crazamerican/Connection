@@ -41,28 +41,17 @@ public class HorizontalMovement : MonoBehaviour {
             collider3 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed - 0.5f, movement.y * speed - 0.48f), 0.01f);
         }
         bool col = false;
+        float distanceToCollision = 0f;
         //goes through everything that collided with 
         foreach (var collide in collider)
         {
-            //if (collide.tag != "Player")
-            //{
-            //    if (collide.tag != "Ground")
-            //    {
-            //        if (collide.tag != "Key")
-            //        {
-            //            if (collide.tag != "Door")
-            //            {
-            //                //if this collider isn't the Player, ground, or key, or door
-            //                //the door tag isn't actually attached to the door just the door group for key checking
-            //                col = true;
-            //            }
-            //        }
-            //    }
-            //}
+           
 
             if (collide.gameObject.GetComponent<Collideable>())
             {
                 col = true;
+                Debug.Log(GetComponent<BoxCollider2D>().Distance(collide).distance);
+                distanceToCollision = GetComponent<BoxCollider2D>().Distance(collide).distance;
             }
         }
         foreach (var collide2 in collider2)
@@ -106,23 +95,18 @@ public class HorizontalMovement : MonoBehaviour {
             {
                 transform.position = transform.position + new Vector3(movement.x * speed, movement.y * speed);
             }
+        } else //col == true
+        {
+            Debug.Log("Distance to collision: " + distanceToCollision);
+            if (moveHorizontal > 0) //moving right
+            {
+                transform.position += new Vector3(distanceToCollision, movement.y * speed );
+            } else //moving left
+            {
+                transform.position += new Vector3(-distanceToCollision, movement.y * speed);
+            }
         }
         //transform.position = transform.position + new Vector3(movement.x * speed, movement.y * speed);
     }
-    //private void OnTriggerEnter2D(Collider2D other)
-    //{
-    //    if (other.tag == "Key")
-    //    {
-    //        unlock = true;
-    //        Destroy(other.gameObject);
-    //    }
-    //    if (other.tag == "Door")
-    //    {
-    //        if (unlock == true)
-    //        {
-    //            Destroy(other.gameObject);
-    //            unlock = false;
-    //        }
-    //    }
-    //}
+    
 }
