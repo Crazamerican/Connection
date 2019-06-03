@@ -6,6 +6,7 @@ public class HorizontalMovement : MonoBehaviour {
     public float speed;
     public Camera cam;
     bool unlock;
+    public GameObject confusion;
 
     // Use this for initialization
     void Start()
@@ -27,13 +28,13 @@ public class HorizontalMovement : MonoBehaviour {
         Collider2D[] collider2 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed, movement.y * speed + 0.5f), 0.01f);
         Collider2D[] collider3 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed, movement.y * speed - 0.48f), 0.01f);
         //if moving right
-        if (moveHorizontal > 0)
+        if ((moveHorizontal > 0 && speed > 0) || (moveHorizontal < 0 && speed < 0))
         {
             //test colliders of the character's movement to the right
             collider = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed + 0.5f, movement.y * speed), 0.01f);
             collider2 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed + 0.5f, movement.y * speed + 0.5f), 0.01f);
             collider3 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed + 0.5f, movement.y * speed - 0.48f), 0.01f);
-        } else if (moveHorizontal < 0)
+        } else if ((moveHorizontal < 0 && speed > 0) || (moveHorizontal > 0 && speed < 0))
         {
             //test colliders of the character's movement to the left
             collider = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed - 0.5f, movement.y * speed), 0.01f);
@@ -108,5 +109,35 @@ public class HorizontalMovement : MonoBehaviour {
         }
         //transform.position = transform.position + new Vector3(movement.x * speed, movement.y * speed);
     }
-    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Shroom")
+        {
+            speed = speed * -1;
+            Destroy(other.gameObject);
+            if (speed < 0)
+            {
+                confusion.SetActive(true);
+            } else if (speed > 0)
+            {
+                confusion.SetActive(false);
+            }
+        }
+    }
+    //private void OnTriggerEnter2D(Collider2D other)
+    //{
+    //    if (other.tag == "Key")
+    //    {
+    //        unlock = true;
+    //        Destroy(other.gameObject);
+    //    }
+    //    if (other.tag == "Door")
+    //    {
+    //        if (unlock == true)
+    //        {
+    //            Destroy(other.gameObject);
+    //            unlock = false;
+    //        }
+    //    }
+    //}
 }
