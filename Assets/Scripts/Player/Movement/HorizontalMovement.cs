@@ -99,12 +99,13 @@ public class HorizontalMovement : MonoBehaviour {
         } else //col == true
         {
             Debug.Log("Distance to collision: " + distanceToCollision);
+            // Move character right up to the colliding wall
             if (moveHorizontal > 0) //moving right
             {
-                transform.position += new Vector3(distanceToCollision, movement.y * speed );
+                transform.position += new Vector3(distanceToCollision - .01f, movement.y * speed );
             } else //moving left
             {
-                transform.position += new Vector3(-distanceToCollision, movement.y * speed);
+                transform.position += new Vector3(-distanceToCollision - .01f, movement.y * speed);
             }
         }
         //transform.position = transform.position + new Vector3(movement.x * speed, movement.y * speed);
