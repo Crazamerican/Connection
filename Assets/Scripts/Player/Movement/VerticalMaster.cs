@@ -16,6 +16,9 @@ public class VerticalMaster : MonoBehaviour
     public GameObject otherPlayer;
     private bool onBox;
     private bool onBox2;
+    //1 is top 0 is nothing -1 is bottom
+    public int topOrBottom;
+    public int topOrBottom2;
 
     // Use this for initialization
     void Start()
@@ -24,11 +27,16 @@ public class VerticalMaster : MonoBehaviour
         grounded2 = true;
         onBox = false;
         onBox2 = false;
+        topOrBottom = 0;
+        topOrBottom2 = 0;
     }
 
-    //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
-    void FixedUpdate()
+    private void Update()
     {
+        if (Input.GetButtonDown("Jump"))
+        {
+            Debug.Log("button");
+        }
         //if jump button pressed and a character is on the ground
         if (Input.GetButtonDown("Jump") && (grounded || grounded2))
         {
@@ -38,7 +46,30 @@ public class VerticalMaster : MonoBehaviour
             grounded2 = false;
             onBox = false;
             onBox2 = false;
+            Debug.Log("jump");
         }
+    }
+
+    //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
+    void FixedUpdate()
+    {
+        topOrBottom = 0;
+        topOrBottom2 = 0;
+        /*if (Input.GetButtonDown("Jump"))
+        {
+            Debug.Log("button");
+        }
+        //if jump button pressed and a character is on the ground
+        if (Input.GetButtonDown("Jump") && (grounded || grounded2))
+        {
+            velocity = jumpTakeOffSpeed;
+            velocity2 = jumpTakeOffSpeed;
+            grounded = false;
+            grounded2 = false;
+            onBox = false;
+            onBox2 = false;
+            Debug.Log("jump");
+        }*/
         velocity = velocity - gravity;
         velocity2 = velocity2 - gravity2;
         Collider2D[] top1 = Physics2D.OverlapCircleAll(transform.position + new Vector3(0.5f, velocity + 0.5f), 0.01f);
@@ -58,6 +89,7 @@ public class VerticalMaster : MonoBehaviour
             if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
             {
                 col = true;
+                topOrBottom = 1;
                 if (collide.tag == "Ground")
                 {
                     onBox = false;
@@ -73,6 +105,7 @@ public class VerticalMaster : MonoBehaviour
             if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
             {
                 col = true;
+                topOrBottom = 1;
                 if (collide.tag == "Ground")
                 {
                     onBox = false;
@@ -88,6 +121,7 @@ public class VerticalMaster : MonoBehaviour
             if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
             {
                 col = true;
+                topOrBottom = -1;
                 if (collide.tag == "Ground")
                 {
                     onBox = false;
@@ -103,6 +137,7 @@ public class VerticalMaster : MonoBehaviour
             if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
             {
                 col = true;
+                topOrBottom = -1;
                 if (collide.tag == "Ground")
                 {
                     onBox = false;
@@ -118,6 +153,7 @@ public class VerticalMaster : MonoBehaviour
             if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
             {
                 col2 = true;
+                topOrBottom2 = 1;
                 if (collide.tag == "Ground")
                 {
                     onBox2 = false;
@@ -133,6 +169,7 @@ public class VerticalMaster : MonoBehaviour
             if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
             {
                 col2 = true;
+                topOrBottom2 = 1;
                 if (collide.tag == "Ground")
                 {
                     onBox2 = false;
@@ -148,6 +185,7 @@ public class VerticalMaster : MonoBehaviour
             if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
             {
                 col2 = true;
+                topOrBottom2 = -1;
                 if (collide.tag == "Ground")
                 {
                     onBox2 = false;
@@ -163,6 +201,7 @@ public class VerticalMaster : MonoBehaviour
             if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
             {
                 col2 = true;
+                topOrBottom2 = -1;
                 if (collide.tag == "Ground")
                 {
                     onBox2 = false;
@@ -176,10 +215,12 @@ public class VerticalMaster : MonoBehaviour
         if (col == true)
         {
             col2 = true;
+            topOrBottom2 = topOrBottom;
         }
-        if (col2 == true)
+        else if (col2 == true)
         {
             col = true;
+            topOrBottom = topOrBottom2;
         } 
         if (col == false)
         {
@@ -189,20 +230,20 @@ public class VerticalMaster : MonoBehaviour
         {
             grounded2 = false;
         }
-        if (col == true && velocity > 0)
+        if (col == true && topOrBottom == 1)
         {
             velocity = 0;
         }
-        else if (col == true && velocity < 0)
+        else if (col == true && topOrBottom == -1)
         {
             velocity = 0;
             grounded = true;
         }
-        if (col2 == true && velocity2 > 0)
+        if (col2 == true && topOrBottom2 == 1)
         {
             velocity2 = 0;
         }
-        else if (col2 == true && velocity2 < 0)
+        else if (col2 == true && topOrBottom2 == -1)
         {
             velocity2 = 0;
             grounded2 = true;
