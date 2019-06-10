@@ -42,28 +42,17 @@ public class HorizontalMovement : MonoBehaviour {
             collider3 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed - 0.5f, movement.y * speed - 0.48f), 0.01f);
         }
         bool col = false;
+        float distanceToCollision = 0f;
         //goes through everything that collided with 
         foreach (var collide in collider)
         {
-            //if (collide.tag != "Player")
-            //{
-            //    if (collide.tag != "Ground")
-            //    {
-            //        if (collide.tag != "Key")
-            //        {
-            //            if (collide.tag != "Door")
-            //            {
-            //                //if this collider isn't the Player, ground, or key, or door
-            //                //the door tag isn't actually attached to the door just the door group for key checking
-            //                col = true;
-            //            }
-            //        }
-            //    }
-            //}
+           
 
             if (collide.gameObject.GetComponent<Collideable>())
             {
                 col = true;
+                Debug.Log(GetComponent<BoxCollider2D>().Distance(collide).distance);
+                distanceToCollision = GetComponent<BoxCollider2D>().Distance(collide).distance;
             }
         }
         foreach (var collide2 in collider2)
@@ -106,6 +95,17 @@ public class HorizontalMovement : MonoBehaviour {
             else if (cam.WorldToScreenPoint(transform.position).x >= 20 && moveHorizontal < 0)
             {
                 transform.position = transform.position + new Vector3(movement.x * speed, movement.y * speed);
+            }
+        } else //col == true
+        {
+            Debug.Log("Distance to collision: " + distanceToCollision);
+            // Move character right up to the colliding wall
+            if (moveHorizontal > 0) //moving right
+            {
+                transform.position += new Vector3(distanceToCollision - .01f, movement.y * speed );
+            } else //moving left
+            {
+                transform.position += new Vector3(-distanceToCollision - .01f, movement.y * speed);
             }
         }
         //transform.position = transform.position + new Vector3(movement.x * speed, movement.y * speed);
