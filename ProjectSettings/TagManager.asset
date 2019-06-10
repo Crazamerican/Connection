@@ -8,6 +8,8 @@ TagManager:
   - Key
   - Door
   - Shroom
+  - Gravity
+  - Spike
   layers:
   - Default
   - TransparentFX
