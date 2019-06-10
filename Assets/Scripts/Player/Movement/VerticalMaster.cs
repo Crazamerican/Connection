@@ -17,8 +17,14 @@ public class VerticalMaster : MonoBehaviour
     private bool onBox;
     private bool onBox2;
     //1 is top 0 is nothing -1 is bottom
-    public int topOrBottom;
-    public int topOrBottom2;
+    private int topOrBottom;
+    private int topOrBottom2;
+
+    private bool inverted;
+    private bool inverted2;
+    private bool inverted2_2;
+    private bool invertOnCommand;
+    VerticalOther otherScript;
 
     // Use this for initialization
     void Start()
@@ -29,6 +35,10 @@ public class VerticalMaster : MonoBehaviour
         onBox2 = false;
         topOrBottom = 0;
         topOrBottom2 = 0;
+        inverted = false;
+        otherScript = otherPlayer.GetComponent<VerticalOther>();
+        inverted2_2 = false;
+        invertOnCommand = false;
     }
 
     private void Update()
@@ -40,19 +50,41 @@ public class VerticalMaster : MonoBehaviour
         //if jump button pressed and a character is on the ground
         if (Input.GetButtonDown("Jump") && (grounded || grounded2))
         {
-            velocity = jumpTakeOffSpeed;
-            velocity2 = jumpTakeOffSpeed;
+            if (inverted == true || inverted2 == true)
+            {
+                velocity = -jumpTakeOffSpeed;
+                velocity2 = -jumpTakeOffSpeed;
+            } else
+            {
+                velocity = jumpTakeOffSpeed;
+                velocity2 = jumpTakeOffSpeed;
+            }
             grounded = false;
             grounded2 = false;
             onBox = false;
             onBox2 = false;
             Debug.Log("jump");
         }
+        if (Input.GetButtonDown("Invert") && invertOnCommand == true)
+        {
+            inverted2 = !inverted2;
+            inverted = !inverted;
+            gravity2 = gravity2 * -1;
+            gravity = gravity * -1;
+        }
     }
 
     //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
     void FixedUpdate()
     {
+        if (inverted2 != otherScript.inverted2 && inverted2_2 == false)
+        {
+            /*inverted2 = otherScript.inverted2;
+            inverted = !inverted;
+            gravity2 = gravity2 * -1;
+            gravity = gravity * -1;*/
+            invertOnCommand = true;
+        }
         topOrBottom = 0;
         topOrBottom2 = 0;
         /*if (Input.GetButtonDown("Jump"))
@@ -230,6 +262,14 @@ public class VerticalMaster : MonoBehaviour
         {
             grounded2 = false;
         }
+        if (inverted == true)
+        {
+            topOrBottom = topOrBottom * -1;
+        }
+        if (inverted2 == true)
+        {
+            topOrBottom2 = topOrBottom2 * -1;
+        }
         if (col == true && topOrBottom == 1)
         {
             velocity = 0;
@@ -255,6 +295,19 @@ public class VerticalMaster : MonoBehaviour
         if (col2 == false)
         {
             otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, velocity2);
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Gravity")
+        {
+            /*inverted = !inverted;
+            inverted2 = !inverted2;
+            inverted2_2 = !inverted2_2;
+            gravity = gravity * -1;
+            gravity2 = gravity2 * -1;*/
+            invertOnCommand = true;
+            Destroy(other.gameObject);
         }
     }
 
