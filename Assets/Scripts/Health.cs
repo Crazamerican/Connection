@@ -7,12 +7,14 @@ public class Health : MonoBehaviour
     public int maxHealth;
     int curHealth;
     bool dead;
-    public float invuln;
+    public float invulnTime; 
+    float invuln;//invulnerability timer
     bool damageable;
 
     // Start is called before the first frame update
     void Start()
     {
+        invuln = 0;
         curHealth = maxHealth;
         dead = false;
         damageable = true;
@@ -33,7 +35,7 @@ public class Health : MonoBehaviour
         //target is possible to take damage
         if (damageable)
         {
-            invuln = Time.time + 2f;
+            invuln = Time.time + invulnTime;
             curHealth -= damage;
             Debug.Log(gameObject.name + " has taken damage");
             Debug.Log("Current Health: " + curHealth);

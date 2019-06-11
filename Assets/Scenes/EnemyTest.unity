@@ -6405,7 +6405,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9311c1702d7cb424dbc91e18e48b8573, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
+  maxHealth: 5
+  invulnTime: 2
 --- !u!1001 &1123500937
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13107,6 +13108,16 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3294831928417953409, guid: 40b546fdf69b32946967c2cec9182f51,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5525683047481965171, guid: 40b546fdf69b32946967c2cec9182f51,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40b546fdf69b32946967c2cec9182f51, type: 3}
 --- !u!1 &5360293324790567101 stripped
@@ -13128,6 +13139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 1
+  invulnTime: 2
 --- !u!114 &5360293324790567103
 MonoBehaviour:
   m_ObjectHideFlags: 0

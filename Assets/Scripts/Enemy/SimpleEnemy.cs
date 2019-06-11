@@ -40,7 +40,7 @@ public class SimpleEnemy : MonoBehaviour
     //checks in front of the enemy for the player and if it finds the player, tells the enemy to attack 
     void attemptAttack(Vector3 target)
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, target);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, target, Mathf.Abs(offset));
         if(hit.collider != null && (hit.collider.gameObject.name.Equals("Playuer1") || hit.collider.gameObject.name.Equals("Player2"))) // && hit.collider.gameObject.CompareTag("Player"))
         {
             startAttack = true;
