@@ -51,7 +51,7 @@ public class HorizontalMovement : MonoBehaviour {
             if (collide.gameObject.GetComponent<Collideable>())
             {
                 col = true;
-                Debug.Log(GetComponent<BoxCollider2D>().Distance(collide).distance);
+                //Debug.Log(GetComponent<BoxCollider2D>().Distance(collide).distance);
                 distanceToCollision = GetComponent<BoxCollider2D>().Distance(collide).distance;
             }
         }
@@ -98,14 +98,14 @@ public class HorizontalMovement : MonoBehaviour {
             }
         } else //col == true
         {
-            Debug.Log("Distance to collision: " + distanceToCollision);
+            //Debug.Log("Distance to collision: " + distanceToCollision);
             // Move character right up to the colliding wall
             if (moveHorizontal > 0) //moving right
             {
                 transform.position += new Vector3(distanceToCollision - .01f, movement.y * speed );
             } else //moving left
             {
-                transform.position += new Vector3(-distanceToCollision - .01f, movement.y * speed);
+                transform.position += new Vector3(-distanceToCollision + .01f, movement.y * speed);
             }
         }
         //transform.position = transform.position + new Vector3(movement.x * speed, movement.y * speed);
@@ -125,20 +125,5 @@ public class HorizontalMovement : MonoBehaviour {
             }
         }
     }
-    //private void OnTriggerEnter2D(Collider2D other)
-    //{
-    //    if (other.tag == "Key")
-    //    {
-    //        unlock = true;
-    //        Destroy(other.gameObject);
-    //    }
-    //    if (other.tag == "Door")
-    //    {
-    //        if (unlock == true)
-    //        {
-    //            Destroy(other.gameObject);
-    //            unlock = false;
-    //        }
-    //    }
-    //}
+    
 }
