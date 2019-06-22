@@ -65,7 +65,7 @@ public class VerticalMaster : MonoBehaviour
             onBox2 = false;
             Debug.Log("jump");
         }
-        if (Input.GetButtonDown("Invert") && invertOnCommand == true)
+        if (Input.GetButtonDown("Invert") && invertOnCommand == true && (grounded || grounded2))
         {
             inverted2 = !inverted2;
             inverted = !inverted;
