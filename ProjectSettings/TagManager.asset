@@ -10,6 +10,7 @@ TagManager:
   - Shroom
   - Gravity
   - Spike
+  - TimedBox
   layers:
   - Default
   - TransparentFX
