@@ -51,10 +51,6 @@ public class VerticalMaster : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Jump"))
-        {
-            Debug.Log("button");
-        }
         //if jump button pressed and a character is on the ground
         if (Input.GetButtonDown("Jump") && (grounded || grounded2))
         {
