@@ -98,7 +98,7 @@ public class HorizontalMovement : MonoBehaviour {
             }
         } else //col == true
         {
-            Debug.Log("Distance to collision: " + distanceToCollision);
+            //Debug.Log("Distance to collision: " + distanceToCollision);
             // Move character right up to the colliding wall
             if (moveHorizontal > 0) //moving right
             {
