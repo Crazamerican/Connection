@@ -12,6 +12,8 @@ TagManager:
   - Spike
   - TimedBox
   - Attack
+  - Enemy
+  - BreakBox
   layers:
   - Default
   - TransparentFX
