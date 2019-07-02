@@ -504,6 +504,11 @@ PrefabInstance:
       propertyPath: m_DynamicPixelsPerUnit
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6306668328007840920, guid: 938b0e3ae306e7943877b3a71e122e86,
+        type: 3}
+      propertyPath: respawnTime
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 938b0e3ae306e7943877b3a71e122e86, type: 3}
 --- !u!1001 &605448393
