@@ -41,7 +41,7 @@ public class SimpleEnemy : MonoBehaviour
     void attemptAttack(Vector3 target)
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, target, Mathf.Abs(offset));
-        if(hit.collider != null && (hit.collider.gameObject.name.Equals("Playuer1") || hit.collider.gameObject.name.Equals("Player2"))) // && hit.collider.gameObject.CompareTag("Player"))
+        if(hit.collider != null && (hit.collider.gameObject.tag.Equals("Player") || hit.collider.gameObject.name.Equals("Player2"))) // && hit.collider.gameObject.CompareTag("Player"))
         {
             startAttack = true;
         }

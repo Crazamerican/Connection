@@ -43,7 +43,7 @@ public class Lazer : MonoBehaviour
         lineRenderer.SetPosition(0, startLoc.position);
         lineRenderer.SetPosition(1, lazerHit.position);
         //Debug.Log(hit.collider.gameObject.name);
-        if (on && (hit.collider.gameObject.name.Equals("Player1") || hit.collider.gameObject.name.Equals("Player2")))
+        if (on && (hit.collider.gameObject.name.Equals("Player") || hit.collider.gameObject.name.Equals("Player2")))
         {
             //Debug.Log(hit.collider.gameObject.name);
             //Debug.Log(damageTime);
