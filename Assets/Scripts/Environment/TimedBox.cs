@@ -9,11 +9,15 @@ using TMPro;
 public class TimedBox : MonoBehaviour
 {
     public float fadeTime;
+    public float respawnTime;
 
     public BoxCollider2D collider;
 
     SpriteRenderer spriteRenderer;
     public TextMeshProUGUI textpro;
+
+    private bool active = true;
+    private bool playerInBounds = false;
 
     float velocityref;
 
@@ -21,7 +25,7 @@ public class TimedBox : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-
+        textpro.text = fadeTime.ToString();
     }
 
     // Update is called once per frame
@@ -34,11 +38,24 @@ public class TimedBox : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Collided with timed box");
+        //Debug.Log("Collided with timed box");
 
         if (collision.gameObject.CompareTag("Player"))
         {
-            StartCoroutine(FadingOut());
+            playerInBounds = true;
+            if (active)
+            {
+                StartCoroutine(FadingOut());
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            playerInBounds = false;
+            
         }
     }
 
@@ -58,8 +75,39 @@ public class TimedBox : MonoBehaviour
             yield return 0;
         }
 
-
+        active = false;
         textpro.enabled = false;
         collider.enabled = false;
+
+        StartCoroutine(FadingIn());
+    }
+
+    private IEnumerator FadingIn()
+    {
+        float timer = 0f;
+
+        while (timer < respawnTime)
+        {
+            timer += Time.deltaTime;
+            Color tempColor = spriteRenderer.color;
+            tempColor.a = Mathf.SmoothDamp(spriteRenderer.color.a, .75f, ref velocityref, respawnTime - timer);
+            spriteRenderer.color = tempColor;
+            yield return 0;
+        }
+
+
+        //Delay reactivation of box until player is not colliding
+        while (playerInBounds)
+        {
+            yield return 0;
+        }
+
+        active = true;
+        textpro.enabled = true;
+        collider.enabled = true;
+        textpro.text = fadeTime.ToString();
+        Color tmpColor = spriteRenderer.color;
+        tmpColor.a = 1f;
+        spriteRenderer.color = tmpColor;
     }
 }
