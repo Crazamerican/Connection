@@ -7,8 +7,8 @@ public class VerticalMaster : MonoBehaviour
     public float maxSpeed = 7;
     public float jumpTakeOffSpeed = 7;
 
-    private bool grounded;
-    private bool grounded2;
+    [SerializeField] private bool grounded;
+    [SerializeField] private bool grounded2;
     private float velocity;
     private float velocity2;
     public float gravity;
@@ -27,8 +27,8 @@ public class VerticalMaster : MonoBehaviour
     VerticalOther otherScript;
     float width;
     float height;
-    float width2;
-    float height2;
+    //float width2;
+    //float height2;
 
     // Use this for initialization
     void Start()
@@ -43,10 +43,10 @@ public class VerticalMaster : MonoBehaviour
         otherScript = otherPlayer.GetComponent<VerticalOther>();
         inverted2_2 = false;
         invertOnCommand = false;
-        width = GetComponent<SpriteRenderer>().bounds.size.x;
-        height = GetComponent<SpriteRenderer>().bounds.size.y;
-        width2 = otherScript.width;
-        height2 = otherScript.height;
+        width = GetComponent<BoxCollider2D>().bounds.size.x;
+        height = GetComponent<BoxCollider2D>().bounds.size.y;
+        //width2 = otherScript.width;
+        //height2 = otherScript.height;
     }
 
     private void Update()
@@ -112,10 +112,10 @@ public class VerticalMaster : MonoBehaviour
         Collider2D[] top2 = Physics2D.OverlapCircleAll(transform.position + new Vector3(-width / 2, velocity + height / 2), 0.01f);
         Collider2D[] bottom1 = Physics2D.OverlapCircleAll(transform.position + new Vector3(width / 2, velocity - height / 2), 0.01f);
         Collider2D[] bottom2 = Physics2D.OverlapCircleAll(transform.position + new Vector3(-width / 2, velocity - height / 2), 0.01f);
-        Collider2D[] top1_2 = Physics2D.OverlapCircleAll(otherPlayer.transform.position + new Vector3(width / 2, velocity + height / 2), 0.01f);
-        Collider2D[] top2_2 = Physics2D.OverlapCircleAll(otherPlayer.transform.position + new Vector3(-width / 2, velocity + height / 2), 0.01f);
-        Collider2D[] bottom1_2 = Physics2D.OverlapCircleAll(otherPlayer.transform.position + new Vector3(width / 2, velocity - height / 2), 0.01f);
-        Collider2D[] bottom2_2 = Physics2D.OverlapCircleAll(otherPlayer.transform.position + new Vector3(-width / 2, velocity - height / 2), 0.01f);
+        Collider2D[] top1_2 = otherScript.GetTop1(velocity2);
+        Collider2D[] top2_2 = otherScript.GetTop2(velocity2);
+        Collider2D[] bottom1_2 = otherScript.GetBot1(velocity2);
+        Collider2D[] bottom2_2 = otherScript.GetBot2(velocity2);
 
         bool col = false;
         bool col2 = false;

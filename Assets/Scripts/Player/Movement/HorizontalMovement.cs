@@ -14,8 +14,8 @@ public class HorizontalMovement : MonoBehaviour {
     void Start()
     {
         unlock = false;
-        width = GetComponent<SpriteRenderer>().bounds.size.x;
-        height = GetComponent<SpriteRenderer>().bounds.size.y;
+        width = GetComponent<BoxCollider2D>().bounds.size.x;
+        height = GetComponent<BoxCollider2D>().bounds.size.y;
     }
 
     //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
@@ -56,7 +56,7 @@ public class HorizontalMovement : MonoBehaviour {
             {
                 col = true;
                 //Debug.Log(GetComponent<BoxCollider2D>().Distance(collide).distance);
-                distanceToCollision = GetComponent<BoxCollider2D>().Distance(collide).distance;
+                
             }
         }
         foreach (var collide2 in collider2)
@@ -68,6 +68,7 @@ public class HorizontalMovement : MonoBehaviour {
             if (collide2.gameObject.GetComponent<Collideable>())
             {
                 col = true;
+                distanceToCollision = GetComponent<BoxCollider2D>().Distance(collide2).distance;
             }
         }
         foreach (var collide3 in collider3)
@@ -79,6 +80,7 @@ public class HorizontalMovement : MonoBehaviour {
             if (collide3.gameObject.GetComponent<Collideable>())
             {
                 col = true;
+                
             }
         }
         //if at the left edge of screen (-18 is the left side of the screen)
@@ -106,6 +108,7 @@ public class HorizontalMovement : MonoBehaviour {
             // Move character right up to the colliding wall
             if (moveHorizontal > 0) //moving right
             {
+
                 transform.position += new Vector3(distanceToCollision - .01f, movement.y * speed );
             } else //moving left
             {
