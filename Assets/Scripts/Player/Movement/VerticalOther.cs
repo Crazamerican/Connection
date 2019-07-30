@@ -11,8 +11,8 @@ public class VerticalOther : MonoBehaviour
     void Start()
     {
         inverted2 = false;
-        width = GetComponent<SpriteRenderer>().bounds.size.x;
-        height = GetComponent<SpriteRenderer>().bounds.size.y;
+        width = GetComponent<BoxCollider2D>().bounds.size.x;
+        height = GetComponent<BoxCollider2D>().bounds.size.y;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -22,5 +22,25 @@ public class VerticalOther : MonoBehaviour
             inverted2 = !inverted2;
             Destroy(other.gameObject);
         }
+    }
+
+    public Collider2D[] GetTop1(float velocity)
+    {
+        return Physics2D.OverlapCircleAll(transform.position + new Vector3(width / 2, velocity + height / 2), 0.01f);
+    }
+
+    public Collider2D[] GetTop2(float velocity)
+    {
+        return Physics2D.OverlapCircleAll(transform.position + new Vector3(-width / 2, velocity + height / 2), 0.01f);
+    }
+
+    public Collider2D[] GetBot1(float velocity)
+    {
+        return Physics2D.OverlapCircleAll(transform.position + new Vector3(width / 2, velocity - height / 2), 0.01f);
+    }
+
+    public Collider2D[] GetBot2(float velocity)
+    {
+        return Physics2D.OverlapCircleAll(transform.position + new Vector3(-width / 2, velocity - height / 2), 0.01f);
     }
 }
