@@ -18,6 +18,11 @@ public class Lazer : MonoBehaviour
     private Gradient grad;
     public Color fadeIn;
     public Color fullColor;
+    public int delay;
+    public float holdTime;
+    public float offTime;
+    float timer;
+    float changeTimer;
 
     // Start is called before the first frame update
     void Start()
@@ -27,15 +32,28 @@ public class Lazer : MonoBehaviour
         lineRenderer.useWorldSpace = true;
         on = false;
         changing = false;
-        changeTime = 0;
+        changeTime = 0 + delay;
+        Debug.Log("The starting change time is: " + changeTime);
         changeOn = false;
         changeOff = false;
         damageTime = 0f;
+        timer = 0f;
+        changeTimer = 0;
+        if(holdTime < 2)
+        {
+            holdTime = 2;
+        }
+        if (offTime < 2)
+        {
+            offTime = 2f;
+        }
+        lineRenderer.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        timer += Time.deltaTime;
         RaycastHit2D hit = Physics2D.Raycast(startLoc.position, endLoc.position - startLoc.position);
         Debug.DrawLine(startLoc.position, hit.point);
         lineRenderer.positionCount = 2;
@@ -47,28 +65,31 @@ public class Lazer : MonoBehaviour
         {
             //Debug.Log(hit.collider.gameObject.name);
             //Debug.Log(damageTime);
-            if (damageTime < Time.time)
+            if (damageTime < timer)
             {
-                hit.collider.gameObject.GetComponentInParent<Health>().takeDamage(1);
-                Debug.Log("Here is where the damage will go");
-                damageTime = Time.time + .15f;
+                //hit.collider.gameObject.GetComponentInParent<Health>().takeDamage(1);
+                //Debug.Log("Here is where the damage will go");
+                //damageTime = timer + .15f;
             }
         }
-        if(changeTime < Time.time)
+        if(changeTime < timer && !changeOn)
         {
+            Debug.Log("Turning On");
             changeOn = true;
-            changeTime = Time.time + 15f;
+            changeTime = timer + 15f;
         }
-        if (on && timeRemaining < Time.time)
+        if (on && timeRemaining < timer)
         {
             changeOff = true;
         }
         if (changeOn)
         {
+            changeTimer += Time.deltaTime;
             startChanging();
         }
         if(changeOff)
         {
+            changeTimer += Time.deltaTime;
             reverseChanging();
         }
         
@@ -81,7 +102,7 @@ public class Lazer : MonoBehaviour
         on = true;
         lineRenderer.enabled = true;
         changing = true;
-        timeRemaining = Time.time + 5f;
+        timeRemaining = timer + 5f;
 
     }
 
@@ -97,27 +118,33 @@ public class Lazer : MonoBehaviour
         {
             lineRenderer.enabled = true;
         }
-        lineRenderer.startColor = Color.Lerp(fadeIn, fullColor, Mathf.PingPong(Time.time, 1));
-        lineRenderer.endColor = Color.Lerp(fadeIn, fullColor, Mathf.PingPong(Time.time, 1));
+        lineRenderer.startColor = Color.Lerp(fadeIn, fullColor, Mathf.PingPong(changeTimer, 2));
+        lineRenderer.endColor = Color.Lerp(fadeIn, fullColor, Mathf.PingPong(changeTimer, 2));
         if (lineRenderer.startColor.a > .95f)
         {
+            lineRenderer.startColor = fullColor;
+            lineRenderer.endColor = fullColor;
             changeOn = false;
             on = true;
-            timeRemaining = Time.time + 1.5f;
+            timeRemaining = timer + holdTime;
+            changeTimer = 0;
 
         }
     }
 
     void reverseChanging()
     {
-        lineRenderer.startColor = Color.Lerp(fullColor, fadeIn, Mathf.PingPong(Time.time, 1));
-        lineRenderer.endColor = Color.Lerp(fullColor, fadeIn, Mathf.PingPong(Time.time, 1));
+        lineRenderer.startColor = Color.Lerp(fullColor, fadeIn, Mathf.PingPong(changeTimer, 2));
+        lineRenderer.endColor = Color.Lerp(fullColor, fadeIn, Mathf.PingPong(changeTimer, 2));
         if (lineRenderer.startColor.a < .05f)
         {
+            lineRenderer.startColor = fadeIn;
+            lineRenderer.endColor = fadeIn;
             changeOff = false;
             lineRenderer.enabled = false;
-            changeTime = Time.time + 3f;
+            changeTime = timer + offTime;
             on = false;
+            changeTimer = 0;
         }
     }
 
