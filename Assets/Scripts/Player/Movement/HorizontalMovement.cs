@@ -10,12 +10,15 @@ public class HorizontalMovement : MonoBehaviour {
     float width;
     float height;
 
+    Animator charAnim;
+
     // Use this for initialization
     void Start()
     {
         unlock = false;
         width = GetComponent<BoxCollider2D>().bounds.size.x;
         height = GetComponent<BoxCollider2D>().bounds.size.y;
+        charAnim = GetComponentInChildren<Animator>();
     }
 
     //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
@@ -23,6 +26,21 @@ public class HorizontalMovement : MonoBehaviour {
     {
         //Store the current horizontal input in the float moveHorizontal.
         float moveHorizontal = Input.GetAxis("Horizontal");
+
+        //Send data to animator
+        if (charAnim != null)
+        {
+            //To Do: Left Move
+            if (moveHorizontal >= .1)
+            {
+                charAnim.SetBool("walking", true);
+                charAnim.speed = moveHorizontal;
+            }  else
+            {
+                charAnim.SetBool("walking", false);
+                charAnim.speed = 1;
+            }
+        } 
 
         //Use the two store floats to create a new Vector2 variable movement.
         Vector2 movement = new Vector2(moveHorizontal, 0);
