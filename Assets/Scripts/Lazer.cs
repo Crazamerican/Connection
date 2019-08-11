@@ -19,8 +19,8 @@ public class Lazer : MonoBehaviour
     public Color fadeIn;
     public Color fullColor;
     public int delay;
-    public float holdTime;
-    public float offTime;
+    public float holdTime = 2;
+    public float offTime = 2;
     float timer;
     float changeTimer;
 
@@ -63,14 +63,7 @@ public class Lazer : MonoBehaviour
         //Debug.Log(hit.collider.gameObject.name);
         if (on && (hit.collider.gameObject.name.Equals("Player") || hit.collider.gameObject.name.Equals("Player2")))
         {
-            //Debug.Log(hit.collider.gameObject.name);
-            //Debug.Log(damageTime);
-            if (damageTime < timer)
-            {
-                //hit.collider.gameObject.GetComponentInParent<Health>().takeDamage(1);
-                //Debug.Log("Here is where the damage will go");
-                //damageTime = timer + .15f;
-            }
+            
         }
         if(changeTime < timer && !changeOn)
         {
