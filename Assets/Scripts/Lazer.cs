@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Lazer : MonoBehaviour
 {
@@ -19,8 +20,8 @@ public class Lazer : MonoBehaviour
     public Color fadeIn;
     public Color fullColor;
     public int delay;
-    public float holdTime;
-    public float offTime;
+    public float holdTime = 2;
+    public float offTime = 2;
     float timer;
     float changeTimer;
 
@@ -60,17 +61,11 @@ public class Lazer : MonoBehaviour
         lazerHit.position = hit.point;
         lineRenderer.SetPosition(0, startLoc.position);
         lineRenderer.SetPosition(1, lazerHit.position);
-        //Debug.Log(hit.collider.gameObject.name);
-        if (on && (hit.collider.gameObject.name.Equals("Player") || hit.collider.gameObject.name.Equals("Player2")))
+        
+        if (on && hit.collider != null && (hit.collider.gameObject.name.Equals("Player") || hit.collider.gameObject.name.Equals("Player2")))
         {
-            //Debug.Log(hit.collider.gameObject.name);
-            //Debug.Log(damageTime);
-            if (damageTime < timer)
-            {
-                //hit.collider.gameObject.GetComponentInParent<Health>().takeDamage(1);
-                //Debug.Log("Here is where the damage will go");
-                //damageTime = timer + .15f;
-            }
+             Scene loadedLevel = SceneManager.GetActiveScene();
+             SceneManager.LoadScene(loadedLevel.buildIndex);
         }
         if(changeTime < timer && !changeOn)
         {
