@@ -34,6 +34,11 @@ public class VerticalOther : MonoBehaviour
         return Physics2D.OverlapCircleAll(transform.position + new Vector3(-width / 2, velocity + height / 2), 0.01f);
     }
 
+    public Collider2D[] GetTop3(float velocity)
+    {
+        return Physics2D.OverlapCircleAll(transform.position + new Vector3(0, velocity + height / 2), 0.01f);
+    }
+
     public Collider2D[] GetBot1(float velocity)
     {
         return Physics2D.OverlapCircleAll(transform.position + new Vector3(width / 2, velocity - height / 2), 0.01f);
@@ -42,5 +47,10 @@ public class VerticalOther : MonoBehaviour
     public Collider2D[] GetBot2(float velocity)
     {
         return Physics2D.OverlapCircleAll(transform.position + new Vector3(-width / 2, velocity - height / 2), 0.01f);
+    }
+
+    public Collider2D[] GetBot3(float velocity)
+    {
+        return Physics2D.OverlapCircleAll(transform.position + new Vector3(0, velocity - height / 2), 0.01f);
     }
 }
