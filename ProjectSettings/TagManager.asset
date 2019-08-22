@@ -15,6 +15,7 @@ TagManager:
   - Enemy
   - BreakBox
   - Goal
+  - Trophy
   layers:
   - Default
   - TransparentFX
