@@ -24,6 +24,10 @@ public class CheckCollectibles : MonoBehaviour
             unlock = true;
             Destroy(other.gameObject);
         }
+        if (other.tag == "Trophy")
+        {
+            Destroy(other.gameObject);
+        }
         if (other.tag == "Door")
         {
             if (unlock == true)

@@ -110,12 +110,16 @@ public class VerticalMaster : MonoBehaviour
         velocity2 = velocity2 - gravity2;
         Collider2D[] top1 = Physics2D.OverlapCircleAll(transform.position + new Vector3(width / 2, velocity + height / 2), 0.01f);
         Collider2D[] top2 = Physics2D.OverlapCircleAll(transform.position + new Vector3(-width / 2, velocity + height / 2), 0.01f);
+        Collider2D[] top3 = Physics2D.OverlapCircleAll(transform.position + new Vector3(0, velocity + height / 2), 0.01f);
         Collider2D[] bottom1 = Physics2D.OverlapCircleAll(transform.position + new Vector3(width / 2, velocity - height / 2), 0.01f);
         Collider2D[] bottom2 = Physics2D.OverlapCircleAll(transform.position + new Vector3(-width / 2, velocity - height / 2), 0.01f);
+        Collider2D[] bottom3 = Physics2D.OverlapCircleAll(transform.position + new Vector3(0, velocity - height / 2), 0.01f);
         Collider2D[] top1_2 = otherScript.GetTop1(velocity2);
         Collider2D[] top2_2 = otherScript.GetTop2(velocity2);
+        Collider2D[] top3_2 = otherScript.GetTop3(velocity2);
         Collider2D[] bottom1_2 = otherScript.GetBot1(velocity2);
         Collider2D[] bottom2_2 = otherScript.GetBot2(velocity2);
+        Collider2D[] bottom3_2 = otherScript.GetBot3(velocity2);
 
         bool col = false;
         bool col2 = false;
@@ -137,6 +141,22 @@ public class VerticalMaster : MonoBehaviour
             }
         }
         foreach (var collide in top2)
+        {
+            if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
+            {
+                col = true;
+                topOrBottom = 1;
+                if (collide.tag == "Ground")
+                {
+                    onBox = false;
+                }
+                else
+                {
+                    onBox = true;
+                }
+            }
+        }
+        foreach (var collide in top3)
         {
             if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
             {
@@ -184,6 +204,22 @@ public class VerticalMaster : MonoBehaviour
                 }
             }
         }
+        foreach (var collide in bottom3)
+        {
+            if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
+            {
+                col = true;
+                topOrBottom = -1;
+                if (collide.tag == "Ground")
+                {
+                    onBox = false;
+                }
+                else
+                {
+                    onBox = true;
+                }
+            }
+        }
         foreach (var collide in top1_2)
         {
             if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
@@ -216,6 +252,22 @@ public class VerticalMaster : MonoBehaviour
                 }
             }
         }
+        foreach (var collide in top3_2)
+        {
+            if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
+            {
+                col2 = true;
+                topOrBottom2 = 1;
+                if (collide.tag == "Ground")
+                {
+                    onBox2 = false;
+                }
+                else
+                {
+                    onBox2 = true;
+                }
+            }
+        }
         foreach (var collide in bottom1_2)
         {
             if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
@@ -233,6 +285,22 @@ public class VerticalMaster : MonoBehaviour
             }
         }
         foreach (var collide in bottom2_2)
+        {
+            if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
+            {
+                col2 = true;
+                topOrBottom2 = -1;
+                if (collide.tag == "Ground")
+                {
+                    onBox2 = false;
+                }
+                else
+                {
+                    onBox2 = true;
+                }
+            }
+        }
+        foreach (var collide in bottom3_2)
         {
             if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
             {
