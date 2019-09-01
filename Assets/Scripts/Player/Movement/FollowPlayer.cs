@@ -69,6 +69,10 @@ public class FollowPlayer : MonoBehaviour
                 transform.position = camDif;
             }
         }
+        else if (moveHorizontal == 0 && camLeft.x >= -18) {
+            camDif = cam.ScreenToWorldPoint(new Vector3(playerAvg, height / 2));
+            transform.position = camDif;
+        }
         //transform.position = player.transform.position + offset;
     }
 }

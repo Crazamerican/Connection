@@ -16,6 +16,7 @@ TagManager:
   - BreakBox
   - Goal
   - Trophy
+  - Checkpoint
   layers:
   - Default
   - TransparentFX

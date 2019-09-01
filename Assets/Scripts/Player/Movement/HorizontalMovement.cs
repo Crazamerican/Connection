@@ -126,7 +126,6 @@ public class HorizontalMovement : MonoBehaviour {
             // Move character right up to the colliding wall
             if (moveHorizontal > 0) //moving right
             {
-
                 transform.position += new Vector3(distanceToCollision - .01f, movement.y * speed );
             } else //moving left
             {
