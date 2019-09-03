@@ -5952,6 +5952,7 @@ MonoBehaviour:
   speed: 0.07
   cam: {fileID: 519420031}
   confusion: {fileID: 0}
+  correctCollider: {fileID: 0}
 --- !u!1 &1145970992
 GameObject:
   m_ObjectHideFlags: 0
@@ -7379,6 +7380,7 @@ MonoBehaviour:
   speed: 0.07
   cam: {fileID: 519420031}
   confusion: {fileID: 0}
+  correctCollider: {fileID: 0}
 --- !u!1001 &1619236553
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7577,7 +7579,7 @@ PrefabInstance:
     - target: {fileID: 1143475998447377928, guid: b3b98ab60330aa04d80d299930846453,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.2
+      value: 4.253
       objectReference: {fileID: 0}
     - target: {fileID: 1143475998447377928, guid: b3b98ab60330aa04d80d299930846453,
         type: 3}
@@ -7623,6 +7625,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1143475998447377928, guid: b3b98ab60330aa04d80d299930846453,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.894
       objectReference: {fileID: 0}
     - target: {fileID: 2229397047266134002, guid: b3b98ab60330aa04d80d299930846453,
         type: 3}
@@ -9743,6 +9750,16 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 1388275056553514860, guid: 4beb2dd80a923ba4a84c7606146c7a49,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.6093
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388275056431520515, guid: 4beb2dd80a923ba4a84c7606146c7a49,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.6085
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4beb2dd80a923ba4a84c7606146c7a49, type: 3}
 --- !u!1001 &3098479186769994724
