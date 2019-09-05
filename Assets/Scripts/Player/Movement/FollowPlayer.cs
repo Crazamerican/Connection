@@ -61,7 +61,7 @@ public class FollowPlayer : MonoBehaviour
             }
         }
         //if moving left and left side of screen is greater than -18 (which is the very left side of the level) 
-        else if (moveHorizontal < 0 && camLeft.x >= -18)
+        else if (moveHorizontal < 0 && camLeft.x >= -19)
         {
             if (playerAvg < cam.pixelWidth / 2)
             {
@@ -69,7 +69,7 @@ public class FollowPlayer : MonoBehaviour
                 transform.position = camDif;
             }
         }
-        else if (moveHorizontal == 0 && camLeft.x >= -18) {
+        else if (moveHorizontal == 0 && camLeft.x >= -19) {
             camDif = cam.ScreenToWorldPoint(new Vector3(playerAvg, height / 2));
             transform.position = camDif;
         }
