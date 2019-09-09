@@ -26,10 +26,15 @@ public class Lazer : MonoBehaviour
     public float offTime = 2;
     float timer;
     float changeTimer;
+    public GameObject Checkpoint;
+    public GameObject player1;
+    public GameObject player2;
+    CheckpointScript checkpointScript;
 
     // Start is called before the first frame update
     void Start()
     {
+        checkpointScript = Checkpoint.GetComponent<CheckpointScript>();
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.enabled = true;
         lineRenderer.useWorldSpace = true;
@@ -81,8 +86,8 @@ public class Lazer : MonoBehaviour
         
         if (on && hit.collider != null && (hit.collider.gameObject.name.Equals("Player") || hit.collider.gameObject.name.Equals("Player2")))
         {
-             Scene loadedLevel = SceneManager.GetActiveScene();
-             SceneManager.LoadScene(loadedLevel.buildIndex);
+            player1.transform.position = checkpointScript.respawnPoint;
+            player2.transform.position = checkpointScript.respawnPoint2;
         }
         if(changeTime < timer && !changeOn)
         {
