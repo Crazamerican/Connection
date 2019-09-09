@@ -25,6 +25,12 @@ public class NextLevel : MonoBehaviour
             {
                 SceneManager.LoadScene("Level 2");
             }
+            else if (curLevel == 2) {
+                SceneManager.LoadScene("Level 3");
+            } else
+            {
+                SceneManager.LoadScene("Level 1");
+            }
         }
     }
 }
