@@ -9,6 +9,7 @@ public class HorizontalMovement : MonoBehaviour {
     public GameObject confusion;
     float width;
     float height;
+    public BoxCollider correctCollider;
 
     Animator charAnim;
 
@@ -18,6 +19,8 @@ public class HorizontalMovement : MonoBehaviour {
         unlock = false;
         width = GetComponent<BoxCollider2D>().bounds.size.x;
         height = GetComponent<BoxCollider2D>().bounds.size.y;
+        Debug.Log(width);
+        Debug.Log(height);
         charAnim = GetComponentInChildren<Animator>();
     }
 
@@ -73,8 +76,10 @@ public class HorizontalMovement : MonoBehaviour {
             if (collide.gameObject.GetComponent<Collideable>())
             {
                 col = true;
+                Debug.Log("col: true");
+                distanceToCollision = GetComponent<BoxCollider2D>().Distance(collide).distance;
                 //Debug.Log(GetComponent<BoxCollider2D>().Distance(collide).distance);
-                
+
             }
         }
         foreach (var collide2 in collider2)
@@ -86,6 +91,7 @@ public class HorizontalMovement : MonoBehaviour {
             if (collide2.gameObject.GetComponent<Collideable>())
             {
                 col = true;
+                Debug.Log("col: true");
                 distanceToCollision = GetComponent<BoxCollider2D>().Distance(collide2).distance;
             }
         }
@@ -98,7 +104,8 @@ public class HorizontalMovement : MonoBehaviour {
             if (collide3.gameObject.GetComponent<Collideable>())
             {
                 col = true;
-                
+                Debug.Log("col: true");
+                distanceToCollision = GetComponent<BoxCollider2D>().Distance(collide3).distance;
             }
         }
         //if at the left edge of screen (-18 is the left side of the screen)
@@ -126,7 +133,6 @@ public class HorizontalMovement : MonoBehaviour {
             // Move character right up to the colliding wall
             if (moveHorizontal > 0) //moving right
             {
-
                 transform.position += new Vector3(distanceToCollision - .01f, movement.y * speed );
             } else //moving left
             {
