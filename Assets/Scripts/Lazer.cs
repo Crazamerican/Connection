@@ -6,11 +6,13 @@ using UnityEngine.SceneManagement;
 public class Lazer : MonoBehaviour
 {
     private LineRenderer lineRenderer;
+    private BoxCollider2D col;
     public Transform lazerHit;
     public Transform startLoc;
     public Transform endLoc;
     private bool on;
     private bool changing;
+    public float size = .5f;
     private bool changeOn;
     private bool changeOff;
     private float timeRemaining;
@@ -35,6 +37,7 @@ public class Lazer : MonoBehaviour
         changing = false;
         changeTime = 0 + delay;
         Debug.Log("The starting change time is: " + changeTime);
+        col = GetComponent<BoxCollider2D>();
         changeOn = false;
         changeOff = false;
         damageTime = 0f;
@@ -54,6 +57,20 @@ public class Lazer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector2 midPoint = new Vector2((startLoc.position.x + lazerHit.position.x) / 2, (startLoc.position.y + lazerHit.position.y)/2);
+        transform.position = midPoint;
+        float distance = Mathf.Sqrt(Mathf.Pow(lazerHit.position.x - startLoc.position.x, 2) + Mathf.Pow(lazerHit.position.y - startLoc.position.y, 2));
+        float angle = Mathf.Rad2Deg*Mathf.Atan2((startLoc.position.y - lazerHit.position.y), (startLoc.position.x - lazerHit.position.x));
+        if(angle < 0)
+        {
+            angle += 360;
+        }
+        angle = angle + 90;
+        Debug.Log("the angle is: " + angle);
+        float sizeX = Mathf.Cos(angle) * distance;
+        float sizeY = Mathf.Sin(angle) * distance;
+        col.size = new Vector2(size, distance);
+        transform.rotation = Quaternion.Euler(0, 0, angle);
         timer += Time.deltaTime;
         RaycastHit2D hit = Physics2D.Raycast(startLoc.position, endLoc.position - startLoc.position);
         Debug.DrawLine(startLoc.position, hit.point);
