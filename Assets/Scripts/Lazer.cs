@@ -10,7 +10,7 @@ public class Lazer : MonoBehaviour
     public Transform lazerHit;
     public Transform startLoc;
     public Transform endLoc;
-    private bool on;
+    public bool on;
     private bool changing;
     public float size = .5f;
     private bool changeOn;
@@ -41,7 +41,7 @@ public class Lazer : MonoBehaviour
         on = false;
         changing = false;
         changeTime = 0 + delay;
-        Debug.Log("The starting change time is: " + changeTime);
+        //Debug.Log("The starting change time is: " + changeTime);
         col = GetComponent<BoxCollider2D>();
         changeOn = false;
         changeOff = false;
@@ -71,14 +71,14 @@ public class Lazer : MonoBehaviour
             angle += 360;
         }
         angle = angle + 90;
-        Debug.Log("the angle is: " + angle);
+        //Debug.Log("the angle is: " + angle);
         float sizeX = Mathf.Cos(angle) * distance;
         float sizeY = Mathf.Sin(angle) * distance;
         col.size = new Vector2(size, distance);
         transform.rotation = Quaternion.Euler(0, 0, angle);
         timer += Time.deltaTime;
         RaycastHit2D hit = Physics2D.Raycast(startLoc.position, endLoc.position - startLoc.position);
-        Debug.DrawLine(startLoc.position, hit.point);
+        //Debug.DrawLine(startLoc.position, hit.point);
         lineRenderer.positionCount = 2;
         lazerHit.position = hit.point;
         lineRenderer.SetPosition(0, startLoc.position);
@@ -91,7 +91,7 @@ public class Lazer : MonoBehaviour
         }
         if(changeTime < timer && !changeOn)
         {
-            Debug.Log("Turning On");
+            //Debug.Log("Turning On");
             changeOn = true;
             changeTime = timer + 15f;
         }
@@ -109,9 +109,6 @@ public class Lazer : MonoBehaviour
             changeTimer += Time.deltaTime;
             reverseChanging();
         }
-        
-
-
     }
 
     void turnOn()
@@ -153,6 +150,10 @@ public class Lazer : MonoBehaviour
     {
         lineRenderer.startColor = Color.Lerp(fullColor, fadeIn, Mathf.PingPong(changeTimer, 2));
         lineRenderer.endColor = Color.Lerp(fullColor, fadeIn, Mathf.PingPong(changeTimer, 2));
+        if(on)
+        {
+            on = !on;
+        }
         if (lineRenderer.startColor.a < .05f)
         {
             lineRenderer.startColor = fadeIn;
@@ -160,9 +161,18 @@ public class Lazer : MonoBehaviour
             changeOff = false;
             lineRenderer.enabled = false;
             changeTime = timer + offTime;
-            on = false;
             changeTimer = 0;
         }
     }
 
+     void OnTriggerEnter2D(Collider2D col)
+    {
+        Debug.Log(col.transform.position);
+
+        if(on && (col.gameObject.name.Equals("Player") || col.gameObject.name.Equals("Player2")))
+        {
+            player1.transform.position = checkpointScript.respawnPoint;
+            player2.transform.position = checkpointScript.respawnPoint2;
+        }
+    }
 }
