@@ -7,12 +7,14 @@ public class VerticalOther : MonoBehaviour
     public bool inverted2;
     public float width;
     public float height;
+
     // Start is called before the first frame update
     void Start()
     {
         inverted2 = false;
         width = GetComponent<BoxCollider2D>().bounds.size.x;
         height = GetComponent<BoxCollider2D>().bounds.size.y;
+        
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -53,4 +55,6 @@ public class VerticalOther : MonoBehaviour
     {
         return Physics2D.OverlapCircleAll(transform.position + new Vector3(0, velocity - height / 2), 0.01f);
     }
+
+    
 }

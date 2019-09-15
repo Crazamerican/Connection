@@ -30,6 +30,9 @@ public class VerticalMaster : MonoBehaviour
     //float width2;
     //float height2;
 
+    Animator charAnim;
+    Animator otherCharAnim;
+
     // Use this for initialization
     void Start()
     {
@@ -47,6 +50,8 @@ public class VerticalMaster : MonoBehaviour
         height = GetComponent<BoxCollider2D>().bounds.size.y;
         //width2 = otherScript.width;
         //height2 = otherScript.height;
+        charAnim = GetComponentInChildren<Animator>();
+        otherCharAnim = otherPlayer.GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -75,6 +80,11 @@ public class VerticalMaster : MonoBehaviour
             gravity2 = gravity2 * -1;
             gravity = gravity * -1;
         }
+        if (grounded || grounded2)
+        {
+            charAnim.SetTrigger("grounded");
+            otherCharAnim.SetTrigger("grounded");
+        } 
     }
 
     //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
@@ -119,6 +129,9 @@ public class VerticalMaster : MonoBehaviour
         Collider2D[] bottom1_2 = otherScript.GetBot1(velocity2);
         Collider2D[] bottom2_2 = otherScript.GetBot2(velocity2);
         Collider2D[] bottom3_2 = otherScript.GetBot3(velocity2);
+
+        charAnim.SetFloat("verticalSpeed", velocity);
+        otherCharAnim.SetFloat("verticalSpeed", velocity);
 
         bool col = false;
         bool col2 = false;

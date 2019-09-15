@@ -34,15 +34,18 @@ public class HorizontalMovement : MonoBehaviour {
         if (charAnim != null)
         {
             //To Do: Left Move
-            if (moveHorizontal >= .1)
-            {
-                charAnim.SetBool("walking", true);
-                charAnim.speed = moveHorizontal;
-            }  else
-            {
-                charAnim.SetBool("walking", false);
-                charAnim.speed = 1;
-            }
+            //if (moveHorizontal >= .1)
+            //{
+            //    charAnim.SetBool("walking", true);
+            //    charAnim.speed = moveHorizontal;
+            //}  else
+            //{
+            //    charAnim.SetBool("walking", false);
+            //    charAnim.speed = 1;
+            //}
+
+            //Set the horizontal speed in the animator, letting the anim blend animations
+            charAnim.SetFloat("horizontalSpeed", moveHorizontal);
         } 
 
         //Use the two store floats to create a new Vector2 variable movement.
