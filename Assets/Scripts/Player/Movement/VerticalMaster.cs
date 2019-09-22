@@ -19,6 +19,8 @@ public class VerticalMaster : MonoBehaviour
     //1 is top 0 is nothing -1 is bottom
     private int topOrBottom;
     private int topOrBottom2;
+    float distToCol;
+    float distToCol2;
 
     private bool inverted;
     private bool inverted2;
@@ -142,6 +144,7 @@ public class VerticalMaster : MonoBehaviour
             {
                 col = true;
                 topOrBottom = 1;
+                distToCol = GetComponent<BoxCollider2D>().Distance(collide).distance;
                 if (collide.tag == "Ground")
                 {
                     onBox = false;
@@ -254,6 +257,7 @@ public class VerticalMaster : MonoBehaviour
             {
                 col2 = true;
                 topOrBottom2 = 1;
+                distToCol2 = GetComponent<BoxCollider2D>().Distance(collide).distance;
                 if (collide.tag == "Ground")
                 {
                     onBox2 = false;
@@ -379,6 +383,24 @@ public class VerticalMaster : MonoBehaviour
         if (col2 == false)
         {
             otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, velocity2);
+        }
+        if ((col == true || col2 == true) && (topOrBottom == 1 || topOrBottom2 == 1))
+        {
+            float moveDistance = 0f;
+            if (col && col2)
+            {
+                moveDistance = distToCol < distToCol2 ? distToCol : distToCol2;
+                transform.position = transform.position + new Vector3(0, moveDistance - .1f);
+                otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, moveDistance - .1f);
+            } else if (col)
+            {
+                transform.position = transform.position + new Vector3(0, distToCol - .1f);
+                otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, distToCol - .1f);
+            } else
+            {
+                transform.position = transform.position + new Vector3(0, distToCol2 - .1f);
+                otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, distToCol2 - .1f);
+            }
         }
     }
     private void OnTriggerEnter2D(Collider2D other)
