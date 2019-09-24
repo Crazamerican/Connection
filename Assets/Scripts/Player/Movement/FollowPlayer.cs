@@ -6,6 +6,7 @@ public class FollowPlayer : MonoBehaviour
     //The two player characters
     public GameObject player;       
     public GameObject player2;
+    float p1width;
 
     Camera cam;
 
@@ -13,7 +14,13 @@ public class FollowPlayer : MonoBehaviour
     Vector3 player2Cam;
 
     float height;
+    float width;
+    float worldMiddle;
     float moveHorizontal;
+    float playerAvg;
+    Vector3 camDif;
+    Vector3 camLeft;
+    Vector3 initCam;
 
 
     private Vector3 offset;         //Private variable to store the offset distance between the player and camera
@@ -27,8 +34,14 @@ public class FollowPlayer : MonoBehaviour
         //the screen position of the two player characters
         playerCam = cam.WorldToScreenPoint(player.transform.position);
         player2Cam = cam.WorldToScreenPoint(player2.transform.position);
+        playerAvg = (playerCam.x + player2Cam.x) / 2;
         //the screen height
         height = cam.pixelHeight;
+        width = cam.pixelWidth;
+        p1width = player.GetComponent<BoxCollider2D>().bounds.size.x;
+        initCam = (cam.ScreenToWorldPoint(new Vector3(playerAvg + width / 2, height / 2)));
+        initCam -= new Vector3(p1width * 3 / 4, 0);
+        transform.position = initCam;
     }
     private void Update()
     {
@@ -38,17 +51,18 @@ public class FollowPlayer : MonoBehaviour
         //screen pos of two player characters
         playerCam = cam.WorldToScreenPoint(player.transform.position);
         player2Cam = cam.WorldToScreenPoint(player2.transform.position);
+        //avg screen x of two players
+        playerAvg = (playerCam.x + player2Cam.x) / 2;
+        camDif = new Vector3(0, 0, 0);
+        camLeft = new Vector3(0, 0, 0);
+        //gets the very lefthand side of the screen in the world position
+        camLeft = cam.ScreenToWorldPoint(transform.position);
+        Debug.Log("camLeft: " + camLeft.x);
     }
 
     // LateUpdate is called after Update each frame
     void LateUpdate()
     {
-        //avg screen x of two players
-        float playerAvg = (playerCam.x + player2Cam.x) / 2;
-        Vector3 camDif = new Vector3(0, 0, 0);
-        Vector3 camLeft = new Vector3(0, 0, 0);
-        //gets the very lefthand side of the screen in the world position
-        camLeft = cam.ScreenToWorldPoint(new Vector3(0, 0, 0));
         //if moving right
         if (moveHorizontal > 0)
         {
@@ -61,7 +75,7 @@ public class FollowPlayer : MonoBehaviour
             }
         }
         //if moving left and left side of screen is greater than -18 (which is the very left side of the level) 
-        else if (moveHorizontal < 0 && camLeft.x >= -19)
+        else if (moveHorizontal < 0 && camLeft.x > cam.ScreenToWorldPoint(initCam).x)
         {
             if (playerAvg < cam.pixelWidth / 2)
             {
@@ -69,9 +83,14 @@ public class FollowPlayer : MonoBehaviour
                 transform.position = camDif;
             }
         }
-        else if (moveHorizontal == 0 && camLeft.x >= -19) {
+        else if (camLeft.x > cam.ScreenToWorldPoint(initCam).x)
+        {
             camDif = cam.ScreenToWorldPoint(new Vector3(playerAvg, height / 2));
             transform.position = camDif;
+        }
+        else
+        {
+            transform.position = initCam;
         }
         //transform.position = player.transform.position + offset;
     }
