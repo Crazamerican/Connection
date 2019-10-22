@@ -35,6 +35,9 @@ public class VerticalMaster : MonoBehaviour
     Animator charAnim;
     Animator otherCharAnim;
 
+    public AudioClip jumpSound;
+    AudioSource audioSource;
+
     // Use this for initialization
     void Start()
     {
@@ -55,6 +58,7 @@ public class VerticalMaster : MonoBehaviour
         //height2 = otherScript.height;
         charAnim = GetComponentInChildren<Animator>();
         otherCharAnim = otherPlayer.GetComponentInChildren<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -75,6 +79,7 @@ public class VerticalMaster : MonoBehaviour
             grounded2 = false;
             onBox = false;
             onBox2 = false;
+            audioSource.PlayOneShot(jumpSound, 0.7F);
         }
         if (Input.GetButtonDown("Invert") && invertOnCommand == true && (grounded || grounded2))
         {
