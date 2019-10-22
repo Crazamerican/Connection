@@ -38,6 +38,7 @@ public class VerticalMaster : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        Application.targetFrameRate = 60;
         grounded = true;
         grounded2 = true;
         onBox = false;
@@ -138,6 +139,9 @@ public class VerticalMaster : MonoBehaviour
         bool col = false;
         bool col2 = false;
 
+        distToCol = Mathf.Infinity;
+        distToCol2 = Mathf.Infinity;
+
         foreach (var collide in top1)
         {
             if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
@@ -161,6 +165,7 @@ public class VerticalMaster : MonoBehaviour
             {
                 col = true;
                 topOrBottom = 1;
+                distToCol = GetComponent<BoxCollider2D>().Distance(collide).distance;
                 if (collide.tag == "Ground")
                 {
                     onBox = false;
@@ -177,6 +182,7 @@ public class VerticalMaster : MonoBehaviour
             {
                 col = true;
                 topOrBottom = 1;
+                
                 if (collide.tag == "Ground")
                 {
                     onBox = false;
@@ -239,6 +245,7 @@ public class VerticalMaster : MonoBehaviour
         {
             if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
             {
+                distToCol2 = otherPlayer.GetComponent<BoxCollider2D>().Distance(collide).distance;
                 col2 = true;
                 topOrBottom2 = 1;
                 if (collide.tag == "Ground")
@@ -257,7 +264,8 @@ public class VerticalMaster : MonoBehaviour
             {
                 col2 = true;
                 topOrBottom2 = 1;
-                distToCol2 = GetComponent<BoxCollider2D>().Distance(collide).distance;
+                distToCol2 = otherPlayer.GetComponent<BoxCollider2D>().Distance(collide).distance;
+
                 if (collide.tag == "Ground")
                 {
                     onBox2 = false;
@@ -274,6 +282,7 @@ public class VerticalMaster : MonoBehaviour
             {
                 col2 = true;
                 topOrBottom2 = 1;
+                
                 if (collide.tag == "Ground")
                 {
                     onBox2 = false;
@@ -288,6 +297,7 @@ public class VerticalMaster : MonoBehaviour
         {
             if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
             {
+                
                 col2 = true;
                 topOrBottom2 = -1;
                 if (collide.tag == "Ground")
@@ -384,14 +394,19 @@ public class VerticalMaster : MonoBehaviour
         {
             otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, velocity2);
         }
-        if ((col == true || col2 == true) && (topOrBottom == 1 || topOrBottom2 == 1))
+        
+        if ((col == true && topOrBottom == 1) || (col2 == true && topOrBottom2 == 1))
         {
+            Debug.Log("col1 = " + col);
+            Debug.Log("col2 = " + col2);
             float moveDistance = 0f;
             if (col && col2)
             {
                 moveDistance = distToCol < distToCol2 ? distToCol : distToCol2;
-                transform.position = transform.position + new Vector3(0, moveDistance - .1f);
-                otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, moveDistance - .1f);
+                Debug.Log(distToCol);
+                Debug.Log(distToCol2);
+                transform.position = transform.position + new Vector3(0, moveDistance - .15f);
+                otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, moveDistance - .15f);
             } else if (col)
             {
                 transform.position = transform.position + new Vector3(0, distToCol - .1f);

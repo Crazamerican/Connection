@@ -57,7 +57,7 @@ public class FollowPlayer : MonoBehaviour
         camLeft = new Vector3(0, 0, 0);
         //gets the very lefthand side of the screen in the world position
         camLeft = cam.ScreenToWorldPoint(transform.position);
-        Debug.Log("camLeft: " + camLeft.x);
+        //Debug.Log("camLeft: " + camLeft.x);
     }
 
     // LateUpdate is called after Update each frame
