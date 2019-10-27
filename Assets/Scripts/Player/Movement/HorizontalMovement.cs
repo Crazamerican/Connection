@@ -19,8 +19,6 @@ public class HorizontalMovement : MonoBehaviour {
         unlock = false;
         width = GetComponent<BoxCollider2D>().bounds.size.x;
         height = GetComponent<BoxCollider2D>().bounds.size.y;
-        Debug.Log(width);
-        Debug.Log(height);
         charAnim = GetComponentInChildren<Animator>();
     }
 
@@ -94,7 +92,6 @@ public class HorizontalMovement : MonoBehaviour {
             if (collide2.gameObject.GetComponent<Collideable>())
             {
                 col = true;
-                Debug.Log("col: true");
                 distanceToCollision = GetComponent<BoxCollider2D>().Distance(collide2).distance;
             }
         }

@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public GameObject controlScreen;
+
     public void PlayGame() {
         SceneManager.LoadScene("Level 0");
     }
@@ -16,6 +18,12 @@ public class MainMenu : MonoBehaviour
 
     public void ControlMenu()
     {
-        SceneManager.LoadScene("Control Screen");
+        //SceneManager.LoadScene("Control Screen");
+        controlScreen.SetActive(true);
+    }
+
+    public void BackMainMenu()
+    {
+        controlScreen.SetActive(false);
     }
 }
