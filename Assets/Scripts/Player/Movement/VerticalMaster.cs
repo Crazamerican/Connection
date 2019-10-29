@@ -111,58 +111,7 @@ public class VerticalMaster : MonoBehaviour
             otherCharAnim.SetTrigger("grounded");
         } 
 
-        if (topOrBottom == -1)
-        {
-            if (moving)
-            {
-                if (!isSet)
-                {
-                    isSet = true;
-                    ghost.transform.position = otherPlayer.transform.position;
-                    ghost.transform.SetParent(box.transform);
-                }
-                transform.SetParent(box.transform);
-                otherPlayer.transform.position = new Vector2(otherPlayer.transform.position.x, ghost.transform.position.y);
-            }
-        } else
-        {
-            isSet = false;
-            moving = false;
-            transform.SetParent(char_base.transform);
-        }
-
-        if (topOrBottom2 == -1)
-        {
-            if (moving2)
-            {
-                //t = box.GetComponent<MovingBox>().getT();
-                if (!isSet2)
-                {
-                    isSet2 = true;
-                    ghost.transform.position = transform.position;
-                    ghost.transform.SetParent(box.transform);
-                    //    start = new Vector2(transform.position.x - (box.GetComponent<MovingBox>().xEnd * t), transform.position.y - (box.GetComponent<MovingBox>().yEnd * t));
-                    //    end = new Vector2(transform.position.x + (box.GetComponent<MovingBox>().xEnd * t), transform.position.y + (box.GetComponent<MovingBox>().yEnd * t));
-                }
-                //transform.position = Vector2.Lerp(start, end, t);
-                otherPlayer.transform.SetParent(box.transform);
-                transform.position = new Vector2(transform.position.x, ghost.transform.position.y);
-            }
-        }
-        else
-        {
-            isSet2 = false;
-            moving2 = false;
-            otherPlayer.transform.SetParent(char_base.transform);
-        }
-
-        //if (topOrBottom == 1 || topOrBottom2 == 1)
-        //{
-            //if (moving || moving2)
-            //{
-                //box.GetComponent<MovingBox>().stopMoving();
-            //}
-        //}
+        
     }
 
     //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
@@ -557,6 +506,61 @@ public class VerticalMaster : MonoBehaviour
                 otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, distToCol2 - .1f);
             }
         }
+
+        if (topOrBottom == -1)
+        {
+            if (moving)
+            {
+                if (!isSet)
+                {
+                    isSet = true;
+                    ghost.transform.position = otherPlayer.transform.position;
+                    ghost.transform.SetParent(box.transform);
+                }
+                transform.SetParent(box.transform);
+                otherPlayer.transform.position = new Vector2(otherPlayer.transform.position.x, ghost.transform.position.y);
+            }
+        }
+        else
+        {
+            isSet = false;
+            moving = false;
+            transform.SetParent(char_base.transform);
+        }
+
+        if (topOrBottom2 == -1)
+        {
+            if (moving2)
+            {
+                //t = box.GetComponent<MovingBox>().getT();
+                if (!isSet2)
+                {
+                    isSet2 = true;
+                    ghost.transform.position = transform.position;
+                    ghost.transform.SetParent(box.transform);
+                    //    start = new Vector2(transform.position.x - (box.GetComponent<MovingBox>().xEnd * t), transform.position.y - (box.GetComponent<MovingBox>().yEnd * t));
+                    //    end = new Vector2(transform.position.x + (box.GetComponent<MovingBox>().xEnd * t), transform.position.y + (box.GetComponent<MovingBox>().yEnd * t));
+                }
+                //transform.position = Vector2.Lerp(start, end, t);
+                otherPlayer.transform.SetParent(box.transform);
+                transform.position = new Vector2(transform.position.x, ghost.transform.position.y);
+            }
+        }
+        else
+        {
+            isSet2 = false;
+            moving2 = false;
+            otherPlayer.transform.SetParent(char_base.transform);
+        }
+
+        //if (topOrBottom == 1 || topOrBottom2 == 1)
+        //{
+        //if (moving || moving2)
+        //{
+        //box.GetComponent<MovingBox>().stopMoving();
+        //}
+        //}
+
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
