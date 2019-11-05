@@ -35,6 +35,19 @@ public class VerticalMaster : MonoBehaviour
     Animator charAnim;
     Animator otherCharAnim;
 
+    public AudioClip jumpSound;
+    AudioSource audioSource;
+
+    bool moving;
+    bool isSet;
+
+    bool moving2;
+    bool isSet2;
+
+    GameObject box;
+    public GameObject char_base;
+    public GameObject ghost;
+
     // Use this for initialization
     void Start()
     {
@@ -55,6 +68,13 @@ public class VerticalMaster : MonoBehaviour
         //height2 = otherScript.height;
         charAnim = GetComponentInChildren<Animator>();
         otherCharAnim = otherPlayer.GetComponentInChildren<Animator>();
+        audioSource = GetComponent<AudioSource>();
+        moving = false;
+        isSet = false;
+        moving2 = false;
+        isSet2 = false;
+        box = null;
+        
     }
 
     private void Update()
@@ -75,6 +95,8 @@ public class VerticalMaster : MonoBehaviour
             grounded2 = false;
             onBox = false;
             onBox2 = false;
+            audioSource.PlayOneShot(jumpSound, 0.7F);
+            
         }
         if (Input.GetButtonDown("Invert") && invertOnCommand == true && (grounded || grounded2))
         {
@@ -88,11 +110,15 @@ public class VerticalMaster : MonoBehaviour
             charAnim.SetTrigger("grounded");
             otherCharAnim.SetTrigger("grounded");
         } 
+
+        
     }
 
     //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
     void FixedUpdate()
     {
+        moving = false;
+
         if (inverted2 != otherScript.inverted2 && inverted2_2 == false)
         {
             /*inverted2 = otherScript.inverted2;
@@ -157,6 +183,12 @@ public class VerticalMaster : MonoBehaviour
                 {
                     onBox = true;
                 }
+                //if (collide.gameObject.GetComponent<MovingBox>())
+                //{
+                //    moving = true;
+                //    box = collide.gameObject;
+                //    Debug.Log("hit");
+                //}
             }
         }
         foreach (var collide in top2)
@@ -174,6 +206,12 @@ public class VerticalMaster : MonoBehaviour
                 {
                     onBox = true;
                 }
+                //if (collide.gameObject.GetComponent<MovingBox>())
+                //{
+                //    moving = true;
+                //    box = collide.gameObject;
+                //    Debug.Log("hit");
+                //}
             }
         }
         foreach (var collide in top3)
@@ -191,6 +229,12 @@ public class VerticalMaster : MonoBehaviour
                 {
                     onBox = true;
                 }
+                //if (collide.gameObject.GetComponent<MovingBox>())
+                //{
+                //    moving = true;
+                //    box = collide.gameObject;
+                //    Debug.Log("hit");
+                //}
             }
         }
         foreach (var collide in bottom1)
@@ -206,6 +250,11 @@ public class VerticalMaster : MonoBehaviour
                 else
                 {
                     onBox = true;
+                }
+                if (collide.gameObject.GetComponent<MovingBox>())
+                {
+                    moving = true;
+                    box = collide.gameObject;
                 }
             }
         }
@@ -223,6 +272,11 @@ public class VerticalMaster : MonoBehaviour
                 {
                     onBox = true;
                 }
+                if (collide.gameObject.GetComponent<MovingBox>())
+                {
+                    moving = true;
+                    box = collide.gameObject;
+                }
             }
         }
         foreach (var collide in bottom3)
@@ -238,6 +292,11 @@ public class VerticalMaster : MonoBehaviour
                 else
                 {
                     onBox = true;
+                }
+                if (collide.gameObject.GetComponent<MovingBox>())
+                {
+                    moving = true;
+                    box = collide.gameObject;
                 }
             }
         }
@@ -256,6 +315,11 @@ public class VerticalMaster : MonoBehaviour
                 {
                     onBox2 = true;
                 }
+                //if (collide.gameObject.GetComponent<MovingBox>())
+                //{
+                //    moving2 = true;
+                //    box = collide.gameObject;
+                //}
             }
         }
         foreach (var collide in top2_2)
@@ -274,6 +338,11 @@ public class VerticalMaster : MonoBehaviour
                 {
                     onBox2 = true;
                 }
+                //if (collide.gameObject.GetComponent<MovingBox>())
+                //{
+                //    moving2 = true;
+                //    box = collide.gameObject;
+                //}
             }
         }
         foreach (var collide in top3_2)
@@ -291,6 +360,11 @@ public class VerticalMaster : MonoBehaviour
                 {
                     onBox2 = true;
                 }
+                //if (collide.gameObject.GetComponent<MovingBox>())
+                //{
+                //    moving2 = true;
+                //    box = collide.gameObject;
+                //}
             }
         }
         foreach (var collide in bottom1_2)
@@ -308,6 +382,11 @@ public class VerticalMaster : MonoBehaviour
                 {
                     onBox2 = true;
                 }
+                if (collide.gameObject.GetComponent<MovingBox>())
+                {
+                    moving2 = true;
+                    box = collide.gameObject;
+                }
             }
         }
         foreach (var collide in bottom2_2)
@@ -324,6 +403,11 @@ public class VerticalMaster : MonoBehaviour
                 {
                     onBox2 = true;
                 }
+                if (collide.gameObject.GetComponent<MovingBox>())
+                {
+                    moving2 = true;
+                    box = collide.gameObject;
+                }
             }
         }
         foreach (var collide in bottom3_2)
@@ -339,6 +423,11 @@ public class VerticalMaster : MonoBehaviour
                 else
                 {
                     onBox2 = true;
+                }
+                if (collide.gameObject.GetComponent<MovingBox>())
+                {
+                    moving2 = true;
+                    box = collide.gameObject;
                 }
             }
         }
@@ -417,6 +506,61 @@ public class VerticalMaster : MonoBehaviour
                 otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, distToCol2 - .1f);
             }
         }
+
+        if (topOrBottom == -1)
+        {
+            if (moving)
+            {
+                if (!isSet)
+                {
+                    isSet = true;
+                    ghost.transform.position = otherPlayer.transform.position;
+                    ghost.transform.SetParent(box.transform);
+                }
+                transform.SetParent(box.transform);
+                otherPlayer.transform.position = new Vector2(otherPlayer.transform.position.x, ghost.transform.position.y);
+            }
+        }
+        else
+        {
+            isSet = false;
+            moving = false;
+            transform.SetParent(char_base.transform);
+        }
+
+        if (topOrBottom2 == -1)
+        {
+            if (moving2)
+            {
+                //t = box.GetComponent<MovingBox>().getT();
+                if (!isSet2)
+                {
+                    isSet2 = true;
+                    ghost.transform.position = transform.position;
+                    ghost.transform.SetParent(box.transform);
+                    //    start = new Vector2(transform.position.x - (box.GetComponent<MovingBox>().xEnd * t), transform.position.y - (box.GetComponent<MovingBox>().yEnd * t));
+                    //    end = new Vector2(transform.position.x + (box.GetComponent<MovingBox>().xEnd * t), transform.position.y + (box.GetComponent<MovingBox>().yEnd * t));
+                }
+                //transform.position = Vector2.Lerp(start, end, t);
+                otherPlayer.transform.SetParent(box.transform);
+                transform.position = new Vector2(transform.position.x, ghost.transform.position.y);
+            }
+        }
+        else
+        {
+            isSet2 = false;
+            moving2 = false;
+            otherPlayer.transform.SetParent(char_base.transform);
+        }
+
+        //if (topOrBottom == 1 || topOrBottom2 == 1)
+        //{
+        //if (moving || moving2)
+        //{
+        //box.GetComponent<MovingBox>().stopMoving();
+        //}
+        //}
+
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
