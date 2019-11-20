@@ -21,6 +21,18 @@ public class FollowPlayer : MonoBehaviour
     Vector3 camDif;
     Vector3 camLeft;
     Vector3 initCam;
+    Vector3 camRight;
+
+    public GameObject firstStop;
+    public GameObject secondStop;
+    public GameObject thirdStop;
+    cameraEnd firstStopScript;
+    cameraEnd secondStopScript;
+    cameraEnd thirdStopScript;
+
+    bool curCamEnd;
+    bool switchStop;
+    bool switchStop2;
 
 
     private Vector3 offset;         //Private variable to store the offset distance between the player and camera
@@ -28,6 +40,9 @@ public class FollowPlayer : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        firstStopScript = firstStop.GetComponent<cameraEnd>();
+        secondStopScript = secondStop.GetComponent<cameraEnd>();
+        thirdStopScript = thirdStop.GetComponent<cameraEnd>();
         //Calculate and store the offset value by getting the distance between the player's position and camera's position.
         offset = transform.position - player.transform.position;
         cam = GetComponent<Camera>();
@@ -42,6 +57,15 @@ public class FollowPlayer : MonoBehaviour
         initCam = (cam.ScreenToWorldPoint(new Vector3(playerAvg + width / 2, height / 2)));
         initCam -= new Vector3(p1width * 3 / 4, 0);
         transform.position = initCam;
+        camLeft = new Vector3(0, 0, 0);
+        camRight = new Vector3(0, 0, 0);
+        camLeft = cam.ScreenToWorldPoint(transform.position);
+        Vector3 widThing = new Vector3(width, 0, 0);
+        widThing = cam.ScreenToWorldPoint(widThing);
+        camRight = transform.position + widThing;
+        curCamEnd = firstStopScript.cameraHere;
+        switchStop = false;
+        switchStop2 = false;
     }
     private void Update()
     {
@@ -55,18 +79,32 @@ public class FollowPlayer : MonoBehaviour
         playerAvg = (playerCam.x + player2Cam.x) / 2;
         camDif = new Vector3(0, 0, 0);
         camLeft = new Vector3(0, 0, 0);
+        camRight = new Vector3(0, 0, 0);
         //gets the very lefthand side of the screen in the world position
         camLeft = cam.ScreenToWorldPoint(transform.position);
-        //Debug.Log("camLeft: " + camLeft.x);
+        Vector3 widThing = new Vector3(width, 0, 0);
+        widThing = cam.ScreenToWorldPoint(widThing);
+        camRight = transform.position + widThing;
+        if (switchStop == false)
+        {
+            curCamEnd = firstStopScript.cameraHere;
+        } else if (switchStop2 == false)
+        {
+            curCamEnd = secondStopScript.cameraHere;
+        } else
+        {
+            curCamEnd = thirdStopScript.cameraHere;
+        }
     }
 
     // LateUpdate is called after Update each frame
     void LateUpdate()
     {
         //if moving right
+        //Debug.Log(player.transform.position.x + width / 2);
         if (moveHorizontal > 0)
         {
-            if (playerAvg > cam.pixelWidth / 2)
+            if (playerAvg > cam.pixelWidth / 2 && curCamEnd == false)
             {
                 //make camDif the playerAvg if playerAvg is bigger than middle of screen
                 camDif = cam.ScreenToWorldPoint(new Vector3(playerAvg, height / 2));
@@ -83,15 +121,27 @@ public class FollowPlayer : MonoBehaviour
                 transform.position = camDif;
             }
         }
-        else if (camLeft.x > cam.ScreenToWorldPoint(initCam).x)
+        else if (camLeft.x > cam.ScreenToWorldPoint(initCam).x && curCamEnd == false)
         {
             camDif = cam.ScreenToWorldPoint(new Vector3(playerAvg, height / 2));
             transform.position = camDif;
         }
-        else
-        {
+        else if (curCamEnd == false) {
             transform.position = initCam;
         }
         //transform.position = player.transform.position + offset;
+        if (playerCam.x >= (width * .94) && player2Cam.x >= (width * .94))
+        {
+            playerCam = cam.WorldToScreenPoint(player.transform.position);
+            player2Cam = cam.WorldToScreenPoint(player2.transform.position);
+            playerAvg = (playerCam.x + player2Cam.x) / 2;
+            initCam = (cam.ScreenToWorldPoint(new Vector3(playerAvg + width / 2, height / 2)));
+            initCam -= new Vector3(p1width * 3 / 4, 0);
+            transform.position = initCam;
+            if (switchStop == true) {
+                switchStop2 = true;
+            }
+            switchStop = true;
+        }
     }
 }
