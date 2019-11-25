@@ -32,7 +32,10 @@ public class FollowPlayer : MonoBehaviour
 
     bool curCamEnd;
     bool switchStop;
+    bool switchToSecond;
     bool switchStop2;
+
+    public bool freezePlayers;
 
 
     private Vector3 offset;         //Private variable to store the offset distance between the player and camera
@@ -66,6 +69,8 @@ public class FollowPlayer : MonoBehaviour
         curCamEnd = firstStopScript.cameraHere;
         switchStop = false;
         switchStop2 = false;
+        freezePlayers = false;
+        switchToSecond = false;
     }
     private void Update()
     {
@@ -102,7 +107,19 @@ public class FollowPlayer : MonoBehaviour
     {
         //if moving right
         //Debug.Log(player.transform.position.x + width / 2);
-        if (moveHorizontal > 0)
+        if (freezePlayers == true)
+        {
+            if (playerCam.x <= (width * .05) && player2Cam.x <= (width * .05))
+            {
+                freezePlayers = false;
+                transform.position = initCam;
+                switchToSecond = true;
+            } else
+            {
+                transform.position = transform.position + new Vector3(0.15f, 0);
+            }
+        }
+        else if (moveHorizontal > 0)
         {
             if (playerAvg > cam.pixelWidth / 2 && curCamEnd == false)
             {
@@ -132,13 +149,14 @@ public class FollowPlayer : MonoBehaviour
         //transform.position = player.transform.position + offset;
         if (playerCam.x >= (width * .94) && player2Cam.x >= (width * .94))
         {
+            freezePlayers = true;
             playerCam = cam.WorldToScreenPoint(player.transform.position);
             player2Cam = cam.WorldToScreenPoint(player2.transform.position);
             playerAvg = (playerCam.x + player2Cam.x) / 2;
             initCam = (cam.ScreenToWorldPoint(new Vector3(playerAvg + width / 2, height / 2)));
             initCam -= new Vector3(p1width * 3 / 4, 0);
-            transform.position = initCam;
-            if (switchStop == true) {
+            //transform.position = initCam;
+            if (switchToSecond == true) {
                 switchStop2 = true;
             }
             switchStop = true;

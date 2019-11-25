@@ -13,9 +13,13 @@ public class HorizontalMovement : MonoBehaviour {
 
     Animator charAnim;
 
+    public GameObject cameraBoi;
+    FollowPlayer cameraScript;
+
     // Use this for initialization
     void Start()
     {
+        cameraScript = cameraBoi.GetComponent<FollowPlayer>();
         unlock = false;
         width = GetComponent<BoxCollider2D>().bounds.size.x;
         height = GetComponent<BoxCollider2D>().bounds.size.y;
@@ -26,7 +30,11 @@ public class HorizontalMovement : MonoBehaviour {
     void FixedUpdate()
     {
         //Store the current horizontal input in the float moveHorizontal.
-        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveHorizontal = 0f;
+        if (cameraScript.freezePlayers == false)
+        {
+            moveHorizontal = Input.GetAxis("Horizontal");
+        }
 
         //Send data to animator
         if (charAnim != null)

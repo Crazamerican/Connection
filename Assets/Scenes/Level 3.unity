@@ -3009,6 +3009,7 @@ MonoBehaviour:
   firstStop: {fileID: 298894374}
   secondStop: {fileID: 2130848724}
   thirdStop: {fileID: 303291249}
+  freezePlayers: 0
 --- !u!1001 &524308085
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3184,11 +3185,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: flag
       objectReference: {fileID: 0}
-    - target: {fileID: 8174120506778532047, guid: 754492b1f15849d4a8aad26714cb16b8,
-        type: 3}
-      propertyPath: curLevel
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 8174120506778532050, guid: 754492b1f15849d4a8aad26714cb16b8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3243,6 +3239,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8174120506778532047, guid: 754492b1f15849d4a8aad26714cb16b8,
+        type: 3}
+      propertyPath: curLevel
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 754492b1f15849d4a8aad26714cb16b8, type: 3}
@@ -6388,6 +6389,7 @@ MonoBehaviour:
   cam: {fileID: 519420031}
   confusion: {fileID: 0}
   correctCollider: {fileID: 0}
+  cameraBoi: {fileID: 0}
 --- !u!1 &1145970992
 GameObject:
   m_ObjectHideFlags: 0
@@ -8054,6 +8056,7 @@ MonoBehaviour:
   cam: {fileID: 519420031}
   confusion: {fileID: 0}
   correctCollider: {fileID: 0}
+  cameraBoi: {fileID: 0}
 --- !u!1001 &1605359031
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11086,16 +11089,31 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 1388275056553514863, guid: 4beb2dd80a923ba4a84c7606146c7a49,
+        type: 3}
+      propertyPath: cameraBoi
+      value: 
+      objectReference: {fileID: 519420028}
     - target: {fileID: 1388275056431520512, guid: 4beb2dd80a923ba4a84c7606146c7a49,
         type: 3}
       propertyPath: cam
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 1388275056431520512, guid: 4beb2dd80a923ba4a84c7606146c7a49,
+        type: 3}
+      propertyPath: cameraBoi
+      value: 
+      objectReference: {fileID: 519420028}
     - target: {fileID: 1388275056431520515, guid: 4beb2dd80a923ba4a84c7606146c7a49,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: -4.6085
       objectReference: {fileID: 0}
+    - target: {fileID: 1388275056553514861, guid: 4beb2dd80a923ba4a84c7606146c7a49,
+        type: 3}
+      propertyPath: cameraBoi
+      value: 
+      objectReference: {fileID: 519420028}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4beb2dd80a923ba4a84c7606146c7a49, type: 3}
 --- !u!1001 &3098479186769994724

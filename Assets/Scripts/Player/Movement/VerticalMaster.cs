@@ -48,9 +48,13 @@ public class VerticalMaster : MonoBehaviour
     public GameObject char_base;
     public GameObject ghost;
 
+    public GameObject cameraBoi;
+    FollowPlayer cameraScript;
+
     // Use this for initialization
     void Start()
     {
+        cameraScript = cameraBoi.GetComponent<FollowPlayer>();
         Application.targetFrameRate = 60;
         grounded = true;
         grounded2 = true;
@@ -80,7 +84,7 @@ public class VerticalMaster : MonoBehaviour
     private void Update()
     {
         //if jump button pressed and a character is on the ground
-        if (Input.GetButtonDown("Jump") && (grounded || grounded2))
+        if (Input.GetButtonDown("Jump") && (grounded || grounded2) && cameraScript.freezePlayers == false)
         {
             if (inverted == true || inverted2 == true)
             {
@@ -98,7 +102,7 @@ public class VerticalMaster : MonoBehaviour
             audioSource.PlayOneShot(jumpSound, 0.7F);
             
         }
-        if (Input.GetButtonDown("Invert") && invertOnCommand == true && (grounded || grounded2))
+        if (Input.GetButtonDown("Invert") && invertOnCommand == true && (grounded || grounded2) && cameraScript.freezePlayers == false)
         {
             inverted2 = !inverted2;
             inverted = !inverted;

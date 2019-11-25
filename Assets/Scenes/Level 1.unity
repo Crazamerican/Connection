@@ -4316,6 +4316,7 @@ MonoBehaviour:
   firstStop: {fileID: 1416997240}
   secondStop: {fileID: 540956176}
   thirdStop: {fileID: 290753842}
+  freezePlayers: 0
 --- !u!1001 &520503064
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10108,6 +10109,7 @@ MonoBehaviour:
   cam: {fileID: 519420031}
   confusion: {fileID: 0}
   correctCollider: {fileID: 0}
+  cameraBoi: {fileID: 0}
 --- !u!1 &1151660435
 GameObject:
   m_ObjectHideFlags: 0
@@ -13620,6 +13622,7 @@ MonoBehaviour:
   cam: {fileID: 519420031}
   confusion: {fileID: 0}
   correctCollider: {fileID: 0}
+  cameraBoi: {fileID: 0}
 --- !u!1001 &1598157108
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19339,16 +19342,31 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 1388275056553514863, guid: 4beb2dd80a923ba4a84c7606146c7a49,
+        type: 3}
+      propertyPath: cameraBoi
+      value: 
+      objectReference: {fileID: 519420028}
     - target: {fileID: 1388275056431520512, guid: 4beb2dd80a923ba4a84c7606146c7a49,
         type: 3}
       propertyPath: cam
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 1388275056431520512, guid: 4beb2dd80a923ba4a84c7606146c7a49,
+        type: 3}
+      propertyPath: cameraBoi
+      value: 
+      objectReference: {fileID: 519420028}
     - target: {fileID: 1388275056431520515, guid: 4beb2dd80a923ba4a84c7606146c7a49,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: -4.5585
       objectReference: {fileID: 0}
+    - target: {fileID: 1388275056553514861, guid: 4beb2dd80a923ba4a84c7606146c7a49,
+        type: 3}
+      propertyPath: cameraBoi
+      value: 
+      objectReference: {fileID: 519420028}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4beb2dd80a923ba4a84c7606146c7a49, type: 3}
 --- !u!1001 &1705611767815659794
