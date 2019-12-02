@@ -37,12 +37,16 @@ public class FollowPlayer : MonoBehaviour
 
     public bool freezePlayers;
 
+    public GameObject playBoth;
+    DeathScript deathScript;
+
 
     private Vector3 offset;         //Private variable to store the offset distance between the player and camera
 
     // Use this for initialization
     void Start()
     {
+        deathScript = playBoth.GetComponent<DeathScript>();
         firstStopScript = firstStop.GetComponent<cameraEnd>();
         secondStopScript = secondStop.GetComponent<cameraEnd>();
         thirdStopScript = thirdStop.GetComponent<cameraEnd>();
@@ -107,7 +111,7 @@ public class FollowPlayer : MonoBehaviour
     {
         //if moving right
         //Debug.Log(player.transform.position.x + width / 2);
-        if (freezePlayers == true)
+        if (freezePlayers == true && deathScript.dead == false && deathScript.camDone == false)
         {
             if (playerCam.x <= (width * .05) && player2Cam.x <= (width * .05))
             {
@@ -117,6 +121,18 @@ public class FollowPlayer : MonoBehaviour
             } else
             {
                 transform.position = transform.position + new Vector3(0.15f, 0);
+            }
+        }
+        else if (freezePlayers == true && deathScript.dead == true) {
+            if (playerCam.x <= (width * .1) && player2Cam.x <= (width * .1) && playerCam.x >= (width * .0) && player2Cam.x >= (width * .0) || transform.position.x <= initCam.x)
+            {
+                deathScript.camDone = true;
+                transform.position = initCam;
+                deathScript.dead = false;
+            }
+            else
+            {
+                transform.position = transform.position - new Vector3(0.15f, 0);
             }
         }
         else if (moveHorizontal > 0)
