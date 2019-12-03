@@ -31,9 +31,13 @@ public class Lazer : MonoBehaviour
     public GameObject player2;
     CheckpointScript checkpointScript;
 
+    public GameObject playBoth;
+    DeathScript deathScript;
+
     // Start is called before the first frame update
     void Start()
     {
+        deathScript = playBoth.GetComponent<DeathScript>();
         checkpointScript = Checkpoint.GetComponent<CheckpointScript>();
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.enabled = true;
@@ -86,8 +90,7 @@ public class Lazer : MonoBehaviour
         
         if (on && hit.collider != null && (hit.collider.gameObject.name.Equals("Player") || hit.collider.gameObject.name.Equals("Player2")))
         {
-            player1.transform.position = checkpointScript.respawnPoint;
-            player2.transform.position = checkpointScript.respawnPoint2;
+            deathScript.dead = true;
         }
         if(changeTime < timer && !changeOn)
         {
@@ -171,8 +174,7 @@ public class Lazer : MonoBehaviour
 
         if(on && (col.gameObject.name.Equals("Player") || col.gameObject.name.Equals("Player2")))
         {
-            player1.transform.position = checkpointScript.respawnPoint;
-            player2.transform.position = checkpointScript.respawnPoint2;
+            deathScript.dead = true;
         }
     }
 
@@ -182,8 +184,7 @@ public class Lazer : MonoBehaviour
 
         if (on && (col.gameObject.name.Equals("Player") || col.gameObject.name.Equals("Player2")))
         {
-            player1.transform.position = checkpointScript.respawnPoint;
-            player2.transform.position = checkpointScript.respawnPoint2;
+            deathScript.dead = true;
         }
     }
 }

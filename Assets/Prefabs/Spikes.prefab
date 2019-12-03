@@ -119,3 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ac7434eaf3c5d14887f814856d9c712, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Checkpoint: {fileID: 0}
+  player1: {fileID: 0}
+  player2: {fileID: 0}
+  playBoth: {fileID: 0}
