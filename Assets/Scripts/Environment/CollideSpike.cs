@@ -9,9 +9,12 @@ public class CollideSpike : MonoBehaviour
     public GameObject player1;
     public GameObject player2;
     CheckpointScript checkpointScript;
+    public GameObject playBoth;
+    DeathScript deathScript;
     // Start is called before the first frame update
     void Start()
     {
+        deathScript = playBoth.GetComponent<DeathScript>();
         checkpointScript = Checkpoint.GetComponent<CheckpointScript>();
     }
 
@@ -19,8 +22,8 @@ public class CollideSpike : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            player1.transform.position = checkpointScript.respawnPoint;
-            player2.transform.position = checkpointScript.respawnPoint2;
+            Debug.Log("here!");
+            deathScript.dead = true;
         }
     }
 }

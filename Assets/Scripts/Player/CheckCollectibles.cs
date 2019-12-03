@@ -5,10 +5,13 @@ using UnityEngine;
 public class CheckCollectibles : MonoBehaviour
 {
     bool unlock;
+    public AudioClip keyGetSound;
+    public AudioClip doorOpenSound;
+    AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -22,6 +25,7 @@ public class CheckCollectibles : MonoBehaviour
         if (other.tag == "Key")
         {
             unlock = true;
+            audioSource.PlayOneShot(keyGetSound, 0.7F);
             Destroy(other.gameObject);
         }
         if (other.tag == "Trophy")
@@ -32,6 +36,7 @@ public class CheckCollectibles : MonoBehaviour
         {
             if (unlock == true)
             {
+                audioSource.PlayOneShot(doorOpenSound, 0.7F);
                 Destroy(other.gameObject);
                 unlock = false;
             }
