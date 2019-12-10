@@ -126,12 +126,12 @@ public class HorizontalMovement : MonoBehaviour {
         if (col == false)
         {
             //if going right and not at right edge of screen)
-            if (cam.WorldToScreenPoint(transform.position).x <= cam.pixelWidth - 20 && moveHorizontal > 0)
+            if (cam.WorldToScreenPoint(transform.position).x <= cam.pixelWidth && moveHorizontal > 0)
             {
                 transform.position = transform.position + new Vector3(movement.x * speed, movement.y * speed);
             }
             //if going left and not at left edge of screen)
-            else if (cam.WorldToScreenPoint(transform.position).x >= 20 && moveHorizontal < 0)
+            else if (cam.WorldToScreenPoint(transform.position).x >= 0 && moveHorizontal < 0)
             {
                 transform.position = transform.position + new Vector3(movement.x * speed, movement.y * speed);
             }

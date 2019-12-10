@@ -11065,23 +11065,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1702012362752396772}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2129861903
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2129861901}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca53782128508dc498608bd7557a1e3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Checkpoint: {fileID: 343564208}
-  player1: {fileID: 349846969407396495}
-  player2: {fileID: 349846969521067754}
-  camBoi: {fileID: 519420028}
-  dead: 0
 --- !u!1 &2130848724 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7127090731919024576, guid: b3b98ab60330aa04d80d299930846453,
@@ -11368,6 +11351,16 @@ PrefabInstance:
       propertyPath: cameraBoi
       value: 
       objectReference: {fileID: 519420028}
+    - target: {fileID: 2080610097675812632, guid: 4beb2dd80a923ba4a84c7606146c7a49,
+        type: 3}
+      propertyPath: camBoi
+      value: 
+      objectReference: {fileID: 519420028}
+    - target: {fileID: 2080610097675812632, guid: 4beb2dd80a923ba4a84c7606146c7a49,
+        type: 3}
+      propertyPath: Checkpoint
+      value: 
+      objectReference: {fileID: 343564208}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4beb2dd80a923ba4a84c7606146c7a49, type: 3}
 --- !u!1001 &3098479186769994724
