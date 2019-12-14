@@ -163,7 +163,7 @@ public class FollowPlayer : MonoBehaviour
             transform.position = initCam;
         }
         //transform.position = player.transform.position + offset;
-        if (playerCam.x >= (width * .94) && player2Cam.x >= (width * .94))
+        if (playerCam.x >= (width) && player2Cam.x >= (width))
         {
             freezePlayers = true;
             playerCam = cam.WorldToScreenPoint(player.transform.position);
