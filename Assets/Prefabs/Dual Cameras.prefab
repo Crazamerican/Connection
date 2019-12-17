@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 5992293980141049272}
   - component: {fileID: 5992293980141049275}
   - component: {fileID: 5992293980141049274}
+  - component: {fileID: 4798699363068106869}
   - component: {fileID: 5992293980141049277}
   m_Layer: 0
   m_Name: BottomCamera
@@ -115,13 +116,32 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5992293980141049276}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 245a13a31893e9b43822e2e19c54c845, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   followSpeed: 0.5
+--- !u!114 &4798699363068106869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5992293980141049276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3e9a338f49309e4285eb6a1b4493ad4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  player2: {fileID: 0}
+  firstStop: {fileID: 0}
+  secondStop: {fileID: 0}
+  thirdStop: {fileID: 0}
+  freezePlayers: 0
+  playBoth: {fileID: 0}
 --- !u!81 &5992293980141049277
 AudioListener:
   m_ObjectHideFlags: 0
@@ -141,6 +161,7 @@ GameObject:
   - component: {fileID: 5992293980697509206}
   - component: {fileID: 5992293980697509193}
   - component: {fileID: 5992293980697509192}
+  - component: {fileID: 5268500735773505178}
   - component: {fileID: 5992293980697509195}
   m_Layer: 0
   m_Name: TopCamera
@@ -213,13 +234,32 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5992293980697509194}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 245a13a31893e9b43822e2e19c54c845, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   followSpeed: 0.5
+--- !u!114 &5268500735773505178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5992293980697509194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3e9a338f49309e4285eb6a1b4493ad4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  player2: {fileID: 0}
+  firstStop: {fileID: 0}
+  secondStop: {fileID: 0}
+  thirdStop: {fileID: 0}
+  freezePlayers: 0
+  playBoth: {fileID: 0}
 --- !u!81 &5992293980697509195
 AudioListener:
   m_ObjectHideFlags: 0
