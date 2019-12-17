@@ -496,8 +496,6 @@ public class VerticalMaster : MonoBehaviour
             if (col && col2)
             {
                 moveDistance = distToCol < distToCol2 ? distToCol : distToCol2;
-                Debug.Log(distToCol);
-                Debug.Log(distToCol2);
                 transform.position = transform.position + new Vector3(0, moveDistance - .15f);
                 otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, moveDistance - .15f);
             } else if (col)
