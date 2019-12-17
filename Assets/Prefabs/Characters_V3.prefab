@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 1388275056429142775}
   - component: {fileID: 1388275056429142728}
   - component: {fileID: 7725408074575462982}
+  - component: {fileID: 2080610097675812632}
   m_Layer: 0
   m_Name: Characters_V3
   m_TagString: Untagged
@@ -148,6 +149,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 25
   invulnTime: 0
+--- !u!114 &2080610097675812632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1388275056429142774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca53782128508dc498608bd7557a1e3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Checkpoint: {fileID: 0}
+  player1: {fileID: 1388275056553514859}
+  player2: {fileID: 1388275056431520526}
+  camBoi: {fileID: 0}
+  dead: 0
+  camDone: 0
 --- !u!1 &1388275056431520526
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,10 +242,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5bd6e151514e8947bf1a9b03aa877da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.13
+  speed: 0.1
   cam: {fileID: 0}
   confusion: {fileID: 1388275055435783795}
   correctCollider: {fileID: 0}
+  cameraBoi: {fileID: 0}
 --- !u!114 &1388275056431520527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -360,10 +380,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5bd6e151514e8947bf1a9b03aa877da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.13
+  speed: 0.1
   cam: {fileID: 0}
   confusion: {fileID: 5339679058350084652}
   correctCollider: {fileID: 0}
+  cameraBoi: {fileID: 0}
 --- !u!114 &1388275056553514862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,6 +419,9 @@ MonoBehaviour:
   gravity2: 0.017
   otherPlayer: {fileID: 1388275056431520526}
   jumpSound: {fileID: 8300000, guid: f16a06818aa40af4cbd267d16d9dfbf5, type: 3}
+  char_base: {fileID: 0}
+  ghost: {fileID: 0}
+  cameraBoi: {fileID: 0}
 --- !u!61 &1359322249660713369
 BoxCollider2D:
   m_ObjectHideFlags: 0

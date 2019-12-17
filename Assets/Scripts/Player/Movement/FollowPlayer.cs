@@ -39,6 +39,8 @@ public class FollowPlayer : MonoBehaviour
 
     public GameObject playBoth;
     DeathScript deathScript;
+    bool startDead;
+    bool onInit;
 
 
     private Vector3 offset;         //Private variable to store the offset distance between the player and camera
@@ -46,6 +48,8 @@ public class FollowPlayer : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        onInit = true;
+        startDead = true;
         deathScript = playBoth.GetComponent<DeathScript>();
         firstStopScript = firstStop.GetComponent<cameraEnd>();
         secondStopScript = secondStop.GetComponent<cameraEnd>();
@@ -109,6 +113,7 @@ public class FollowPlayer : MonoBehaviour
     // LateUpdate is called after Update each frame
     void LateUpdate()
     {
+        Debug.Log(initCam.x);
         //if moving right
         //Debug.Log(player.transform.position.x + width / 2);
         if (freezePlayers == true && deathScript.dead == false && deathScript.camDone == false)
@@ -124,15 +129,44 @@ public class FollowPlayer : MonoBehaviour
             }
         }
         else if (freezePlayers == true && deathScript.dead == true) {
-            if (playerCam.x <= (width * .1) && player2Cam.x <= (width * .1) && playerCam.x >= (width * .0) && player2Cam.x >= (width * .0) || transform.position.x <= initCam.x)
+            if (startDead == true)
             {
-                deathScript.camDone = true;
-                transform.position = initCam;
-                deathScript.dead = false;
+                startDead = false;
+                if (player.transform.position.x < initCam.x) {
+                    onInit = true;
+                } else
+                {
+                    onInit = false;
+                }
+                Debug.Log("onInit" + onInit);
             }
-            else
+            if (onInit == true) {
+                if (playerCam.x <= (width * .1) && player2Cam.x <= (width * .1) && playerCam.x >= (width * .0) && player2Cam.x >= (width * .0) || transform.position.x <= initCam.x)
+                {
+                    deathScript.camDone = true;
+                    transform.position = initCam;
+                    deathScript.dead = false;
+                    startDead = true;
+                }
+                else
+                {
+                    transform.position = transform.position - new Vector3(0.15f, 0);
+                }
+            } else
             {
-                transform.position = transform.position - new Vector3(0.15f, 0);
+                if (playerCam.x <= (width * .48) && player2Cam.x <= (width * .48))
+                {
+                    transform.position = transform.position - new Vector3(0.15f, 0);
+                } else if (playerCam.x >= (width * .52) && player2Cam.x >= (width * .52))
+                {
+                    transform.position = transform.position + new Vector3(0.15f, 0);
+                }
+                else
+                {
+                    deathScript.camDone = true;
+                    deathScript.dead = false;
+                    startDead = true;
+                }
             }
         }
         else if (moveHorizontal > 0)
@@ -163,7 +197,7 @@ public class FollowPlayer : MonoBehaviour
             transform.position = initCam;
         }
         //transform.position = player.transform.position + offset;
-        if (playerCam.x >= (width * .94) && player2Cam.x >= (width * .94))
+        if (playerCam.x >= (width) && player2Cam.x >= (width))
         {
             freezePlayers = true;
             playerCam = cam.WorldToScreenPoint(player.transform.position);
