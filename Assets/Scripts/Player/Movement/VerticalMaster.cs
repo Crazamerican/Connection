@@ -51,6 +51,9 @@ public class VerticalMaster : MonoBehaviour
     public GameObject cameraBoi;
     FollowPlayer cameraScript;
 
+    bool forgiveGround;
+    bool forgiveGround2;
+
     // Use this for initialization
     void Start()
     {
@@ -58,6 +61,8 @@ public class VerticalMaster : MonoBehaviour
         Application.targetFrameRate = 60;
         grounded = true;
         grounded2 = true;
+        forgiveGround = true;
+        forgiveGround2 = true;
         onBox = false;
         onBox2 = false;
         topOrBottom = 0;
@@ -84,7 +89,7 @@ public class VerticalMaster : MonoBehaviour
     private void Update()
     {
         //if jump button pressed and a character is on the ground
-        if (Input.GetButtonDown("Jump") && (grounded || grounded2) && cameraScript.freezePlayers == false)
+        if (Input.GetButtonDown("Jump") && (forgiveGround || forgiveGround2) && cameraScript.freezePlayers == false)
         {
             if (inverted == true || inverted2 == true)
             {
@@ -97,6 +102,8 @@ public class VerticalMaster : MonoBehaviour
             }
             grounded = false;
             grounded2 = false;
+            forgiveGround = false;
+            forgiveGround2 = false;
             onBox = false;
             onBox2 = false;
             audioSource.PlayOneShot(jumpSound, 0.7F);
@@ -156,18 +163,22 @@ public class VerticalMaster : MonoBehaviour
         Collider2D[] bottom1 = Physics2D.OverlapCircleAll(transform.position + new Vector3(width / 2, velocity - height / 2), 0.01f);
         Collider2D[] bottom2 = Physics2D.OverlapCircleAll(transform.position + new Vector3(-width / 2, velocity - height / 2), 0.01f);
         Collider2D[] bottom3 = Physics2D.OverlapCircleAll(transform.position + new Vector3(0, velocity - height / 2), 0.01f);
+        Collider2D[] bottom1_forgive = Physics2D.OverlapAreaAll(transform.position + new Vector3(-width / 2, velocity - height / 2), transform.position + new Vector3(+width / 2, velocity - height / 2 - .5f));
         Collider2D[] top1_2 = otherScript.GetTop1(velocity2);
         Collider2D[] top2_2 = otherScript.GetTop2(velocity2);
         Collider2D[] top3_2 = otherScript.GetTop3(velocity2);
         Collider2D[] bottom1_2 = otherScript.GetBot1(velocity2);
         Collider2D[] bottom2_2 = otherScript.GetBot2(velocity2);
         Collider2D[] bottom3_2 = otherScript.GetBot3(velocity2);
+        Collider2D[] bottom1_2_Forgive = otherScript.GetBot_Forgive(velocity2);
 
         charAnim.SetFloat("verticalSpeed", velocity);
         otherCharAnim.SetFloat("verticalSpeed", velocity);
 
         bool col = false;
         bool col2 = false;
+
+        bool colForgive = false;
 
         distToCol = Mathf.Infinity;
         distToCol2 = Mathf.Infinity;
@@ -435,6 +446,36 @@ public class VerticalMaster : MonoBehaviour
                 }
             }
         }
+        if (grounded || grounded2)
+        {
+            velocity = 0;
+            velocity2 = 0;
+        }
+        foreach (var collide in bottom1_forgive)
+        {
+            if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
+            {
+                colForgive = true;
+            }
+        }
+        foreach (var collide in bottom1_2_Forgive)
+        {
+            if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
+            {
+                colForgive = true;
+            }
+        }
+        if (colForgive == true)
+        {
+            forgiveGround = true;
+            forgiveGround2 = true;
+        } else
+        {
+            forgiveGround = false;
+            forgiveGround2 = false;
+        }
+        Debug.Log(forgiveGround);
+        Debug.Log(forgiveGround2);
         if (col == true)
         {
             col2 = true;
@@ -554,6 +595,7 @@ public class VerticalMaster : MonoBehaviour
             moving2 = false;
             otherPlayer.transform.SetParent(char_base.transform);
         }
+        
 
         //if (topOrBottom == 1 || topOrBottom2 == 1)
         //{
