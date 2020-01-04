@@ -9,7 +9,7 @@ public class CollideSpike : MonoBehaviour
 
     EventManager em;
 
-    public GameObject playerThings;
+    //public GameObject playerThings;
 
     // Start is called before the first frame update
     void Start()
@@ -19,9 +19,9 @@ public class CollideSpike : MonoBehaviour
             em = FindObjectOfType<EventManager>().GetComponent<EventManager>();
         }
 
-        deathScript = playBoth.GetComponent<DeathScript>();
-        checkpointScript = Checkpoint.GetComponent<CheckpointScript>();
-        deathScript = playerThings.GetComponent<DeathScript>();
+        //deathScript = playBoth.GetComponent<DeathScript>();
+        //checkpointScript = Checkpoint.GetComponent<CheckpointScript>();
+        //deathScript = playerThings.GetComponent<DeathScript>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
