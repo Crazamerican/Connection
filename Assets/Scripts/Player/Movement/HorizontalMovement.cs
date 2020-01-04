@@ -117,10 +117,10 @@ public class HorizontalMovement : MonoBehaviour {
             }
         }
         //if at the left edge of screen (-18 is the left side of the screen)
-        if ((transform.position.x + movement.x * speed) <= -18)
+        if ((transform.position.x + movement.x * speed) <= -21)
         {
             col = true;
-            transform.position = new Vector3(-18, transform.position.y);
+            transform.position = new Vector3(-21, transform.position.y);
         }
         //if no collision was found
         if (col == false)
