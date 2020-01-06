@@ -5,17 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class CollideSpike : MonoBehaviour
 {
-    public GameObject Checkpoint;
-    public GameObject player1;
-    public GameObject player2;
-    CheckpointScript checkpointScript;
-    public GameObject playBoth;
     DeathScript deathScript;
+    public GameObject playerThings;
+
     // Start is called before the first frame update
     void Start()
     {
-        deathScript = playBoth.GetComponent<DeathScript>();
-        checkpointScript = Checkpoint.GetComponent<CheckpointScript>();
+        deathScript = playerThings.GetComponent<DeathScript>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
