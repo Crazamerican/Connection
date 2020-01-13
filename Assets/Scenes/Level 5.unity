@@ -1765,7 +1765,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 516528200}
   player2: {fileID: 1234092744}
-  firstStop: {fileID: 0}
+  firstStop: {fileID: 984333275}
   secondStop: {fileID: 984333275}
   thirdStop: {fileID: 984333275}
   freezePlayers: 0
