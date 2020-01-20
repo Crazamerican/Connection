@@ -9,8 +9,9 @@ public class MovingBox : MonoBehaviour
     public float yEnd;
     public float speed;
 
-    Vector2 start;
-    Vector2 end;
+    Vector3 start;
+    Vector3 end;
+    Vector3 target;
     float t;
 
     float changeDirection;
@@ -21,26 +22,36 @@ public class MovingBox : MonoBehaviour
     void Start()
     {
         start = transform.position;
-        end = new Vector2(start.x + xEnd, start.y + yEnd);
+        end = new Vector3(start.x + xEnd, start.y + yEnd, 0);
         t = 0;
         changeDirection = 1;
         canMove = true;
+        speed = speed / 100;
+        target = end;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+        //canMove = true;
+    }
+
+    private void FixedUpdate()
+    {
         if (canMove)
         {
-            t += (Time.deltaTime / speed) * changeDirection;
+            t = Time.deltaTime * speed;
 
-            transform.position = Vector2.Lerp(start, end, t);
-            if (t >= 1.0 || t < 0.0)
+            transform.position = Vector3.MoveTowards(transform.position, target, speed);
+            if (transform.position == start)
             {
-                changeDirection = changeDirection * -1;
+                target = end;
+            } else if (transform.position == end)
+            {
+                target = start;
             }
         }
-        //canMove = true;
     }
 
     public float getT()
