@@ -9,6 +9,7 @@ public class ThwompyBoiScript : MonoBehaviour
     private int state; //State Machine States: 0 goes left, 1 goes right, 2 drops on player
     public float moveSpeed = 2.0f;
     public float attackSpeed = 3.5f;
+    public int distance = 5;
     private float moveNormalizer;
     private bool up;
     private Vector3 helperPosition;
@@ -24,8 +25,8 @@ public class ThwompyBoiScript : MonoBehaviour
         state = 0;//Go left first
         up = false;
         moveNormalizer = .005f;
-        leftPoint = transform.position + Vector3.left * 5;
-        rightPoint = transform.position + Vector3.right * 5;
+        leftPoint = transform.position + Vector3.left * distance;
+        rightPoint = transform.position + Vector3.right * distance;
         lerpTick = 0;
         timer = 0;
         rend = GetComponent<SpriteRenderer>();
