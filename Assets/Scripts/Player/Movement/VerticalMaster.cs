@@ -157,19 +157,11 @@ public class VerticalMaster : MonoBehaviour
         }*/
         velocity = velocity - gravity;
         velocity2 = velocity2 - gravity2;
-        Collider2D[] top1 = Physics2D.OverlapCircleAll(transform.position + new Vector3(width / 2, velocity + height / 2), 0.01f);
-        Collider2D[] top2 = Physics2D.OverlapCircleAll(transform.position + new Vector3(-width / 2, velocity + height / 2), 0.01f);
-        Collider2D[] top3 = Physics2D.OverlapCircleAll(transform.position + new Vector3(0, velocity + height / 2), 0.01f);
-        Collider2D[] bottom1 = Physics2D.OverlapCircleAll(transform.position + new Vector3(width / 2, velocity - height / 2), 0.01f);
-        Collider2D[] bottom2 = Physics2D.OverlapCircleAll(transform.position + new Vector3(-width / 2, velocity - height / 2), 0.01f);
-        Collider2D[] bottom3 = Physics2D.OverlapCircleAll(transform.position + new Vector3(0, velocity - height / 2), 0.01f);
+        Collider2D[] topboi = Physics2D.OverlapAreaAll(transform.position + new Vector3(-width / 2, velocity + height / 2 + .01f), transform.position + new Vector3(+width / 2, velocity + height / 2));
+        Collider2D[] bottomboi = Physics2D.OverlapAreaAll(transform.position + new Vector3(-width / 2, velocity - height / 2), transform.position + new Vector3(+width / 2, velocity - height / 2 - .01f));
         Collider2D[] bottom1_forgive = Physics2D.OverlapAreaAll(transform.position + new Vector3(-width / 2, velocity - height / 2), transform.position + new Vector3(+width / 2, velocity - height / 2 - .5f));
-        Collider2D[] top1_2 = otherScript.GetTop1(velocity2);
-        Collider2D[] top2_2 = otherScript.GetTop2(velocity2);
-        Collider2D[] top3_2 = otherScript.GetTop3(velocity2);
-        Collider2D[] bottom1_2 = otherScript.GetBot1(velocity2);
-        Collider2D[] bottom2_2 = otherScript.GetBot2(velocity2);
-        Collider2D[] bottom3_2 = otherScript.GetBot3(velocity2);
+        Collider2D[] topboi_2 = otherScript.GetTopBoi(velocity2);
+        Collider2D[] bottomboi_2 = otherScript.GetBotBoi(velocity2);
         Collider2D[] bottom1_2_Forgive = otherScript.GetBot_Forgive(velocity2);
 
         charAnim.SetFloat("verticalSpeed", velocity);
@@ -183,7 +175,7 @@ public class VerticalMaster : MonoBehaviour
         distToCol = Mathf.Infinity;
         distToCol2 = Mathf.Infinity;
 
-        foreach (var collide in top1)
+        foreach (var collide in topboi)
         {
             if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
             {
@@ -206,53 +198,8 @@ public class VerticalMaster : MonoBehaviour
                 //}
             }
         }
-        foreach (var collide in top2)
-        {
-            if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
-            {
-                col = true;
-                topOrBottom = 1;
-                distToCol = GetComponent<BoxCollider2D>().Distance(collide).distance;
-                if (collide.tag == "Ground")
-                {
-                    onBox = false;
-                }
-                else
-                {
-                    onBox = true;
-                }
-                //if (collide.gameObject.GetComponent<MovingBox>())
-                //{
-                //    moving = true;
-                //    box = collide.gameObject;
-                //    Debug.Log("hit");
-                //}
-            }
-        }
-        foreach (var collide in top3)
-        {
-            if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
-            {
-                col = true;
-                topOrBottom = 1;
-                
-                if (collide.tag == "Ground")
-                {
-                    onBox = false;
-                }
-                else
-                {
-                    onBox = true;
-                }
-                //if (collide.gameObject.GetComponent<MovingBox>())
-                //{
-                //    moving = true;
-                //    box = collide.gameObject;
-                //    Debug.Log("hit");
-                //}
-            }
-        }
-        foreach (var collide in bottom1)
+        
+        foreach (var collide in bottomboi)
         {
             if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
             {
@@ -273,49 +220,8 @@ public class VerticalMaster : MonoBehaviour
                 }
             }
         }
-        foreach (var collide in bottom2)
-        {
-            if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
-            {
-                col = true;
-                topOrBottom = -1;
-                if (collide.tag == "Ground")
-                {
-                    onBox = false;
-                }
-                else
-                {
-                    onBox = true;
-                }
-                if (collide.gameObject.GetComponent<MovingBox>())
-                {
-                    moving = true;
-                    box = collide.gameObject;
-                }
-            }
-        }
-        foreach (var collide in bottom3)
-        {
-            if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
-            {
-                col = true;
-                topOrBottom = -1;
-                if (collide.tag == "Ground")
-                {
-                    onBox = false;
-                }
-                else
-                {
-                    onBox = true;
-                }
-                if (collide.gameObject.GetComponent<MovingBox>())
-                {
-                    moving = true;
-                    box = collide.gameObject;
-                }
-            }
-        }
-        foreach (var collide in top1_2)
+        
+        foreach (var collide in topboi_2)
         {
             if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
             {
@@ -337,56 +243,12 @@ public class VerticalMaster : MonoBehaviour
                 //}
             }
         }
-        foreach (var collide in top2_2)
+        
+        foreach (var collide in bottomboi_2)
         {
             if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
             {
-                col2 = true;
-                topOrBottom2 = 1;
-                distToCol2 = otherPlayer.GetComponent<BoxCollider2D>().Distance(collide).distance;
 
-                if (collide.tag == "Ground")
-                {
-                    onBox2 = false;
-                }
-                else
-                {
-                    onBox2 = true;
-                }
-                //if (collide.gameObject.GetComponent<MovingBox>())
-                //{
-                //    moving2 = true;
-                //    box = collide.gameObject;
-                //}
-            }
-        }
-        foreach (var collide in top3_2)
-        {
-            if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
-            {
-                col2 = true;
-                topOrBottom2 = 1;
-                
-                if (collide.tag == "Ground")
-                {
-                    onBox2 = false;
-                }
-                else
-                {
-                    onBox2 = true;
-                }
-                //if (collide.gameObject.GetComponent<MovingBox>())
-                //{
-                //    moving2 = true;
-                //    box = collide.gameObject;
-                //}
-            }
-        }
-        foreach (var collide in bottom1_2)
-        {
-            if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
-            {
-                
                 col2 = true;
                 topOrBottom2 = -1;
                 if (collide.tag == "Ground")
@@ -404,48 +266,7 @@ public class VerticalMaster : MonoBehaviour
                 }
             }
         }
-        foreach (var collide in bottom2_2)
-        {
-            if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
-            {
-                col2 = true;
-                topOrBottom2 = -1;
-                if (collide.tag == "Ground")
-                {
-                    onBox2 = false;
-                }
-                else
-                {
-                    onBox2 = true;
-                }
-                if (collide.gameObject.GetComponent<MovingBox>())
-                {
-                    moving2 = true;
-                    box = collide.gameObject;
-                }
-            }
-        }
-        foreach (var collide in bottom3_2)
-        {
-            if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
-            {
-                col2 = true;
-                topOrBottom2 = -1;
-                if (collide.tag == "Ground")
-                {
-                    onBox2 = false;
-                }
-                else
-                {
-                    onBox2 = true;
-                }
-                if (collide.gameObject.GetComponent<MovingBox>())
-                {
-                    moving2 = true;
-                    box = collide.gameObject;
-                }
-            }
-        }
+       
         if (grounded || grounded2)
         {
             velocity = 0;
