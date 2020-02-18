@@ -118,7 +118,7 @@ public class FollowPlayer : MonoBehaviour
         //Debug.Log(player.transform.position.x + width / 2);
         if (freezePlayers == true && deathScript.dead == false && deathScript.camDone == false)
         {
-            if (playerCam.x <= (width * .05) && player2Cam.x <= (width * .05))
+            if (cam.transform.position.x > initCam.x)
             {
                 freezePlayers = false;
                 transform.position = initCam;
@@ -141,7 +141,7 @@ public class FollowPlayer : MonoBehaviour
                 Debug.Log("onInit" + onInit);
             }
             if (onInit == true) {
-                if (playerCam.x <= (width * .1) && player2Cam.x <= (width * .1) && playerCam.x >= (width * .0) && player2Cam.x >= (width * .0) || transform.position.x <= initCam.x)
+                if (transform.position.x <= initCam.x)
                 {
                     deathScript.camDone = true;
                     transform.position = initCam;

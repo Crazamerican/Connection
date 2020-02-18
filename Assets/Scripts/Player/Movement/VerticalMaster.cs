@@ -54,9 +54,14 @@ public class VerticalMaster : MonoBehaviour
     bool forgiveGround;
     bool forgiveGround2;
 
+    bool floatTop;
+    int floatTimer;
+
     // Use this for initialization
     void Start()
     {
+        floatTimer = 0;
+        floatTop = false;
         cameraScript = cameraBoi.GetComponent<FollowPlayer>();
         Application.targetFrameRate = 60;
         grounded = true;
@@ -155,8 +160,21 @@ public class VerticalMaster : MonoBehaviour
             onBox2 = false;
             Debug.Log("jump");
         }*/
-        velocity = velocity - gravity;
-        velocity2 = velocity2 - gravity2;
+        if (velocity > 0 && velocity - gravity < 0 || floatTop == true)
+        {
+            velocity = 0;
+            velocity2 = 0;
+            floatTop = true;
+            if (floatTimer > 5) {
+                floatTop = false;
+                floatTimer = 0;
+            }
+            floatTimer++;
+        }
+        else {
+            velocity = velocity - gravity;
+            velocity2 = velocity2 - gravity2;
+        }
         Collider2D[] topboi = Physics2D.OverlapAreaAll(transform.position + new Vector3(-width / 2, velocity + height / 2 + .01f), transform.position + new Vector3(+width / 2, velocity + height / 2));
         Collider2D[] bottomboi = Physics2D.OverlapAreaAll(transform.position + new Vector3(-width / 2, velocity - height / 2), transform.position + new Vector3(+width / 2, velocity - height / 2 - .01f));
         Collider2D[] bottom1_forgive = Physics2D.OverlapAreaAll(transform.position + new Vector3(-width / 2, velocity - height / 2), transform.position + new Vector3(+width / 2, velocity - height / 2 - .5f));

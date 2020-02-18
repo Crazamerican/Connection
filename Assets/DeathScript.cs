@@ -10,14 +10,29 @@ public class DeathScript : MonoBehaviour
     public GameObject camBoi;
     CheckpointScript checkpointScript;
     FollowPlayer cameraScript;
+    //public EventManager em;
 
     public bool dead;
     int timer;
     public bool camDone;
 
+
+    public void OnEnable()
+    {
+        EventManager.OnDeath += PlayerDiedMovePlayers;
+
+    }
+
+    public void OnDisable()
+    {
+        EventManager.OnDeath -= PlayerDiedMovePlayers;
+
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+
         timer = 0;
         camDone = false;
         dead = false;
@@ -46,5 +61,12 @@ public class DeathScript : MonoBehaviour
                 timer++;
             }
         }
+    }
+
+    public void PlayerDiedMovePlayers()
+    {
+        cameraScript.freezePlayers = true;
+        player1.transform.position = checkpointScript.respawnPoint;
+        player2.transform.position = checkpointScript.respawnPoint2;
     }
 }
