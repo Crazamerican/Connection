@@ -78,10 +78,6 @@ public class ThwompyBoiScript : MonoBehaviour
                 {
                     rend.color = angryColor;
                     transform.position = transform.position + Vector3.down * attackSpeed * Time.deltaTime;
-                    if (transform.position.y < -10)
-                    {
-                        state = 3;
-                    }
                 }
             }
         }
