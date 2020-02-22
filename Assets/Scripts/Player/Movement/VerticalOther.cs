@@ -28,7 +28,7 @@ public class VerticalOther : MonoBehaviour
 
     public Collider2D[] GetTopBoi(float velocity)
     {
-        return Physics2D.OverlapAreaAll(transform.position + new Vector3(-width / 2, velocity + height / 2 + .01f), transform.position + new Vector3(+width / 2, velocity + height / 2));
+        return Physics2D.OverlapAreaAll(transform.position + new Vector3(-width / 2, velocity + height / 2), transform.position + new Vector3(+width / 2, velocity + height / 2 + .01f));
     }
 
     public Collider2D[] GetBotBoi(float velocity)

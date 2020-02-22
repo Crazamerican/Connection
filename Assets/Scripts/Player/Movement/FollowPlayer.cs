@@ -98,6 +98,7 @@ public class FollowPlayer : MonoBehaviour
         Vector3 widThing = new Vector3(width, 0, 0);
         widThing = cam.ScreenToWorldPoint(widThing);
         camRight = transform.position + widThing;
+        //help setup next screen transition
         if (switchStop == false)
         {
             curCamEnd = firstStopScript.cameraHere;
@@ -113,9 +114,7 @@ public class FollowPlayer : MonoBehaviour
     // LateUpdate is called after Update each frame
     void LateUpdate()
     {
-        Debug.Log(initCam.x);
-        //if moving right
-        //Debug.Log(player.transform.position.x + width / 2);
+        //when transitioning between parts of levels
         if (freezePlayers == true && deathScript.dead == false && deathScript.camDone == false)
         {
             if (cam.transform.position.x > initCam.x)
@@ -127,7 +126,7 @@ public class FollowPlayer : MonoBehaviour
             {
                 transform.position = transform.position + new Vector3(0.15f, 0);
             }
-        }
+        } //when player is dead and camera transitioning back to old checkpoint
         else if (freezePlayers == true && deathScript.dead == true) {
             if (startDead == true)
             {
@@ -169,6 +168,7 @@ public class FollowPlayer : MonoBehaviour
                 }
             }
         }
+        //move camera right
         else if (moveHorizontal > 0)
         {
             if (playerAvg > cam.pixelWidth / 2 && curCamEnd == false)
@@ -188,15 +188,16 @@ public class FollowPlayer : MonoBehaviour
                 transform.position = camDif;
             }
         }
+        //move camera left
         else if (camLeft.x > cam.ScreenToWorldPoint(initCam).x && curCamEnd == false)
         {
             camDif = cam.ScreenToWorldPoint(new Vector3(playerAvg, height / 2));
             transform.position = camDif;
-        }
+        } //move camera to initial position
         else if (curCamEnd == false) {
             transform.position = initCam;
         }
-        //transform.position = player.transform.position + offset;
+        //used to indicate screen transition
         if (playerCam.x >= (width) && player2Cam.x >= (width))
         {
             freezePlayers = true;
@@ -205,7 +206,7 @@ public class FollowPlayer : MonoBehaviour
             playerAvg = (playerCam.x + player2Cam.x) / 2;
             initCam = (cam.ScreenToWorldPoint(new Vector3(playerAvg + width / 2, height / 2)));
             initCam -= new Vector3(p1width * 3 / 4, 0);
-            //transform.position = initCam;
+            //used to setup next screen transition
             if (switchToSecond == true) {
                 switchStop2 = true;
             }
