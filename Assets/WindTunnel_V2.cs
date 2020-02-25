@@ -23,8 +23,14 @@ public class WindTunnel_V2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //direction is left
         if (direction == 1) {
             Vector3 transPos = new Vector3(-curSpeed, 0, 0);
+            player.transform.position = player.transform.position + transPos;
+        }
+        //direction is right
+        if (direction == 2) {
+            Vector3 transPos = new Vector3(curSpeed, 0, 0);
             player.transform.position = player.transform.position + transPos;
         }
     }
@@ -40,6 +46,11 @@ public class WindTunnel_V2 : MonoBehaviour
             if (direction == 1) {
                 curSpeed = speed;
             }
+            //direction is right
+            if (direction == 2)
+            {
+                curSpeed = speed;
+            }
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -53,6 +64,10 @@ public class WindTunnel_V2 : MonoBehaviour
             }
             //direction is left
             if (direction == 1) {
+                curSpeed = 0.0f;
+            }
+            //direction is right
+            if (direction == 2) {
                 curSpeed = 0.0f;
             }
         }
