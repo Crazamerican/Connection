@@ -4,29 +4,31 @@ using UnityEngine;
 
 public class VerticalMaster : MonoBehaviour
 {
-    public float maxSpeed = 7;
+    //speed players initial jump is set to affects jump height as well
     public float jumpTakeOffSpeed = 7;
 
     [SerializeField] private bool grounded;
     [SerializeField] private bool grounded2;
-    private float velocity;
-    private float velocity2;
+    //player current speed
+    float velocity;
+    float velocity2;
     public float gravity;
     public float gravity2;
+    //otherPlayer is Player2
     public GameObject otherPlayer;
-    private bool onBox;
-    private bool onBox2;
     //1 is top 0 is nothing -1 is bottom
     private int topOrBottom;
     private int topOrBottom2;
     float distToCol;
     float distToCol2;
-
+    //used for gravity inversion code
     private bool inverted;
     private bool inverted2;
     private bool inverted2_2;
     private bool invertOnCommand;
+    //script to grab parameters from Player2
     VerticalOther otherScript;
+    //the width and height of Player1
     float width;
     float height;
     //float width2;
@@ -50,21 +52,27 @@ public class VerticalMaster : MonoBehaviour
 
     public GameObject cameraBoi;
     FollowPlayer cameraScript;
-
+    //similar to grounded but with a bit of extra wiggle room so player can be near ground and still jump
     bool forgiveGround;
     bool forgiveGround2;
+
+    bool floatTop;
+    int floatTimer;
+
+    public bool inTunnel;
 
     // Use this for initialization
     void Start()
     {
+        inTunnel = false;
+        floatTimer = 0;
+        floatTop = false;
         cameraScript = cameraBoi.GetComponent<FollowPlayer>();
         Application.targetFrameRate = 60;
         grounded = true;
         grounded2 = true;
         forgiveGround = true;
         forgiveGround2 = true;
-        onBox = false;
-        onBox2 = false;
         topOrBottom = 0;
         topOrBottom2 = 0;
         inverted = false;
@@ -88,9 +96,10 @@ public class VerticalMaster : MonoBehaviour
 
     private void Update()
     {
-        //if jump button pressed and a character is on the ground
+        //if jump button pressed and a character is on or extremely near the ground and not frozen
         if (Input.GetButtonDown("Jump") && (forgiveGround || forgiveGround2) && cameraScript.freezePlayers == false)
         {
+            //jumps in opposite direction if inverted
             if (inverted == true || inverted2 == true)
             {
                 velocity = -jumpTakeOffSpeed;
@@ -104,11 +113,10 @@ public class VerticalMaster : MonoBehaviour
             grounded2 = false;
             forgiveGround = false;
             forgiveGround2 = false;
-            onBox = false;
-            onBox2 = false;
             audioSource.PlayOneShot(jumpSound, 0.7F);
             
         }
+        //if gotten gravity inverting powerup, user can invert gravity while grounded
         if (Input.GetButtonDown("Invert") && invertOnCommand == true && (grounded || grounded2) && cameraScript.freezePlayers == false)
         {
             inverted2 = !inverted2;
@@ -132,34 +140,36 @@ public class VerticalMaster : MonoBehaviour
 
         if (inverted2 != otherScript.inverted2 && inverted2_2 == false)
         {
-            /*inverted2 = otherScript.inverted2;
-            inverted = !inverted;
-            gravity2 = gravity2 * -1;
-            gravity = gravity * -1;*/
             invertOnCommand = true;
         }
         topOrBottom = 0;
         topOrBottom2 = 0;
-        /*if (Input.GetButtonDown("Jump"))
+        //once at height of jump, hovers for 5 frames
+        if (velocity > 0 && velocity - gravity < 0 || floatTop == true)
         {
-            Debug.Log("button");
+            velocity = 0;
+            velocity2 = 0;
+            floatTop = true;
+            if (floatTimer > 5) {
+                floatTop = false;
+                floatTimer = 0;
+            }
+            floatTimer++;
+        } //if in upward windtunnel sets velocity to .15f
+        else if (inTunnel == true) {
+            velocity = 0.15f;
+            velocity2 = 0.15f;
+        } //incorperates velocity to gravity
+        else {
+            velocity = velocity - gravity;
+            velocity2 = velocity2 - gravity2;
         }
-        //if jump button pressed and a character is on the ground
-        if (Input.GetButtonDown("Jump") && (grounded || grounded2))
-        {
-            velocity = jumpTakeOffSpeed;
-            velocity2 = jumpTakeOffSpeed;
-            grounded = false;
-            grounded2 = false;
-            onBox = false;
-            onBox2 = false;
-            Debug.Log("jump");
-        }*/
-        velocity = velocity - gravity;
-        velocity2 = velocity2 - gravity2;
-        Collider2D[] topboi = Physics2D.OverlapAreaAll(transform.position + new Vector3(-width / 2, velocity + height / 2 + .01f), transform.position + new Vector3(+width / 2, velocity + height / 2));
+        //sets a bunch of colliders based on where the player will be if you incorperate the velocity
+        Collider2D[] topboi = Physics2D.OverlapAreaAll(transform.position + new Vector3(-width / 2, velocity + height / 2), transform.position + new Vector3(+width / 2, velocity + height / 2 + .01f));
         Collider2D[] bottomboi = Physics2D.OverlapAreaAll(transform.position + new Vector3(-width / 2, velocity - height / 2), transform.position + new Vector3(+width / 2, velocity - height / 2 - .01f));
+        //forgiving collider goes a bit further than regular colliders
         Collider2D[] bottom1_forgive = Physics2D.OverlapAreaAll(transform.position + new Vector3(-width / 2, velocity - height / 2), transform.position + new Vector3(+width / 2, velocity - height / 2 - .5f));
+        //player2 colliders from VerticalOther script
         Collider2D[] topboi_2 = otherScript.GetTopBoi(velocity2);
         Collider2D[] bottomboi_2 = otherScript.GetBotBoi(velocity2);
         Collider2D[] bottom1_2_Forgive = otherScript.GetBot_Forgive(velocity2);
@@ -167,6 +177,7 @@ public class VerticalMaster : MonoBehaviour
         //charAnim.SetFloat("verticalSpeed", velocity);
         //otherCharAnim.SetFloat("verticalSpeed", velocity);
 
+        //see if Player1 or Player2 collides with anything
         bool col = false;
         bool col2 = false;
 
@@ -175,6 +186,7 @@ public class VerticalMaster : MonoBehaviour
         distToCol = Mathf.Infinity;
         distToCol2 = Mathf.Infinity;
 
+        //goes through collider topboi to see if Player 1 collided with anything on top of it
         foreach (var collide in topboi)
         {
             if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
@@ -182,37 +194,15 @@ public class VerticalMaster : MonoBehaviour
                 col = true;
                 topOrBottom = 1;
                 distToCol = GetComponent<BoxCollider2D>().Distance(collide).distance;
-                if (collide.tag == "Ground")
-                {
-                    onBox = false;
-                }
-                else
-                {
-                    onBox = true;
-                }
-                //if (collide.gameObject.GetComponent<MovingBox>())
-                //{
-                //    moving = true;
-                //    box = collide.gameObject;
-                //    Debug.Log("hit");
-                //}
             }
         }
-        
+        //see if player1 is colliding with something on it's bottom
         foreach (var collide in bottomboi)
         {
             if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
             {
                 col = true;
                 topOrBottom = -1;
-                if (collide.tag == "Ground")
-                {
-                    onBox = false;
-                }
-                else
-                {
-                    onBox = true;
-                }
                 if (collide.gameObject.GetComponent<MovingBox>())
                 {
                     moving = true;
@@ -220,7 +210,7 @@ public class VerticalMaster : MonoBehaviour
                 }
             }
         }
-        
+        //same collider checks with player2
         foreach (var collide in topboi_2)
         {
             if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
@@ -228,19 +218,6 @@ public class VerticalMaster : MonoBehaviour
                 distToCol2 = otherPlayer.GetComponent<BoxCollider2D>().Distance(collide).distance;
                 col2 = true;
                 topOrBottom2 = 1;
-                if (collide.tag == "Ground")
-                {
-                    onBox2 = false;
-                }
-                else
-                {
-                    onBox2 = true;
-                }
-                //if (collide.gameObject.GetComponent<MovingBox>())
-                //{
-                //    moving2 = true;
-                //    box = collide.gameObject;
-                //}
             }
         }
         
@@ -251,14 +228,6 @@ public class VerticalMaster : MonoBehaviour
 
                 col2 = true;
                 topOrBottom2 = -1;
-                if (collide.tag == "Ground")
-                {
-                    onBox2 = false;
-                }
-                else
-                {
-                    onBox2 = true;
-                }
                 if (collide.gameObject.GetComponent<MovingBox>())
                 {
                     moving2 = true;
@@ -266,12 +235,14 @@ public class VerticalMaster : MonoBehaviour
                 }
             }
         }
-       
+        //if either player is on ground, then stops player from moving vertically.
         if (grounded || grounded2)
         {
             velocity = 0;
             velocity2 = 0;
         }
+        //same collider but with the forgiving
+        //only needs to check bottom as this forgiving collision only affects the jumping
         foreach (var collide in bottom1_forgive)
         {
             if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
@@ -286,6 +257,7 @@ public class VerticalMaster : MonoBehaviour
                 colForgive = true;
             }
         }
+        //if colForgive is found sets forgiving Ground to true allowing player to jump
         if (colForgive == true)
         {
             forgiveGround = true;
@@ -295,18 +267,20 @@ public class VerticalMaster : MonoBehaviour
             forgiveGround = false;
             forgiveGround2 = false;
         }
-        Debug.Log(forgiveGround);
-        Debug.Log(forgiveGround2);
+        //this part of the script helps the players become have the same verticality
+        //if player1 collides than player2 also collides as well
         if (col == true)
         {
             col2 = true;
             topOrBottom2 = topOrBottom;
         }
+        //if player2 collides than player1 also collides
         else if (col2 == true)
         {
             col = true;
             topOrBottom = topOrBottom2;
         } 
+        //if player isn't colliding with anything it is no longer grounded
         if (col == false)
         {
             grounded = false;
@@ -315,6 +289,7 @@ public class VerticalMaster : MonoBehaviour
         {
             grounded2 = false;
         }
+        //inverting everything also inverts whether you are hitting the ground or ceiling
         if (inverted == true)
         {
             topOrBottom = topOrBottom * -1;
@@ -323,15 +298,18 @@ public class VerticalMaster : MonoBehaviour
         {
             topOrBottom2 = topOrBottom2 * -1;
         }
+        //if hit a ceiling or bottom of box
         if (col == true && topOrBottom == 1)
         {
             velocity = 0;
         }
+        //if hit a ground then sets player to grounded and velocity to 0
         else if (col == true && topOrBottom == -1)
         {
             velocity = 0;
             grounded = true;
         }
+        //same for player2
         if (col2 == true && topOrBottom2 == 1)
         {
             velocity2 = 0;
@@ -341,19 +319,19 @@ public class VerticalMaster : MonoBehaviour
             velocity2 = 0;
             grounded2 = true;
         }
+        //moves player1
         if (col == false)
         {
             transform.position = transform.position + new Vector3(0, velocity);
         }
+        //moves player2
         if (col2 == false)
         {
             otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, velocity2);
         }
-        
+        //used to move player up next to collideable object
         if ((col == true && topOrBottom == 1) || (col2 == true && topOrBottom2 == 1))
         {
-            Debug.Log("col1 = " + col);
-            Debug.Log("col2 = " + col2);
             float moveDistance = 0f;
             if (col && col2)
             {
@@ -416,26 +394,12 @@ public class VerticalMaster : MonoBehaviour
             moving2 = false;
             otherPlayer.transform.SetParent(char_base.transform);
         }
-        
-
-        //if (topOrBottom == 1 || topOrBottom2 == 1)
-        //{
-        //if (moving || moving2)
-        //{
-        //box.GetComponent<MovingBox>().stopMoving();
-        //}
-        //}
 
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Gravity")
         {
-            /*inverted = !inverted;
-            inverted2 = !inverted2;
-            inverted2_2 = !inverted2_2;
-            gravity = gravity * -1;
-            gravity2 = gravity2 * -1;*/
             invertOnCommand = true;
             Destroy(other.gameObject);
         }

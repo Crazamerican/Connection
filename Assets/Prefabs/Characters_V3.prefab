@@ -415,8 +415,8 @@ MonoBehaviour:
   jumpTakeOffSpeed: 0.3
   grounded: 0
   grounded2: 0
-  gravity: 0.017
-  gravity2: 0.017
+  gravity: 0.026
+  gravity2: 0.026
   otherPlayer: {fileID: 1388275056431520526}
   jumpSound: {fileID: 8300000, guid: f16a06818aa40af4cbd267d16d9dfbf5, type: 3}
   char_base: {fileID: 0}
