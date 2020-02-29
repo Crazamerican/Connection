@@ -126,8 +126,8 @@ public class VerticalMaster : MonoBehaviour
         }
         if (grounded || grounded2)
         {
-            charAnim.SetTrigger("grounded");
-            otherCharAnim.SetTrigger("grounded");
+            //charAnim.SetTrigger("grounded");
+            //otherCharAnim.SetTrigger("grounded");
         } 
 
         
@@ -174,8 +174,8 @@ public class VerticalMaster : MonoBehaviour
         Collider2D[] bottomboi_2 = otherScript.GetBotBoi(velocity2);
         Collider2D[] bottom1_2_Forgive = otherScript.GetBot_Forgive(velocity2);
 
-        charAnim.SetFloat("verticalSpeed", velocity);
-        otherCharAnim.SetFloat("verticalSpeed", velocity);
+        //charAnim.SetFloat("verticalSpeed", velocity);
+        //otherCharAnim.SetFloat("verticalSpeed", velocity);
 
         //see if Player1 or Player2 collides with anything
         bool col = false;
