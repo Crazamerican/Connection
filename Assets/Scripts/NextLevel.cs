@@ -23,15 +23,19 @@ public class NextLevel : MonoBehaviour
         {
             if (curLevel == 1)
             {
-                SceneManager.LoadScene("Level 2");
-            }
-            else if (curLevel == 0)
-            {
-                SceneManager.LoadScene("Level 1");
+                SceneManager.LoadScene("NewGraphics2");
             }
             else if (curLevel == 2)
             {
-                SceneManager.LoadScene("Level 3");
+                SceneManager.LoadScene("NewGraphics3");
+            }
+            else if (curLevel == 3)
+            {
+                SceneManager.LoadScene("NewGraphics4");
+            }
+            else if (curLevel == 4)
+            {
+                SceneManager.LoadScene("NewGraphics5");
             }
             else
             {
