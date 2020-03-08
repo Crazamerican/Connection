@@ -15,15 +15,25 @@ public class HorizontalMovement : MonoBehaviour {
 
     public GameObject cameraBoi;
     FollowPlayer cameraScript;
+    bool col;
+    float distanceToCollision;
+    float extraSpeed;
+    public int player;
+    public GameObject player1;
+    VerticalMaster masterScript;
 
     // Use this for initialization
     void Start()
     {
+        masterScript = player1.GetComponent<VerticalMaster>();
         cameraScript = cameraBoi.GetComponent<FollowPlayer>();
         unlock = false;
         width = GetComponent<BoxCollider2D>().bounds.size.x;
         height = GetComponent<BoxCollider2D>().bounds.size.y;
         charAnim = GetComponentInChildren<Animator>();
+        col = false;
+        distanceToCollision = 0f;
+        extraSpeed = 0f;
     }
 
     //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
@@ -52,15 +62,26 @@ public class HorizontalMovement : MonoBehaviour {
 
             //Set the horizontal speed in the animator, letting the anim blend animations
             charAnim.SetFloat("horizontalSpeed", moveHorizontal);
-        } 
+        }
 
         //Use the two store floats to create a new Vector2 variable movement.
         Vector2 movement = new Vector2(moveHorizontal, 0);
         //colliders test if these overlaping circles collide with anything, and list the colliders
         //three colliders for two corners on side of box and midpoint inbetween them
-        Collider2D[] collider = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed, movement.y * speed), 0.01f);
-        Collider2D[] collider2 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed, movement.y * speed + (height / 2)), 0.01f);
-        Collider2D[] collider3 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed, movement.y * speed - (height / 2 - .02f)), 0.01f);
+        Collider2D[] collider = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed + (width / 2), 0), 0.01f);
+        Collider2D[] collider2 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed + (width / 2),  0 + (height / 2)), 0.01f);
+        Collider2D[] collider3 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed + (width / 2), 0 - (height / 2 - .01f)), 0.01f);
+        Collider2D[] collider4 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed - (width / 2), 0), 0.01f);
+        Collider2D[] collider5 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed - (width / 2), + (height / 2)), 0.01f);
+        Collider2D[] collider6 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed - (width / 2), - (height / 2 - .01f)), 0.01f);
+
+        Collider2D[] collider7 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed + (width / 2) + .03f, 0), 0.01f);
+        Collider2D[] collider8 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed + (width / 2) + .03f, 0 + (height / 2 - .01f)), 0.01f);
+        Collider2D[] collider9 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed + (width / 2) + .03f, 0 - (height / 2 - .01f)), 0.01f);
+        Collider2D[] collider10 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed - (width / 2) - .02f, 0), 0.01f);
+        Collider2D[] collider11 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed - (width / 2) - .02f, +(height / 2 - .01f)), 0.01f);
+        Collider2D[] collider12 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed - (width / 2) - .02f, -(height / 2 - .01f)), 0.01f);
+        /*
         //if moving right
         if ((moveHorizontal > 0 && speed > 0) || (moveHorizontal < 0 && speed < 0))
         {
@@ -75,47 +96,50 @@ public class HorizontalMovement : MonoBehaviour {
             collider2 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed - (width / 2), movement.y * speed + (height / 2)), 0.01f);
             collider3 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed - (width / 2), movement.y * speed - (height / 2 - .02f)), 0.01f);
         }
-        bool col = false;
-        float distanceToCollision = 0f;
+        */
+        col = false;
+        distanceToCollision = 0f;
         //goes through everything that collided with 
-        foreach (var collide in collider)
-        {
-           
+        extraSpeed = 0f;
+        colliderHelper(collider);
+        colliderHelper(collider2);
+        colliderHelper(collider3);
+        colliderHelper(collider4);
+        colliderHelper(collider5);
+        colliderHelper(collider6);
+        
+        colliderHelper2(collider7);
+        colliderHelper2(collider8);
+        colliderHelper2(collider9);
+        colliderHelper2(collider10);
+        colliderHelper2(collider11);
+        colliderHelper2(collider12);
 
-            if (collide.gameObject.GetComponent<Collideable>())
-            {
-                col = true;
-                Debug.Log("col: true");
-                distanceToCollision = GetComponent<BoxCollider2D>().Distance(collide).distance;
-                //Debug.Log(GetComponent<BoxCollider2D>().Distance(collide).distance);
-
-            }
-        }
-        foreach (var collide2 in collider2)
+        if (player == 1)
         {
-            //if (collide2.tag != "Player" && collide2.tag != "Ground" && collide2.tag != "Key" && collide2.tag != "Door")
-            //{
-            //    col = true;
-            //}
-            if (collide2.gameObject.GetComponent<Collideable>())
+            if (masterScript.onMoving == true)
             {
-                col = true;
-                distanceToCollision = GetComponent<BoxCollider2D>().Distance(collide2).distance;
+                extraSpeed = masterScript.onSpeed;
             }
         }
-        foreach (var collide3 in collider3)
+        else if (player == 2) {
+            if (masterScript.onMoving2 == true) {
+                extraSpeed = masterScript.onSpeed2;
+            }
+        }
+        /*
+        foreach (var top in topboi)
         {
-            //if (collide3.tag != "Player" && collide3.tag != "Ground" && collide3.tag != "Key" && collide3.tag != "Door")
-            //{
-            //    col = true;
-            //}
-            if (collide3.gameObject.GetComponent<Collideable>())
+            if (top.gameObject.GetComponent<Collideable>())
             {
-                col = true;
-                Debug.Log("col: true");
-                distanceToCollision = GetComponent<BoxCollider2D>().Distance(collide3).distance;
+                if (top.gameObject.tag == "MoveBox")
+                {
+                    extraSpeed = top.gameObject.GetComponent<HorizontalBox>().speed;
+                    Debug.Log("topboi");
+                }
             }
         }
+        */
         //if at the left edge of screen (-18 is the left side of the screen)
         if ((transform.position.x + movement.x * speed) <= -41)
         {
@@ -147,7 +171,41 @@ public class HorizontalMovement : MonoBehaviour {
                 transform.position += new Vector3(-distanceToCollision + .01f, movement.y * speed);
             }
         }
+        if (extraSpeed != 0) {
+            Debug.Log("something");
+            transform.position += new Vector3(extraSpeed, 0);
+        }
         //transform.position = transform.position + new Vector3(movement.x * speed, movement.y * speed);
+    }
+    private void colliderHelper(Collider2D[] collider) {
+        foreach (var collide in collider)
+        {
+
+
+            if (collide.gameObject.GetComponent<Collideable>())
+            {
+                col = true;
+                distanceToCollision = GetComponent<BoxCollider2D>().Distance(collide).distance;
+                //Debug.Log(GetComponent<BoxCollider2D>().Distance(collide).distance);
+
+            }
+        }
+    }
+    private void colliderHelper2(Collider2D[] collider)
+    {
+        foreach (var collide in collider)
+        {
+
+
+            if (collide.gameObject.GetComponent<Collideable>())
+            {
+                if (collide.gameObject.tag == "MoveBox")
+                {
+                    Debug.Log("in movebox");
+                    extraSpeed = collide.gameObject.GetComponent<HorizontalBox>().speed;
+                }
+            }
+        }
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
