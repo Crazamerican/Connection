@@ -61,9 +61,18 @@ public class VerticalMaster : MonoBehaviour
 
     public bool inTunnel;
 
+    public bool onMoving;
+    public float onSpeed;
+    public bool onMoving2;
+    public float onSpeed2;
+
     // Use this for initialization
     void Start()
     {
+        onMoving = false;
+        onSpeed = 0f;
+        onMoving2 = false;
+        onSpeed2 = 0f;
         inTunnel = false;
         floatTimer = 0;
         floatTop = false;
@@ -136,6 +145,10 @@ public class VerticalMaster : MonoBehaviour
     //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
     void FixedUpdate()
     {
+        onMoving = false;
+        onSpeed = 0f;
+        onMoving2 = false;
+        onSpeed2 = 0f;
         moving = false;
 
         if (inverted2 != otherScript.inverted2 && inverted2_2 == false)
@@ -199,6 +212,10 @@ public class VerticalMaster : MonoBehaviour
         //see if player1 is colliding with something on it's bottom
         foreach (var collide in bottomboi)
         {
+            if (collide.gameObject.tag == "MoveBox") {
+                onMoving = true;
+                onSpeed = collide.gameObject.GetComponent<HorizontalBox>().speed;
+            }
             if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
             {
                 col = true;
@@ -223,6 +240,11 @@ public class VerticalMaster : MonoBehaviour
         
         foreach (var collide in bottomboi_2)
         {
+            if (collide.gameObject.tag == "MoveBox")
+            {
+                onMoving2 = true;
+                onSpeed2 = collide.gameObject.GetComponent<HorizontalBox>().speed;
+            }
             if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
             {
 
