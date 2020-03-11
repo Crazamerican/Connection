@@ -37,6 +37,10 @@ public class NextLevel : MonoBehaviour
             {
                 SceneManager.LoadScene("NewGraphics5");
             }
+            else if (curLevel == 5)
+            {
+                SceneManager.LoadScene("NewGraphics6");
+            }
             else
             {
                 SceneManager.LoadScene("End Screen");

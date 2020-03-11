@@ -68,12 +68,24 @@ public class HorizontalMovement : MonoBehaviour {
         Vector2 movement = new Vector2(moveHorizontal, 0);
         //colliders test if these overlaping circles collide with anything, and list the colliders
         //three colliders for two corners on side of box and midpoint inbetween them
-        Collider2D[] collider = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed + (width / 2), 0), 0.01f);
-        Collider2D[] collider2 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed + (width / 2),  0 + (height / 2)), 0.01f);
-        Collider2D[] collider3 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed + (width / 2), 0 - (height / 2 - .01f)), 0.01f);
-        Collider2D[] collider4 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed - (width / 2), 0), 0.01f);
-        Collider2D[] collider5 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed - (width / 2), + (height / 2)), 0.01f);
-        Collider2D[] collider6 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed - (width / 2), - (height / 2 - .01f)), 0.01f);
+        Collider2D[] collider = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed, movement.y * speed), 0.01f);
+        Collider2D[] collider2 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed, movement.y * speed + (height / 2)), 0.01f);
+        Collider2D[] collider3 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed, movement.y * speed - (height / 2 - .02f)), 0.01f);
+        //if moving right
+        if ((moveHorizontal > 0 && speed > 0) || (moveHorizontal < 0 && speed < 0))
+        {
+            //test colliders of the character's movement to the right
+            collider = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed + (width / 2), movement.y * speed), 0.01f);
+            collider2 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed + (width / 2), movement.y * speed + (height / 2)), 0.01f);
+            collider3 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed + (width / 2), movement.y * speed - (height / 2 - .02f)), 0.01f);
+        }
+        else if ((moveHorizontal < 0 && speed > 0) || (moveHorizontal > 0 && speed < 0))
+        {
+            //test colliders of the character's movement to the left
+            collider = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed - (width / 2), movement.y * speed), 0.01f);
+            collider2 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed - (width / 2), movement.y * speed + (height / 2)), 0.01f);
+            collider3 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed - (width / 2), movement.y * speed - (height / 2 - .02f)), 0.01f);
+        }
 
         Collider2D[] collider7 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed + (width / 2) + .03f, 0), 0.01f);
         Collider2D[] collider8 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed + (width / 2) + .03f, 0 + (height / 2 - .01f)), 0.01f);
@@ -104,9 +116,6 @@ public class HorizontalMovement : MonoBehaviour {
         colliderHelper(collider);
         colliderHelper(collider2);
         colliderHelper(collider3);
-        colliderHelper(collider4);
-        colliderHelper(collider5);
-        colliderHelper(collider6);
         
         colliderHelper2(collider7);
         colliderHelper2(collider8);
