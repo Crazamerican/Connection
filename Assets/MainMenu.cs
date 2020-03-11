@@ -8,7 +8,7 @@ public class MainMenu : MonoBehaviour
     public GameObject controlScreen;
 
     public void PlayGame() {
-        SceneManager.LoadScene("Level 0");
+        SceneManager.LoadScene("NewGraphics1");
     }
 
     public void QuitGame()

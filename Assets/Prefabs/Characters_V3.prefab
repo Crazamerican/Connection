@@ -296,7 +296,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.04882288, y: -0.39500314}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -307,7 +307,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.5, y: 2.5}
+  m_Size: {x: 2.8044386, y: 2.813085}
   m_EdgeRadius: 0
 --- !u!114 &1388275056431520512
 MonoBehaviour:
@@ -326,6 +326,8 @@ MonoBehaviour:
   confusion: {fileID: 1388275055435783795}
   correctCollider: {fileID: 0}
   cameraBoi: {fileID: 0}
+  player: 0
+  player1: {fileID: 0}
 --- !u!114 &1388275056431520527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -434,7 +436,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.047911167, y: -0.05709356}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -445,7 +447,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.5, y: 2.5}
+  m_Size: {x: 2.8007889, y: 2.7963657}
   m_EdgeRadius: 0
 --- !u!114 &1388275056553514863
 MonoBehaviour:
@@ -464,6 +466,8 @@ MonoBehaviour:
   confusion: {fileID: 5339679058350084652}
   correctCollider: {fileID: 0}
   cameraBoi: {fileID: 0}
+  player: 0
+  player1: {fileID: 0}
 --- !u!114 &1388275056553514862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -501,6 +505,10 @@ MonoBehaviour:
   ghost: {fileID: 0}
   cameraBoi: {fileID: 0}
   inTunnel: 0
+  onMoving: 0
+  onSpeed: 0
+  onMoving2: 0
+  onSpeed2: 0
 --- !u!61 &1359322249660713369
 BoxCollider2D:
   m_ObjectHideFlags: 0
