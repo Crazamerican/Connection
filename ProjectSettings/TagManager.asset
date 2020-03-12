@@ -18,6 +18,7 @@ TagManager:
   - Trophy
   - Checkpoint
   - EventManager
+  - MoveBox
   layers:
   - Default
   - TransparentFX

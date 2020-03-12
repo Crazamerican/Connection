@@ -14,18 +14,36 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: bed236638ec97c94993d9dfce804d6d8
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Level 0.unity
     guid: dd2573c92b7e90344ac68567c8ebf776
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Level 1.unity
     guid: f0725a6c7c904aa4f89c9ca06f666d8b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Level 2.unity
     guid: 8393fd711227d7f4d81ff0ec1813253d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Level 3.unity
     guid: da7caa0315cd31c409b4b7fa9b0fa76a
+  - enabled: 1
+    path: Assets/Scenes/NewGraphics1.unity
+    guid: 1eb0db268e181b145888fc1f0fd90278
+  - enabled: 1
+    path: Assets/Scenes/NewGraphics2.unity
+    guid: 1ea7e159a011bd643b65186932ad1e09
+  - enabled: 1
+    path: Assets/Scenes/NewGraphics3.unity
+    guid: d661eee769764db4aa849a7400c5f638
+  - enabled: 1
+    path: Assets/Scenes/NewGraphics4.unity
+    guid: e3fe6f00168010447990740472512941
+  - enabled: 1
+    path: Assets/Scenes/NewGraphics5.unity
+    guid: 366ff36eae9d3d342bff2fa96b7e9ec0
+  - enabled: 1
+    path: Assets/Scenes/NewGraphics6.unity
+    guid: 7b3d902351cb1e24795e7dc40f0e5913
   - enabled: 1
     path: Assets/Scenes/End Screen.unity
     guid: dd55f4c2059469e4ea43fcac1e2d4d40
