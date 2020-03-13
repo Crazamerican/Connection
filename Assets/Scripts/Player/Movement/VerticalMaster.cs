@@ -218,6 +218,7 @@ public class VerticalMaster : MonoBehaviour
             }
             if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
             {
+                Debug.Log("bottom player2");
                 col = true;
                 topOrBottom = -1;
                 if (collide.gameObject.GetComponent<MovingBox>())
@@ -247,7 +248,7 @@ public class VerticalMaster : MonoBehaviour
             }
             if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
             {
-
+                Debug.Log("bottom player2");
                 col2 = true;
                 topOrBottom2 = -1;
                 if (collide.gameObject.GetComponent<MovingBox>())
