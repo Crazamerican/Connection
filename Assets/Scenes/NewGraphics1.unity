@@ -867,7 +867,7 @@ PrefabInstance:
     - target: {fileID: 1143475998447377928, guid: b3b98ab60330aa04d80d299930846453,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.25
+      value: 6.3
       objectReference: {fileID: 0}
     - target: {fileID: 1143475998447377928, guid: b3b98ab60330aa04d80d299930846453,
         type: 3}
@@ -1381,7 +1381,7 @@ PrefabInstance:
     - target: {fileID: 1143475998447377928, guid: b3b98ab60330aa04d80d299930846453,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.75
+      value: 4.8
       objectReference: {fileID: 0}
     - target: {fileID: 1143475998447377928, guid: b3b98ab60330aa04d80d299930846453,
         type: 3}
@@ -11141,7 +11141,7 @@ PrefabInstance:
     - target: {fileID: 1143475998447377928, guid: b3b98ab60330aa04d80d299930846453,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.25
+      value: 6.3
       objectReference: {fileID: 0}
     - target: {fileID: 1143475998447377928, guid: b3b98ab60330aa04d80d299930846453,
         type: 3}
@@ -16579,7 +16579,7 @@ PrefabInstance:
     - target: {fileID: 1143475998447377928, guid: b3b98ab60330aa04d80d299930846453,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.24
+      value: 3.3
       objectReference: {fileID: 0}
     - target: {fileID: 1143475998447377928, guid: b3b98ab60330aa04d80d299930846453,
         type: 3}
@@ -18705,7 +18705,7 @@ PrefabInstance:
     - target: {fileID: 1143475998447377928, guid: b3b98ab60330aa04d80d299930846453,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.24
+      value: 3.3
       objectReference: {fileID: 0}
     - target: {fileID: 1143475998447377928, guid: b3b98ab60330aa04d80d299930846453,
         type: 3}
@@ -18794,7 +18794,7 @@ PrefabInstance:
     - target: {fileID: 1143475998447377928, guid: b3b98ab60330aa04d80d299930846453,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.75
+      value: 4.8
       objectReference: {fileID: 0}
     - target: {fileID: 1143475998447377928, guid: b3b98ab60330aa04d80d299930846453,
         type: 3}
@@ -22980,7 +22980,7 @@ PrefabInstance:
     - target: {fileID: 1388275056553514860, guid: 4beb2dd80a923ba4a84c7606146c7a49,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.7453
+      value: 3.527
       objectReference: {fileID: 0}
     - target: {fileID: 1388275056553514860, guid: 4beb2dd80a923ba4a84c7606146c7a49,
         type: 3}
@@ -23030,7 +23030,7 @@ PrefabInstance:
     - target: {fileID: 1388275056431520515, guid: 4beb2dd80a923ba4a84c7606146c7a49,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.5585
+      value: -4.6785
       objectReference: {fileID: 0}
     - target: {fileID: 1388275056431520515, guid: 4beb2dd80a923ba4a84c7606146c7a49,
         type: 3}
@@ -23055,7 +23055,7 @@ PrefabInstance:
     - target: {fileID: 1388275056431520513, guid: 4beb2dd80a923ba4a84c7606146c7a49,
         type: 3}
       propertyPath: m_Offset.y
-      value: -0.41189337
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1388275056431520513, guid: 4beb2dd80a923ba4a84c7606146c7a49,
         type: 3}
@@ -23065,7 +23065,7 @@ PrefabInstance:
     - target: {fileID: 1388275056431520513, guid: 4beb2dd80a923ba4a84c7606146c7a49,
         type: 3}
       propertyPath: m_Offset.x
-      value: 0.048757255
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1388275056431520513, guid: 4beb2dd80a923ba4a84c7606146c7a49,
         type: 3}
@@ -23075,12 +23075,12 @@ PrefabInstance:
     - target: {fileID: 1388275056553514848, guid: 4beb2dd80a923ba4a84c7606146c7a49,
         type: 3}
       propertyPath: m_Offset.x
-      value: 0.049542487
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1388275056553514848, guid: 4beb2dd80a923ba4a84c7606146c7a49,
         type: 3}
       propertyPath: m_Offset.y
-      value: -0.05709362
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1388275056553514848, guid: 4beb2dd80a923ba4a84c7606146c7a49,
         type: 3}
