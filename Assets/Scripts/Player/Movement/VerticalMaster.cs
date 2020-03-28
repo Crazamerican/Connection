@@ -180,11 +180,13 @@ public class VerticalMaster : MonoBehaviour
         //sets a bunch of colliders based on where the player will be if you incorperate the velocity
         Collider2D[] topboi = Physics2D.OverlapAreaAll(transform.position + new Vector3(-width / 2, velocity + height / 2), transform.position + new Vector3(+width / 2, velocity + height / 2 + .01f));
         Collider2D[] bottomboi = Physics2D.OverlapAreaAll(transform.position + new Vector3(-width / 2, velocity - height / 2), transform.position + new Vector3(+width / 2, velocity - height / 2 - .01f));
+        Collider2D[] bottomboi_Moving = Physics2D.OverlapAreaAll(transform.position + new Vector3(-width / 2, velocity - height / 2), transform.position + new Vector3(+width / 2, velocity - height / 2 - .01f));
         //forgiving collider goes a bit further than regular colliders
         Collider2D[] bottom1_forgive = Physics2D.OverlapAreaAll(transform.position + new Vector3(-width / 2, velocity - height / 2), transform.position + new Vector3(+width / 2, velocity - height / 2 - .5f));
         //player2 colliders from VerticalOther script
         Collider2D[] topboi_2 = otherScript.GetTopBoi(velocity2);
         Collider2D[] bottomboi_2 = otherScript.GetBotBoi(velocity2);
+        Collider2D[] bottomboi_2_Moving = otherScript.GetBotBoi_Moving(velocity2);
         Collider2D[] bottom1_2_Forgive = otherScript.GetBot_Forgive(velocity2);
 
         //charAnim.SetFloat("verticalSpeed", velocity);
@@ -212,10 +214,6 @@ public class VerticalMaster : MonoBehaviour
         //see if player1 is colliding with something on it's bottom
         foreach (var collide in bottomboi)
         {
-            if (collide.gameObject.tag == "MoveBox") {
-                onMoving = true;
-                onSpeed = collide.gameObject.GetComponent<HorizontalBox>().speed;
-            }
             if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
             {
                 Debug.Log("bottom player2");
@@ -228,8 +226,18 @@ public class VerticalMaster : MonoBehaviour
                 }
             }
         }
-        //same collider checks with player2
-        foreach (var collide in topboi_2)
+
+        foreach (var collide in bottomboi_Moving)
+        {
+            if (collide.gameObject.tag == "MoveBox")
+            {
+                onMoving = true;
+                onSpeed = collide.gameObject.GetComponent<HorizontalBox>().speed;
+            }
+        }
+
+            //same collider checks with player2
+            foreach (var collide in topboi_2)
         {
             if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
             {
@@ -241,11 +249,6 @@ public class VerticalMaster : MonoBehaviour
         
         foreach (var collide in bottomboi_2)
         {
-            if (collide.gameObject.tag == "MoveBox")
-            {
-                onMoving2 = true;
-                onSpeed2 = collide.gameObject.GetComponent<HorizontalBox>().speed;
-            }
             if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
             {
                 Debug.Log("bottom player2");
@@ -258,8 +261,19 @@ public class VerticalMaster : MonoBehaviour
                 }
             }
         }
-        //if either player is on ground, then stops player from moving vertically.
-        if (grounded || grounded2)
+
+        foreach (var collide in bottomboi_2_Moving)
+        {
+            if (collide.gameObject.tag == "MoveBox")
+            {
+                Debug.Log("onMovingBox");
+                onMoving2 = true;
+                onSpeed2 = collide.gameObject.GetComponent<HorizontalBox>().speed;
+            }
+        }
+
+            //if either player is on ground, then stops player from moving vertically.
+            if (grounded || grounded2)
         {
             velocity = 0;
             velocity2 = 0;
