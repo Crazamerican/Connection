@@ -14,7 +14,7 @@ public class VerticalOther : MonoBehaviour
         inverted2 = false;
         width = GetComponent<BoxCollider2D>().bounds.size.x;
         height = GetComponent<BoxCollider2D>().bounds.size.y;
-        
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -33,7 +33,7 @@ public class VerticalOther : MonoBehaviour
 
     public Collider2D[] GetBotBoi(float velocity)
     {
-        return Physics2D.OverlapAreaAll(transform.position + new Vector3(-width / 2, velocity - height / 2), transform.position + new Vector3(+width / 2, velocity - height / 2 - .1f));
+        return Physics2D.OverlapAreaAll(transform.position + new Vector3(-width / 2, velocity - height / 2), transform.position + new Vector3(+width / 2, velocity - height / 2 - .01f));
     }
 
     public Collider2D[] GetBot_Forgive(float velocity)

@@ -182,6 +182,33 @@ public class HorizontalMovement : MonoBehaviour {
         }
         if (extraSpeed != 0) {
             Debug.Log("something");
+            if (player == 1)
+            {
+                if (masterScript.onMoving == false)
+                {
+                    if (extraSpeed > 0)
+                    {
+                        transform.position += new Vector3(extraSpeed + .02f, 0);
+                    }
+                    else if (extraSpeed < 0) {
+                        transform.position += new Vector3(extraSpeed - .02f, 0);
+                    }
+                }
+            }
+            else if (player == 2)
+            {
+                if (masterScript.onMoving2 == false)
+                {
+                    if (extraSpeed > 0)
+                    {
+                        transform.position += new Vector3(extraSpeed + .02f, 0);
+                    }
+                    else if (extraSpeed < 0)
+                    {
+                        transform.position += new Vector3(extraSpeed - .02f, 0);
+                    }
+                }
+            }
             transform.position += new Vector3(extraSpeed, 0);
         }
         //transform.position = transform.position + new Vector3(movement.x * speed, movement.y * speed);
