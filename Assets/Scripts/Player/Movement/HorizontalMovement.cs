@@ -22,9 +22,12 @@ public class HorizontalMovement : MonoBehaviour {
     public GameObject player1;
     VerticalMaster masterScript;
 
+    public bool onMoveLeft;
+
     // Use this for initialization
     void Start()
     {
+        onMoveLeft = false;
         masterScript = player1.GetComponent<VerticalMaster>();
         cameraScript = cameraBoi.GetComponent<FollowPlayer>();
         unlock = false;
@@ -93,22 +96,7 @@ public class HorizontalMovement : MonoBehaviour {
         Collider2D[] collider10 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed - (width / 2) - .02f, 0), 0.01f);
         Collider2D[] collider11 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed - (width / 2) - .02f, +(height / 2 - .01f)), 0.01f);
         Collider2D[] collider12 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed - (width / 2) - .02f, -(height / 2 - .01f)), 0.01f);
-        /*
-        //if moving right
-        if ((moveHorizontal > 0 && speed > 0) || (moveHorizontal < 0 && speed < 0))
-        {
-            //test colliders of the character's movement to the right
-            collider = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed + (width / 2), movement.y * speed), 0.01f);
-            collider2 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed + (width / 2), movement.y * speed + (height / 2)), 0.01f);
-            collider3 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed + (width / 2), movement.y * speed - (height / 2 - .02f)), 0.01f);
-        } else if ((moveHorizontal < 0 && speed > 0) || (moveHorizontal > 0 && speed < 0))
-        {
-            //test colliders of the character's movement to the left
-            collider = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed - (width / 2), movement.y * speed), 0.01f);
-            collider2 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed - (width / 2), movement.y * speed + (height / 2)), 0.01f);
-            collider3 = Physics2D.OverlapCircleAll(transform.position + new Vector3(movement.x * speed - (width / 2), movement.y * speed - (height / 2 - .02f)), 0.01f);
-        }
-        */
+
         col = false;
         distanceToCollision = 0f;
         //goes through everything that collided with 
@@ -116,13 +104,13 @@ public class HorizontalMovement : MonoBehaviour {
         colliderHelper(collider);
         colliderHelper(collider2);
         colliderHelper(collider3);
-        
-        colliderHelper2(collider7);
-        colliderHelper2(collider8);
-        colliderHelper2(collider9);
-        colliderHelper2(collider10);
-        colliderHelper2(collider11);
-        colliderHelper2(collider12);
+
+        colliderHelper2(collider7, false);
+        colliderHelper2(collider8, false);
+        colliderHelper2(collider9, false);
+        colliderHelper2(collider10, true);
+        colliderHelper2(collider11, true);
+        colliderHelper2(collider12, true);
 
         if (player == 1)
         {
@@ -136,19 +124,7 @@ public class HorizontalMovement : MonoBehaviour {
                 extraSpeed = masterScript.onSpeed2;
             }
         }
-        /*
-        foreach (var top in topboi)
-        {
-            if (top.gameObject.GetComponent<Collideable>())
-            {
-                if (top.gameObject.tag == "MoveBox")
-                {
-                    extraSpeed = top.gameObject.GetComponent<HorizontalBox>().speed;
-                    Debug.Log("topboi");
-                }
-            }
-        }
-        */
+
         //if at the left edge of screen (-18 is the left side of the screen)
         if ((transform.position.x + movement.x * speed) <= -41)
         {
@@ -186,12 +162,20 @@ public class HorizontalMovement : MonoBehaviour {
             {
                 if (masterScript.onMoving == false)
                 {
-                    if (extraSpeed > 0)
+                    if (!onMoveLeft && extraSpeed >= 0)
                     {
                         transform.position += new Vector3(extraSpeed + .02f, 0);
                     }
-                    else if (extraSpeed < 0) {
+                    else if (!onMoveLeft && extraSpeed < 0) {
+                        transform.position += new Vector3(.02f, 0);
+                    }
+                    else if (onMoveLeft && extraSpeed <= 0)
+                    {
                         transform.position += new Vector3(extraSpeed - .02f, 0);
+                    }
+                    else if (onMoveLeft && extraSpeed > 0)
+                    {
+                        transform.position += new Vector3(-.02f, 0);
                     }
                 }
             }
@@ -199,17 +183,29 @@ public class HorizontalMovement : MonoBehaviour {
             {
                 if (masterScript.onMoving2 == false)
                 {
-                    if (extraSpeed > 0)
+                    if (!onMoveLeft && extraSpeed >= 0)
                     {
-                        transform.position += new Vector3(extraSpeed + .02f, 0);
+                        Debug.Log("right right");
+                        transform.position += new Vector3(extraSpeed - .05f, 0);
                     }
-                    else if (extraSpeed < 0)
+                    else if (!onMoveLeft && extraSpeed < 0)
                     {
-                        transform.position += new Vector3(extraSpeed - .02f, 0);
+                        Debug.Log("right left");
+                        transform.position += new Vector3(-0.05f, 0);
+                    }
+                    else if (onMoveLeft && extraSpeed <= 0)
+                    {
+                        Debug.Log("left left");
+                        transform.position += new Vector3(extraSpeed + .05f, 0);
+                    }
+                    else if (onMoveLeft && extraSpeed > 0)
+                    {
+                        Debug.Log("left right");
+                        transform.position += new Vector3(.05f, 0);
                     }
                 }
             }
-            transform.position += new Vector3(extraSpeed, 0);
+            //transform.position += new Vector3(extraSpeed, 0);
         }
         //transform.position = transform.position + new Vector3(movement.x * speed, movement.y * speed);
     }
@@ -227,7 +223,7 @@ public class HorizontalMovement : MonoBehaviour {
             }
         }
     }
-    private void colliderHelper2(Collider2D[] collider)
+    private void colliderHelper2(Collider2D[] collider, bool leftside)
     {
         foreach (var collide in collider)
         {
@@ -239,6 +235,7 @@ public class HorizontalMovement : MonoBehaviour {
                 {
                     Debug.Log("in movebox");
                     extraSpeed = collide.gameObject.GetComponent<HorizontalBox>().speed;
+                    onMoveLeft = leftside;
                 }
             }
         }
