@@ -205,7 +205,7 @@ public class HorizontalMovement : MonoBehaviour {
                     }
                 }
             }
-            //transform.position += new Vector3(extraSpeed, 0);
+            transform.position += new Vector3(extraSpeed, 0);
         }
         //transform.position = transform.position + new Vector3(movement.x * speed, movement.y * speed);
     }
