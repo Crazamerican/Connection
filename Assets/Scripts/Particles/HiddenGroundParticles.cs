@@ -22,33 +22,27 @@ public class HiddenGroundParticles : MonoBehaviour
         if (vertMaster.getHiddenGroundFlag1() == true)
         {
             drawHiddenGround1();
-        }
-        else
-        {
-            Destroy(groundPrefab);
+            vertMaster.setHiddenGroundFlag1(false);
         }
 
         if (vertMaster.getHiddenGroundFlag2() == true)
         {
             drawHiddenGround2();
-        }
-        else
-        {
-            Destroy(groundPrefab);
+            vertMaster.setHiddenGroundFlag2(false);
         }
     }
 
     private void drawHiddenGround1()
     {
         Vector3 player1Pos = player1.transform.position;
-        Instantiate(groundPrefab, player1Pos, Quaternion.identity);
-        Destroy(groundPrefab);
+        Instantiate(groundPrefab, player1Pos + new Vector3(0.0F, -.5F, 0.0F), Quaternion.identity);
+        // DestroyImmediate(groundPrefab, true);
     }
 
     private void drawHiddenGround2()
     {
         Vector3 player2Pos = player2.transform.position;
-        Instantiate(groundPrefab, player2Pos, Quaternion.identity);
-        Destroy(groundPrefab);
+        Instantiate(groundPrefab, player2Pos + new Vector3(0.0F, -.5F, 0.0F), Quaternion.identity);
+        // DestroyImmediate(groundPrefab, true);
     }
 }
