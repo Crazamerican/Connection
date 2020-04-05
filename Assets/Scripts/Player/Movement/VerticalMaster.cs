@@ -69,9 +69,16 @@ public class VerticalMaster : MonoBehaviour
     private bool hiddenGroundFlag1;
     private bool hiddenGroundFlag2;
 
+    bool player2OnBottom;
+    bool player1NearGround;
+    bool player2NearGround;
+
     // Use this for initialization
     void Start()
     {
+        player1NearGround = false;
+        player2NearGround = false;
+        player2OnBottom = false;
         onMoving = false;
         onSpeed = 0f;
         onMoving2 = false;
@@ -151,6 +158,9 @@ public class VerticalMaster : MonoBehaviour
     //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
     void FixedUpdate()
     {
+        player1NearGround = false;
+        player2NearGround = false;
+        player2OnBottom = false;
         onMoving = false;
         onSpeed = 0f;
         onMoving2 = false;
@@ -269,6 +279,10 @@ public class VerticalMaster : MonoBehaviour
                     box = collide.gameObject;
                 }
             }
+            if (collide.tag == "Ground")
+            {
+                player2OnBottom = true;
+            }
         }
 
         foreach (var collide in bottomboi_2_Moving)
@@ -294,6 +308,7 @@ public class VerticalMaster : MonoBehaviour
             if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
             {
                 colForgive = true;
+                player1NearGround = true;
             }
         }
         foreach (var collide in bottom1_2_Forgive)
@@ -301,6 +316,7 @@ public class VerticalMaster : MonoBehaviour
             if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
             {
                 colForgive = true;
+                player2NearGround = true;
             }
         }
         //if colForgive is found sets forgiving Ground to true allowing player to jump
@@ -318,18 +334,25 @@ public class VerticalMaster : MonoBehaviour
         //if player1 collides than player2 also collides as well
         if (col == true)
         {
+            if (col2 == false && player2NearGround == false) {
+                // sets player2 hiddenGround flag for hidden ground animation to play
+                hiddenGroundFlag2 = true;
+            }
             col2 = true;
             topOrBottom2 = topOrBottom;
-            // sets player2 hiddenGround flag for hidden ground animation to play
-            hiddenGroundFlag2 = true;
         }
         //if player2 collides than player1 also collides
         else if (col2 == true)
         {
+            if (col == false && player1NearGround == false) {
+                // sets player1 hiddenGround flag for hidden ground animation to play
+                if (player2OnBottom == false)
+                {
+                    hiddenGroundFlag1 = true;
+                }
+            }
             col = true;
             topOrBottom = topOrBottom2;
-            // sets player1 hiddenGround flag for hidden ground animation to play
-            hiddenGroundFlag1 = true;
         }
         //if player isn't colliding with anything it is no longer grounded
         if (col == false)

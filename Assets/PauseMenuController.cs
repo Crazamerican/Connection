@@ -40,6 +40,7 @@ public class PauseMenuController : MonoBehaviour
         isPaused = false;
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
+        audioSource.Play();
     }
 
     public void RestartGame() {
