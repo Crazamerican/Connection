@@ -66,6 +66,9 @@ public class VerticalMaster : MonoBehaviour
     public bool onMoving2;
     public float onSpeed2;
 
+    private bool hiddenGroundFlag1;
+    private bool hiddenGroundFlag2;
+
     // Use this for initialization
     void Start()
     {
@@ -100,7 +103,9 @@ public class VerticalMaster : MonoBehaviour
         moving2 = false;
         isSet2 = false;
         box = null;
-        
+        hiddenGroundFlag1 = false;
+        hiddenGroundFlag2 = false;
+
     }
 
     private void Update()
@@ -113,7 +118,8 @@ public class VerticalMaster : MonoBehaviour
             {
                 velocity = -jumpTakeOffSpeed;
                 velocity2 = -jumpTakeOffSpeed;
-            } else
+            }
+            else
             {
                 velocity = jumpTakeOffSpeed;
                 velocity2 = jumpTakeOffSpeed;
@@ -123,7 +129,7 @@ public class VerticalMaster : MonoBehaviour
             forgiveGround = false;
             forgiveGround2 = false;
             audioSource.PlayOneShot(jumpSound, 0.7F);
-            
+
         }
         //if gotten gravity inverting powerup, user can invert gravity while grounded
         if (Input.GetButtonDown("Invert") && invertOnCommand == true && (grounded || grounded2) && cameraScript.freezePlayers == false)
@@ -137,9 +143,9 @@ public class VerticalMaster : MonoBehaviour
         {
             //charAnim.SetTrigger("grounded");
             //otherCharAnim.SetTrigger("grounded");
-        } 
+        }
 
-        
+
     }
 
     //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
@@ -163,17 +169,20 @@ public class VerticalMaster : MonoBehaviour
             velocity = 0;
             velocity2 = 0;
             floatTop = true;
-            if (floatTimer > 5) {
+            if (floatTimer > 5)
+            {
                 floatTop = false;
                 floatTimer = 0;
             }
             floatTimer++;
         } //if in upward windtunnel sets velocity to .15f
-        else if (inTunnel == true) {
+        else if (inTunnel == true)
+        {
             velocity = 0.15f;
             velocity2 = 0.15f;
         } //incorperates velocity to gravity
-        else {
+        else
+        {
             velocity = velocity - gravity;
             velocity2 = velocity2 - gravity2;
         }
@@ -236,8 +245,8 @@ public class VerticalMaster : MonoBehaviour
             }
         }
 
-            //same collider checks with player2
-            foreach (var collide in topboi_2)
+        //same collider checks with player2
+        foreach (var collide in topboi_2)
         {
             if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
             {
@@ -246,7 +255,7 @@ public class VerticalMaster : MonoBehaviour
                 topOrBottom2 = 1;
             }
         }
-        
+
         foreach (var collide in bottomboi_2)
         {
             if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
@@ -272,8 +281,8 @@ public class VerticalMaster : MonoBehaviour
             }
         }
 
-            //if either player is on ground, then stops player from moving vertically.
-            if (grounded || grounded2)
+        //if either player is on ground, then stops player from moving vertically.
+        if (grounded || grounded2)
         {
             velocity = 0;
             velocity2 = 0;
@@ -299,7 +308,8 @@ public class VerticalMaster : MonoBehaviour
         {
             forgiveGround = true;
             forgiveGround2 = true;
-        } else
+        }
+        else
         {
             forgiveGround = false;
             forgiveGround2 = false;
@@ -310,21 +320,27 @@ public class VerticalMaster : MonoBehaviour
         {
             col2 = true;
             topOrBottom2 = topOrBottom;
+            // sets player2 hiddenGround flag for hidden ground animation to play
+            hiddenGroundFlag2 = true;
         }
         //if player2 collides than player1 also collides
         else if (col2 == true)
         {
             col = true;
             topOrBottom = topOrBottom2;
-        } 
+            // sets player1 hiddenGround flag for hidden ground animation to play
+            hiddenGroundFlag1 = true;
+        }
         //if player isn't colliding with anything it is no longer grounded
         if (col == false)
         {
             grounded = false;
+            hiddenGroundFlag1 = false;
         }
         if (col2 == false)
         {
             grounded2 = false;
+            hiddenGroundFlag2 = false;
         }
         //inverting everything also inverts whether you are hitting the ground or ceiling
         if (inverted == true)
@@ -375,11 +391,13 @@ public class VerticalMaster : MonoBehaviour
                 moveDistance = distToCol < distToCol2 ? distToCol : distToCol2;
                 transform.position = transform.position + new Vector3(0, moveDistance - .15f);
                 otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, moveDistance - .15f);
-            } else if (col)
+            }
+            else if (col)
             {
                 transform.position = transform.position + new Vector3(0, distToCol - .1f);
                 otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, distToCol - .1f);
-            } else
+            }
+            else
             {
                 transform.position = transform.position + new Vector3(0, distToCol2 - .1f);
                 otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, distToCol2 - .1f);
@@ -440,6 +458,34 @@ public class VerticalMaster : MonoBehaviour
             invertOnCommand = true;
             Destroy(other.gameObject);
         }
+    }
+
+    public void setHiddenGroundFlag1(bool flag)
+    {
+        this.hiddenGroundFlag1 = flag;
+    }
+    public bool getHiddenGroundFlag1()
+    {
+        return hiddenGroundFlag1;
+    }
+
+    public void setHiddenGroundFlag2(bool flag)
+    {
+        this.hiddenGroundFlag2 = flag;
+    }
+
+    public bool getHiddenGroundFlag2()
+    {
+        return hiddenGroundFlag2;
+    }
+
+    public int getTopOrBottom()
+    {
+        return topOrBottom;
+    }
+    public int getTopOrBottom2()
+    {
+        return topOrBottom2;
     }
 
 }
