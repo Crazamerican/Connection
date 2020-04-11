@@ -124,7 +124,7 @@ public class FollowPlayer : MonoBehaviour
                 switchToSecond = true;
             } else
             {
-                transform.position = transform.position + new Vector3(0.15f, 0);
+                transform.position = transform.position + new Vector3(0.18f, 0);
             }
         } //when player is dead and camera transitioning back to old checkpoint
         else if (freezePlayers == true && deathScript.dead == true) {
@@ -149,16 +149,16 @@ public class FollowPlayer : MonoBehaviour
                 }
                 else
                 {
-                    transform.position = transform.position - new Vector3(0.15f, 0);
+                    transform.position = transform.position - new Vector3(0.18f, 0);
                 }
             } else
             {
                 if (playerCam.x <= (width * .48) && player2Cam.x <= (width * .48))
                 {
-                    transform.position = transform.position - new Vector3(0.15f, 0);
+                    transform.position = transform.position - new Vector3(0.18f, 0);
                 } else if (playerCam.x >= (width * .52) && player2Cam.x >= (width * .52))
                 {
-                    transform.position = transform.position + new Vector3(0.15f, 0);
+                    transform.position = transform.position + new Vector3(0.18f, 0);
                 }
                 else
                 {
