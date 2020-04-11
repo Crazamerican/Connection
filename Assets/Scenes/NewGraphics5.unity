@@ -1739,31 +1739,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Checkpoint Other
       objectReference: {fileID: 0}
-    - target: {fileID: 5890163448067985032, guid: 4d930e4130df2c5468e1fbfc2420a1d0,
-        type: 3}
-      propertyPath: thisRespawnPoint.x
-      value: 52.00252
-      objectReference: {fileID: 0}
-    - target: {fileID: 5890163448067985032, guid: 4d930e4130df2c5468e1fbfc2420a1d0,
-        type: 3}
-      propertyPath: thisRespawnPoint.y
-      value: 3.650928
-      objectReference: {fileID: 0}
-    - target: {fileID: 5890163448067985032, guid: 4d930e4130df2c5468e1fbfc2420a1d0,
-        type: 3}
-      propertyPath: thisRespawnPoint2.x
-      value: 52.00252
-      objectReference: {fileID: 0}
-    - target: {fileID: 5890163448067985032, guid: 4d930e4130df2c5468e1fbfc2420a1d0,
-        type: 3}
-      propertyPath: thisRespawnPoint2.y
-      value: -4.566863
-      objectReference: {fileID: 0}
-    - target: {fileID: 5890163448067985032, guid: 4d930e4130df2c5468e1fbfc2420a1d0,
-        type: 3}
-      propertyPath: checkpointMaster
-      value: 
-      objectReference: {fileID: 299699989}
     - target: {fileID: 596696635023619466, guid: 4d930e4130df2c5468e1fbfc2420a1d0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1819,6 +1794,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5890163448067985032, guid: 4d930e4130df2c5468e1fbfc2420a1d0,
+        type: 3}
+      propertyPath: thisRespawnPoint.x
+      value: 52.00252
+      objectReference: {fileID: 0}
+    - target: {fileID: 5890163448067985032, guid: 4d930e4130df2c5468e1fbfc2420a1d0,
+        type: 3}
+      propertyPath: thisRespawnPoint.y
+      value: 3.650928
+      objectReference: {fileID: 0}
+    - target: {fileID: 5890163448067985032, guid: 4d930e4130df2c5468e1fbfc2420a1d0,
+        type: 3}
+      propertyPath: thisRespawnPoint2.x
+      value: 52.00252
+      objectReference: {fileID: 0}
+    - target: {fileID: 5890163448067985032, guid: 4d930e4130df2c5468e1fbfc2420a1d0,
+        type: 3}
+      propertyPath: thisRespawnPoint2.y
+      value: -4.566863
+      objectReference: {fileID: 0}
+    - target: {fileID: 5890163448067985032, guid: 4d930e4130df2c5468e1fbfc2420a1d0,
+        type: 3}
+      propertyPath: checkpointMaster
+      value: 
+      objectReference: {fileID: 299699989}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d930e4130df2c5468e1fbfc2420a1d0, type: 3}
 --- !u!1001 &158657714
@@ -12094,7 +12094,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d90a8faf6fb9540b084ef2825cc3a5dc, type: 3}
-  m_Color: {r: 0.8773585, g: 0.5255874, b: 0.5255874, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

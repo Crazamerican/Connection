@@ -45,6 +45,9 @@ EditorBuildSettings:
     path: Assets/Scenes/NewGraphics6.unity
     guid: 7b3d902351cb1e24795e7dc40f0e5913
   - enabled: 1
+    path: Assets/Scenes/NewGraphics7.unity
+    guid: 888388e10a15c5e47a02ca8b76b11048
+  - enabled: 1
     path: Assets/Scenes/End Screen.unity
     guid: dd55f4c2059469e4ea43fcac1e2d4d40
   m_configObjects: {}
