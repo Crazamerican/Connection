@@ -8953,12 +8953,12 @@ PrefabInstance:
     - target: {fileID: 8975560918488057844, guid: 4035b9f9ca6fc974c89640636494d5ea,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 44.4433
+      value: 44.3496
       objectReference: {fileID: 0}
     - target: {fileID: 8975560918488057844, guid: 4035b9f9ca6fc974c89640636494d5ea,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.9311
+      value: 7.8813
       objectReference: {fileID: 0}
     - target: {fileID: 8975560918488057844, guid: 4035b9f9ca6fc974c89640636494d5ea,
         type: 3}
@@ -9008,12 +9008,12 @@ PrefabInstance:
     - target: {fileID: 8975560918488057844, guid: 4035b9f9ca6fc974c89640636494d5ea,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.6004298
+      value: 0.47115722
       objectReference: {fileID: 0}
     - target: {fileID: 8975560918488057844, guid: 4035b9f9ca6fc974c89640636494d5ea,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.7789309
+      value: 0.64067066
       objectReference: {fileID: 0}
     - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
         type: 3}
@@ -13706,6 +13706,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: Checkpoint Other
       objectReference: {fileID: 0}
+    - target: {fileID: 5890163448067985032, guid: 4d930e4130df2c5468e1fbfc2420a1d0,
+        type: 3}
+      propertyPath: thisRespawnPoint.x
+      value: 21.4449
+      objectReference: {fileID: 0}
+    - target: {fileID: 5890163448067985032, guid: 4d930e4130df2c5468e1fbfc2420a1d0,
+        type: 3}
+      propertyPath: thisRespawnPoint.y
+      value: 2.64499
+      objectReference: {fileID: 0}
+    - target: {fileID: 5890163448067985032, guid: 4d930e4130df2c5468e1fbfc2420a1d0,
+        type: 3}
+      propertyPath: thisRespawnPoint2.x
+      value: 21.4449
+      objectReference: {fileID: 0}
+    - target: {fileID: 5890163448067985032, guid: 4d930e4130df2c5468e1fbfc2420a1d0,
+        type: 3}
+      propertyPath: thisRespawnPoint2.y
+      value: -5.444995
+      objectReference: {fileID: 0}
+    - target: {fileID: 5890163448067985032, guid: 4d930e4130df2c5468e1fbfc2420a1d0,
+        type: 3}
+      propertyPath: checkpointMaster
+      value: 
+      objectReference: {fileID: 1256036629}
     - target: {fileID: 596696635023619466, guid: 4d930e4130df2c5468e1fbfc2420a1d0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13761,31 +13786,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5890163448067985032, guid: 4d930e4130df2c5468e1fbfc2420a1d0,
-        type: 3}
-      propertyPath: thisRespawnPoint.x
-      value: 21.4449
-      objectReference: {fileID: 0}
-    - target: {fileID: 5890163448067985032, guid: 4d930e4130df2c5468e1fbfc2420a1d0,
-        type: 3}
-      propertyPath: thisRespawnPoint.y
-      value: 2.64499
-      objectReference: {fileID: 0}
-    - target: {fileID: 5890163448067985032, guid: 4d930e4130df2c5468e1fbfc2420a1d0,
-        type: 3}
-      propertyPath: thisRespawnPoint2.x
-      value: 21.4449
-      objectReference: {fileID: 0}
-    - target: {fileID: 5890163448067985032, guid: 4d930e4130df2c5468e1fbfc2420a1d0,
-        type: 3}
-      propertyPath: thisRespawnPoint2.y
-      value: -5.444995
-      objectReference: {fileID: 0}
-    - target: {fileID: 5890163448067985032, guid: 4d930e4130df2c5468e1fbfc2420a1d0,
-        type: 3}
-      propertyPath: checkpointMaster
-      value: 
-      objectReference: {fileID: 1256036629}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d930e4130df2c5468e1fbfc2420a1d0, type: 3}
 --- !u!1001 &797392941
@@ -29330,6 +29330,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: Checkpoint Other (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5890163448067985032, guid: 4d930e4130df2c5468e1fbfc2420a1d0,
+        type: 3}
+      propertyPath: thisRespawnPoint.x
+      value: 41.37973
+      objectReference: {fileID: 0}
+    - target: {fileID: 5890163448067985032, guid: 4d930e4130df2c5468e1fbfc2420a1d0,
+        type: 3}
+      propertyPath: thisRespawnPoint.y
+      value: 9.072539
+      objectReference: {fileID: 0}
+    - target: {fileID: 5890163448067985032, guid: 4d930e4130df2c5468e1fbfc2420a1d0,
+        type: 3}
+      propertyPath: thisRespawnPoint2.x
+      value: 37.98307
+      objectReference: {fileID: 0}
+    - target: {fileID: 5890163448067985032, guid: 4d930e4130df2c5468e1fbfc2420a1d0,
+        type: 3}
+      propertyPath: thisRespawnPoint2.y
+      value: 0.8694569
+      objectReference: {fileID: 0}
+    - target: {fileID: 5890163448067985032, guid: 4d930e4130df2c5468e1fbfc2420a1d0,
+        type: 3}
+      propertyPath: checkpointMaster
+      value: 
+      objectReference: {fileID: 1256036629}
     - target: {fileID: 596696635023619466, guid: 4d930e4130df2c5468e1fbfc2420a1d0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -29385,31 +29410,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5890163448067985032, guid: 4d930e4130df2c5468e1fbfc2420a1d0,
-        type: 3}
-      propertyPath: thisRespawnPoint.x
-      value: 41.37973
-      objectReference: {fileID: 0}
-    - target: {fileID: 5890163448067985032, guid: 4d930e4130df2c5468e1fbfc2420a1d0,
-        type: 3}
-      propertyPath: thisRespawnPoint.y
-      value: 9.072539
-      objectReference: {fileID: 0}
-    - target: {fileID: 5890163448067985032, guid: 4d930e4130df2c5468e1fbfc2420a1d0,
-        type: 3}
-      propertyPath: thisRespawnPoint2.x
-      value: 37.98307
-      objectReference: {fileID: 0}
-    - target: {fileID: 5890163448067985032, guid: 4d930e4130df2c5468e1fbfc2420a1d0,
-        type: 3}
-      propertyPath: thisRespawnPoint2.y
-      value: 0.8694569
-      objectReference: {fileID: 0}
-    - target: {fileID: 5890163448067985032, guid: 4d930e4130df2c5468e1fbfc2420a1d0,
-        type: 3}
-      propertyPath: checkpointMaster
-      value: 
-      objectReference: {fileID: 1256036629}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d930e4130df2c5468e1fbfc2420a1d0, type: 3}
 --- !u!1001 &1773387791
