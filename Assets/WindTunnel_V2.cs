@@ -21,7 +21,7 @@ public class WindTunnel_V2 : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //direction is left
         if (direction == 1) {
