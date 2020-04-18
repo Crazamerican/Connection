@@ -15578,10 +15578,11 @@ MonoBehaviour:
   speed: 0.07
   cam: {fileID: 519420031}
   confusion: {fileID: 0}
-  correctCollider: {fileID: 0}
+  charAnim: {fileID: 0}
   cameraBoi: {fileID: 0}
   player: 0
   player1: {fileID: 0}
+  moveDirection: 0
   onMoveLeft: 0
 --- !u!1 &1145970992
 GameObject:
@@ -16341,6 +16342,12 @@ PrefabInstance:
       objectReference: {fileID: 1964056950}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2f7f2367352b3a4593b9846eec0f033, type: 3}
+--- !u!95 &1198652308 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8445514637207923659, guid: 4beb2dd80a923ba4a84c7606146c7a49,
+    type: 3}
+  m_PrefabInstance: {fileID: 1702012362752396772}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1202653056
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20702,10 +20709,11 @@ MonoBehaviour:
   speed: 0.07
   cam: {fileID: 519420031}
   confusion: {fileID: 0}
-  correctCollider: {fileID: 0}
+  charAnim: {fileID: 0}
   cameraBoi: {fileID: 0}
   player: 0
   player1: {fileID: 0}
+  moveDirection: 0
   onMoveLeft: 0
 --- !u!1001 &1586202547
 PrefabInstance:
@@ -22815,6 +22823,12 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 272ba847f100d4251bb8260575189042, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3b98ab60330aa04d80d299930846453, type: 3}
+--- !u!95 &1754044416 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3776515624226027605, guid: 4beb2dd80a923ba4a84c7606146c7a49,
+    type: 3}
+  m_PrefabInstance: {fileID: 1702012362752396772}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1764855890
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27575,6 +27589,11 @@ PrefabInstance:
       propertyPath: player
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1388275056553514863, guid: 4beb2dd80a923ba4a84c7606146c7a49,
+        type: 3}
+      propertyPath: charAnim
+      value: 
+      objectReference: {fileID: 1754044416}
     - target: {fileID: 1388275056431520512, guid: 4beb2dd80a923ba4a84c7606146c7a49,
         type: 3}
       propertyPath: cam
@@ -27595,6 +27614,11 @@ PrefabInstance:
       propertyPath: player
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1388275056431520512, guid: 4beb2dd80a923ba4a84c7606146c7a49,
+        type: 3}
+      propertyPath: charAnim
+      value: 
+      objectReference: {fileID: 1198652308}
     - target: {fileID: 1388275056431520515, guid: 4beb2dd80a923ba4a84c7606146c7a49,
         type: 3}
       propertyPath: m_LocalPosition.y

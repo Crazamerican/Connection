@@ -270,7 +270,7 @@ public class VerticalMaster : MonoBehaviour
         {
             if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
             {
-                Debug.Log("bottom player2");
+                //Debug.Log("bottom player2");
                 col2 = true;
                 topOrBottom2 = -1;
                 if (collide.gameObject.GetComponent<MovingBox>())
@@ -300,6 +300,15 @@ public class VerticalMaster : MonoBehaviour
         {
             velocity = 0;
             velocity2 = 0;
+
+            charAnim.SetTrigger("grounded");
+            otherCharAnim.SetTrigger("grounded");
+        } else
+        {
+            
+            charAnim.SetTrigger("jumped");
+            otherCharAnim.SetTrigger("jumped");
+            
         }
         //same collider but with the forgiving
         //only needs to check bottom as this forgiving collision only affects the jumping
@@ -445,7 +454,7 @@ public class VerticalMaster : MonoBehaviour
         {
             isSet = false;
             moving = false;
-            transform.SetParent(char_base.transform);
+            //transform.SetParent(char_base.transform);
         }
 
         if (topOrBottom2 == -1)
@@ -470,8 +479,10 @@ public class VerticalMaster : MonoBehaviour
         {
             isSet2 = false;
             moving2 = false;
-            otherPlayer.transform.SetParent(char_base.transform);
+            //otherPlayer.transform.SetParent(char_base.transform);
         }
+
+        
 
     }
     private void OnTriggerEnter2D(Collider2D other)
