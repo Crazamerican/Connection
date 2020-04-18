@@ -179,7 +179,7 @@ public class VerticalMaster : MonoBehaviour
             velocity = 0;
             velocity2 = 0;
             floatTop = true;
-            if (floatTimer > 5)
+            if (floatTimer > 8)
             {
                 floatTop = false;
                 floatTimer = 0;
