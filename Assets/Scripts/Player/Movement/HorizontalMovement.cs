@@ -45,17 +45,16 @@ public class HorizontalMovement : MonoBehaviour {
     void FixedUpdate()
     {
         //Store the current horizontal input in the float moveHorizontal.
-        float moveHorizontal = 0f;
         moveDirection = 0;
         if (cameraScript.freezePlayers == false)
         {
-            if (Input.GetKey(KeyCode.RightArrow))
+            if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
             {
                 //Debug.Log("right hit");
                 moveDirection = 1;
                 
             }
-            else if (Input.GetKey(KeyCode.LeftArrow))
+            else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
             {
                 //Debug.Log("left hit");
                 moveDirection = -1;

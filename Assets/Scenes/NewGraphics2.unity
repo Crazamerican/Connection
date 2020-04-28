@@ -10662,10 +10662,11 @@ MonoBehaviour:
   speed: 0.07
   cam: {fileID: 519420031}
   confusion: {fileID: 0}
-  correctCollider: {fileID: 0}
+  charAnim: {fileID: 0}
   cameraBoi: {fileID: 0}
   player: 0
   player1: {fileID: 0}
+  moveDirection: 0
   onMoveLeft: 0
 --- !u!1001 &1155664723
 PrefabInstance:
@@ -13181,7 +13182,7 @@ PrefabInstance:
     - target: {fileID: 1143475998447377928, guid: b3b98ab60330aa04d80d299930846453,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.9
+      value: -1.8447
       objectReference: {fileID: 0}
     - target: {fileID: 1143475998447377928, guid: b3b98ab60330aa04d80d299930846453,
         type: 3}
@@ -13227,6 +13228,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1143475998447377928, guid: b3b98ab60330aa04d80d299930846453,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.1106
       objectReference: {fileID: 0}
     - target: {fileID: 2229397047266134002, guid: b3b98ab60330aa04d80d299930846453,
         type: 3}
@@ -13545,10 +13551,11 @@ MonoBehaviour:
   speed: 0.07
   cam: {fileID: 519420031}
   confusion: {fileID: 0}
-  correctCollider: {fileID: 0}
+  charAnim: {fileID: 0}
   cameraBoi: {fileID: 0}
   player: 0
   player1: {fileID: 0}
+  moveDirection: 0
   onMoveLeft: 0
 --- !u!1001 &1598157108
 PrefabInstance:
@@ -19600,6 +19607,11 @@ PrefabInstance:
       propertyPath: player1
       value: 
       objectReference: {fileID: 349846969407396495}
+    - target: {fileID: 1388275056553514863, guid: 4beb2dd80a923ba4a84c7606146c7a49,
+        type: 3}
+      propertyPath: charAnim
+      value: 
+      objectReference: {fileID: 1702012362752396775}
     - target: {fileID: 1388275056431520512, guid: 4beb2dd80a923ba4a84c7606146c7a49,
         type: 3}
       propertyPath: cam
@@ -19620,6 +19632,11 @@ PrefabInstance:
       propertyPath: player1
       value: 
       objectReference: {fileID: 349846969407396495}
+    - target: {fileID: 1388275056431520512, guid: 4beb2dd80a923ba4a84c7606146c7a49,
+        type: 3}
+      propertyPath: charAnim
+      value: 
+      objectReference: {fileID: 1702012362752396774}
     - target: {fileID: 1388275056431520515, guid: 4beb2dd80a923ba4a84c7606146c7a49,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -19661,6 +19678,18 @@ PrefabInstance:
 --- !u!1 &1702012362752396773 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1388275056429142774, guid: 4beb2dd80a923ba4a84c7606146c7a49,
+    type: 3}
+  m_PrefabInstance: {fileID: 1702012362752396772}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1702012362752396774 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8445514637207923659, guid: 4beb2dd80a923ba4a84c7606146c7a49,
+    type: 3}
+  m_PrefabInstance: {fileID: 1702012362752396772}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1702012362752396775 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3776515624226027605, guid: 4beb2dd80a923ba4a84c7606146c7a49,
     type: 3}
   m_PrefabInstance: {fileID: 1702012362752396772}
   m_PrefabAsset: {fileID: 0}
