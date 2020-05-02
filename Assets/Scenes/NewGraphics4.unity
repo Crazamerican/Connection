@@ -3567,7 +3567,7 @@ PrefabInstance:
     - target: {fileID: 8975560918488057844, guid: 4035b9f9ca6fc974c89640636494d5ea,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.2
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
         type: 3}
@@ -3594,6 +3594,12 @@ PrefabInstance:
       propertyPath: playerThings
       value: 
       objectReference: {fileID: 2129861901}
+    - target: {fileID: 8975560918488057851, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 97bad21fa563a1a4783afbea841bef1d,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4035b9f9ca6fc974c89640636494d5ea, type: 3}
 --- !u!1001 &502899079
@@ -15650,6 +15656,12 @@ PrefabInstance:
       propertyPath: Checkpoint
       value: 
       objectReference: {fileID: 343564208}
+    - target: {fileID: 684166650218792751, guid: 4beb2dd80a923ba4a84c7606146c7a49,
+        type: 3}
+      propertyPath: groundPrefab
+      value: 
+      objectReference: {fileID: 9150625529964832025, guid: 680a128d1550cda4c9765be2fe6d5441,
+        type: 3}
     - target: {fileID: 1388275056431520513, guid: 4beb2dd80a923ba4a84c7606146c7a49,
         type: 3}
       propertyPath: m_Offset.y
@@ -15660,12 +15672,6 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 2.8016853
       objectReference: {fileID: 0}
-    - target: {fileID: 684166650218792751, guid: 4beb2dd80a923ba4a84c7606146c7a49,
-        type: 3}
-      propertyPath: groundPrefab
-      value: 
-      objectReference: {fileID: 9150625529964832025, guid: 680a128d1550cda4c9765be2fe6d5441,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4beb2dd80a923ba4a84c7606146c7a49, type: 3}
 --- !u!95 &1702012362752396773 stripped
