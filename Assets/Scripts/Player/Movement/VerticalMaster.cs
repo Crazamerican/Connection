@@ -73,9 +73,14 @@ public class VerticalMaster : MonoBehaviour
     bool player1NearGround;
     bool player2NearGround;
 
+    bool topHold;
+    int topTimer;
+
     // Use this for initialization
     void Start()
     {
+        topTimer = 0;
+        topHold = false;
         player1NearGround = false;
         player2NearGround = false;
         player2OnBottom = false;
@@ -185,6 +190,14 @@ public class VerticalMaster : MonoBehaviour
                 floatTimer = 0;
             }
             floatTimer++;
+        } else if (topHold == true) {
+            velocity = 0;
+            velocity2 = 0;
+            if (topTimer > 5) {
+                topHold = false;
+                topTimer = 0;
+            }
+            topTimer++;
         } //if in upward windtunnel sets velocity to .15f
         else if (inTunnel == true)
         {
@@ -417,22 +430,23 @@ public class VerticalMaster : MonoBehaviour
         //used to move player up next to collideable object
         if ((col == true && topOrBottom == 1) || (col2 == true && topOrBottom2 == 1))
         {
+            topHold = true;
             float moveDistance = 0f;
             if (col && col2)
             {
                 moveDistance = distToCol < distToCol2 ? distToCol : distToCol2;
-                transform.position = transform.position + new Vector3(0, moveDistance - .15f);
-                otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, moveDistance - .15f);
+                transform.position = transform.position + new Vector3(0, moveDistance - .015f);
+                otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, moveDistance - .015f);
             }
             else if (col)
             {
-                transform.position = transform.position + new Vector3(0, distToCol - .1f);
-                otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, distToCol - .1f);
+                transform.position = transform.position + new Vector3(0, distToCol - .015f);
+                otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, distToCol - .015f);
             }
             else
             {
-                transform.position = transform.position + new Vector3(0, distToCol2 - .1f);
-                otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, distToCol2 - .1f);
+                transform.position = transform.position + new Vector3(0, distToCol2 - .015f);
+                otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, distToCol2 - .015f);
             }
         }
 

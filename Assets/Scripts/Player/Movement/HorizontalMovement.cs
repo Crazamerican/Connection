@@ -26,6 +26,12 @@ public class HorizontalMovement : MonoBehaviour {
 
     public bool onMoveLeft;
 
+    public float cameraStart;
+
+    public float firstStart;
+    public float firstEnd;
+    public float secondStart;
+
     // Use this for initialization
     void Start()
     {
@@ -220,12 +226,27 @@ public class HorizontalMovement : MonoBehaviour {
             colliderHelper(collider2, true);
             colliderHelper(collider3, true);
         }
-
+        Debug.Log(transform.position.x);
         //if at the left edge of screen (-18 is the left side of the screen)
-        if ((transform.position.x + moveDirection * speed) <= -41)
+        if ((transform.position.x + moveDirection * speed) <= cameraStart)
         {
             col = true;
-            transform.position = new Vector3(-41, transform.position.y);
+            transform.position = new Vector3(cameraStart, transform.position.y);
+        }
+        else if ((transform.position.x + moveDirection * speed) <= firstStart && cameraScript.switchToSecond == false)
+        {
+            col = true;
+            transform.position = new Vector3(firstStart, transform.position.y);
+        }
+        else if ((transform.position.x + moveDirection * speed) <= secondStart && cameraScript.switchToSecond == true)
+        {
+            col = true;
+            transform.position = new Vector3(secondStart + .05f, transform.position.y);
+        }
+        else if ((transform.position.x + moveDirection * speed) >= firstEnd && cameraScript.switchToSecond == false)
+        {
+            col = true;
+            transform.position = new Vector3(firstEnd, transform.position.y);
         }
         //if no collision was found
         if (col == false)
