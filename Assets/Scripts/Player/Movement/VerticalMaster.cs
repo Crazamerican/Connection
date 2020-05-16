@@ -76,9 +76,18 @@ public class VerticalMaster : MonoBehaviour
     bool topHold;
     int topTimer;
 
+    bool coyoteGround;
+    bool coyoteGround2;
+    int coyoteTimer;
+    int coyoteTimer2;
+
     // Use this for initialization
     void Start()
     {
+        coyoteTimer = 0;
+        coyoteTimer2 = 0;
+        coyoteGround = false;
+        coyoteGround2 = false;
         topTimer = 0;
         topHold = false;
         player1NearGround = false;
@@ -122,8 +131,24 @@ public class VerticalMaster : MonoBehaviour
 
     private void Update()
     {
+        if (coyoteGround == true) {
+            coyoteTimer++;
+            if (coyoteTimer >= 7) {
+                coyoteGround = false;
+                coyoteTimer = 0;
+            }
+        }
+        if (coyoteGround2 == true)
+        {
+            coyoteTimer2++;
+            if (coyoteTimer2 >= 7)
+            {
+                coyoteGround2 = false;
+                coyoteTimer2 = 0;
+            }
+        }
         //if jump button pressed and a character is on or extremely near the ground and not frozen
-        if (Input.GetButtonDown("Jump") && (forgiveGround || forgiveGround2) && cameraScript.freezePlayers == false)
+        if (Input.GetButtonDown("Jump") && (forgiveGround || forgiveGround2 || coyoteGround || coyoteGround2) && cameraScript.freezePlayers == false)
         {
             //jumps in opposite direction if inverted
             if (inverted == true || inverted2 == true)
@@ -140,6 +165,8 @@ public class VerticalMaster : MonoBehaviour
             grounded2 = false;
             forgiveGround = false;
             forgiveGround2 = false;
+            coyoteGround = false;
+            coyoteGround2 = false;
             audioSource.PlayOneShot(jumpSound, 0.7F);
 
         }
@@ -379,11 +406,18 @@ public class VerticalMaster : MonoBehaviour
         //if player isn't colliding with anything it is no longer grounded
         if (col == false)
         {
+            if (grounded == true) {
+                coyoteGround = true;
+            }
             grounded = false;
             hiddenGroundFlag1 = false;
         }
         if (col2 == false)
         {
+            if (grounded2 == true)
+            {
+                coyoteGround2 = true;
+            }
             grounded2 = false;
             hiddenGroundFlag2 = false;
         }
