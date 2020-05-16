@@ -259,31 +259,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spikes (23)
       objectReference: {fileID: 0}
-    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
-        type: 3}
-      propertyPath: Checkpoint
-      value: 
-      objectReference: {fileID: 1139367605}
-    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
-        type: 3}
-      propertyPath: player1
-      value: 
-      objectReference: {fileID: 1562170747}
-    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
-        type: 3}
-      propertyPath: player2
-      value: 
-      objectReference: {fileID: 1750727409}
-    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
-        type: 3}
-      propertyPath: playBoth
-      value: 
-      objectReference: {fileID: 1802086491}
-    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
-        type: 3}
-      propertyPath: playerThings
-      value: 
-      objectReference: {fileID: 1802086491}
     - target: {fileID: 8975560918488057844, guid: 4035b9f9ca6fc974c89640636494d5ea,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -339,20 +314,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4035b9f9ca6fc974c89640636494d5ea, type: 3}
---- !u!1001 &147577023
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 8975560918488057849, guid: 4035b9f9ca6fc974c89640636494d5ea,
-        type: 3}
-      propertyPath: m_Name
-      value: Spikes (6)
-      objectReference: {fileID: 0}
     - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
         type: 3}
       propertyPath: Checkpoint
@@ -378,6 +339,20 @@ PrefabInstance:
       propertyPath: playerThings
       value: 
       objectReference: {fileID: 1802086491}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4035b9f9ca6fc974c89640636494d5ea, type: 3}
+--- !u!1001 &147577023
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8975560918488057849, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: m_Name
+      value: Spikes (6)
+      objectReference: {fileID: 0}
     - target: {fileID: 8975560918488057844, guid: 4035b9f9ca6fc974c89640636494d5ea,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -433,6 +408,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: Checkpoint
+      value: 
+      objectReference: {fileID: 1139367605}
+    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: player1
+      value: 
+      objectReference: {fileID: 1562170747}
+    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: player2
+      value: 
+      objectReference: {fileID: 1750727409}
+    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: playBoth
+      value: 
+      objectReference: {fileID: 1802086491}
+    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: playerThings
+      value: 
+      objectReference: {fileID: 1802086491}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4035b9f9ca6fc974c89640636494d5ea, type: 3}
 --- !u!1 &160715377
@@ -1122,31 +1122,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spikes (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
-        type: 3}
-      propertyPath: Checkpoint
-      value: 
-      objectReference: {fileID: 1139367605}
-    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
-        type: 3}
-      propertyPath: player1
-      value: 
-      objectReference: {fileID: 1562170747}
-    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
-        type: 3}
-      propertyPath: player2
-      value: 
-      objectReference: {fileID: 1750727409}
-    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
-        type: 3}
-      propertyPath: playBoth
-      value: 
-      objectReference: {fileID: 1802086491}
-    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
-        type: 3}
-      propertyPath: playerThings
-      value: 
-      objectReference: {fileID: 1802086491}
     - target: {fileID: 8975560918488057844, guid: 4035b9f9ca6fc974c89640636494d5ea,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1202,20 +1177,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4035b9f9ca6fc974c89640636494d5ea, type: 3}
---- !u!1001 &630342125
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 8975560918488057849, guid: 4035b9f9ca6fc974c89640636494d5ea,
-        type: 3}
-      propertyPath: m_Name
-      value: Spikes (9)
-      objectReference: {fileID: 0}
     - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
         type: 3}
       propertyPath: Checkpoint
@@ -1241,6 +1202,20 @@ PrefabInstance:
       propertyPath: playerThings
       value: 
       objectReference: {fileID: 1802086491}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4035b9f9ca6fc974c89640636494d5ea, type: 3}
+--- !u!1001 &630342125
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8975560918488057849, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: m_Name
+      value: Spikes (9)
+      objectReference: {fileID: 0}
     - target: {fileID: 8975560918488057844, guid: 4035b9f9ca6fc974c89640636494d5ea,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1296,20 +1271,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4035b9f9ca6fc974c89640636494d5ea, type: 3}
---- !u!1001 &665049440
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 8975560918488057849, guid: 4035b9f9ca6fc974c89640636494d5ea,
-        type: 3}
-      propertyPath: m_Name
-      value: Spikes (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
         type: 3}
       propertyPath: Checkpoint
@@ -1335,6 +1296,20 @@ PrefabInstance:
       propertyPath: playerThings
       value: 
       objectReference: {fileID: 1802086491}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4035b9f9ca6fc974c89640636494d5ea, type: 3}
+--- !u!1001 &665049440
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8975560918488057849, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: m_Name
+      value: Spikes (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 8975560918488057844, guid: 4035b9f9ca6fc974c89640636494d5ea,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1390,6 +1365,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: Checkpoint
+      value: 
+      objectReference: {fileID: 1139367605}
+    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: player1
+      value: 
+      objectReference: {fileID: 1562170747}
+    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: player2
+      value: 
+      objectReference: {fileID: 1750727409}
+    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: playBoth
+      value: 
+      objectReference: {fileID: 1802086491}
+    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: playerThings
+      value: 
+      objectReference: {fileID: 1802086491}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4035b9f9ca6fc974c89640636494d5ea, type: 3}
 --- !u!1001 &677429674
@@ -1564,31 +1564,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spikes (4)
       objectReference: {fileID: 0}
-    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
-        type: 3}
-      propertyPath: Checkpoint
-      value: 
-      objectReference: {fileID: 1139367605}
-    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
-        type: 3}
-      propertyPath: player1
-      value: 
-      objectReference: {fileID: 1562170747}
-    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
-        type: 3}
-      propertyPath: player2
-      value: 
-      objectReference: {fileID: 1750727409}
-    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
-        type: 3}
-      propertyPath: playBoth
-      value: 
-      objectReference: {fileID: 1802086491}
-    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
-        type: 3}
-      propertyPath: playerThings
-      value: 
-      objectReference: {fileID: 1802086491}
     - target: {fileID: 8975560918488057844, guid: 4035b9f9ca6fc974c89640636494d5ea,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1644,6 +1619,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: Checkpoint
+      value: 
+      objectReference: {fileID: 1139367605}
+    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: player1
+      value: 
+      objectReference: {fileID: 1562170747}
+    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: player2
+      value: 
+      objectReference: {fileID: 1750727409}
+    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: playBoth
+      value: 
+      objectReference: {fileID: 1802086491}
+    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: playerThings
+      value: 
+      objectReference: {fileID: 1802086491}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4035b9f9ca6fc974c89640636494d5ea, type: 3}
 --- !u!1 &815094429
@@ -1749,31 +1749,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spikes (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
-        type: 3}
-      propertyPath: Checkpoint
-      value: 
-      objectReference: {fileID: 1139367605}
-    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
-        type: 3}
-      propertyPath: player1
-      value: 
-      objectReference: {fileID: 1562170747}
-    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
-        type: 3}
-      propertyPath: player2
-      value: 
-      objectReference: {fileID: 1750727409}
-    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
-        type: 3}
-      propertyPath: playBoth
-      value: 
-      objectReference: {fileID: 1802086491}
-    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
-        type: 3}
-      propertyPath: playerThings
-      value: 
-      objectReference: {fileID: 1802086491}
     - target: {fileID: 8975560918488057844, guid: 4035b9f9ca6fc974c89640636494d5ea,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1829,6 +1804,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: Checkpoint
+      value: 
+      objectReference: {fileID: 1139367605}
+    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: player1
+      value: 
+      objectReference: {fileID: 1562170747}
+    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: player2
+      value: 
+      objectReference: {fileID: 1750727409}
+    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: playBoth
+      value: 
+      objectReference: {fileID: 1802086491}
+    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: playerThings
+      value: 
+      objectReference: {fileID: 1802086491}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4035b9f9ca6fc974c89640636494d5ea, type: 3}
 --- !u!1001 &826087576
@@ -2338,31 +2338,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spikes
       objectReference: {fileID: 0}
-    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
-        type: 3}
-      propertyPath: Checkpoint
-      value: 
-      objectReference: {fileID: 1139367605}
-    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
-        type: 3}
-      propertyPath: player1
-      value: 
-      objectReference: {fileID: 1562170747}
-    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
-        type: 3}
-      propertyPath: player2
-      value: 
-      objectReference: {fileID: 1750727409}
-    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
-        type: 3}
-      propertyPath: playBoth
-      value: 
-      objectReference: {fileID: 1802086491}
-    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
-        type: 3}
-      propertyPath: playerThings
-      value: 
-      objectReference: {fileID: 1802086491}
     - target: {fileID: 8975560918488057844, guid: 4035b9f9ca6fc974c89640636494d5ea,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2418,6 +2393,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: Checkpoint
+      value: 
+      objectReference: {fileID: 1139367605}
+    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: player1
+      value: 
+      objectReference: {fileID: 1562170747}
+    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: player2
+      value: 
+      objectReference: {fileID: 1750727409}
+    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: playBoth
+      value: 
+      objectReference: {fileID: 1802086491}
+    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: playerThings
+      value: 
+      objectReference: {fileID: 1802086491}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4035b9f9ca6fc974c89640636494d5ea, type: 3}
 --- !u!1001 &1122118121
@@ -2870,31 +2870,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spikes (5)
       objectReference: {fileID: 0}
-    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
-        type: 3}
-      propertyPath: Checkpoint
-      value: 
-      objectReference: {fileID: 1139367605}
-    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
-        type: 3}
-      propertyPath: player1
-      value: 
-      objectReference: {fileID: 1562170747}
-    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
-        type: 3}
-      propertyPath: player2
-      value: 
-      objectReference: {fileID: 1750727409}
-    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
-        type: 3}
-      propertyPath: playBoth
-      value: 
-      objectReference: {fileID: 1802086491}
-    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
-        type: 3}
-      propertyPath: playerThings
-      value: 
-      objectReference: {fileID: 1802086491}
     - target: {fileID: 8975560918488057844, guid: 4035b9f9ca6fc974c89640636494d5ea,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2950,20 +2925,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 4035b9f9ca6fc974c89640636494d5ea, type: 3}
---- !u!1001 &1418605215
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 8975560918488057849, guid: 4035b9f9ca6fc974c89640636494d5ea,
-        type: 3}
-      propertyPath: m_Name
-      value: Spikes (8)
-      objectReference: {fileID: 0}
     - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
         type: 3}
       propertyPath: Checkpoint
@@ -2989,6 +2950,20 @@ PrefabInstance:
       propertyPath: playerThings
       value: 
       objectReference: {fileID: 1802086491}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4035b9f9ca6fc974c89640636494d5ea, type: 3}
+--- !u!1001 &1418605215
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8975560918488057849, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: m_Name
+      value: Spikes (8)
+      objectReference: {fileID: 0}
     - target: {fileID: 8975560918488057844, guid: 4035b9f9ca6fc974c89640636494d5ea,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3044,6 +3019,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: Checkpoint
+      value: 
+      objectReference: {fileID: 1139367605}
+    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: player1
+      value: 
+      objectReference: {fileID: 1562170747}
+    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: player2
+      value: 
+      objectReference: {fileID: 1750727409}
+    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: playBoth
+      value: 
+      objectReference: {fileID: 1802086491}
+    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: playerThings
+      value: 
+      objectReference: {fileID: 1802086491}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4035b9f9ca6fc974c89640636494d5ea, type: 3}
 --- !u!1001 &1441668373
@@ -3128,6 +3128,11 @@ PrefabInstance:
       propertyPath: cameraBoi
       value: 
       objectReference: {fileID: 1878596454}
+    - target: {fileID: 1388275056553514863, guid: 4beb2dd80a923ba4a84c7606146c7a49,
+        type: 3}
+      propertyPath: charAnim
+      value: 
+      objectReference: {fileID: 1441668375}
     - target: {fileID: 1388275056431520512, guid: 4beb2dd80a923ba4a84c7606146c7a49,
         type: 3}
       propertyPath: cam
@@ -3138,6 +3143,11 @@ PrefabInstance:
       propertyPath: cameraBoi
       value: 
       objectReference: {fileID: 1878596454}
+    - target: {fileID: 1388275056431520512, guid: 4beb2dd80a923ba4a84c7606146c7a49,
+        type: 3}
+      propertyPath: charAnim
+      value: 
+      objectReference: {fileID: 1441668374}
     - target: {fileID: 1388275056431520515, guid: 4beb2dd80a923ba4a84c7606146c7a49,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -3170,6 +3180,18 @@ PrefabInstance:
       objectReference: {fileID: 1139367605}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4beb2dd80a923ba4a84c7606146c7a49, type: 3}
+--- !u!95 &1441668374 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8445514637207923659, guid: 4beb2dd80a923ba4a84c7606146c7a49,
+    type: 3}
+  m_PrefabInstance: {fileID: 1441668373}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1441668375 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3776515624226027605, guid: 4beb2dd80a923ba4a84c7606146c7a49,
+    type: 3}
+  m_PrefabInstance: {fileID: 1441668373}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1546050026
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3787,31 +3809,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spikes (7)
       objectReference: {fileID: 0}
-    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
-        type: 3}
-      propertyPath: Checkpoint
-      value: 
-      objectReference: {fileID: 1139367605}
-    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
-        type: 3}
-      propertyPath: player1
-      value: 
-      objectReference: {fileID: 1562170747}
-    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
-        type: 3}
-      propertyPath: player2
-      value: 
-      objectReference: {fileID: 1750727409}
-    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
-        type: 3}
-      propertyPath: playBoth
-      value: 
-      objectReference: {fileID: 1802086491}
-    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
-        type: 3}
-      propertyPath: playerThings
-      value: 
-      objectReference: {fileID: 1802086491}
     - target: {fileID: 8975560918488057844, guid: 4035b9f9ca6fc974c89640636494d5ea,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3867,6 +3864,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: Checkpoint
+      value: 
+      objectReference: {fileID: 1139367605}
+    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: player1
+      value: 
+      objectReference: {fileID: 1562170747}
+    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: player2
+      value: 
+      objectReference: {fileID: 1750727409}
+    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: playBoth
+      value: 
+      objectReference: {fileID: 1802086491}
+    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: playerThings
+      value: 
+      objectReference: {fileID: 1802086491}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4035b9f9ca6fc974c89640636494d5ea, type: 3}
 --- !u!1001 &1707420654
@@ -4927,31 +4949,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spikes (44)
       objectReference: {fileID: 0}
-    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
-        type: 3}
-      propertyPath: Checkpoint
-      value: 
-      objectReference: {fileID: 1139367605}
-    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
-        type: 3}
-      propertyPath: player1
-      value: 
-      objectReference: {fileID: 1562170747}
-    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
-        type: 3}
-      propertyPath: player2
-      value: 
-      objectReference: {fileID: 1750727409}
-    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
-        type: 3}
-      propertyPath: playBoth
-      value: 
-      objectReference: {fileID: 1802086491}
-    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
-        type: 3}
-      propertyPath: playerThings
-      value: 
-      objectReference: {fileID: 1802086491}
     - target: {fileID: 8975560918488057844, guid: 4035b9f9ca6fc974c89640636494d5ea,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5007,6 +5004,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: Checkpoint
+      value: 
+      objectReference: {fileID: 1139367605}
+    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: player1
+      value: 
+      objectReference: {fileID: 1562170747}
+    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: player2
+      value: 
+      objectReference: {fileID: 1750727409}
+    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: playBoth
+      value: 
+      objectReference: {fileID: 1802086491}
+    - target: {fileID: 8975560918488057845, guid: 4035b9f9ca6fc974c89640636494d5ea,
+        type: 3}
+      propertyPath: playerThings
+      value: 
+      objectReference: {fileID: 1802086491}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4035b9f9ca6fc974c89640636494d5ea, type: 3}
 --- !u!1001 &2097702362

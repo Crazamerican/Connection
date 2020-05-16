@@ -73,9 +73,23 @@ public class VerticalMaster : MonoBehaviour
     bool player1NearGround;
     bool player2NearGround;
 
+    bool topHold;
+    int topTimer;
+
+    bool coyoteGround;
+    bool coyoteGround2;
+    int coyoteTimer;
+    int coyoteTimer2;
+
     // Use this for initialization
     void Start()
     {
+        coyoteTimer = 0;
+        coyoteTimer2 = 0;
+        coyoteGround = false;
+        coyoteGround2 = false;
+        topTimer = 0;
+        topHold = false;
         player1NearGround = false;
         player2NearGround = false;
         player2OnBottom = false;
@@ -117,8 +131,24 @@ public class VerticalMaster : MonoBehaviour
 
     private void Update()
     {
+        if (coyoteGround == true) {
+            coyoteTimer++;
+            if (coyoteTimer >= 7) {
+                coyoteGround = false;
+                coyoteTimer = 0;
+            }
+        }
+        if (coyoteGround2 == true)
+        {
+            coyoteTimer2++;
+            if (coyoteTimer2 >= 7)
+            {
+                coyoteGround2 = false;
+                coyoteTimer2 = 0;
+            }
+        }
         //if jump button pressed and a character is on or extremely near the ground and not frozen
-        if (Input.GetButtonDown("Jump") && (forgiveGround || forgiveGround2) && cameraScript.freezePlayers == false)
+        if (Input.GetButtonDown("Jump") && (forgiveGround || forgiveGround2 || coyoteGround || coyoteGround2) && cameraScript.freezePlayers == false)
         {
             //jumps in opposite direction if inverted
             if (inverted == true || inverted2 == true)
@@ -135,6 +165,8 @@ public class VerticalMaster : MonoBehaviour
             grounded2 = false;
             forgiveGround = false;
             forgiveGround2 = false;
+            coyoteGround = false;
+            coyoteGround2 = false;
             audioSource.PlayOneShot(jumpSound, 0.7F);
 
         }
@@ -185,6 +217,14 @@ public class VerticalMaster : MonoBehaviour
                 floatTimer = 0;
             }
             floatTimer++;
+        } else if (topHold == true) {
+            velocity = 0;
+            velocity2 = 0;
+            if (topTimer > 5) {
+                topHold = false;
+                topTimer = 0;
+            }
+            topTimer++;
         } //if in upward windtunnel sets velocity to .15f
         else if (inTunnel == true)
         {
@@ -270,7 +310,7 @@ public class VerticalMaster : MonoBehaviour
         {
             if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
             {
-                Debug.Log("bottom player2");
+                //Debug.Log("bottom player2");
                 col2 = true;
                 topOrBottom2 = -1;
                 if (collide.gameObject.GetComponent<MovingBox>())
@@ -300,6 +340,15 @@ public class VerticalMaster : MonoBehaviour
         {
             velocity = 0;
             velocity2 = 0;
+
+            charAnim.SetTrigger("grounded");
+            otherCharAnim.SetTrigger("grounded");
+        } else
+        {
+            
+            charAnim.SetTrigger("jumped");
+            otherCharAnim.SetTrigger("jumped");
+            
         }
         //same collider but with the forgiving
         //only needs to check bottom as this forgiving collision only affects the jumping
@@ -357,11 +406,18 @@ public class VerticalMaster : MonoBehaviour
         //if player isn't colliding with anything it is no longer grounded
         if (col == false)
         {
+            if (grounded == true) {
+                coyoteGround = true;
+            }
             grounded = false;
             hiddenGroundFlag1 = false;
         }
         if (col2 == false)
         {
+            if (grounded2 == true)
+            {
+                coyoteGround2 = true;
+            }
             grounded2 = false;
             hiddenGroundFlag2 = false;
         }
@@ -408,22 +464,23 @@ public class VerticalMaster : MonoBehaviour
         //used to move player up next to collideable object
         if ((col == true && topOrBottom == 1) || (col2 == true && topOrBottom2 == 1))
         {
+            topHold = true;
             float moveDistance = 0f;
             if (col && col2)
             {
                 moveDistance = distToCol < distToCol2 ? distToCol : distToCol2;
-                transform.position = transform.position + new Vector3(0, moveDistance - .15f);
-                otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, moveDistance - .15f);
+                transform.position = transform.position + new Vector3(0, moveDistance - .015f);
+                otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, moveDistance - .015f);
             }
             else if (col)
             {
-                transform.position = transform.position + new Vector3(0, distToCol - .1f);
-                otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, distToCol - .1f);
+                transform.position = transform.position + new Vector3(0, distToCol - .015f);
+                otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, distToCol - .015f);
             }
             else
             {
-                transform.position = transform.position + new Vector3(0, distToCol2 - .1f);
-                otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, distToCol2 - .1f);
+                transform.position = transform.position + new Vector3(0, distToCol2 - .015f);
+                otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, distToCol2 - .015f);
             }
         }
 
@@ -445,7 +502,7 @@ public class VerticalMaster : MonoBehaviour
         {
             isSet = false;
             moving = false;
-            transform.SetParent(char_base.transform);
+            //transform.SetParent(char_base.transform);
         }
 
         if (topOrBottom2 == -1)
@@ -470,8 +527,10 @@ public class VerticalMaster : MonoBehaviour
         {
             isSet2 = false;
             moving2 = false;
-            otherPlayer.transform.SetParent(char_base.transform);
+            //otherPlayer.transform.SetParent(char_base.transform);
         }
+
+        
 
     }
     private void OnTriggerEnter2D(Collider2D other)

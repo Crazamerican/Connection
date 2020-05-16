@@ -6,6 +6,7 @@ public class FollowPlayer : MonoBehaviour
     //The two player characters
     public GameObject player;       
     public GameObject player2;
+    HorizontalMovement horScript;
     float p1width;
 
     Camera cam;
@@ -25,15 +26,12 @@ public class FollowPlayer : MonoBehaviour
 
     public GameObject firstStop;
     public GameObject secondStop;
-    public GameObject thirdStop;
     cameraEnd firstStopScript;
     cameraEnd secondStopScript;
-    cameraEnd thirdStopScript;
 
     bool curCamEnd;
     bool switchStop;
-    bool switchToSecond;
-    bool switchStop2;
+    public bool switchToSecond;
 
     public bool freezePlayers;
 
@@ -42,18 +40,22 @@ public class FollowPlayer : MonoBehaviour
     bool startDead;
     bool onInit;
 
+    float firstEnd;
+    public float secondInit;
+
 
     private Vector3 offset;         //Private variable to store the offset distance between the player and camera
 
     // Use this for initialization
     void Start()
     {
+        horScript = player.GetComponent<HorizontalMovement>();
+        firstEnd = horScript.firstEnd;
         onInit = true;
         startDead = true;
         deathScript = playBoth.GetComponent<DeathScript>();
         firstStopScript = firstStop.GetComponent<cameraEnd>();
         secondStopScript = secondStop.GetComponent<cameraEnd>();
-        thirdStopScript = thirdStop.GetComponent<cameraEnd>();
         //Calculate and store the offset value by getting the distance between the player's position and camera's position.
         offset = transform.position - player.transform.position;
         cam = GetComponent<Camera>();
@@ -76,12 +78,12 @@ public class FollowPlayer : MonoBehaviour
         camRight = transform.position + widThing;
         curCamEnd = firstStopScript.cameraHere;
         switchStop = false;
-        switchStop2 = false;
         freezePlayers = false;
         switchToSecond = false;
     }
     private void Update()
     {
+        firstEnd = horScript.firstEnd;
         //the player's horizontal input (whether they are pressing the arrows right or left)
         //0 if not touch, negative if left, positive if right
         moveHorizontal = Input.GetAxis("Horizontal");
@@ -102,12 +104,9 @@ public class FollowPlayer : MonoBehaviour
         if (switchStop == false)
         {
             curCamEnd = firstStopScript.cameraHere;
-        } else if (switchStop2 == false)
-        {
+        }
+        else {
             curCamEnd = secondStopScript.cameraHere;
-        } else
-        {
-            curCamEnd = thirdStopScript.cameraHere;
         }
     }
 
@@ -189,6 +188,7 @@ public class FollowPlayer : MonoBehaviour
             }
         }
         //move camera left
+        //else if (camLeft.x > cam.ScreenToWorldPoint(initCam).x && curCamEnd == false)
         else if (camLeft.x > cam.ScreenToWorldPoint(initCam).x && curCamEnd == false)
         {
             camDif = cam.ScreenToWorldPoint(new Vector3(playerAvg, height / 2));
@@ -198,19 +198,20 @@ public class FollowPlayer : MonoBehaviour
             transform.position = initCam;
         }
         //used to indicate screen transition
-        if (playerCam.x >= (width) && player2Cam.x >= (width))
+        //if (playerCam.x >= (width) && player2Cam.x >= (width))
+        if (player.transform.position.x >= firstEnd - .05f && player2.transform.position.x >= firstEnd - .05f && switchStop == false)
         {
             freezePlayers = true;
             playerCam = cam.WorldToScreenPoint(player.transform.position);
             player2Cam = cam.WorldToScreenPoint(player2.transform.position);
             playerAvg = (playerCam.x + player2Cam.x) / 2;
             initCam = (cam.ScreenToWorldPoint(new Vector3(playerAvg + width / 2, height / 2)));
-            initCam -= new Vector3(p1width * 3 / 4, 0);
+            initCam -= new Vector3(p1width * 1 / 2, 0);
+            //initCam = new Vector3(secondInit, initCam.y);
             //used to setup next screen transition
-            if (switchToSecond == true) {
-                switchStop2 = true;
-            }
             switchStop = true;
+            player.transform.position = new Vector3(horScript.secondStart + .05f, player.transform.position.y);
+            player2.transform.position = new Vector3(horScript.secondStart + .05f, player2.transform.position.y);
         }
     }
 }

@@ -9,9 +9,9 @@ public class HorizontalMovement : MonoBehaviour {
     public GameObject confusion;
     float width;
     float height;
-    public BoxCollider correctCollider;
+    //public BoxCollider correctCollider;
 
-    Animator charAnim;
+    public Animator charAnim;
 
     public GameObject cameraBoi;
     FollowPlayer cameraScript;
@@ -22,7 +22,15 @@ public class HorizontalMovement : MonoBehaviour {
     public GameObject player1;
     VerticalMaster masterScript;
 
+    public int moveDirection;
+
     public bool onMoveLeft;
+
+    public float cameraStart;
+
+    public float firstStart;
+    public float firstEnd;
+    public float secondStart;
 
     // Use this for initialization
     void Start()
@@ -33,7 +41,7 @@ public class HorizontalMovement : MonoBehaviour {
         unlock = false;
         width = GetComponent<BoxCollider2D>().bounds.size.x;
         height = GetComponent<BoxCollider2D>().bounds.size.y;
-        charAnim = GetComponentInChildren<Animator>();
+        //charAnim = GetComponentInChildren<Animator>();
         col = false;
         distanceToCollision = 0f;
         extraSpeed = 0f;
@@ -43,40 +51,28 @@ public class HorizontalMovement : MonoBehaviour {
     void FixedUpdate()
     {
         //Store the current horizontal input in the float moveHorizontal.
-        float moveHorizontal = 0f;
-        int moveDirection = 0;
+        moveDirection = 0;
         if (cameraScript.freezePlayers == false)
         {
-            if (Input.GetKey(KeyCode.RightArrow))
+            if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
             {
-                Debug.Log("right hit");
+                //Debug.Log("right hit");
                 moveDirection = 1;
+                
             }
-            else if (Input.GetKey(KeyCode.LeftArrow))
+            else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
             {
-                Debug.Log("left hit");
+                //Debug.Log("left hit");
                 moveDirection = -1;
+                
             }
-            moveHorizontal = Input.GetAxis("Horizontal");
+            
         }
 
-        //Send data to animator
-        if (charAnim != null)
-        {
-            //To Do: Left Move
-            //if (moveHorizontal >= .1)
-            //{
-            //    charAnim.SetBool("walking", true);
-            //    charAnim.speed = moveHorizontal;
-            //}  else
-            //{
-            //    charAnim.SetBool("walking", false);
-            //    charAnim.speed = 1;
-            //}
+        //send data to animator
+        charAnim.SetFloat("horizontalSpeed", moveDirection);
 
-            //Set the horizontal speed in the animator, letting the anim blend animations
-            charAnim.SetFloat("horizontalSpeed", moveHorizontal);
-        }
+        
 
         //Use the two store floats to create a new Vector2 variable movement.
         //Vector2 movement = new Vector2(moveHorizontal, 0);
@@ -114,7 +110,7 @@ public class HorizontalMovement : MonoBehaviour {
 
         if (extraSpeed != 0)
         {
-            Debug.Log("something");
+            //Debug.Log("something");
             if (player == 1)
             {
                 if (masterScript.onMoving == false)
@@ -172,10 +168,10 @@ public class HorizontalMovement : MonoBehaviour {
             //transform.position += new Vector3(extraSpeed, 0);
         }
 
-        float notMovingCheck = 0f;
-        if (moveHorizontal == 0) {
-            notMovingCheck = .05f;
-        }
+        //float notMovingCheck = 0f;
+        //if (moveHorizontal == 0) {
+        //    notMovingCheck = .05f;
+        //}
 
         //colliders test if these overlaping circles collide with anything, and list the colliders
         //three colliders for two corners on side of box and midpoint inbetween them
@@ -183,19 +179,19 @@ public class HorizontalMovement : MonoBehaviour {
         Collider2D[] collider2 = Physics2D.OverlapCircleAll(transform.position + new Vector3(moveDirection * speed + additionalSpeed, (height / 2)), 0.01f);
         Collider2D[] collider3 = Physics2D.OverlapCircleAll(transform.position + new Vector3(moveDirection * speed + additionalSpeed, -(height / 2 - .02f)), 0.01f);
         //test colliders of the character's movement to the right
-        Collider2D[] collider4 = Physics2D.OverlapCircleAll(transform.position + new Vector3(moveDirection * speed + (width / 2) + additionalSpeed * .98f + notMovingCheck, 0), 0.01f);
-        Collider2D[] collider5 = Physics2D.OverlapCircleAll(transform.position + new Vector3(moveDirection * speed + (width / 2) + additionalSpeed * .98f + notMovingCheck, (height / 2)), 0.01f);
-        Collider2D[] collider6 = Physics2D.OverlapCircleAll(transform.position + new Vector3(moveDirection * speed + (width / 2) + additionalSpeed * .98f + notMovingCheck, -(height / 2 - .02f)), 0.01f);
+        Collider2D[] collider4 = Physics2D.OverlapCircleAll(transform.position + new Vector3(moveDirection * speed + (width / 2) + additionalSpeed * .98f + .05f, 0), 0.01f);
+        Collider2D[] collider5 = Physics2D.OverlapCircleAll(transform.position + new Vector3(moveDirection * speed + (width / 2) + additionalSpeed * .98f + .05f, (height / 2)), 0.01f);
+        Collider2D[] collider6 = Physics2D.OverlapCircleAll(transform.position + new Vector3(moveDirection * speed + (width / 2) + additionalSpeed * .98f + .05f, -(height / 2 - .02f)), 0.01f);
         //test colliders of the character's movement to the left
-        Collider2D[] collider13 = Physics2D.OverlapCircleAll(transform.position + new Vector3(moveDirection * speed - (width / 2) - additionalSpeed - notMovingCheck, 0), 0.01f);
-        Collider2D[] collider14 = Physics2D.OverlapCircleAll(transform.position + new Vector3(moveDirection * speed - (width / 2) - additionalSpeed - notMovingCheck, (height / 2)), 0.01f);
-        Collider2D[] collider15 = Physics2D.OverlapCircleAll(transform.position + new Vector3(moveDirection * speed - (width / 2) - additionalSpeed - notMovingCheck, -(height / 2 - .02f)), 0.01f);
+        Collider2D[] collider13 = Physics2D.OverlapCircleAll(transform.position + new Vector3(moveDirection * speed - (width / 2) - additionalSpeed - .05f, 0), 0.01f);
+        Collider2D[] collider14 = Physics2D.OverlapCircleAll(transform.position + new Vector3(moveDirection * speed - (width / 2) - additionalSpeed - .05f, (height / 2)), 0.01f);
+        Collider2D[] collider15 = Physics2D.OverlapCircleAll(transform.position + new Vector3(moveDirection * speed - (width / 2) - additionalSpeed - .05f, -(height / 2 - .02f)), 0.01f);
 
         col = false;
         distanceToCollision = 0f;
         //goes through everything that collided with 
         extraSpeed = 0f;
-        if ((moveHorizontal > 0 && speed > 0) || (moveHorizontal < 0 && speed < 0))
+        if ((moveDirection > 0 && speed > 0) || (moveDirection < 0 && speed < 0))
         {
             colliderHelper(collider4, true);
             colliderHelper(collider5, true);
@@ -207,7 +203,7 @@ public class HorizontalMovement : MonoBehaviour {
             colliderHelper(collider2, false);
             colliderHelper(collider3, false);
         }
-        else if ((moveHorizontal < 0 && speed > 0) || (moveHorizontal > 0 && speed < 0))
+        else if ((moveDirection < 0 && speed > 0) || (moveDirection > 0 && speed < 0))
         {
             colliderHelper(collider4, false);
             colliderHelper(collider5, false);
@@ -230,23 +226,38 @@ public class HorizontalMovement : MonoBehaviour {
             colliderHelper(collider2, true);
             colliderHelper(collider3, true);
         }
-
+        Debug.Log(transform.position.x);
         //if at the left edge of screen (-18 is the left side of the screen)
-        if ((transform.position.x + moveDirection * speed) <= -41)
+        if ((transform.position.x + moveDirection * speed) <= cameraStart)
         {
             col = true;
-            transform.position = new Vector3(-41, transform.position.y);
+            transform.position = new Vector3(cameraStart, transform.position.y);
+        }
+        else if ((transform.position.x + moveDirection * speed) <= firstStart && cameraScript.switchToSecond == false)
+        {
+            col = true;
+            transform.position = new Vector3(firstStart, transform.position.y);
+        }
+        else if ((transform.position.x + moveDirection * speed) <= secondStart && cameraScript.switchToSecond == true)
+        {
+            col = true;
+            transform.position = new Vector3(secondStart + .05f, transform.position.y);
+        }
+        else if ((transform.position.x + moveDirection * speed) >= firstEnd && cameraScript.switchToSecond == false)
+        {
+            col = true;
+            transform.position = new Vector3(firstEnd, transform.position.y);
         }
         //if no collision was found
         if (col == false)
         {
             //if going right and not at right edge of screen)
-            if (cam.WorldToScreenPoint(transform.position).x <= cam.pixelWidth && moveHorizontal > 0)
+            if (cam.WorldToScreenPoint(transform.position).x <= cam.pixelWidth && moveDirection > 0)
             {
                 transform.position = transform.position + new Vector3(moveDirection * speed, 0);
             }
             //if going left and not at left edge of screen)
-            else if (cam.WorldToScreenPoint(transform.position).x >= 0 && moveHorizontal < 0)
+            else if (cam.WorldToScreenPoint(transform.position).x >= 0 && moveDirection < 0)
             {
                 transform.position = transform.position + new Vector3(moveDirection * speed, 0);
             }
@@ -255,7 +266,7 @@ public class HorizontalMovement : MonoBehaviour {
             Debug.Log("Edging");
             //Debug.Log("Distance to collision: " + distanceToCollision);
             // Move character right up to the colliding wall
-            if (moveHorizontal > 0) //moving right
+            if (moveDirection > 0) //moving right
             {
                 transform.position += new Vector3(distanceToCollision - .01f, 0);
             } else  //moving left

@@ -19,6 +19,7 @@ TagManager:
   - Checkpoint
   - EventManager
   - MoveBox
+  - WorldDoor
   layers:
   - Default
   - TransparentFX
