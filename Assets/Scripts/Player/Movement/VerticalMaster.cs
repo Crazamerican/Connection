@@ -283,6 +283,7 @@ public class VerticalMaster : MonoBehaviour
                     moving = true;
                     box = collide.gameObject;
                 }
+                distToCol = GetComponent<BoxCollider2D>().Distance(collide).distance;
             }
         }
 
@@ -318,6 +319,7 @@ public class VerticalMaster : MonoBehaviour
                     moving2 = true;
                     box = collide.gameObject;
                 }
+                distToCol2 = otherPlayer.GetComponent<BoxCollider2D>().Distance(collide).distance;
             }
             if (collide.tag == "Ground")
             {
@@ -387,6 +389,8 @@ public class VerticalMaster : MonoBehaviour
                 // sets player2 hiddenGround flag for hidden ground animation to play
                 hiddenGroundFlag2 = true;
             }
+            
+
             col2 = true;
             topOrBottom2 = topOrBottom;
         }
@@ -400,9 +404,12 @@ public class VerticalMaster : MonoBehaviour
                     hiddenGroundFlag1 = true;
                 }
             }
+            
             col = true;
             topOrBottom = topOrBottom2;
         }
+
+
         //if player isn't colliding with anything it is no longer grounded
         if (col == false)
         {
@@ -430,6 +437,12 @@ public class VerticalMaster : MonoBehaviour
         {
             topOrBottom2 = topOrBottom2 * -1;
         }
+
+        if (!grounded && (col || col2))
+        {
+            FlushCollision(col, col2, inverted);
+        }
+
         //if hit a ceiling or bottom of box
         if (col == true && topOrBottom == 1)
         {
@@ -438,6 +451,7 @@ public class VerticalMaster : MonoBehaviour
         //if hit a ground then sets player to grounded and velocity to 0
         else if (col == true && topOrBottom == -1)
         {
+
             velocity = 0;
             grounded = true;
         }
@@ -448,9 +462,12 @@ public class VerticalMaster : MonoBehaviour
         }
         else if (col2 == true && topOrBottom2 == -1)
         {
+            
+
             velocity2 = 0;
             grounded2 = true;
         }
+
         //moves player1
         if (col == false)
         {
@@ -465,23 +482,8 @@ public class VerticalMaster : MonoBehaviour
         if ((col == true && topOrBottom == 1) || (col2 == true && topOrBottom2 == 1))
         {
             topHold = true;
-            float moveDistance = 0f;
-            if (col && col2)
-            {
-                moveDistance = distToCol < distToCol2 ? distToCol : distToCol2;
-                transform.position = transform.position + new Vector3(0, moveDistance - .015f);
-                otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, moveDistance - .015f);
-            }
-            else if (col)
-            {
-                transform.position = transform.position + new Vector3(0, distToCol - .015f);
-                otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, distToCol - .015f);
-            }
-            else
-            {
-                transform.position = transform.position + new Vector3(0, distToCol2 - .015f);
-                otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, distToCol2 - .015f);
-            }
+
+            //FlushCollision(col, col2);
         }
 
         if (topOrBottom == -1)
@@ -570,5 +572,36 @@ public class VerticalMaster : MonoBehaviour
         return topOrBottom2;
     }
 
+    private void FlushCollision(bool col, bool col2, bool inverted)
+    {
+
+        float direction = -1f;
+        float padding = -.011f;
+        //determine proper direction for correction shift
+        if (inverted)
+        {
+            direction *= -1f;
+        }
+
+
+
+        if (col && col2)
+        {
+            float moveDistance = 0f;
+            moveDistance = distToCol < distToCol2 ? distToCol : distToCol2;
+            transform.position = transform.position + new Vector3(0, (moveDistance + padding) * direction * -topOrBottom);
+            otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, (moveDistance + padding) * direction * -topOrBottom2);
+        }
+        else if (col)
+        {
+            transform.position = transform.position + new Vector3(0, (distToCol + padding) * direction * -topOrBottom);
+            otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, (distToCol + padding) * direction * -topOrBottom);
+        }
+        else
+        {
+            transform.position = transform.position + new Vector3(0, (distToCol2 + padding) * direction * -topOrBottom2);
+            otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, (distToCol2 + padding) * direction * -topOrBottom2);
+        }
+    }
 }
 
