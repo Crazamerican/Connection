@@ -226,7 +226,7 @@ public class HorizontalMovement : MonoBehaviour {
             colliderHelper(collider2, true);
             colliderHelper(collider3, true);
         }
-        Debug.Log(transform.position.x);
+        //Debug.Log(transform.position.x);
         //if at the left edge of screen (-18 is the left side of the screen)
         if ((transform.position.x + moveDirection * speed) <= cameraStart)
         {
