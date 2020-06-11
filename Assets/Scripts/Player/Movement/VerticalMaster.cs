@@ -131,9 +131,11 @@ public class VerticalMaster : MonoBehaviour
 
     private void Update()
     {
-        if (coyoteGround == true) {
+        if (coyoteGround == true)
+        {
             coyoteTimer++;
-            if (coyoteTimer >= 7) {
+            if (coyoteTimer >= 7)
+            {
                 coyoteGround = false;
                 coyoteTimer = 0;
             }
@@ -217,10 +219,13 @@ public class VerticalMaster : MonoBehaviour
                 floatTimer = 0;
             }
             floatTimer++;
-        } else if (topHold == true) {
+        }
+        else if (topHold == true)
+        {
             velocity = 0;
             velocity2 = 0;
-            if (topTimer > 5) {
+            if (topTimer > 5)
+            {
                 topHold = false;
                 topTimer = 0;
             }
@@ -366,12 +371,13 @@ public class VerticalMaster : MonoBehaviour
 
             charAnim.SetTrigger("grounded");
             otherCharAnim.SetTrigger("grounded");
-        } else
+        }
+        else
         {
-            
+
             charAnim.SetTrigger("jumped");
             otherCharAnim.SetTrigger("jumped");
-            
+
         }
         //same collider but with the forgiving
         //only needs to check bottom as this forgiving collision only affects the jumping
@@ -406,11 +412,12 @@ public class VerticalMaster : MonoBehaviour
         //if player1 collides than player2 also collides as well
         if (col == true)
         {
-            if (col2 == false && player2NearGround == false) {
+            if (col2 == false && player2NearGround == false)
+            {
                 // sets player2 hiddenGround flag for hidden ground animation to play
                 hiddenGroundFlag2 = true;
             }
-            
+
 
             //col2 = true;
             topOrBottom2 = topOrBottom;
@@ -418,7 +425,8 @@ public class VerticalMaster : MonoBehaviour
         //if player2 collides than player1 also collides
         else if (col2 == true)
         {
-            if (col == false && player1NearGround == false) {
+            if (col == false && player1NearGround == false)
+            {
                 // sets player1 hiddenGround flag for hidden ground animation to play
                 if (player2OnBottom == false)
                 {
@@ -427,6 +435,7 @@ public class VerticalMaster : MonoBehaviour
             }
             
             //col = true;
+
             topOrBottom = topOrBottom2;
         }
 
@@ -434,7 +443,8 @@ public class VerticalMaster : MonoBehaviour
         //if player isn't colliding with anything it is no longer grounded
         if (col == false)
         {
-            if (grounded == true) {
+            if (grounded == true)
+            {
                 coyoteGround = true;
             }
             grounded = false;
@@ -483,7 +493,7 @@ public class VerticalMaster : MonoBehaviour
         }
         else if (col2 == true && topOrBottom2 == -1)
         {
-            
+
 
             velocity2 = 0;
             grounded2 = true;
@@ -550,7 +560,7 @@ public class VerticalMaster : MonoBehaviour
             //otherPlayer.transform.SetParent(char_base.transform);
         }
 
-        
+
 
     }
     private void OnTriggerEnter2D(Collider2D other)
@@ -594,11 +604,16 @@ public class VerticalMaster : MonoBehaviour
     {
 
         float direction = -1f;
-        float padding = .011f;
+        float padding = .01f;
         //determine proper direction for correction shift
         if (inverted)
         {
             direction *= -1f;
+        }
+
+        if (topbottom1 == 1 || topbottom2 == 1)
+        {
+            padding = .011f;
         }
 
         Debug.Log("distToCol: " + distToCol);
@@ -624,4 +639,3 @@ public class VerticalMaster : MonoBehaviour
         }
     }
 }
-
