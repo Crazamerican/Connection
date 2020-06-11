@@ -32,9 +32,14 @@ public class HorizontalMovement : MonoBehaviour {
     public float firstEnd;
     public float secondStart;
 
+    public bool touchingMoving;
+    public float movingPush;
+
     // Use this for initialization
     void Start()
     {
+        touchingMoving = false;
+        movingPush = 0f;
         onMoveLeft = false;
         masterScript = player1.GetComponent<VerticalMaster>();
         cameraScript = cameraBoi.GetComponent<FollowPlayer>();
@@ -50,6 +55,8 @@ public class HorizontalMovement : MonoBehaviour {
     //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
     void FixedUpdate()
     {
+        movingPush = 0f;
+        touchingMoving = false;
         //Store the current horizontal input in the float moveHorizontal.
         moveDirection = 0;
         if (cameraScript.freezePlayers == false)
@@ -226,6 +233,23 @@ public class HorizontalMovement : MonoBehaviour {
             colliderHelper(collider2, true);
             colliderHelper(collider3, true);
         }
+
+        //test colliders of the character's with push blocks on right
+        Collider2D[] colliderRight1 = Physics2D.OverlapCircleAll(transform.position + new Vector3((width / 2) + .05f, 0), 0.01f);
+        Collider2D[] colliderRight2 = Physics2D.OverlapCircleAll(transform.position + new Vector3((width / 2) + .05f, (height / 2)), 0.01f);
+        Collider2D[] colliderRight3 = Physics2D.OverlapCircleAll(transform.position + new Vector3((width / 2) + .05f, -(height / 2 - .02f)), 0.01f);
+        //test colliders of the character's with push blocks on left
+        Collider2D[] colliderLeft1 = Physics2D.OverlapCircleAll(transform.position + new Vector3(-(width / 2) - .05f, 0), 0.01f);
+        Collider2D[] colliderLeft2 = Physics2D.OverlapCircleAll(transform.position + new Vector3(-(width / 2) - .05f, (height / 2)), 0.01f);
+        Collider2D[] colliderLeft3 = Physics2D.OverlapCircleAll(transform.position + new Vector3(-(width / 2) - .05f, -(height / 2 - .02f)), 0.01f);
+
+        collidePush(colliderRight1);
+        collidePush(colliderRight2);
+        collidePush(colliderRight3);
+        collidePush(colliderLeft1);
+        collidePush(colliderLeft2);
+        collidePush(colliderLeft3);
+
         //Debug.Log(transform.position.x);
         //if at the left edge of screen (-18 is the left side of the screen)
         if ((transform.position.x + moveDirection * speed) <= cameraStart)
@@ -251,8 +275,12 @@ public class HorizontalMovement : MonoBehaviour {
         //if no collision was found
         if (col == false)
         {
+            if (touchingMoving == true)
+            {
+                transform.position = transform.position + new Vector3(movingPush, 0);
+            }
             //if going right and not at right edge of screen)
-            if (cam.WorldToScreenPoint(transform.position).x <= cam.pixelWidth && moveDirection > 0)
+            else if (cam.WorldToScreenPoint(transform.position).x <= cam.pixelWidth && moveDirection > 0)
             {
                 transform.position = transform.position + new Vector3(moveDirection * speed, 0);
             }
@@ -320,19 +348,53 @@ public class HorizontalMovement : MonoBehaviour {
         //transform.position += new Vector3(additionalSpeed, 0);
         //transform.position = transform.position + new Vector3(movement.x * speed, movement.y * speed);
     }
-    private void colliderHelper(Collider2D[] collider, bool allColliders) {
+    private void collidePush(Collider2D[] collider) {
+        bool leftCol = false;
+        bool rightCol = false;
         foreach (var collide in collider)
         {
+            if (collide.gameObject.tag == "Push")
+            {
+                pushBlock pushScript = collide.gameObject.GetComponent<pushBlock>();
+                leftCol = pushScript.leftCol;
+                rightCol = pushScript.rightCol;
+            }
+            if (collide.gameObject.tag == "Push" && ((!leftCol && moveDirection == -1) || (!rightCol && moveDirection == 1)) && Input.GetButton("Push"))
+            {
+                Debug.Log("push box");
+                touchingMoving = true;
+                if (moveDirection == 1)
+                {
+                    movingPush = speed * 1 / 2;
+                    collide.gameObject.GetComponent<pushBlock>().movingPush = movingPush;
+                }
+                else if (moveDirection == -1)
+                {
+                    movingPush = speed * -1 / 2;
+                    collide.gameObject.GetComponent<pushBlock>().movingPush = movingPush;
+                }
+            }
+        }
+    }
+    private void colliderHelper(Collider2D[] collider, bool allColliders) {
+        bool leftCol = false;
+        bool rightCol = false;
+        foreach (var collide in collider)
+        {
+            if (collide.gameObject.tag == "Push")
+            {
+                pushBlock pushScript = collide.gameObject.GetComponent<pushBlock>();
+                leftCol = pushScript.leftCol;
+                rightCol = pushScript.rightCol;
+            }
             if (collide.gameObject.GetComponent<Collideable>() && allColliders == true)
             {
-                if (collide.gameObject.tag == "MoveBox") {
-                    Debug.Log("raymandayman");
+                if (collide.gameObject.tag != "Push" || ((collide.gameObject.tag == "Push" && !Input.GetButton("Push"))) || (((collide.gameObject.tag == "Push" && Input.GetButton("Push"))) && ((leftCol && moveDirection == -1) || (rightCol && moveDirection == 1)))) {
+                    col = true;
+                    distanceToCollision = GetComponent<BoxCollider2D>().Distance(collide).distance;
                 }
-                col = true;
-                distanceToCollision = GetComponent<BoxCollider2D>().Distance(collide).distance;
             }
             else if (collide.gameObject.tag == "MoveBox" && allColliders == false) {
-                Debug.Log("herpaderp");
                 float otherMovingSpeed = collide.gameObject.GetComponent<HorizontalBox>().speed;
                 col = true;
                 if (otherMovingSpeed < 0)
