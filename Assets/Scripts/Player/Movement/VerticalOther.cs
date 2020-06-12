@@ -28,22 +28,22 @@ public class VerticalOther : MonoBehaviour
 
     public Collider2D[] GetTopBoi(float velocity)
     {
-        return Physics2D.OverlapAreaAll(transform.position + new Vector3(-width / 2, velocity + height / 2), transform.position + new Vector3(+width / 2, velocity + height / 2 + .01f));
+        return Physics2D.OverlapAreaAll(transform.position + new Vector3(-width / 2.1f, velocity + height / 2), transform.position + new Vector3(+width / 2.1f, velocity + height / 2 + .01f));
     }
 
     public Collider2D[] GetBotBoi(float velocity)
     {
-        return Physics2D.OverlapAreaAll(transform.position + new Vector3(-width / 2, velocity - height / 2), transform.position + new Vector3(+width / 2, velocity - height / 2 - .01f));
+        return Physics2D.OverlapAreaAll(transform.position + new Vector3(-width / 2.1f, velocity - height / 2), transform.position + new Vector3(+width / 2.1f, velocity - height / 2 - .01f));
     }
 
     public Collider2D[] GetBotBoi_Moving(float velocity)
     {
-        return Physics2D.OverlapAreaAll(transform.position + new Vector3(-width / 2, velocity - height / 2), transform.position + new Vector3(+width / 2, velocity - height / 2 - .01f));
+        return Physics2D.OverlapAreaAll(transform.position + new Vector3(-width / 2.1f, velocity - height / 2), transform.position + new Vector3(+width / 2.1f, velocity - height / 2 - .01f));
     }
 
     public Collider2D[] GetBot_Forgive(float velocity)
     {
-        return Physics2D.OverlapAreaAll(transform.position + new Vector3(-width / 2, velocity - height / 2), transform.position + new Vector3(+width / 2, velocity - height / 2 - .5f));
+        return Physics2D.OverlapAreaAll(transform.position + new Vector3(-width / 2.1f, velocity - height / 2), transform.position + new Vector3(+width / 2.1f, velocity - height / 2 - .3f));
     }
 
 
