@@ -275,7 +275,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1388275056431520526}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -17.44, y: -4.5585, z: 0}
+  m_LocalPosition: {x: -20.04, y: -4.6785, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children:
   - {fileID: 1388275055435783796}
@@ -307,7 +307,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.8044386, y: 2.813085}
+  m_Size: {x: 2.8047552, y: 2.82273}
   m_EdgeRadius: 0
 --- !u!114 &1388275056431520512
 MonoBehaviour:
@@ -324,11 +324,22 @@ MonoBehaviour:
   speed: 0.1
   cam: {fileID: 0}
   confusion: {fileID: 1388275055435783795}
-  correctCollider: {fileID: 0}
+  charAnim: {fileID: 8445514637207923659}
   cameraBoi: {fileID: 0}
-  player: 0
-  player1: {fileID: 0}
+  player: 2
+  player1: {fileID: 1388275056553514859}
+  moveDirection: 0
   onMoveLeft: 0
+  cameraStart: -41
+  firstStart: -34.24
+  firstEnd: 36.05
+  secondStart: 36.05
+  touchingMoving: 0
+  movingPush: 0
+  pushLeft: 0
+  nonPushLeft: 0
+  pushRight: 0
+  nonPushRight: 0
 --- !u!114 &1388275056431520527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -382,7 +393,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.75, y: 0.75}
+  m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
 --- !u!1 &1388275056553514859
 GameObject:
@@ -417,7 +428,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1388275056553514859}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -17.611, y: 3.5693, z: 0}
+  m_LocalPosition: {x: -20.04, y: 3.5251, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children:
   - {fileID: 6416322232857222087}
@@ -449,7 +460,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.8007889, y: 2.7963657}
+  m_Size: {x: 2.7975264, y: 2.7963657}
   m_EdgeRadius: 0
 --- !u!114 &1388275056553514863
 MonoBehaviour:
@@ -466,11 +477,22 @@ MonoBehaviour:
   speed: 0.1
   cam: {fileID: 0}
   confusion: {fileID: 5339679058350084652}
-  correctCollider: {fileID: 0}
+  charAnim: {fileID: 3776515624226027605}
   cameraBoi: {fileID: 0}
-  player: 0
-  player1: {fileID: 0}
+  player: 1
+  player1: {fileID: 1388275056553514859}
+  moveDirection: 0
   onMoveLeft: 0
+  cameraStart: -41
+  firstStart: -34.24
+  firstEnd: 36.05
+  secondStart: 36.05
+  touchingMoving: 0
+  movingPush: 0
+  pushLeft: 0
+  nonPushLeft: 0
+  pushRight: 0
+  nonPushRight: 0
 --- !u!114 &1388275056553514862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -500,6 +522,8 @@ MonoBehaviour:
   jumpTakeOffSpeed: 0.3
   grounded: 0
   grounded2: 0
+  velocity: 0
+  velocity2: 0
   gravity: 0.026
   gravity2: 0.026
   otherPlayer: {fileID: 1388275056431520526}
@@ -507,6 +531,8 @@ MonoBehaviour:
   char_base: {fileID: 0}
   ghost: {fileID: 0}
   cameraBoi: {fileID: 0}
+  forgiveGround: 0
+  forgiveGround2: 0
   inTunnel: 0
   onMoving: 0
   onSpeed: 0
@@ -524,7 +550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb91f87d9585ec642aec839459828941, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundPrefab: {fileID: 1538826662666602442, guid: f4212953b6aaa9945bd91a710aa219b2,
+  groundPrefab: {fileID: 9150625529964832025, guid: 680a128d1550cda4c9765be2fe6d5441,
     type: 3}
   player1: {fileID: 1388275056553514859}
   player2: {fileID: 1388275056431520526}
@@ -552,7 +578,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.75, y: 0.75}
+  m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
 --- !u!82 &5061457933204637680
 AudioSource:
