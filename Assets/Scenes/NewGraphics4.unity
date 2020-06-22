@@ -8330,6 +8330,12 @@ MonoBehaviour:
   firstStart: 0
   firstEnd: 0
   secondStart: 0
+  touchingMoving: 0
+  movingPush: 0
+  pushLeft: 0
+  nonPushLeft: 0
+  pushRight: 0
+  nonPushRight: 0
 --- !u!1001 &1145146807
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10470,7 +10476,7 @@ GameObject:
   - component: {fileID: 1531898428}
   m_Layer: 0
   m_Name: Ground (6)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11046,6 +11052,12 @@ MonoBehaviour:
   firstStart: 0
   firstEnd: 0
   secondStart: 0
+  touchingMoving: 0
+  movingPush: 0
+  pushLeft: 0
+  nonPushLeft: 0
+  pushRight: 0
+  nonPushRight: 0
 --- !u!1001 &1599092116
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15533,7 +15545,7 @@ PrefabInstance:
     - target: {fileID: 1388275056429142775, guid: 4beb2dd80a923ba4a84c7606146c7a49,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 2.6
       objectReference: {fileID: 0}
     - target: {fileID: 1388275056429142775, guid: 4beb2dd80a923ba4a84c7606146c7a49,
         type: 3}
@@ -15593,7 +15605,7 @@ PrefabInstance:
     - target: {fileID: 1388275056553514860, guid: 4beb2dd80a923ba4a84c7606146c7a49,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -17.44
+      value: -20.04
       objectReference: {fileID: 0}
     - target: {fileID: 1388275056553514863, guid: 4beb2dd80a923ba4a84c7606146c7a49,
         type: 3}

@@ -7,11 +7,11 @@ public class VerticalMaster : MonoBehaviour
     //speed players initial jump is set to affects jump height as well
     public float jumpTakeOffSpeed = 7;
 
-    [SerializeField] private bool grounded;
-    [SerializeField] private bool grounded2;
+    public bool grounded;
+    public bool grounded2;
     //player current speed
-    float velocity;
-    float velocity2;
+    [SerializeField] float velocity;
+    [SerializeField] float velocity2;
     public float gravity;
     public float gravity2;
     //otherPlayer is Player2
@@ -53,8 +53,8 @@ public class VerticalMaster : MonoBehaviour
     public GameObject cameraBoi;
     FollowPlayer cameraScript;
     //similar to grounded but with a bit of extra wiggle room so player can be near ground and still jump
-    bool forgiveGround;
-    bool forgiveGround2;
+    public bool forgiveGround;
+    public bool forgiveGround2;
 
     bool floatTop;
     int floatTimer;
@@ -131,9 +131,11 @@ public class VerticalMaster : MonoBehaviour
 
     private void Update()
     {
-        if (coyoteGround == true) {
+        if (coyoteGround == true)
+        {
             coyoteTimer++;
-            if (coyoteTimer >= 7) {
+            if (coyoteTimer >= 7)
+            {
                 coyoteGround = false;
                 coyoteTimer = 0;
             }
@@ -148,7 +150,7 @@ public class VerticalMaster : MonoBehaviour
             }
         }
         //if jump button pressed and a character is on or extremely near the ground and not frozen
-        if (Input.GetButtonDown("Jump") && (forgiveGround || forgiveGround2 || coyoteGround || coyoteGround2) && cameraScript.freezePlayers == false)
+        if (Input.GetButtonDown("Jump") && (forgiveGround || forgiveGround2 || coyoteGround || coyoteGround2) && cameraScript.freezePlayers == false && (!otherPlayer.GetComponent<HorizontalMovement>().touchingMoving && !this.GetComponent<HorizontalMovement>().touchingMoving))
         {
             //jumps in opposite direction if inverted
             if (inverted == true || inverted2 == true)
@@ -217,10 +219,13 @@ public class VerticalMaster : MonoBehaviour
                 floatTimer = 0;
             }
             floatTimer++;
-        } else if (topHold == true) {
+        }
+        else if (topHold == true)
+        {
             velocity = 0;
             velocity2 = 0;
-            if (topTimer > 5) {
+            if (topTimer > 5)
+            {
                 topHold = false;
                 topTimer = 0;
             }
@@ -230,6 +235,11 @@ public class VerticalMaster : MonoBehaviour
         {
             velocity = 0.15f;
             velocity2 = 0.15f;
+        } 
+        else if (grounded || grounded2)
+        {
+            velocity = 0f;
+            velocity2 = 0f;
         } //incorperates velocity to gravity
         else
         {
@@ -237,11 +247,11 @@ public class VerticalMaster : MonoBehaviour
             velocity2 = velocity2 - gravity2;
         }
         //sets a bunch of colliders based on where the player will be if you incorperate the velocity
-        Collider2D[] topboi = Physics2D.OverlapAreaAll(transform.position + new Vector3(-width / 2, velocity + height / 2), transform.position + new Vector3(+width / 2, velocity + height / 2 + .01f));
-        Collider2D[] bottomboi = Physics2D.OverlapAreaAll(transform.position + new Vector3(-width / 2, velocity - height / 2), transform.position + new Vector3(+width / 2, velocity - height / 2 - .01f));
-        Collider2D[] bottomboi_Moving = Physics2D.OverlapAreaAll(transform.position + new Vector3(-width / 2, velocity - height / 2), transform.position + new Vector3(+width / 2, velocity - height / 2 - .01f));
+        Collider2D[] topboi = Physics2D.OverlapAreaAll(transform.position + new Vector3(-width / 2.1f, velocity + height / 2), transform.position + new Vector3(+width / 2.1f, velocity + height / 2 + .01f));
+        Collider2D[] bottomboi = Physics2D.OverlapAreaAll(transform.position + new Vector3(-width / 2.1f, velocity - height / 2), transform.position + new Vector3(+width / 2.1f, velocity - height / 2 - .01f));
+        Collider2D[] bottomboi_Moving = Physics2D.OverlapAreaAll(transform.position + new Vector3(-width / 2.1f, velocity - height / 2), transform.position + new Vector3(+width / 2.1f, velocity - height / 2 - .01f));
         //forgiving collider goes a bit further than regular colliders
-        Collider2D[] bottom1_forgive = Physics2D.OverlapAreaAll(transform.position + new Vector3(-width / 2, velocity - height / 2), transform.position + new Vector3(+width / 2, velocity - height / 2 - .5f));
+        Collider2D[] bottom1_forgive = Physics2D.OverlapAreaAll(transform.position + new Vector3(-width / 2.1f, velocity - height / 2), transform.position + new Vector3(+width / 2.1f, velocity - height / 2 - .3f));
         //player2 colliders from VerticalOther script
         Collider2D[] topboi_2 = otherScript.GetTopBoi(velocity2);
         Collider2D[] bottomboi_2 = otherScript.GetBotBoi(velocity2);
@@ -267,7 +277,10 @@ public class VerticalMaster : MonoBehaviour
             {
                 col = true;
                 topOrBottom = 1;
-                distToCol = GetComponent<BoxCollider2D>().Distance(collide).distance;
+                float newDist = GetComponent<BoxCollider2D>().Distance(collide).distance;
+                if (newDist < distToCol) {
+                    distToCol = newDist;
+                }
             }
         }
         //see if player1 is colliding with something on it's bottom
@@ -275,7 +288,7 @@ public class VerticalMaster : MonoBehaviour
         {
             if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
             {
-                Debug.Log("bottom player2");
+                //Debug.Log("bottom player1");
                 col = true;
                 topOrBottom = -1;
                 if (collide.gameObject.GetComponent<MovingBox>())
@@ -283,7 +296,12 @@ public class VerticalMaster : MonoBehaviour
                     moving = true;
                     box = collide.gameObject;
                 }
-                distToCol = GetComponent<BoxCollider2D>().Distance(collide).distance;
+
+                float newDist = GetComponent<BoxCollider2D>().Distance(collide).distance;
+                if (newDist < distToCol)
+                {
+                    distToCol = newDist;
+                }
             }
         }
 
@@ -301,7 +319,11 @@ public class VerticalMaster : MonoBehaviour
         {
             if (collide.gameObject.GetComponent<Collideable>() || collide.tag == "Ground")
             {
-                distToCol2 = otherPlayer.GetComponent<BoxCollider2D>().Distance(collide).distance;
+                float newDist = otherPlayer.GetComponent<BoxCollider2D>().Distance(collide).distance;
+                if (newDist < distToCol2)
+                {
+                    distToCol2 = newDist;
+                }
                 col2 = true;
                 topOrBottom2 = 1;
             }
@@ -319,7 +341,11 @@ public class VerticalMaster : MonoBehaviour
                     moving2 = true;
                     box = collide.gameObject;
                 }
-                distToCol2 = otherPlayer.GetComponent<BoxCollider2D>().Distance(collide).distance;
+                float newDist = otherPlayer.GetComponent<BoxCollider2D>().Distance(collide).distance;
+                if (newDist < distToCol2)
+                {
+                    distToCol2 = newDist;
+                }
             }
             if (collide.tag == "Ground")
             {
@@ -345,12 +371,13 @@ public class VerticalMaster : MonoBehaviour
 
             charAnim.SetTrigger("grounded");
             otherCharAnim.SetTrigger("grounded");
-        } else
+        }
+        else
         {
-            
+
             charAnim.SetTrigger("jumped");
             otherCharAnim.SetTrigger("jumped");
-            
+
         }
         //same collider but with the forgiving
         //only needs to check bottom as this forgiving collision only affects the jumping
@@ -385,19 +412,21 @@ public class VerticalMaster : MonoBehaviour
         //if player1 collides than player2 also collides as well
         if (col == true)
         {
-            if (col2 == false && player2NearGround == false) {
+            if (col2 == false && player2NearGround == false)
+            {
                 // sets player2 hiddenGround flag for hidden ground animation to play
                 hiddenGroundFlag2 = true;
             }
-            
 
-            col2 = true;
+
+            //col2 = true;
             topOrBottom2 = topOrBottom;
         }
         //if player2 collides than player1 also collides
         else if (col2 == true)
         {
-            if (col == false && player1NearGround == false) {
+            if (col == false && player1NearGround == false)
+            {
                 // sets player1 hiddenGround flag for hidden ground animation to play
                 if (player2OnBottom == false)
                 {
@@ -405,7 +434,8 @@ public class VerticalMaster : MonoBehaviour
                 }
             }
             
-            col = true;
+            //col = true;
+
             topOrBottom = topOrBottom2;
         }
 
@@ -413,7 +443,8 @@ public class VerticalMaster : MonoBehaviour
         //if player isn't colliding with anything it is no longer grounded
         if (col == false)
         {
-            if (grounded == true) {
+            if (grounded == true)
+            {
                 coyoteGround = true;
             }
             grounded = false;
@@ -440,7 +471,7 @@ public class VerticalMaster : MonoBehaviour
 
         if (!grounded && (col || col2))
         {
-            FlushCollision(col, col2, inverted);
+            FlushCollision(col, col2, topOrBottom, topOrBottom2);
         }
 
         //if hit a ceiling or bottom of box
@@ -462,22 +493,19 @@ public class VerticalMaster : MonoBehaviour
         }
         else if (col2 == true && topOrBottom2 == -1)
         {
-            
+
 
             velocity2 = 0;
             grounded2 = true;
         }
 
         //moves player1
-        if (col == false)
+        if (col == false && col2 == false)
         {
             transform.position = transform.position + new Vector3(0, velocity);
-        }
-        //moves player2
-        if (col2 == false)
-        {
             otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, velocity2);
         }
+        
         //used to move player up next to collideable object
         if ((col == true && topOrBottom == 1) || (col2 == true && topOrBottom2 == 1))
         {
@@ -532,7 +560,7 @@ public class VerticalMaster : MonoBehaviour
             //otherPlayer.transform.SetParent(char_base.transform);
         }
 
-        
+
 
     }
     private void OnTriggerEnter2D(Collider2D other)
@@ -572,36 +600,39 @@ public class VerticalMaster : MonoBehaviour
         return topOrBottom2;
     }
 
-    private void FlushCollision(bool col, bool col2, bool inverted)
+    private void FlushCollision(bool col, bool col2, int topbottom1, int topbottom2)
     {
 
         float direction = -1f;
-        float padding = -.011f;
+        float padding = .01f;
         //determine proper direction for correction shift
         if (inverted)
         {
             direction *= -1f;
         }
 
-
+        if (topbottom1 == 1 || topbottom2 == 1)
+        {
+            padding = .011f;
+        }
 
         if (col && col2)
         {
             float moveDistance = 0f;
             moveDistance = distToCol < distToCol2 ? distToCol : distToCol2;
-            transform.position = transform.position + new Vector3(0, (moveDistance + padding) * direction * -topOrBottom);
-            otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, (moveDistance + padding) * direction * -topOrBottom2);
+            int correctTopBottom = distToCol < distToCol2 ? topbottom1 : topbottom2;
+            transform.position = transform.position + new Vector3(0, (moveDistance - padding) * direction * -correctTopBottom);
+            otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, (moveDistance - padding) * direction * -correctTopBottom);
         }
         else if (col)
         {
-            transform.position = transform.position + new Vector3(0, (distToCol + padding) * direction * -topOrBottom);
-            otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, (distToCol + padding) * direction * -topOrBottom);
+            transform.position = transform.position + new Vector3(0, (distToCol - padding) * direction * -topbottom1);
+            otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, (distToCol - padding) * direction * -topbottom1);
         }
         else
         {
-            transform.position = transform.position + new Vector3(0, (distToCol2 + padding) * direction * -topOrBottom2);
-            otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, (distToCol2 + padding) * direction * -topOrBottom2);
+            transform.position = transform.position + new Vector3(0, (distToCol2 - padding) * direction * -topbottom2);
+            otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, (distToCol2 - padding) * direction * -topbottom2);
         }
     }
 }
-

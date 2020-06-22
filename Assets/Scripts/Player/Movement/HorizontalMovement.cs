@@ -32,9 +32,23 @@ public class HorizontalMovement : MonoBehaviour {
     public float firstEnd;
     public float secondStart;
 
+    public bool touchingMoving;
+    public float movingPush;
+
+    public bool pushLeft;
+    public bool nonPushLeft;
+    public bool pushRight;
+    public bool nonPushRight;
+
     // Use this for initialization
     void Start()
     {
+        pushLeft = false;
+        nonPushLeft = false;
+        pushRight = false;
+        nonPushRight = false;
+        touchingMoving = false;
+        movingPush = 0f;
         onMoveLeft = false;
         masterScript = player1.GetComponent<VerticalMaster>();
         cameraScript = cameraBoi.GetComponent<FollowPlayer>();
@@ -50,6 +64,8 @@ public class HorizontalMovement : MonoBehaviour {
     //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
     void FixedUpdate()
     {
+        movingPush = 0f;
+        touchingMoving = false;
         //Store the current horizontal input in the float moveHorizontal.
         moveDirection = 0;
         if (cameraScript.freezePlayers == false)
@@ -226,6 +242,27 @@ public class HorizontalMovement : MonoBehaviour {
             colliderHelper(collider2, true);
             colliderHelper(collider3, true);
         }
+
+        pushLeft = false;
+        nonPushLeft = false;
+        pushRight = false;
+        nonPushRight = false;
+
+        //test colliders of the character's with push blocks on right
+        Collider2D[] colliderRight1 = Physics2D.OverlapCircleAll(transform.position + new Vector3((width / 2) + .05f, 0), 0.01f);
+        Collider2D[] colliderRight2 = Physics2D.OverlapCircleAll(transform.position + new Vector3((width / 2) + .05f, (height / 2)), 0.01f);
+        Collider2D[] colliderRight3 = Physics2D.OverlapCircleAll(transform.position + new Vector3((width / 2) + .05f, -(height / 2 - .02f)), 0.01f);
+        //test colliders of the character's with push blocks on left
+        Collider2D[] colliderLeft1 = Physics2D.OverlapCircleAll(transform.position + new Vector3(-(width / 2) - .05f, 0), 0.01f);
+        Collider2D[] colliderLeft2 = Physics2D.OverlapCircleAll(transform.position + new Vector3(-(width / 2) - .05f, (height / 2)), 0.01f);
+        Collider2D[] colliderLeft3 = Physics2D.OverlapCircleAll(transform.position + new Vector3(-(width / 2) - .05f, -(height / 2 - .02f)), 0.01f);
+        collidePush(colliderRight1, false);
+        collidePush(colliderRight2, false);
+        collidePush(colliderRight3, false);
+        //collidePush(colliderLeft1, true);
+        collidePush(colliderLeft2, true);
+        collidePush(colliderLeft3, true);
+
         //Debug.Log(transform.position.x);
         //if at the left edge of screen (-18 is the left side of the screen)
         if ((transform.position.x + moveDirection * speed) <= cameraStart)
@@ -251,8 +288,12 @@ public class HorizontalMovement : MonoBehaviour {
         //if no collision was found
         if (col == false)
         {
+            if (touchingMoving == true)
+            {
+                transform.position = transform.position + new Vector3(movingPush, 0);
+            }
             //if going right and not at right edge of screen)
-            if (cam.WorldToScreenPoint(transform.position).x <= cam.pixelWidth && moveDirection > 0)
+            else if (cam.WorldToScreenPoint(transform.position).x <= cam.pixelWidth && moveDirection > 0)
             {
                 transform.position = transform.position + new Vector3(moveDirection * speed, 0);
             }
@@ -263,7 +304,6 @@ public class HorizontalMovement : MonoBehaviour {
             }
         } else //col == true
         {
-            Debug.Log("Edging");
             //Debug.Log("Distance to collision: " + distanceToCollision);
             // Move character right up to the colliding wall
             if (moveDirection > 0) //moving right
@@ -320,19 +360,79 @@ public class HorizontalMovement : MonoBehaviour {
         //transform.position += new Vector3(additionalSpeed, 0);
         //transform.position = transform.position + new Vector3(movement.x * speed, movement.y * speed);
     }
-    private void colliderHelper(Collider2D[] collider, bool allColliders) {
+    private void collidePush(Collider2D[] collider, bool onLeft) {
+        bool leftCol = false;
+        bool rightCol = false;
         foreach (var collide in collider)
         {
+            if (collide.gameObject.tag == "Push")
+            {
+                pushBlock pushScript = collide.gameObject.GetComponent<pushBlock>();
+                leftCol = pushScript.leftCol;
+                rightCol = pushScript.rightCol;
+            }
+            if (collide.gameObject.tag == "Push" && ((!leftCol && moveDirection == -1) || (!rightCol && moveDirection == 1)) && Input.GetButton("Push"))
+            {
+                if (onLeft)
+                {
+                    pushLeft = true;
+                }
+                else
+                {
+                    pushRight = true;
+                }
+                touchingMoving = true;
+                if (moveDirection == 1)
+                {
+                    if (masterScript.grounded || masterScript.grounded2) {
+                        movingPush = speed * 1 / 2;
+                        collide.gameObject.GetComponent<pushBlock>().movingPush = movingPush;
+                    }
+                }
+                else if (moveDirection == -1)
+                {
+                    if (masterScript.grounded || masterScript.grounded2)
+                    {
+                        movingPush = -speed * 1 / 2;
+                        collide.gameObject.GetComponent<pushBlock>().movingPush = movingPush;
+                    }
+                }
+            }
+            else if (collide.gameObject.GetComponent<Collideable>()) {
+                if (onLeft)
+                {
+                    nonPushLeft = true;
+                }
+                else
+                {
+                    nonPushRight = true;
+                }
+            }
+        }
+    }
+    private void colliderHelper(Collider2D[] collider, bool allColliders) {
+        bool leftCol = false;
+        bool rightCol = false;
+        foreach (var collide in collider)
+        {
+            if (collide.gameObject.tag == "Push")
+            {
+                pushBlock pushScript = collide.gameObject.GetComponent<pushBlock>();
+                leftCol = pushScript.leftCol;
+                rightCol = pushScript.rightCol;
+            }
             if (collide.gameObject.GetComponent<Collideable>() && allColliders == true)
             {
-                if (collide.gameObject.tag == "MoveBox") {
-                    Debug.Log("raymandayman");
+                if (!masterScript.grounded && !masterScript.grounded2) {
+                    col = true;
+                    distanceToCollision = GetComponent<BoxCollider2D>().Distance(collide).distance;
                 }
-                col = true;
-                distanceToCollision = GetComponent<BoxCollider2D>().Distance(collide).distance;
+                else if (collide.gameObject.tag != "Push" || ((collide.gameObject.tag == "Push" && !Input.GetButton("Push"))) || (((collide.gameObject.tag == "Push" && Input.GetButton("Push"))) && ((leftCol && moveDirection == -1) || (rightCol && moveDirection == 1)))) {
+                    col = true;
+                    distanceToCollision = GetComponent<BoxCollider2D>().Distance(collide).distance;
+                }
             }
             else if (collide.gameObject.tag == "MoveBox" && allColliders == false) {
-                Debug.Log("herpaderp");
                 float otherMovingSpeed = collide.gameObject.GetComponent<HorizontalBox>().speed;
                 col = true;
                 if (otherMovingSpeed < 0)

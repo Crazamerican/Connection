@@ -7686,9 +7686,10 @@ MonoBehaviour:
   player2: {fileID: 349846969521067754}
   firstStop: {fileID: 1877727613}
   secondStop: {fileID: 1571936456}
-  thirdStop: {fileID: 1571936456}
+  switchToSecond: 0
   freezePlayers: 0
   playBoth: {fileID: 1964056950}
+  secondInit: 0
 --- !u!1001 &521128747
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15964,6 +15965,10 @@ MonoBehaviour:
   player1: {fileID: 0}
   moveDirection: 0
   onMoveLeft: 0
+  cameraStart: 0
+  firstStart: 0
+  firstEnd: 0
+  secondStart: 0
 --- !u!1001 &1140669604
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20427,6 +20432,10 @@ MonoBehaviour:
   player1: {fileID: 0}
   moveDirection: 0
   onMoveLeft: 0
+  cameraStart: 0
+  firstStart: 0
+  firstEnd: 0
+  secondStart: 0
 --- !u!1001 &1586202547
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26828,6 +26837,12 @@ PrefabInstance:
       propertyPath: Checkpoint
       value: 
       objectReference: {fileID: 1889955189}
+    - target: {fileID: 684166650218792751, guid: 4beb2dd80a923ba4a84c7606146c7a49,
+        type: 3}
+      propertyPath: groundPrefab
+      value: 
+      objectReference: {fileID: 9150625529964832025, guid: 680a128d1550cda4c9765be2fe6d5441,
+        type: 3}
     - target: {fileID: 1388275056431520513, guid: 4beb2dd80a923ba4a84c7606146c7a49,
         type: 3}
       propertyPath: m_Offset.y
@@ -26848,12 +26863,6 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 2.8047552
       objectReference: {fileID: 0}
-    - target: {fileID: 684166650218792751, guid: 4beb2dd80a923ba4a84c7606146c7a49,
-        type: 3}
-      propertyPath: groundPrefab
-      value: 
-      objectReference: {fileID: 9150625529964832025, guid: 680a128d1550cda4c9765be2fe6d5441,
-        type: 3}
     - target: {fileID: 1388275056553514848, guid: 4beb2dd80a923ba4a84c7606146c7a49,
         type: 3}
       propertyPath: m_Offset.x
@@ -26886,7 +26895,7 @@ PrefabInstance:
     - target: {fileID: 2112709463117122306, guid: 9bcd7284b7e127643a35734c893e0d93,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2112709463117122318, guid: 9bcd7284b7e127643a35734c893e0d93,
         type: 3}
