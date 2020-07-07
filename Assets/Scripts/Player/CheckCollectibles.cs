@@ -4,23 +4,29 @@ using UnityEngine;
 
 public class CheckCollectibles : MonoBehaviour
 {
-    bool unlock;
+    public bool unlock;
     public AudioClip keyGetSound;
     public AudioClip doorOpenSound;
     AudioSource audioSource;
+    public GameObject otherPlayer;
+    CheckCollectibles otherCollectible;
+    public bool atDoor;
     // Start is called before the first frame update
     void Start()
     {
+        atDoor = false;
+        unlock = false;
+        otherCollectible = otherPlayer.GetComponent<CheckCollectibles>();
         audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        atDoor = false;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D other)
     {
         if (other.tag == "Key")
         {
@@ -34,11 +40,16 @@ public class CheckCollectibles : MonoBehaviour
         }
         if (other.tag == "Door")
         {
-            if (unlock == true)
+            atDoor = true;
+            if ((unlock == true || otherCollectible.unlock == true) && atDoor == true && otherCollectible.atDoor == true)
             {
                 audioSource.PlayOneShot(doorOpenSound, 0.7F);
-                Destroy(other.gameObject);
+                foreach (Transform child in other.gameObject.transform.parent.transform) {
+                    Destroy(child.gameObject);
+                }
+                Destroy(other.gameObject.transform.parent);
                 unlock = false;
+                atDoor = false;
             }
         }
         

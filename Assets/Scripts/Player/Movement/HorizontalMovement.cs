@@ -129,26 +129,27 @@ public class HorizontalMovement : MonoBehaviour {
             //Debug.Log("something");
             if (player == 1)
             {
+                Debug.Log("additional speed 2 bois");
                 if (masterScript.onMoving == false)
                 {
                     if (!onMoveLeft && extraSpeed >= 0)
                     {
-                        additionalSpeed += extraSpeed + .05f;
+                        additionalSpeed += extraSpeed - .05f;
                         //transform.position += new Vector3(extraSpeed + .02f, 0);
                     }
                     else if (!onMoveLeft && extraSpeed < 0)
                     {
-                        additionalSpeed += .05f;
+                        additionalSpeed += -.05f;
                         //transform.position += new Vector3(.02f, 0);
                     }
                     else if (onMoveLeft && extraSpeed <= 0)
                     {
-                        additionalSpeed += extraSpeed - .05f;
+                        additionalSpeed += extraSpeed + .05f;
                         //transform.position += new Vector3(extraSpeed - .02f, 0);
                     }
                     else if (onMoveLeft && extraSpeed > 0)
                     {
-                        additionalSpeed += -.05f;
+                        additionalSpeed += .05f;
                         //transform.position += new Vector3(-.02f, 0);
                     }
                 }
@@ -295,6 +296,7 @@ public class HorizontalMovement : MonoBehaviour {
             //if going right and not at right edge of screen)
             else if (cam.WorldToScreenPoint(transform.position).x <= cam.pixelWidth && moveDirection > 0)
             {
+                Debug.Log("hit!!!");
                 transform.position = transform.position + new Vector3(moveDirection * speed, 0);
             }
             //if going left and not at left edge of screen)
