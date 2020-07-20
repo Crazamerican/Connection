@@ -21,6 +21,7 @@ TagManager:
   - MoveBox
   - WorldDoor
   - Push
+  - Music
   layers:
   - Default
   - TransparentFX
