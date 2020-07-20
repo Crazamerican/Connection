@@ -13,6 +13,7 @@ public class pushBlock : MonoBehaviour
     public bool leftCol = false;
     public bool rightCol = false;
     bool touchPlayer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,7 +47,8 @@ public class pushBlock : MonoBehaviour
         colliderHelper(colliderLeft3, false);
 
         touchingMoving = horScript.touchingMoving;
-        if (touchingMoving == true) {
+        Debug.Log("nonPushRight: " + horScript.nonPushLeft);
+        if (touchingMoving == true && ((horScript.pushLeft && !horScript.nonPushRight) || (horScript.pushRight && !horScript.nonPushLeft) || (horScript.pushLeft && horScript.nonPushRight && movingPush < 0) || (horScript.pushRight && horScript.nonPushLeft && movingPush > 0))) {
             transform.position += new Vector3(movingPush, 0);
         }
         movingPush = 0;

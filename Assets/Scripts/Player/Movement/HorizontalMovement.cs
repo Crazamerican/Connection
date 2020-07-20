@@ -35,9 +35,18 @@ public class HorizontalMovement : MonoBehaviour {
     public bool touchingMoving;
     public float movingPush;
 
+    public bool pushLeft;
+    public bool nonPushLeft;
+    public bool pushRight;
+    public bool nonPushRight;
+
     // Use this for initialization
     void Start()
     {
+        pushLeft = false;
+        nonPushLeft = false;
+        pushRight = false;
+        nonPushRight = false;
         touchingMoving = false;
         movingPush = 0f;
         onMoveLeft = false;
@@ -120,26 +129,27 @@ public class HorizontalMovement : MonoBehaviour {
             //Debug.Log("something");
             if (player == 1)
             {
+                Debug.Log("additional speed 2 bois");
                 if (masterScript.onMoving == false)
                 {
                     if (!onMoveLeft && extraSpeed >= 0)
                     {
-                        additionalSpeed += extraSpeed + .05f;
+                        additionalSpeed += extraSpeed - .05f;
                         //transform.position += new Vector3(extraSpeed + .02f, 0);
                     }
                     else if (!onMoveLeft && extraSpeed < 0)
                     {
-                        additionalSpeed += .05f;
+                        additionalSpeed += -.05f;
                         //transform.position += new Vector3(.02f, 0);
                     }
                     else if (onMoveLeft && extraSpeed <= 0)
                     {
-                        additionalSpeed += extraSpeed - .05f;
+                        additionalSpeed += extraSpeed + .05f;
                         //transform.position += new Vector3(extraSpeed - .02f, 0);
                     }
                     else if (onMoveLeft && extraSpeed > 0)
                     {
-                        additionalSpeed += -.05f;
+                        additionalSpeed += .05f;
                         //transform.position += new Vector3(-.02f, 0);
                     }
                 }
@@ -234,6 +244,11 @@ public class HorizontalMovement : MonoBehaviour {
             colliderHelper(collider3, true);
         }
 
+        pushLeft = false;
+        nonPushLeft = false;
+        pushRight = false;
+        nonPushRight = false;
+
         //test colliders of the character's with push blocks on right
         Collider2D[] colliderRight1 = Physics2D.OverlapCircleAll(transform.position + new Vector3((width / 2) + .05f, 0), 0.01f);
         Collider2D[] colliderRight2 = Physics2D.OverlapCircleAll(transform.position + new Vector3((width / 2) + .05f, (height / 2)), 0.01f);
@@ -242,13 +257,12 @@ public class HorizontalMovement : MonoBehaviour {
         Collider2D[] colliderLeft1 = Physics2D.OverlapCircleAll(transform.position + new Vector3(-(width / 2) - .05f, 0), 0.01f);
         Collider2D[] colliderLeft2 = Physics2D.OverlapCircleAll(transform.position + new Vector3(-(width / 2) - .05f, (height / 2)), 0.01f);
         Collider2D[] colliderLeft3 = Physics2D.OverlapCircleAll(transform.position + new Vector3(-(width / 2) - .05f, -(height / 2 - .02f)), 0.01f);
-
-        collidePush(colliderRight1);
-        collidePush(colliderRight2);
-        collidePush(colliderRight3);
-        collidePush(colliderLeft1);
-        collidePush(colliderLeft2);
-        collidePush(colliderLeft3);
+        collidePush(colliderRight1, false);
+        collidePush(colliderRight2, false);
+        collidePush(colliderRight3, false);
+        //collidePush(colliderLeft1, true);
+        collidePush(colliderLeft2, true);
+        collidePush(colliderLeft3, true);
 
         //Debug.Log(transform.position.x);
         //if at the left edge of screen (-18 is the left side of the screen)
@@ -282,6 +296,7 @@ public class HorizontalMovement : MonoBehaviour {
             //if going right and not at right edge of screen)
             else if (cam.WorldToScreenPoint(transform.position).x <= cam.pixelWidth && moveDirection > 0)
             {
+                Debug.Log("hit!!!");
                 transform.position = transform.position + new Vector3(moveDirection * speed, 0);
             }
             //if going left and not at left edge of screen)
@@ -291,7 +306,6 @@ public class HorizontalMovement : MonoBehaviour {
             }
         } else //col == true
         {
-            Debug.Log("Edging");
             //Debug.Log("Distance to collision: " + distanceToCollision);
             // Move character right up to the colliding wall
             if (moveDirection > 0) //moving right
@@ -348,7 +362,7 @@ public class HorizontalMovement : MonoBehaviour {
         //transform.position += new Vector3(additionalSpeed, 0);
         //transform.position = transform.position + new Vector3(movement.x * speed, movement.y * speed);
     }
-    private void collidePush(Collider2D[] collider) {
+    private void collidePush(Collider2D[] collider, bool onLeft) {
         bool leftCol = false;
         bool rightCol = false;
         foreach (var collide in collider)
@@ -361,17 +375,39 @@ public class HorizontalMovement : MonoBehaviour {
             }
             if (collide.gameObject.tag == "Push" && ((!leftCol && moveDirection == -1) || (!rightCol && moveDirection == 1)) && Input.GetButton("Push"))
             {
-                Debug.Log("push box");
+                if (onLeft)
+                {
+                    pushLeft = true;
+                }
+                else
+                {
+                    pushRight = true;
+                }
                 touchingMoving = true;
                 if (moveDirection == 1)
                 {
-                    movingPush = speed * 1 / 2;
-                    collide.gameObject.GetComponent<pushBlock>().movingPush = movingPush;
+                    if (masterScript.grounded || masterScript.grounded2) {
+                        movingPush = speed * 1 / 2;
+                        collide.gameObject.GetComponent<pushBlock>().movingPush = movingPush;
+                    }
                 }
                 else if (moveDirection == -1)
                 {
-                    movingPush = speed * -1 / 2;
-                    collide.gameObject.GetComponent<pushBlock>().movingPush = movingPush;
+                    if (masterScript.grounded || masterScript.grounded2)
+                    {
+                        movingPush = -speed * 1 / 2;
+                        collide.gameObject.GetComponent<pushBlock>().movingPush = movingPush;
+                    }
+                }
+            }
+            else if (collide.gameObject.GetComponent<Collideable>()) {
+                if (onLeft)
+                {
+                    nonPushLeft = true;
+                }
+                else
+                {
+                    nonPushRight = true;
                 }
             }
         }
@@ -389,7 +425,11 @@ public class HorizontalMovement : MonoBehaviour {
             }
             if (collide.gameObject.GetComponent<Collideable>() && allColliders == true)
             {
-                if (collide.gameObject.tag != "Push" || ((collide.gameObject.tag == "Push" && !Input.GetButton("Push"))) || (((collide.gameObject.tag == "Push" && Input.GetButton("Push"))) && ((leftCol && moveDirection == -1) || (rightCol && moveDirection == 1)))) {
+                if (!masterScript.grounded && !masterScript.grounded2) {
+                    col = true;
+                    distanceToCollision = GetComponent<BoxCollider2D>().Distance(collide).distance;
+                }
+                else if (collide.gameObject.tag != "Push" || ((collide.gameObject.tag == "Push" && !Input.GetButton("Push"))) || (((collide.gameObject.tag == "Push" && Input.GetButton("Push"))) && ((leftCol && moveDirection == -1) || (rightCol && moveDirection == 1)))) {
                     col = true;
                     distanceToCollision = GetComponent<BoxCollider2D>().Distance(collide).distance;
                 }

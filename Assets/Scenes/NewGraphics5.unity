@@ -12755,6 +12755,12 @@ MonoBehaviour:
   firstStart: 0
   firstEnd: 0
   secondStart: 0
+  touchingMoving: 0
+  movingPush: 0
+  pushLeft: 0
+  nonPushLeft: 0
+  pushRight: 0
+  nonPushRight: 0
 --- !u!1 &1145970992
 GameObject:
   m_ObjectHideFlags: 0
@@ -16992,7 +16998,7 @@ GameObject:
   - component: {fileID: 1510921649}
   m_Layer: 0
   m_Name: Ground (5)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18209,6 +18215,12 @@ MonoBehaviour:
   firstStart: 0
   firstEnd: 0
   secondStart: 0
+  touchingMoving: 0
+  movingPush: 0
+  pushLeft: 0
+  nonPushLeft: 0
+  pushRight: 0
+  nonPushRight: 0
 --- !u!1001 &1589039344
 PrefabInstance:
   m_ObjectHideFlags: 0

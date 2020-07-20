@@ -7,8 +7,8 @@ public class VerticalMaster : MonoBehaviour
     //speed players initial jump is set to affects jump height as well
     public float jumpTakeOffSpeed = 7;
 
-    [SerializeField] private bool grounded;
-    [SerializeField] private bool grounded2;
+    public bool grounded;
+    public bool grounded2;
     //player current speed
     [SerializeField] float velocity;
     [SerializeField] float velocity2;
@@ -150,7 +150,7 @@ public class VerticalMaster : MonoBehaviour
             }
         }
         //if jump button pressed and a character is on or extremely near the ground and not frozen
-        if (Input.GetButtonDown("Jump") && (forgiveGround || forgiveGround2 || coyoteGround || coyoteGround2) && cameraScript.freezePlayers == false)
+        if (Input.GetButtonDown("Jump") && (forgiveGround || forgiveGround2 || coyoteGround || coyoteGround2) && cameraScript.freezePlayers == false && (!otherPlayer.GetComponent<HorizontalMovement>().touchingMoving && !this.GetComponent<HorizontalMovement>().touchingMoving))
         {
             //jumps in opposite direction if inverted
             if (inverted == true || inverted2 == true)
@@ -615,9 +615,6 @@ public class VerticalMaster : MonoBehaviour
         {
             padding = .011f;
         }
-
-        Debug.Log("distToCol: " + distToCol);
-        Debug.Log("distToCol2: " + distToCol2);
 
         if (col && col2)
         {
