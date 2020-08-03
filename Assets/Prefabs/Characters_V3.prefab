@@ -352,8 +352,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 059804e1e7ac8934ba7ffc7f11f7a0de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unlock: 0
   keyGetSound: {fileID: 0}
   doorOpenSound: {fileID: 0}
+  otherPlayer: {fileID: 1388275056553514859}
+  atDoor: 0
 --- !u!114 &5023135373558379646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -505,8 +508,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 059804e1e7ac8934ba7ffc7f11f7a0de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unlock: 0
   keyGetSound: {fileID: 8300000, guid: e616b4a899870e24e8e6d81c2cd166c1, type: 3}
   doorOpenSound: {fileID: 8300000, guid: 8268561d9767b4f49bed33382c1de6c8, type: 3}
+  otherPlayer: {fileID: 1388275056431520526}
+  atDoor: 0
 --- !u!114 &1388275056553514861
 MonoBehaviour:
   m_ObjectHideFlags: 0

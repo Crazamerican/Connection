@@ -8,6 +8,21 @@ public class showtext : MonoBehaviour
     public GameObject text;
     bool atDoor = false;
     public int door;
+    public string levelName;
+    private GameObject endOfLevel;
+    private GameManagementScript manager;
+
+    private void Start()
+    {
+        if (endOfLevel == null)
+        {
+            endOfLevel = GameObject.Find("EndOfLevel");
+        }
+        if(manager == null)
+        {
+            manager = endOfLevel.GetComponent<GameManagementScript>();
+        }
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
@@ -27,14 +42,9 @@ public class showtext : MonoBehaviour
     private void Update()
     {
         if ((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) && atDoor) {
-            if (door == 1) {
-                SceneManager.LoadScene("NewGraphics1");
-            }
-            else if (door == 2) {
-                SceneManager.LoadScene("NewGraphics3");
-            }
-            else if (door == 3) {
-                SceneManager.LoadScene("NewGraphics5");
+            if (manager.levelUnlocked(levelName))
+            {
+                SceneManager.LoadScene(levelName);
             }
         }
     }
