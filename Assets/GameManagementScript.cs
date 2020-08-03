@@ -34,6 +34,10 @@ public class GameManagementScript : MonoBehaviour
     {
         Debug.Log("Setting the file Number: " + filNum);
         this.fileNum = filNum;
+    }
+
+    public void LoadGame()
+    {
         gameSaver.LoadGame(this.fileNum);
     }
 
@@ -69,7 +73,6 @@ public class GameManagementScript : MonoBehaviour
             levelData = new LevelData();
         }
         levelData.levelCleared = true;
-
     }
 
     public void unlockNextLevel()

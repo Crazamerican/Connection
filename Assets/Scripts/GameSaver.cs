@@ -145,7 +145,6 @@ public class GameSaver : MonoBehaviour
             }
             saveData.levelsData.Add(name, levelData);
         }
-
         SaveGame(fileNum, saveData);
 
     }

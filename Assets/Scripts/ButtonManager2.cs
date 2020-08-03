@@ -28,6 +28,7 @@ public class ButtonManager2 : MonoBehaviour
         }
         endOfLevel.GetComponent<GameManagementScript>().setFileNumber(fileNum);
         endOfLevel.GetComponent<GameManagementScript>().createNewFile();
+        endOfLevel.GetComponent<GameManagementScript>().LoadGame();
         SceneManager.LoadScene("HubWorldMusicTest");
     }
 }
