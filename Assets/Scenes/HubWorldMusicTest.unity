@@ -6716,7 +6716,7 @@ MonoBehaviour:
   speed: 0.1
   cam: {fileID: 519420031}
   confusion: {fileID: 6738681271773470664}
-  charAnim: {fileID: 2591297987759732145}
+  charAnim: {fileID: 779683903}
   cameraBoi: {fileID: 519420028}
   player: 1
   player1: {fileID: 349846969407396495}
