@@ -733,6 +733,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 1128739219}
   door: 1
+  levelName: NewGraphics1
 --- !u!61 &128778364
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1083,6 +1084,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 550699557}
   door: 3
+  levelName: NewGraphics3
 --- !u!61 &302120595
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1685,6 +1687,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 1823623845}
   door: 3
+  levelName: NewGraphics3
 --- !u!212 &542196520
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4043,6 +4046,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 698380388}
   door: 2
+  levelName: NewGraphics2
 --- !u!212 &1210912848
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6362,6 +6366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 527594515}
   door: 2
+  levelName: NewGraphics2
 --- !u!61 &2122973128
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6547,6 +6552,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 548961755}
   door: 1
+  levelName: NewGraphics1
 --- !u!61 &2143290657
 BoxCollider2D:
   m_ObjectHideFlags: 0

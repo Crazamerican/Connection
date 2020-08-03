@@ -11,6 +11,7 @@ public class CheckCollectibles : MonoBehaviour
     public GameObject otherPlayer;
     CheckCollectibles otherCollectible;
     public bool atDoor;
+    private static GameObject endOfLevel;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,7 @@ public class CheckCollectibles : MonoBehaviour
         unlock = false;
         otherCollectible = otherPlayer.GetComponent<CheckCollectibles>();
         audioSource = GetComponent<AudioSource>();
+        endOfLevel = GameObject.Find("EndOfLevel");
     }
 
     // Update is called once per frame
@@ -36,10 +38,12 @@ public class CheckCollectibles : MonoBehaviour
         }
         if (other.tag == "Trophy")
         {
+            endOfLevel.GetComponent<GameManagementScript>().UpdateLevelDataTrophy();
             Destroy(other.gameObject);
         }
         if (other.tag == "Door")
         {
+            unlock = endOfLevel.GetComponent<GameManagementScript>().unlock;
             atDoor = true;
             if ((unlock == true || otherCollectible.unlock == true) && atDoor == true && otherCollectible.atDoor == true)
             {
