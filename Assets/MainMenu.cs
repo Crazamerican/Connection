@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public GameObject controlScreen;
+    public GameObject loadScreen;
 
     public void PlayGame() {
         SceneManager.LoadScene("NewGraphics1");
@@ -25,5 +26,10 @@ public class MainMenu : MonoBehaviour
     public void BackMainMenu()
     {
         controlScreen.SetActive(false);
+    }
+
+    public void LoadGame()
+    {
+        loadScreen.SetActive(true);
     }
 }

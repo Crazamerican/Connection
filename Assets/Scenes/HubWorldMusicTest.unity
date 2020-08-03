@@ -733,6 +733,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 1128739219}
   door: 1
+  levelName: NewGraphics1
 --- !u!61 &128778364
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1083,6 +1084,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 550699557}
   door: 3
+  levelName: NewGraphics3
 --- !u!61 &302120595
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1685,6 +1687,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 1823623845}
   door: 3
+  levelName: NewGraphics3
 --- !u!212 &542196520
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3545,8 +3548,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 059804e1e7ac8934ba7ffc7f11f7a0de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unlock: 0
   keyGetSound: {fileID: 0}
   doorOpenSound: {fileID: 0}
+  otherPlayer: {fileID: 0}
+  atDoor: 0
 --- !u!114 &1139632629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3574,6 +3580,10 @@ MonoBehaviour:
   secondStart: 0
   touchingMoving: 0
   movingPush: 0
+  pushLeft: 0
+  nonPushLeft: 0
+  pushRight: 0
+  nonPushRight: 0
 --- !u!1 &1145970992
 GameObject:
   m_ObjectHideFlags: 0
@@ -3936,6 +3946,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 698380388}
   door: 2
+  levelName: NewGraphics2
 --- !u!212 &1210912848
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4805,8 +4816,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 059804e1e7ac8934ba7ffc7f11f7a0de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unlock: 0
   keyGetSound: {fileID: 0}
   doorOpenSound: {fileID: 0}
+  otherPlayer: {fileID: 0}
+  atDoor: 0
 --- !u!61 &1586010093
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4860,6 +4874,10 @@ MonoBehaviour:
   secondStart: 0
   touchingMoving: 0
   movingPush: 0
+  pushLeft: 0
+  nonPushLeft: 0
+  pushRight: 0
+  nonPushRight: 0
 --- !u!1001 &1587315842
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6266,6 +6284,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 527594515}
   door: 2
+  levelName: NewGraphics2
 --- !u!61 &2122973128
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6451,6 +6470,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 548961755}
   door: 1
+  levelName: NewGraphics1
 --- !u!61 &2143290657
 BoxCollider2D:
   m_ObjectHideFlags: 0

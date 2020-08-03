@@ -12638,8 +12638,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 059804e1e7ac8934ba7ffc7f11f7a0de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unlock: 0
   keyGetSound: {fileID: 0}
   doorOpenSound: {fileID: 0}
+  otherPlayer: {fileID: 0}
+  atDoor: 0
 --- !u!114 &1139632629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18466,8 +18469,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 059804e1e7ac8934ba7ffc7f11f7a0de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unlock: 0
   keyGetSound: {fileID: 0}
   doorOpenSound: {fileID: 0}
+  otherPlayer: {fileID: 0}
+  atDoor: 0
 --- !u!61 &1586010093
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -24900,6 +24906,26 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 2.8047552
       objectReference: {fileID: 0}
+    - target: {fileID: 1388275056553514848, guid: 4beb2dd80a923ba4a84c7606146c7a49,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388275056553514848, guid: 4beb2dd80a923ba4a84c7606146c7a49,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388275056553514848, guid: 4beb2dd80a923ba4a84c7606146c7a49,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 2.7975264
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388275056431520527, guid: 4beb2dd80a923ba4a84c7606146c7a49,
+        type: 3}
+      propertyPath: otherPlayer
+      value: 
+      objectReference: {fileID: 349846969407396495}
     - target: {fileID: 157710467131597483, guid: 4beb2dd80a923ba4a84c7606146c7a49,
         type: 3}
       propertyPath: m_Offset.y
@@ -24920,21 +24946,11 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 0.3414078
       objectReference: {fileID: 0}
-    - target: {fileID: 1388275056553514848, guid: 4beb2dd80a923ba4a84c7606146c7a49,
+    - target: {fileID: 1388275056553514862, guid: 4beb2dd80a923ba4a84c7606146c7a49,
         type: 3}
-      propertyPath: m_Offset.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1388275056553514848, guid: 4beb2dd80a923ba4a84c7606146c7a49,
-        type: 3}
-      propertyPath: m_Offset.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1388275056553514848, guid: 4beb2dd80a923ba4a84c7606146c7a49,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 2.7975264
-      objectReference: {fileID: 0}
+      propertyPath: otherPlayer
+      value: 
+      objectReference: {fileID: 349846969521067754}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4beb2dd80a923ba4a84c7606146c7a49, type: 3}
 --- !u!1001 &2112709463956547174
