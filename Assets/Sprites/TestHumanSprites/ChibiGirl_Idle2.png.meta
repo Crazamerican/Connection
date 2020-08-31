@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 63c1e8708b0eb6e408097aa4bc73bc68
+guid: 7ab8cad2a09e7e74da72a3a31b8f2fbb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6654575845937280306
-    second: ChibiGirl_Idle_0
+      213: 2845627860357352003
+    second: ChibiGirl_Idle2_0
   - first:
-      213: 3446939166279571716
-    second: ChibiGirl_Idle_1
+      213: -8842243512029522145
+    second: ChibiGirl_Idle2_1
   - first:
-      213: -4217898219078355014
-    second: ChibiGirl_Idle_2
+      213: -6212116163360407980
+    second: ChibiGirl_Idle2_2
   - first:
-      213: -6450039093254589384
-    second: ChibiGirl_Idle_3
+      213: -4287439305117530650
+    second: ChibiGirl_Idle2_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -96,12 +96,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ChibiGirl_Idle_0
+      name: ChibiGirl_Idle2_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 122
+        width: 120
         height: 135
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -110,19 +110,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 530718f9a62855e4db4d75617f6dabc3
-      internalID: 6654575845937280306
+      spriteID: 50de7450d17725945a29b8f4f5aff33a
+      internalID: 2845627860357352003
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChibiGirl_Idle_1
+      name: ChibiGirl_Idle2_1
       rect:
         serializedVersion: 2
         x: 120
         y: 0
-        width: 122
+        width: 120
         height: 135
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -131,19 +131,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4f847ee7e5192834d8aba3288314d3e9
-      internalID: 3446939166279571716
+      spriteID: 32643b63ddd1a5c4e92df5e10f361a88
+      internalID: -8842243512029522145
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChibiGirl_Idle_2
+      name: ChibiGirl_Idle2_2
       rect:
         serializedVersion: 2
-        x: 239
+        x: 240
         y: 0
-        width: 122
+        width: 120
         height: 135
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -152,19 +152,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f1f25da30396a3e4a957fd6711269a55
-      internalID: -4217898219078355014
+      spriteID: 4e77ec627dbd62b40bac36c7fb181146
+      internalID: -6212116163360407980
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChibiGirl_Idle_3
+      name: ChibiGirl_Idle2_3
       rect:
         serializedVersion: 2
-        x: 358
+        x: 360
         y: 0
-        width: 122
+        width: 120
         height: 135
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -173,8 +173,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d380a86a2a9b5484a8cb933fcb63d402
-      internalID: -6450039093254589384
+      spriteID: 1d5f0a5cb77ada84ba49d929b9cb8e02
+      internalID: -4287439305117530650
       vertices: []
       indices: 
       edges: []
@@ -182,7 +182,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 2ec3b51d759c33042b436bd370c49679
+    spriteID: a1e93fd6725939b48bd52ea0a9dd65b6
     internalID: 0
     vertices: []
     indices: 
