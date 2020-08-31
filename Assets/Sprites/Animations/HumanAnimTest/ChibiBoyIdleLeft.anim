@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ChibiGirlIdleLeft
+  m_Name: ChibiBoyIdleLeft
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -27,7 +27,7 @@ AnimationClip:
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
-        time: 1.5
+        time: 2
         value: {x: 0, y: 180, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
@@ -45,19 +45,19 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 2845627860357352003, guid: 7ab8cad2a09e7e74da72a3a31b8f2fbb,
+      value: {fileID: 4101227257254224091, guid: 75a193c8b114f024f920de52dc6cd17f,
         type: 3}
-    - time: 0.36666667
-      value: {fileID: 2845627860357352003, guid: 7ab8cad2a09e7e74da72a3a31b8f2fbb,
+    - time: 0.5
+      value: {fileID: -4317493520811251008, guid: 75a193c8b114f024f920de52dc6cd17f,
         type: 3}
-    - time: 0.75
-      value: {fileID: -6212116163360407980, guid: 7ab8cad2a09e7e74da72a3a31b8f2fbb,
-        type: 3}
-    - time: 1.1333333
-      value: {fileID: -4287439305117530650, guid: 7ab8cad2a09e7e74da72a3a31b8f2fbb,
+    - time: 1
+      value: {fileID: -4072676149370309714, guid: 75a193c8b114f024f920de52dc6cd17f,
         type: 3}
     - time: 1.5
-      value: {fileID: 2845627860357352003, guid: 7ab8cad2a09e7e74da72a3a31b8f2fbb,
+      value: {fileID: -538141468613440293, guid: 75a193c8b114f024f920de52dc6cd17f,
+        type: 3}
+    - time: 2
+      value: {fileID: 4101227257254224091, guid: 75a193c8b114f024f920de52dc6cd17f,
         type: 3}
     attribute: m_Sprite
     path: 
@@ -85,22 +85,22 @@ AnimationClip:
       customType: 4
       isPPtrCurve: 0
     pptrCurveMapping:
-    - {fileID: 2845627860357352003, guid: 7ab8cad2a09e7e74da72a3a31b8f2fbb, type: 3}
-    - {fileID: 2845627860357352003, guid: 7ab8cad2a09e7e74da72a3a31b8f2fbb, type: 3}
-    - {fileID: -6212116163360407980, guid: 7ab8cad2a09e7e74da72a3a31b8f2fbb, type: 3}
-    - {fileID: -4287439305117530650, guid: 7ab8cad2a09e7e74da72a3a31b8f2fbb, type: 3}
-    - {fileID: 2845627860357352003, guid: 7ab8cad2a09e7e74da72a3a31b8f2fbb, type: 3}
+    - {fileID: 4101227257254224091, guid: 75a193c8b114f024f920de52dc6cd17f, type: 3}
+    - {fileID: -4317493520811251008, guid: 75a193c8b114f024f920de52dc6cd17f, type: 3}
+    - {fileID: -4072676149370309714, guid: 75a193c8b114f024f920de52dc6cd17f, type: 3}
+    - {fileID: -538141468613440293, guid: 75a193c8b114f024f920de52dc6cd17f, type: 3}
+    - {fileID: 4101227257254224091, guid: 75a193c8b114f024f920de52dc6cd17f, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.5166667
+    m_StopTime: 2.0166667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
-    m_LoopTime: 0
+    m_LoopTime: 1
     m_LoopBlend: 0
     m_LoopBlendOrientation: 0
     m_LoopBlendPositionY: 0
@@ -124,7 +124,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1.5
+        time: 2
         value: 0
         inSlope: 0
         outSlope: 0
@@ -152,7 +152,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1.5
+        time: 2
         value: 180
         inSlope: 0
         outSlope: 0
@@ -180,7 +180,7 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1.5
+        time: 2
         value: 0
         inSlope: 0
         outSlope: 0
