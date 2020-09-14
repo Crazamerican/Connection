@@ -34,8 +34,8 @@ public class VerticalMaster : MonoBehaviour
     //float width2;
     //float height2;
 
-    Animator charAnim;
-    Animator otherCharAnim;
+    public Animator charAnim;
+    public Animator otherCharAnim;
 
     public AudioClip jumpSound;
     AudioSource audioSource;
@@ -171,6 +171,13 @@ public class VerticalMaster : MonoBehaviour
             coyoteGround2 = false;
             audioSource.PlayOneShot(jumpSound, 0.7F);
 
+            charAnim.ResetTrigger("grounded");
+            otherCharAnim.ResetTrigger("grounded");
+
+            charAnim.SetTrigger("jumped");
+            otherCharAnim.SetTrigger("jumped");
+
+
         }
         //if gotten gravity inverting powerup, user can invert gravity while grounded
         if (Input.GetButtonDown("Invert") && invertOnCommand == true && (grounded || grounded2) && cameraScript.freezePlayers == false)
@@ -180,11 +187,7 @@ public class VerticalMaster : MonoBehaviour
             gravity2 = gravity2 * -1;
             gravity = gravity * -1;
         }
-        if (grounded || grounded2)
-        {
-            //charAnim.SetTrigger("grounded");
-            //otherCharAnim.SetTrigger("grounded");
-        }
+        
 
 
     }
@@ -257,9 +260,6 @@ public class VerticalMaster : MonoBehaviour
         Collider2D[] bottomboi_2 = otherScript.GetBotBoi(velocity2);
         Collider2D[] bottomboi_2_Moving = otherScript.GetBotBoi_Moving(velocity2);
         Collider2D[] bottom1_2_Forgive = otherScript.GetBot_Forgive(velocity2);
-
-        //charAnim.SetFloat("verticalSpeed", velocity);
-        //otherCharAnim.SetFloat("verticalSpeed", velocity);
 
         //see if Player1 or Player2 collides with anything
         bool col = false;
@@ -363,22 +363,7 @@ public class VerticalMaster : MonoBehaviour
             }
         }
 
-        //if either player is on ground, then stops player from moving vertically.
-        if (grounded || grounded2)
-        {
-            velocity = 0;
-            velocity2 = 0;
-
-            charAnim.SetTrigger("grounded");
-            otherCharAnim.SetTrigger("grounded");
-        }
-        else
-        {
-
-            charAnim.SetTrigger("jumped");
-            otherCharAnim.SetTrigger("jumped");
-
-        }
+        
         //same collider but with the forgiving
         //only needs to check bottom as this forgiving collision only affects the jumping
         foreach (var collide in bottom1_forgive)
@@ -560,7 +545,14 @@ public class VerticalMaster : MonoBehaviour
             //otherPlayer.transform.SetParent(char_base.transform);
         }
 
+        //if either player is on ground, then stops player from moving vertically.
+        if (grounded || grounded2)
+        {
+         
 
+            charAnim.SetTrigger("grounded");
+            otherCharAnim.SetTrigger("grounded");
+        }
 
     }
     private void OnTriggerEnter2D(Collider2D other)

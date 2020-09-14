@@ -74,19 +74,26 @@ public class HorizontalMovement : MonoBehaviour {
             {
                 //Debug.Log("right hit");
                 moveDirection = 1;
-                
+
+
+                //set the animations to point right
+                charAnim.gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
             }
             else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
             {
                 //Debug.Log("left hit");
                 moveDirection = -1;
-                
+
+                //set the animations to point left
+                charAnim.gameObject.transform.rotation = Quaternion.Euler(0, 180, 0);
             }
             
         }
 
         //send data to animator
         charAnim.SetFloat("horizontalSpeed", moveDirection);
+
+
 
         
 
