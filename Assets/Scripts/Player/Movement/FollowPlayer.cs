@@ -170,10 +170,11 @@ public class FollowPlayer : MonoBehaviour
         //move camera right
         else if (moveHorizontal > 0)
         {
-            if (playerAvg > cam.pixelWidth / 2 && curCamEnd == false)
+            if (playerAvg - cam.pixelWidth * .05f > cam.pixelWidth * .5f && curCamEnd == false)
             {
+                Debug.Log("here?");
                 //make camDif the playerAvg if playerAvg is bigger than middle of screen
-                camDif = cam.ScreenToWorldPoint(new Vector3(playerAvg, height / 2));
+                camDif = cam.ScreenToWorldPoint(new Vector3(playerAvg - cam.pixelWidth * .05f, height / 2));
                 //move cam to new pos
                 transform.position = camDif;
             }
@@ -181,20 +182,20 @@ public class FollowPlayer : MonoBehaviour
         //if moving left and left side of screen is greater than -18 (which is the very left side of the level) 
         else if (moveHorizontal < 0 && camLeft.x > cam.ScreenToWorldPoint(initCam).x)
         {
-            if (playerAvg < cam.pixelWidth / 2)
+            if (playerAvg + cam.pixelWidth * .05f < cam.pixelWidth / 2)
             {
-                camDif = cam.ScreenToWorldPoint(new Vector3(playerAvg, height / 2));
+                camDif = cam.ScreenToWorldPoint(new Vector3(playerAvg + cam.pixelWidth * .05f, height / 2));
                 transform.position = camDif;
             }
         }
-        //move camera left
-        //else if (camLeft.x > cam.ScreenToWorldPoint(initCam).x && curCamEnd == false)
         else if (camLeft.x > cam.ScreenToWorldPoint(initCam).x && curCamEnd == false)
         {
-            camDif = cam.ScreenToWorldPoint(new Vector3(playerAvg, height / 2));
-            transform.position = camDif;
+            Debug.Log("thing here?");
+            //camDif = cam.ScreenToWorldPoint(new Vector3(playerAvg, height / 2));
+            //transform.position = camDif;
         } //move camera to initial position
         else if (curCamEnd == false) {
+            Debug.Log("another thing here?");
             transform.position = initCam;
         }
         //used to indicate screen transition
