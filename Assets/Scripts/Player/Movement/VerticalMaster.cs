@@ -554,6 +554,9 @@ public class VerticalMaster : MonoBehaviour
             otherCharAnim.SetTrigger("grounded");
         }
 
+        charAnim.SetFloat("verticalSpeed", velocity);
+        otherCharAnim.SetFloat("verticalSpeed", velocity2);
+
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
