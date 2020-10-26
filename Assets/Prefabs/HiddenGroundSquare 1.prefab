@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7690288819745049601}
   - component: {fileID: 6560538195473257647}
-  - component: {fileID: -4487522378749858150}
+  - component: {fileID: 7681892282687036800}
   m_Layer: 0
   m_Name: HiddenGroundSquare 1
   m_TagString: Untagged
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-4487522378749858150
+--- !u!114 &7681892282687036800
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

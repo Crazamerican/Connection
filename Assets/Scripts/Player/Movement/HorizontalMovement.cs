@@ -303,7 +303,6 @@ public class HorizontalMovement : MonoBehaviour {
             //if going right and not at right edge of screen)
             else if (cam.WorldToScreenPoint(transform.position).x <= cam.pixelWidth && moveDirection > 0)
             {
-                Debug.Log("hit!!!");
                 transform.position = transform.position + new Vector3(moveDirection * speed, 0);
             }
             //if going left and not at left edge of screen)

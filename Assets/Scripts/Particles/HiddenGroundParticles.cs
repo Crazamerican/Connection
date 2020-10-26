@@ -11,9 +11,12 @@ public class HiddenGroundParticles : MonoBehaviour
     public GameObject player1;
     public GameObject player2;
 
+    float height;
+
     // Start is called before the first frame update
     void Start()
     {
+        height = GetComponent<BoxCollider2D>().bounds.size.y;
         vertMaster = GetComponent<VerticalMaster>();
     }
 
@@ -35,14 +38,14 @@ public class HiddenGroundParticles : MonoBehaviour
     private void drawHiddenGround1()
     {
         Vector3 player1Pos = player1.transform.position;
-        Instantiate(groundPrefab, player1Pos + new Vector3(0.0F, -.5F, 0.0F), Quaternion.identity);
+        Instantiate(groundPrefab, player1Pos + new Vector3(0.0F, -height / 2.0f, 0.0F), Quaternion.identity);
         // DestroyImmediate(groundPrefab, true);
     }
 
     private void drawHiddenGround2()
     {
         Vector3 player2Pos = player2.transform.position;
-        Instantiate(groundPrefab, player2Pos + new Vector3(0.0F, -.5F, 0.0F), Quaternion.identity);
+        Instantiate(groundPrefab, player2Pos + new Vector3(0.0F, -height / 2.0f, 0.0F), Quaternion.identity);
         // DestroyImmediate(groundPrefab, true);
     }
 }
