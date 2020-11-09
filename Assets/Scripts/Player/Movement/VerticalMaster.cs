@@ -433,7 +433,7 @@ public class VerticalMaster : MonoBehaviour
                 coyoteGround = true;
             }
             grounded = false;
-            hiddenGroundFlag1 = false;
+            //hiddenGroundFlag1 = false;
         }
         if (col2 == false)
         {
@@ -442,6 +442,10 @@ public class VerticalMaster : MonoBehaviour
                 coyoteGround2 = true;
             }
             grounded2 = false;
+            //hiddenGroundFlag2 = false;
+        }
+        if (!grounded && !grounded2) {
+            hiddenGroundFlag1 = false;
             hiddenGroundFlag2 = false;
         }
         //inverting everything also inverts whether you are hitting the ground or ceiling

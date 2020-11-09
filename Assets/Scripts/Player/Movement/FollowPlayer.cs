@@ -172,7 +172,6 @@ public class FollowPlayer : MonoBehaviour
         {
             if (playerAvg - cam.pixelWidth * .05f > cam.pixelWidth * .5f && curCamEnd == false)
             {
-                Debug.Log("here?");
                 //make camDif the playerAvg if playerAvg is bigger than middle of screen
                 camDif = cam.ScreenToWorldPoint(new Vector3(playerAvg - cam.pixelWidth * .05f, height / 2));
                 //move cam to new pos
@@ -190,12 +189,10 @@ public class FollowPlayer : MonoBehaviour
         }
         else if (camLeft.x > cam.ScreenToWorldPoint(initCam).x && curCamEnd == false)
         {
-            Debug.Log("thing here?");
             //camDif = cam.ScreenToWorldPoint(new Vector3(playerAvg, height / 2));
             //transform.position = camDif;
         } //move camera to initial position
         else if (curCamEnd == false) {
-            Debug.Log("another thing here?");
             transform.position = initCam;
         }
         //used to indicate screen transition
