@@ -8,8 +8,8 @@ public class DeathScript : MonoBehaviour
     public GameObject player1;
     public GameObject player2;
     public GameObject camBoi;
-    CheckpointScript checkpointScript;
     FollowPlayer cameraScript;
+    GameManagementScript gameManagement;
     //public EventManager em;
 
     public bool dead;
@@ -32,11 +32,11 @@ public class DeathScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameManagement = GameObject.Find("EndOfLevel").GetComponent<GameManagementScript>();
 
         timer = 0;
         camDone = false;
         dead = false;
-        checkpointScript = Checkpoint.GetComponent<CheckpointScript>();
         cameraScript = camBoi.GetComponent<FollowPlayer>();
     }
 
@@ -45,9 +45,7 @@ public class DeathScript : MonoBehaviour
     {
         if (dead == true)
         {
-            cameraScript.freezePlayers = true;
-            player1.transform.position = checkpointScript.respawnPoint;
-            player2.transform.position = checkpointScript.respawnPoint2;
+            PlayerDiedMovePlayers();
         }
         if (camDone == true)
         {
@@ -61,12 +59,18 @@ public class DeathScript : MonoBehaviour
                 timer++;
             }
         }
+        if (Input.GetKeyDown(KeyCode.P)) {
+            PlayerDiedMovePlayers();
+        }
     }
 
     public void PlayerDiedMovePlayers()
     {
         cameraScript.freezePlayers = true;
-        player1.transform.position = checkpointScript.respawnPoint;
-        player2.transform.position = checkpointScript.respawnPoint2;
+        Vector3 topPos, botPos;
+        (topPos, botPos) = gameManagement.GetCheckPointPositionToMovePlayersTo();
+        Debug.Log("Setting the Top player to : " + topPos + " \n Setting the bottom player to: " + botPos);
+        player1.transform.position = topPos;
+        player2.transform.position = botPos;
     }
 }

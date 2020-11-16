@@ -10,6 +10,7 @@ public class GameManagementScript : MonoBehaviour
     private GameSaver gameSaver;
     private string fileNum;
     public bool unlock { get; set; }
+    public List<GameObject> checkPoints;
     //Create the singleton
     private void Awake()
     {
@@ -30,7 +31,7 @@ public class GameManagementScript : MonoBehaviour
         unlock = false;
     }
 
-    public void setFileNumber(string filNum)
+    public void SetFileNumber(string filNum)
     {
         Debug.Log("Setting the file Number: " + filNum);
         this.fileNum = filNum;
@@ -64,6 +65,10 @@ public class GameManagementScript : MonoBehaviour
         }
         levelData.trophyGot = true;
     }
+     public LevelData GetLevelData()
+    {
+        return gameSaver.GetLevelData();
+    }
 
     public void UpdateLevelDataCleared()
     {
@@ -75,7 +80,7 @@ public class GameManagementScript : MonoBehaviour
         levelData.levelCleared = true;
     }
 
-    public void unlockNextLevel()
+    public void UnlockNextLevel()
     {
         gameSaver.tryUnlockNextLevel();
     }
@@ -85,7 +90,7 @@ public class GameManagementScript : MonoBehaviour
         return gameSaver.levelUnlocked(levelName);
     }
 
-    public void createNewFile()
+    public void CreateNewFile()
     {
         Debug.Log("Creating New FIle");
         if(fileNum == null)
@@ -93,6 +98,13 @@ public class GameManagementScript : MonoBehaviour
             fileNum = "test";
         }
         gameSaver.createNewLevelData(fileNum);
+    }
+    
+    public (Vector3 p1, Vector3 p2) GetCheckPointPositionToMovePlayersTo()
+    {
+        Vector3 topCharPos = GetLevelData().topCharacterStartPosition;
+        Vector3 botCharPos = GetLevelData().bottomCharacterStartPosition;
+        return (topCharPos, botCharPos);
     }
     
 

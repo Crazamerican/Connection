@@ -8,9 +8,8 @@ public class CheckpointOther : MonoBehaviour
     public Sprite greenCheckpoint;
     private SpriteRenderer checkpointSpriteRenderer;
     public GameObject checkpointMaster;
-    public Vector3 thisRespawnPoint;
-    public Vector3 thisRespawnPoint2;
     CheckpointScript checkpointScript;
+    public int curCheckPoint;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,8 +22,6 @@ public class CheckpointOther : MonoBehaviour
         if (collision.tag == "Player")
         {
             checkpointSpriteRenderer.sprite = greenCheckpoint;
-            checkpointScript.respawnPoint = thisRespawnPoint;
-            checkpointScript.respawnPoint2 = thisRespawnPoint2;
         }
     }
 }
