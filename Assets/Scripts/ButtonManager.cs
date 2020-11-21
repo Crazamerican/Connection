@@ -28,7 +28,7 @@ public class ButtonManager : MonoBehaviour
     {
         if (fileNum != null)
         {
-            endOfLevel.GetComponent<GameManagementScript>().setFileNumber(fileNum);
+            endOfLevel.GetComponent<GameManagementScript>().SetFileNumber(fileNum);
         }
         SceneManager.LoadScene("HubWorldMusicTest");
     }
