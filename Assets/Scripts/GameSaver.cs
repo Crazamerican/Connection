@@ -11,7 +11,7 @@ public class GameSaver : MonoBehaviour
     public Dictionary<String, LevelData> levelsCleared = new Dictionary<String, LevelData>();
     private ArrayList levelNames = new ArrayList()
     {
-        "NewGraphics1", "NewGraphics2", "NewGraphics3", "NewGraphics4", "NewGraphics5", "NewGraphics6", "NewGraphics7"
+        "NewGraphics1", "NewGraphics2", "NewGraphics3", "NewGraphics4", "NewGraphics5", "NewGraphics6", "NewGraphics7", "Level1"
     };
     
 
@@ -61,6 +61,7 @@ public class GameSaver : MonoBehaviour
         }
     }
 
+
     public LevelData GetLevelData()
     {
         Scene scene = SceneManager.GetActiveScene();
@@ -73,6 +74,7 @@ public class GameSaver : MonoBehaviour
             data = new LevelData();
             data.levelCleared = false;
             data.trophyGot = false;
+            data.checkPoint = 0;
             levelsCleared.Add(level, data);
             return data;
         }
@@ -123,6 +125,7 @@ public class GameSaver : MonoBehaviour
             data.levelCleared = false;
             data.trophyGot = false;
             data.levelUnlocked = false;
+            data.checkPoint = 0;
             levelsCleared.Add(levelName, data);
             return data;
         }
@@ -138,6 +141,7 @@ public class GameSaver : MonoBehaviour
             levelData.levelUnlocked = false;
             levelData.levelCleared = false;
             levelData.trophyGot = false;
+            levelData.checkPoint = 0;
             if(i == 0)
             {
                 Debug.Log("The first level has been unlocked: " + name);
@@ -166,5 +170,37 @@ public class LevelData
     public Boolean levelUnlocked { get; set; }
     public Boolean levelCleared { get;  set; }
     public Boolean trophyGot { get;  set; }
+    public int checkPoint { get; set; }
+    public SerializableVector3 topCharacterStartPosition { get; set; }
+    public SerializableVector3 bottomCharacterStartPosition { get; set; }
+}
 
+
+[Serializable]
+public class SerializableVector3
+{
+    public float x;
+    public float y;
+    public float z;
+    public SerializableVector3(float rx, float ry, float rz)
+    {
+        x = rx;
+        y = ry;
+        z = rz;
+    }
+
+    public override string ToString()
+    {
+        return String.Format("[{0}, {1}, {2}]", x, y, z);
+    }
+
+    public static implicit operator Vector3(SerializableVector3 rValue)
+    {
+        return new Vector3(rValue.x, rValue.y, rValue.z);
+    }
+
+    public static implicit operator SerializableVector3(Vector3 rValue)
+    {
+        return new SerializableVector3(rValue.x, rValue.y, rValue.z);
+    }
 }
