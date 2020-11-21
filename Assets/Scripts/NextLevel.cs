@@ -25,7 +25,7 @@ public class NextLevel : MonoBehaviour
         {
             GameManagementScript manager = endOfLevel.GetComponent<GameManagementScript>();
             manager.UpdateLevelDataCleared();
-            manager.unlockNextLevel();
+            manager.UnlockNextLevel();
             manager.SaveLevel();
             manager.unlock = true;
 
