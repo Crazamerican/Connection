@@ -11,7 +11,8 @@ public class GameSaver : MonoBehaviour
     public Dictionary<String, LevelData> levelsCleared = new Dictionary<String, LevelData>();
     private ArrayList levelNames = new ArrayList()
     {
-        "NewGraphics1", "NewGraphics2", "NewGraphics3", "NewGraphics4", "NewGraphics5", "NewGraphics6", "NewGraphics7", "Level1"
+        //"NewGraphics1", "NewGraphics2", "NewGraphics3", "NewGraphics4", "NewGraphics5", "NewGraphics6", "NewGraphics7", "Level1"
+        "Level1", "NewGraphics2", "NewGraphics3", "NewGraphics4", "NewGraphics5", "NewGraphics6", "NewGraphics7"
     };
     
 
