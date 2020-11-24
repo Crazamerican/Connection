@@ -127,10 +127,12 @@ public class FollowPlayer : MonoBehaviour
             }
         } //when player is dead and camera transitioning back to old checkpoint
         else if (freezePlayers == true && deathScript.dead == true) {
+            Debug.Log("here");
             if (startDead == true)
             {
+                Debug.Log("1");
                 startDead = false;
-                if (player.transform.position.x < initCam.x) {
+                if (player.transform.position.x <= initCam.x) {
                     onInit = true;
                 } else
                 {
@@ -139,6 +141,7 @@ public class FollowPlayer : MonoBehaviour
                 Debug.Log("onInit" + onInit);
             }
             if (onInit == true) {
+                Debug.Log("2");
                 if (transform.position.x <= initCam.x)
                 {
                     deathScript.camDone = true;
@@ -152,6 +155,7 @@ public class FollowPlayer : MonoBehaviour
                 }
             } else
             {
+                Debug.Log("3");
                 if (playerCam.x <= (width * .48) && player2Cam.x <= (width * .48))
                 {
                     transform.position = transform.position - new Vector3(0.18f, 0);

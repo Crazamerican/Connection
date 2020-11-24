@@ -66,6 +66,7 @@ public class DeathScript : MonoBehaviour
 
     public void PlayerDiedMovePlayers()
     {
+        dead = true;
         cameraScript.freezePlayers = true;
         Vector3 topPos, botPos;
         (topPos, botPos) = gameManagement.GetCheckPointPositionToMovePlayersTo();
