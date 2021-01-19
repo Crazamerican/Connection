@@ -272,11 +272,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3637233861463602301}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -1.4190986, y: -1.4761173, z: 0}
-  m_LocalScale: {x: 1.136364, y: 1.136364, z: 1.1363636}
+  m_LocalPosition: {x: -0.40960228, y: -0.64632773, z: 0}
+  m_LocalScale: {x: 0.33333355, y: 0.33333355, z: 1}
   m_Children: []
-  m_Father: {fileID: 3637233861638369079}
-  m_RootOrder: 2
+  m_Father: {fileID: 3637233861673939550}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!198 &3637233861463602296
 ParticleSystem:
@@ -415,7 +415,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 0.6
-      minScalar: 0
+      minScalar: 0.1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -530,8 +530,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.25
-      minScalar: 0.1
+      scalar: 0.5
+      minScalar: 0.2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1221,7 +1221,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 3
-        scalar: 3
+        scalar: 5
         minScalar: 1
         maxCurve:
           serializedVersion: 2
@@ -5598,7 +5598,6 @@ Transform:
   m_Children:
   - {fileID: 3637233863075456792}
   - {fileID: 3637233861753057216}
-  - {fileID: 3637233861463602302}
   m_Father: {fileID: 3637233861516087219}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5693,6 +5692,7 @@ GameObject:
   - component: {fileID: 3637233861673939550}
   - component: {fileID: 3637233861673939548}
   - component: {fileID: 3637233861673939549}
+  - component: {fileID: 1779976496796607857}
   m_Layer: 8
   m_Name: HumanSprite
   m_TagString: Untagged
@@ -5710,7 +5710,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.67, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 3637233861463602302}
   m_Father: {fileID: 3637233861516087219}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5782,6 +5783,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1779976496796607857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3637233861673939555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48393e67ba23a244ab7e6fe44d74cbd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleSystem: {fileID: 3637233861463602296}
 --- !u!1 &3637233861753057223
 GameObject:
   m_ObjectHideFlags: 0
@@ -5893,7 +5907,6 @@ Transform:
   m_Children:
   - {fileID: 3637233861428983276}
   - {fileID: 3637233862931098219}
-  - {fileID: 3637233862015878339}
   m_Father: {fileID: 3637233862641973953}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6003,11 +6016,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3637233862015878338}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -2.0697503, y: 29.3015, z: 0}
-  m_LocalScale: {x: 1.136364, y: 1.136364, z: 1.1363636}
+  m_LocalPosition: {x: -0.24, y: -0.65, z: 0}
+  m_LocalScale: {x: 0.33333355, y: 0.33333355, z: 1}
   m_Children: []
-  m_Father: {fileID: 3637233861961558054}
-  m_RootOrder: 2
+  m_Father: {fileID: 3637233862896670156}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!198 &3637233862015878973
 ParticleSystem:
@@ -6145,8 +6158,8 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.6
-      minScalar: 0
+      scalar: 0.7
+      minScalar: 0.1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -6261,7 +6274,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.25
+      scalar: 0.5
       minScalar: 0.1
       maxCurve:
         serializedVersion: 2
@@ -6952,7 +6965,7 @@ ParticleSystem:
       countCurve:
         serializedVersion: 2
         minMaxState: 3
-        scalar: 3
+        scalar: 5
         minScalar: 1
         maxCurve:
           serializedVersion: 2
@@ -10909,6 +10922,7 @@ GameObject:
   - component: {fileID: 3637233862896670156}
   - component: {fileID: 3637233862896670163}
   - component: {fileID: 3637233862896670162}
+  - component: {fileID: 9026691432400895369}
   m_Layer: 8
   m_Name: HumanSprite
   m_TagString: Untagged
@@ -10926,7 +10940,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.75, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 3637233862015878339}
   m_Father: {fileID: 3637233862641973953}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10998,6 +11013,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &9026691432400895369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3637233862896670161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48393e67ba23a244ab7e6fe44d74cbd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleSystem: {fileID: 3637233862015878973}
 --- !u!1 &3637233862931098218
 GameObject:
   m_ObjectHideFlags: 0
