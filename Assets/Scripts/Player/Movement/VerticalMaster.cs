@@ -467,6 +467,7 @@ public class VerticalMaster : MonoBehaviour
         if (col == true && topOrBottom == 1)
         {
             velocity = 0;
+            grounded = false;
         }
         //if hit a ground then sets player to grounded and velocity to 0
         else if (col == true && topOrBottom == -1)
@@ -479,6 +480,7 @@ public class VerticalMaster : MonoBehaviour
         if (col2 == true && topOrBottom2 == 1)
         {
             velocity2 = 0;
+            grounded = false;
         }
         else if (col2 == true && topOrBottom2 == -1)
         {
