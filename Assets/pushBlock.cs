@@ -47,7 +47,6 @@ public class pushBlock : MonoBehaviour
         colliderHelper(colliderLeft3, false);
 
         touchingMoving = horScript.touchingMoving;
-        Debug.Log("nonPushRight: " + horScript.nonPushLeft);
         if (touchingMoving == true && ((horScript.pushLeft && !horScript.nonPushRight) || (horScript.pushRight && !horScript.nonPushLeft) || (horScript.pushLeft && horScript.nonPushRight && movingPush < 0) || (horScript.pushRight && horScript.nonPushLeft && movingPush > 0))) {
             transform.position += new Vector3(movingPush, 0);
         }

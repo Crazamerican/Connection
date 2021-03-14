@@ -1,0 +1,299 @@
+fileFormatVersion: 2
+guid: 5b855151c55797845bd25717529c50b7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6633623557764619132
+    second: ChibiDudeUI_0
+  - first:
+      213: 4175198987492367263
+    second: ChibiDudeUI_1
+  - first:
+      213: -9216430792866751541
+    second: ChibiDudeUI_2
+  - first:
+      213: 2918443589100344707
+    second: ChibiDudeUI_3
+  - first:
+      213: -4256478343278979653
+    second: ChibiDudeUI_4
+  - first:
+      213: -7567959261651030813
+    second: ChibiDudeUI_5
+  - first:
+      213: -1253419259871814635
+    second: ChibiDudeUI_6
+  - first:
+      213: -2782450293217128281
+    second: ChibiDudeUI_7
+  - first:
+      213: -3104534589851341832
+    second: ChibiDudeUI_8
+  - first:
+      213: -5994059884295140630
+    second: ChibiDudeUI_9
+  - first:
+      213: 6546936823394412426
+    second: ChibiDudeUI_10
+  - first:
+      213: 2741057353061895200
+    second: ChibiDudeUI_11
+  - first:
+      213: -4815976252397206850
+    second: ChibiDudeUI_12
+  - first:
+      213: 5084078832410504816
+    second: ChibiDudeUI_13
+  - first:
+      213: -8282695017229687201
+    second: ChibiDudeUI_14
+  - first:
+      213: -2706398734164583379
+    second: ChibiDudeUI_15
+  - first:
+      213: 6126263185130426662
+    second: ChibiDudeUI_16
+  - first:
+      213: 2928743096432986447
+    second: ChibiDudeUI_17
+  - first:
+      213: 8744663567811457976
+    second: ChibiDudeUI_18
+  - first:
+      213: 5263213221230421806
+    second: ChibiDudeUI_19
+  - first:
+      213: 6224972744756185669
+    second: ChibiDudeUI_20
+  - first:
+      213: -5912416000137807962
+    second: ChibiDudeUI_21
+  - first:
+      213: 3155129735499661681
+    second: ChibiDudeUI_22
+  - first:
+      213: -1623446039594973574
+    second: ChibiDudeUI_23
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 50
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ChibiDudeUI_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 698ba7436ca02b344af12c05bdaa13ec
+      internalID: -6633623557764619132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChibiDudeUI_1
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 0
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d61dff45823acf49b219aa38ddcdd42
+      internalID: 4175198987492367263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChibiDudeUI_2
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 0
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 892bccef69e738d439193d5a8b383c20
+      internalID: -9216430792866751541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChibiDudeUI_3
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 0
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1e56b20d292c9a459636fdf0874ec0d
+      internalID: 2918443589100344707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChibiDudeUI_4
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 0
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18023eccddcfc1544bc4f56f6d4b2fc3
+      internalID: -4256478343278979653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChibiDudeUI_5
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 0
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99a39da95de28e74f8f39d5a76ec2042
+      internalID: -7567959261651030813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: c60246d2dd84d614db4f46d2a1c4b6b4
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

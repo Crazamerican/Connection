@@ -22,8 +22,8 @@ public class VerticalMaster : MonoBehaviour
     float distToCol;
     float distToCol2;
     //used for gravity inversion code
-    private bool inverted;
-    private bool inverted2;
+    public bool inverted;
+    public bool inverted2;
     private bool inverted2_2;
     private bool invertOnCommand;
     //script to grab parameters from Player2
@@ -150,7 +150,7 @@ public class VerticalMaster : MonoBehaviour
             }
         }
         //if jump button pressed and a character is on or extremely near the ground and not frozen
-        if (Input.GetButtonDown("Jump") && (forgiveGround || forgiveGround2 || coyoteGround || coyoteGround2) && cameraScript.freezePlayers == false && (!otherPlayer.GetComponent<HorizontalMovement>().touchingMoving && !this.GetComponent<HorizontalMovement>().touchingMoving))
+        if (Input.GetButtonDown("Jump") && (forgiveGround || forgiveGround2 || coyoteGround || coyoteGround2 || grounded || grounded2) && cameraScript.freezePlayers == false && (!otherPlayer.GetComponent<HorizontalMovement>().touchingMoving && !this.GetComponent<HorizontalMovement>().touchingMoving))
         {
             //jumps in opposite direction if inverted
             if (inverted == true || inverted2 == true)
@@ -467,6 +467,7 @@ public class VerticalMaster : MonoBehaviour
         if (col == true && topOrBottom == 1)
         {
             velocity = 0;
+            grounded = false;
         }
         //if hit a ground then sets player to grounded and velocity to 0
         else if (col == true && topOrBottom == -1)
@@ -479,6 +480,7 @@ public class VerticalMaster : MonoBehaviour
         if (col2 == true && topOrBottom2 == 1)
         {
             velocity2 = 0;
+            grounded = false;
         }
         else if (col2 == true && topOrBottom2 == -1)
         {
