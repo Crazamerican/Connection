@@ -25,6 +25,11 @@ public class GravityInverter : MonoBehaviour
             verticalMaster.gravity2 = verticalMaster.gravity2 * -1;
             verticalMaster.inverted = !verticalMaster.inverted;
             verticalMaster.inverted2 = !verticalMaster.inverted2;
+            if (verticalMaster.inverted) {
+                verticalMaster.changeGravity = true;
+                verticalMaster.velocity = 0;
+                verticalMaster.velocity2 = 0;
+            }
         }
     }
 
@@ -38,6 +43,12 @@ public class GravityInverter : MonoBehaviour
             verticalMaster.gravity2 = verticalMaster.gravity2 * -1;
             verticalMaster.inverted = !verticalMaster.inverted;
             verticalMaster.inverted2 = !verticalMaster.inverted2;
+            if (verticalMaster.inverted)
+            {
+                verticalMaster.changeGravity = true;
+                verticalMaster.velocity = 0;
+                verticalMaster.velocity2 = 0;
+            }
         }
     }
 }
