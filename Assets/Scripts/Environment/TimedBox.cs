@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,11 +19,14 @@ public class TimedBox : MonoBehaviour
     private bool active = true;
     private bool playerInBounds = false;
 
+    private Animator anim;
+
     float velocityref;
 
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         textpro.text = fadeTime.ToString();
     }
@@ -59,27 +62,39 @@ public class TimedBox : MonoBehaviour
         }
     }
 
-    private IEnumerator FadingOut()
+    public void CallFadeIn()
     {
-        float timer = 0f;
-        
-        
-
-        while (timer < fadeTime)
-        {
-            timer += Time.deltaTime;
-            Color tempColor = spriteRenderer.color;
-            tempColor.a = Mathf.SmoothDamp(spriteRenderer.color.a, 0f, ref velocityref, fadeTime - timer);
-            spriteRenderer.color = tempColor;
-            textpro.text = Mathf.FloorToInt(fadeTime - timer).ToString();
-            yield return 0;
-        }
-
         active = false;
         textpro.enabled = false;
         collider.enabled = false;
 
         StartCoroutine(FadingIn());
+    }
+
+    private IEnumerator FadingOut()
+    {
+        float timer = 0f;
+        anim.SetTrigger("crumble");
+
+
+        while (timer < fadeTime)
+        {
+            timer += Time.deltaTime;
+
+            Color tempColor = spriteRenderer.color;
+            tempColor.a = Mathf.SmoothDamp(spriteRenderer.color.a, .8f, ref velocityref, fadeTime - timer);
+            spriteRenderer.color = tempColor;
+            
+
+
+            textpro.text = Mathf.FloorToInt(fadeTime - timer).ToString();
+            yield return 0;
+        }
+
+        anim.ResetTrigger("crumble");
+        anim.SetTrigger("break");
+
+        yield return 0;
     }
 
     private IEnumerator FadingIn()
@@ -109,5 +124,7 @@ public class TimedBox : MonoBehaviour
         Color tmpColor = spriteRenderer.color;
         tmpColor.a = 1f;
         spriteRenderer.color = tmpColor;
+        anim.ResetTrigger("break");
+        anim.SetTrigger("fullyrecovered");
     }
 }
