@@ -10,8 +10,8 @@ public class VerticalMaster : MonoBehaviour
     public bool grounded;
     public bool grounded2;
     //player current speed
-    [SerializeField] float velocity;
-    [SerializeField] float velocity2;
+    [SerializeField] public float velocity;
+    [SerializeField] public float velocity2;
     public float gravity;
     public float gravity2;
     //otherPlayer is Player2
@@ -81,9 +81,14 @@ public class VerticalMaster : MonoBehaviour
     int coyoteTimer;
     int coyoteTimer2;
 
+    public bool changeGravity;
+    int changeGravityFreeze; 
+
     // Use this for initialization
     void Start()
     {
+        changeGravityFreeze = 0;
+        changeGravity = false;
         coyoteTimer = 0;
         coyoteTimer2 = 0;
         coyoteGround = false;
@@ -150,7 +155,7 @@ public class VerticalMaster : MonoBehaviour
             }
         }
         //if jump button pressed and a character is on or extremely near the ground and not frozen
-        if (Input.GetButtonDown("Jump") && (forgiveGround || forgiveGround2 || coyoteGround || coyoteGround2 || grounded || grounded2) && cameraScript.freezePlayers == false && (!otherPlayer.GetComponent<HorizontalMovement>().touchingMoving && !this.GetComponent<HorizontalMovement>().touchingMoving))
+        if (Input.GetButtonDown("Jump") && changeGravity == false && (forgiveGround || forgiveGround2 || coyoteGround || coyoteGround2 || grounded || grounded2) && cameraScript.freezePlayers == false && (!otherPlayer.GetComponent<HorizontalMovement>().touchingMoving && !this.GetComponent<HorizontalMovement>().touchingMoving))
         {
             //jumps in opposite direction if inverted
             if (inverted == true || inverted2 == true)
@@ -186,6 +191,11 @@ public class VerticalMaster : MonoBehaviour
             inverted = !inverted;
             gravity2 = gravity2 * -1;
             gravity = gravity * -1;
+            if (inverted) {
+                changeGravity = true;
+                velocity = 0;
+                velocity2 = 0;
+            }
         }
         
 
@@ -210,8 +220,20 @@ public class VerticalMaster : MonoBehaviour
         }
         topOrBottom = 0;
         topOrBottom2 = 0;
+        if (changeGravity == true) {
+            velocity = 0;
+            velocity2 = 0;
+            if (changeGravityFreeze <= 4)
+            {
+                velocity = velocity - (gravity);
+                velocity2 = velocity2 - (gravity2);
+                changeGravity = false;
+                changeGravityFreeze = 0;
+            }
+            changeGravityFreeze++;
+        }
         //once at height of jump, hovers for 5 frames
-        if (velocity > 0 && velocity - gravity < 0 || floatTop == true)
+        else if (velocity > 0 && velocity - gravity < 0 || floatTop == true)
         {
             velocity = 0;
             velocity2 = 0;
@@ -493,6 +515,14 @@ public class VerticalMaster : MonoBehaviour
         //moves player1
         if (col == false && col2 == false)
         {
+            if (Mathf.Abs(velocity) > .18f && inverted == true) {
+                if (velocity > 0)
+                {
+                    velocity = .18f;
+                    velocity2 = .18f;
+                }
+            }
+            Debug.Log("velocity: " + velocity);
             transform.position = transform.position + new Vector3(0, velocity);
             otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, velocity2);
         }
