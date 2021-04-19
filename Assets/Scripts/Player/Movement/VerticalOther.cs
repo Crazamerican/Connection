@@ -38,6 +38,9 @@ public class VerticalOther : MonoBehaviour
 
     public Collider2D[] GetBotBoi_Moving(float velocity)
     {
+        if (inverted2) {
+            return Physics2D.OverlapAreaAll(transform.position + new Vector3(-width / 2.1f, velocity + height / 2), transform.position + new Vector3(+width / 2.1f, velocity + height / 2 + .01f));
+        }
         return Physics2D.OverlapAreaAll(transform.position + new Vector3(-width / 2.1f, velocity - height / 2), transform.position + new Vector3(+width / 2.1f, velocity - height / 2 - .01f));
     }
 

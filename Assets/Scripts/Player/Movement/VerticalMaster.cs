@@ -275,6 +275,10 @@ public class VerticalMaster : MonoBehaviour
         Collider2D[] topboi = Physics2D.OverlapAreaAll(transform.position + new Vector3(-width / 2.1f, velocity + height / 2), transform.position + new Vector3(+width / 2.1f, velocity + height / 2 + .01f));
         Collider2D[] bottomboi = Physics2D.OverlapAreaAll(transform.position + new Vector3(-width / 2.1f, velocity - height / 2), transform.position + new Vector3(+width / 2.1f, velocity - height / 2 - .01f));
         Collider2D[] bottomboi_Moving = Physics2D.OverlapAreaAll(transform.position + new Vector3(-width / 2.1f, velocity - height / 2), transform.position + new Vector3(+width / 2.1f, velocity - height / 2 - .01f));
+        //invert gravity
+        if (inverted) {
+            bottomboi_Moving = Physics2D.OverlapAreaAll(transform.position + new Vector3(-width / 2.1f, velocity + height / 2), transform.position + new Vector3(+width / 2.1f, velocity + height / 2 + .01f));
+        }
         //forgiving collider goes a bit further than regular colliders
         Collider2D[] bottom1_forgive = Physics2D.OverlapAreaAll(transform.position + new Vector3(-width / 2.1f, velocity - height / 2), transform.position + new Vector3(+width / 2.1f, velocity - height / 2 - .3f));
         //player2 colliders from VerticalOther script
@@ -522,7 +526,6 @@ public class VerticalMaster : MonoBehaviour
                     velocity2 = .18f;
                 }
             }
-            Debug.Log("velocity: " + velocity);
             transform.position = transform.position + new Vector3(0, velocity);
             otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, velocity2);
         }
