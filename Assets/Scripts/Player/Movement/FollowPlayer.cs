@@ -113,6 +113,8 @@ public class FollowPlayer : MonoBehaviour
     // LateUpdate is called after Update each frame
     void LateUpdate()
     {
+        //Debug.Log("Player1: " + player.transform.position.x);
+        //Debug.Log("Player2: " + player2.transform.position.x);
         //when transitioning between parts of levels
         if (freezePlayers == true && deathScript.dead == false && deathScript.camDone == false)
         {
@@ -201,8 +203,10 @@ public class FollowPlayer : MonoBehaviour
         }
         //used to indicate screen transition
         //if (playerCam.x >= (width) && player2Cam.x >= (width))
+        //Debug.Log("player transform: " + player.transform.position.x + " firstend: " + firstEnd);
         if (player.transform.position.x >= firstEnd - .05f && player2.transform.position.x >= firstEnd - .05f && switchStop == false)
         {
+            Debug.Log("transition time boisss");
             freezePlayers = true;
             playerCam = cam.WorldToScreenPoint(player.transform.position);
             player2Cam = cam.WorldToScreenPoint(player2.transform.position);

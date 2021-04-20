@@ -36,7 +36,6 @@ public class MoveCharacterUI : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Debug.Log(transform.position.x);
         bool xPosEnd = false;
         bool yPosEnd = false;
         if ((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) && level != 5 && !moveStart)
