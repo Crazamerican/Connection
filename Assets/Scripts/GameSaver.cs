@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class GameSaver : MonoBehaviour
 {
     public Dictionary<String, LevelData> levelsCleared = new Dictionary<String, LevelData>();
-    private ArrayList levelNames = new ArrayList()
+    private static List<String> levelNames = new List<string>()
     {
         //"NewGraphics1", "NewGraphics2", "NewGraphics3", "NewGraphics4", "NewGraphics5", "NewGraphics6", "NewGraphics7", "Level1"
         "Level1", "NewGraphics2", "NewGraphics3", "NewGraphics4", "NewGraphics5", "NewGraphics6", "NewGraphics7"
@@ -81,6 +81,27 @@ public class GameSaver : MonoBehaviour
         }
     }
 
+    public bool CheckStartingLocation()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        String level = scene.name;
+        if(levelsCleared.TryGetValue(level, out LevelData data))
+        {
+            if(data.topCharacterStartPosition != null && data.bottomCharacterStartPosition != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     public void tryUnlockNextLevel()
     {
         Scene scene = SceneManager.GetActiveScene();
@@ -127,6 +148,8 @@ public class GameSaver : MonoBehaviour
             data.trophyGot = false;
             data.levelUnlocked = false;
             data.checkPoint = 0;
+            data.topCharacterStartPosition = new SerializableVector3(0, 0, 0);
+            data.bottomCharacterStartPosition = new SerializableVector3(0, 0, 0);
             levelsCleared.Add(levelName, data);
             return data;
         }
@@ -204,4 +227,6 @@ public class SerializableVector3
     {
         return new SerializableVector3(rValue.x, rValue.y, rValue.z);
     }
+
+
 }
