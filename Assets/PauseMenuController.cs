@@ -10,11 +10,13 @@ public class PauseMenuController : MonoBehaviour
     public bool isPaused;
     public GameObject go;
     AudioSource audioSource;
+    GameObject endOfLevel;
 
 
     public void Start()
     {
         audioSource = go.GetComponent<AudioSource>();
+        endOfLevel = endOfLevel = GameObject.Find("EndOfLevel");
     }
 
     private void Update()
@@ -47,13 +49,14 @@ public class PauseMenuController : MonoBehaviour
         isPaused = false;
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
-        SceneManager.LoadScene(level);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void ReturnToMain() {
         isPaused = false;
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
+        endOfLevel.GetComponent<GameManagementScript>().SaveLevel();
         SceneManager.LoadScene("Main Menu");
     }
 }

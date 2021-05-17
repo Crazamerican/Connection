@@ -67,7 +67,13 @@ public class GameManagementScript : MonoBehaviour
     }
      public LevelData GetLevelData()
     {
+        Debug.Log(gameSaver);
         return gameSaver.GetLevelData();
+    }
+
+    public bool CheckStartingPoints()
+    {
+        return gameSaver.CheckStartingLocation();
     }
 
     public void UpdateLevelDataCleared()
@@ -102,10 +108,31 @@ public class GameManagementScript : MonoBehaviour
     
     public (Vector3 p1, Vector3 p2) GetCheckPointPositionToMovePlayersTo()
     {
-        Vector3 topCharPos = GetLevelData().topCharacterStartPosition;
-        Vector3 botCharPos = GetLevelData().bottomCharacterStartPosition;
+        Vector3 topCharPos = gameSaver.GetLevelData().topCharacterStartPosition;
+        Vector3 botCharPos = gameSaver.GetLevelData().bottomCharacterStartPosition;
         return (topCharPos, botCharPos);
     }
-    
+
+    public void UpdateLocations(Vector3 top, Vector3 bottom)
+    {
+        LevelData levelData = gameSaver.GetLevelData();
+        levelData.bottomCharacterStartPosition = bottom;
+        levelData.topCharacterStartPosition = top;
+        //gameSaver.updateLocations(top, bottom);
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            Debug.Log(gameSaver.GetLevelData().bottomCharacterStartPosition + " :::: " + gameSaver.GetLevelData().topCharacterStartPosition);
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            gameSaver.GetLevelData().bottomCharacterStartPosition = new Vector3(0, 0, 0);
+            gameSaver.GetLevelData().topCharacterStartPosition = new Vector3(0, 0, 0);
+            Debug.Log(gameSaver.GetLevelData().bottomCharacterStartPosition + " :::: " + gameSaver.GetLevelData().topCharacterStartPosition);
+        }
+    }
 
 }
