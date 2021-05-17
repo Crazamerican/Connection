@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DeathScript : MonoBehaviour
 {
@@ -54,13 +55,14 @@ public class DeathScript : MonoBehaviour
                 camDone = false;
                 cameraScript.freezePlayers = false;
                 timer = 0;
+                dead = false;
             } else
             {
                 timer++;
             }
         }
         if (Input.GetKeyDown(KeyCode.P)) {
-            PlayerDiedMovePlayers();
+            dead = true;
         }
     }
 
@@ -69,9 +71,16 @@ public class DeathScript : MonoBehaviour
         dead = true;
         cameraScript.freezePlayers = true;
         Vector3 topPos, botPos;
-        (topPos, botPos) = gameManagement.GetCheckPointPositionToMovePlayersTo();
-        Debug.Log("Setting the Top player to : " + topPos + " \n Setting the bottom player to: " + botPos);
-        player1.transform.position = topPos;
-        player2.transform.position = botPos;
+        if (gameManagement.CheckStartingPoints()) {
+            (topPos, botPos) = gameManagement.GetCheckPointPositionToMovePlayersTo();
+            Debug.Log(topPos);
+            Debug.Log(botPos);
+            player1.transform.position = topPos;
+            player2.transform.position = botPos;
+        }
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 }

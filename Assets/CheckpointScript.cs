@@ -30,10 +30,8 @@ public class CheckpointScript : MonoBehaviour
     {
         if (collision.tag == "Player") {
             checkpointSpriteRenderer.sprite = greenCheckpoint;
-            LevelData data = gameManager.GetLevelData();
-            data.topCharacterStartPosition = player1.transform.localPosition;
-            data.bottomCharacterStartPosition = player2.transform.localPosition;
-            Debug.Log("Setting the world position to: " + player1.transform.localPosition + " And second position to: " + player2.transform.localPosition);
+            gameManager.UpdateLocations(player1.transform.position, player2.transform.position);
+            Debug.Log("Setting the world position to: " + player1.transform.position + " And second position to: " + player2.transform.position);
         }
     }
 }
