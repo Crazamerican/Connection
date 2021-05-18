@@ -33,7 +33,7 @@ public class TimedBox : MonoBehaviour
     private void Awake()
     {
         collider = GetComponent<BoxCollider2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         textpro.text = fadeTime.ToString();
         anim = GetComponent<Animator>();
     }
