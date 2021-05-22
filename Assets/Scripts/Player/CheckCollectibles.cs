@@ -32,6 +32,7 @@ public class CheckCollectibles : MonoBehaviour
     {
         if (other.tag == "Key")
         {
+            Debug.Log("thing");
             unlock = true;
             audioSource.PlayOneShot(keyGetSound, 0.7F);
             Destroy(other.gameObject);
@@ -43,15 +44,17 @@ public class CheckCollectibles : MonoBehaviour
         }
         if (other.tag == "Door")
         {
-            unlock = endOfLevel.GetComponent<GameManagementScript>().unlock;
+            //unlock = endOfLevel.GetComponent<GameManagementScript>().unlock;
             atDoor = true;
-            if ((unlock == true || otherCollectible.unlock == true) && atDoor == true && otherCollectible.atDoor == true)
+            if ((unlock == true && otherCollectible.unlock == true) && atDoor == true && otherCollectible.atDoor == true)
             {
-                audioSource.PlayOneShot(doorOpenSound, 0.7F);
+                audioSource.PlayOneShot(doorOpenSound, 0.4F);
+                /*
                 foreach (Transform child in other.gameObject.transform.parent.transform) {
                     Destroy(child.gameObject);
-                }
-                Destroy(other.gameObject.transform.parent);
+                }*/
+                //Destroy(other.gameObject.transform.parent.gameObject);
+                Destroy(other.gameObject);
                 unlock = false;
                 atDoor = false;
             }
