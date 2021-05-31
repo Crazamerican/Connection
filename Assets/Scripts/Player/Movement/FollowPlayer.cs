@@ -33,7 +33,8 @@ public class FollowPlayer : MonoBehaviour
     bool switchStop;
     public bool switchToSecond;
 
-    public bool freezePlayers;
+    private GameManagementScript gameManagement;
+    private bool freezePlayers;
 
     public GameObject playBoth;
     DeathScript deathScript;
@@ -49,6 +50,7 @@ public class FollowPlayer : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        gameManagement = GameObject.Find("EndOfLevel").GetComponent<GameManagementScript>();
         horScript = player.GetComponent<HorizontalMovement>();
         firstEnd = horScript.firstEnd;
         onInit = true;
@@ -120,6 +122,7 @@ public class FollowPlayer : MonoBehaviour
         {
             if (cam.transform.position.x > initCam.x)
             {
+                gameManagement.freezePlayer = false;
                 freezePlayers = false;
                 transform.position = initCam;
                 switchToSecond = true;
@@ -207,6 +210,7 @@ public class FollowPlayer : MonoBehaviour
         if (player.transform.position.x >= firstEnd - .05f && player2.transform.position.x >= firstEnd - .05f && switchStop == false)
         {
             Debug.Log("transition time boisss");
+            gameManagement.freezePlayer = true;
             freezePlayers = true;
             playerCam = cam.WorldToScreenPoint(player.transform.position);
             player2Cam = cam.WorldToScreenPoint(player2.transform.position);

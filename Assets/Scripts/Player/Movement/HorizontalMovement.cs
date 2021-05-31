@@ -13,6 +13,8 @@ public class HorizontalMovement : MonoBehaviour {
 
     public Animator charAnim;
 
+    private GameManagementScript gameManagement;
+
     public GameObject cameraBoi;
     FollowPlayer cameraScript;
     bool col;
@@ -43,6 +45,7 @@ public class HorizontalMovement : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        gameManagement = GameObject.Find("EndOfLevel").GetComponent<GameManagementScript>();
         pushLeft = false;
         nonPushLeft = false;
         pushRight = false;
@@ -68,7 +71,7 @@ public class HorizontalMovement : MonoBehaviour {
         touchingMoving = false;
         //Store the current horizontal input in the float moveHorizontal.
         moveDirection = 0;
-        if (cameraScript.freezePlayers == false)
+        if (gameManagement.freezePlayer == false)
         {
             if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
             {
@@ -431,6 +434,9 @@ public class HorizontalMovement : MonoBehaviour {
                 }
             }
         }
+
+        charAnim.SetBool("pushRight", pushRight);
+        charAnim.SetBool("pushLeft", pushLeft);
     }
     private void colliderHelper(Collider2D[] collider, bool allColliders) {
         bool leftCol = false;
