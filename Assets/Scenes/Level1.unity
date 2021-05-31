@@ -19753,8 +19753,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 318562950}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 31, y: 7.3, z: -1}
-  m_LocalScale: {x: 1.25, y: 1.25, z: 1}
+  m_LocalPosition: {x: 31, y: 7.1534, z: -1}
+  m_LocalScale: {x: 1.25, y: 0.8835156, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 569
@@ -31423,7 +31423,6 @@ MonoBehaviour:
   firstStop: {fileID: 1877727613}
   secondStop: {fileID: 1571936456}
   switchToSecond: 0
-  freezePlayers: 0
   playBoth: {fileID: 260612608}
   secondInit: 46
 --- !u!1 &526391014
