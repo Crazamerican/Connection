@@ -1,37 +1,37 @@
 fileFormatVersion: 2
-guid: 684381e57a7313b45837e84cdcd290dd
+guid: 024f0b183ab76094391b8141b78cde5c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -30359734763823690
-    second: ChibiDude_Pushing_0
+      213: 3785399128907837007
+    second: ChibiGirl_Pushing_0
   - first:
-      213: 160200002410895810
-    second: ChibiDude_Pushing_1
+      213: -7091515565694692149
+    second: ChibiGirl_Pushing_1
   - first:
-      213: 1886596555402407633
-    second: ChibiDude_Pushing_2
+      213: -3395704752613875004
+    second: ChibiGirl_Pushing_2
   - first:
-      213: 5632824264661400992
-    second: ChibiDude_Pushing_3
+      213: 3158913522399897059
+    second: ChibiGirl_Pushing_3
   - first:
-      213: -2580009140078749609
-    second: ChibiDude_Pushing_4
+      213: -541228814486440183
+    second: ChibiGirl_Pushing_4
   - first:
-      213: -9169950845138497149
-    second: ChibiDude_Pushing_5
+      213: -7402613733475170903
+    second: ChibiGirl_Pushing_5
   - first:
-      213: 832440021110138145
-    second: ChibiDude_Pushing_6
+      213: -583438059983969747
+    second: ChibiGirl_Pushing_6
   - first:
-      213: -1680007406894651908
-    second: ChibiDude_Pushing_7
+      213: 8346006570158550909
+    second: ChibiGirl_Pushing_7
   - first:
-      213: 7287474591938376514
-    second: ChibiDude_Pushing_8
+      213: -5749407209984061284
+    second: ChibiGirl_Pushing_8
   - first:
-      213: -5593925257323593652
-    second: ChibiDude_Pushing_9
+      213: -5273914343888699450
+    second: ChibiGirl_Pushing_9
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -114,12 +114,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ChibiDude_Pushing_0
+      name: ChibiGirl_Pushing_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 120
+        width: 135
         height: 135
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -128,19 +128,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ceceaa1c3bc8e3b41a1182c098437e9f
-      internalID: -30359734763823690
+      spriteID: 4411743c04911664da7bb7321a840716
+      internalID: 3785399128907837007
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChibiDude_Pushing_1
+      name: ChibiGirl_Pushing_1
       rect:
         serializedVersion: 2
-        x: 120
+        x: 135
         y: 0
-        width: 120
+        width: 135
         height: 135
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -149,19 +149,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 23b7e8433c8050b4e85f9f0846ffc3b3
-      internalID: 160200002410895810
+      spriteID: 7fa08c46366a66e48a85674870aa4dfb
+      internalID: -7091515565694692149
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChibiDude_Pushing_2
+      name: ChibiGirl_Pushing_2
       rect:
         serializedVersion: 2
-        x: 240
+        x: 270
         y: 0
-        width: 120
+        width: 135
         height: 135
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -170,19 +170,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e87a963680df0dd44b8af577068a8487
-      internalID: 1886596555402407633
+      spriteID: 67a6cf42da40ebd47b0b7fb575fe39d8
+      internalID: -3395704752613875004
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChibiDude_Pushing_3
+      name: ChibiGirl_Pushing_3
       rect:
         serializedVersion: 2
-        x: 360
+        x: 405
         y: 0
-        width: 120
+        width: 135
         height: 135
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -191,19 +191,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 987586d73f03c644a9b8e3f80211b1c4
-      internalID: 5632824264661400992
+      spriteID: e9f2b04dbd322e044a08091d934fc0ae
+      internalID: 3158913522399897059
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChibiDude_Pushing_4
+      name: ChibiGirl_Pushing_4
       rect:
         serializedVersion: 2
-        x: 480
+        x: 540
         y: 0
-        width: 120
+        width: 135
         height: 135
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -212,19 +212,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9ff8b62423107dc48a3c90898c87f74d
-      internalID: -2580009140078749609
+      spriteID: bc34b15243ead8144905c5e5da3c3a72
+      internalID: -541228814486440183
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChibiDude_Pushing_5
+      name: ChibiGirl_Pushing_5
       rect:
         serializedVersion: 2
-        x: 600
+        x: 675
         y: 0
-        width: 120
+        width: 135
         height: 135
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -233,19 +233,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 72329ae106af68e49827227a1411ba92
-      internalID: -9169950845138497149
+      spriteID: 2dce48492e7064b4daad3dbeef9d5647
+      internalID: -7402613733475170903
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChibiDude_Pushing_6
+      name: ChibiGirl_Pushing_6
       rect:
         serializedVersion: 2
-        x: 720
+        x: 810
         y: 0
-        width: 120
+        width: 135
         height: 135
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -254,19 +254,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8611004728472794fbd0c5b3d7255862
-      internalID: 832440021110138145
+      spriteID: 55fa74a6332884c4aae5d3c63723d246
+      internalID: -583438059983969747
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChibiDude_Pushing_7
+      name: ChibiGirl_Pushing_7
       rect:
         serializedVersion: 2
-        x: 840
+        x: 945
         y: 0
-        width: 120
+        width: 135
         height: 135
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -275,40 +275,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 07b10f7a639557e46b992c046418876d
-      internalID: -1680007406894651908
+      spriteID: fa79b383f7112dc46921edd1b91fdd36
+      internalID: 8346006570158550909
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChibiDude_Pushing_8
-      rect:
-        serializedVersion: 2
-        x: 960
-        y: 0
-        width: 120
-        height: 135
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 32fca6ffb8ccfa64da1683641aaaf369
-      internalID: 7287474591938376514
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ChibiDude_Pushing_9
+      name: ChibiGirl_Pushing_8
       rect:
         serializedVersion: 2
         x: 1080
         y: 0
-        width: 120
+        width: 135
         height: 135
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -317,8 +296,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 32c9eba58eb824c48860e44ae1ef5d4d
-      internalID: -5593925257323593652
+      spriteID: e18227ced22de3a459718adf5076a65c
+      internalID: -5749407209984061284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ChibiGirl_Pushing_9
+      rect:
+        serializedVersion: 2
+        x: 1215
+        y: 0
+        width: 135
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4291980c88f05cf46b3e0214240020e9
+      internalID: -5273914343888699450
       vertices: []
       indices: 
       edges: []
@@ -326,7 +326,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: b490661864ea82d4181b3ec49dfded32
+    spriteID: ae808baf10455784fb0949dc0b7eb3ce
     internalID: 0
     vertices: []
     indices: 
