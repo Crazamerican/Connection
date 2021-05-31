@@ -12,9 +12,11 @@ public class CheckCollectibles : MonoBehaviour
     CheckCollectibles otherCollectible;
     public bool atDoor;
     private static GameObject endOfLevel;
+    public bool curAtWait = false;
     // Start is called before the first frame update
     void Start()
     {
+        curAtWait = false;
         atDoor = false;
         unlock = false;
         otherCollectible = otherPlayer.GetComponent<CheckCollectibles>();
@@ -46,7 +48,8 @@ public class CheckCollectibles : MonoBehaviour
         {
             //unlock = endOfLevel.GetComponent<GameManagementScript>().unlock;
             atDoor = true;
-            if ((unlock == true && otherCollectible.unlock == true) && atDoor == true && otherCollectible.atDoor == true)
+            //if (!curAtWait && (unlock == true && otherCollectible.unlock == true) && atDoor == true && otherCollectible.atDoor == true)
+            if ((!curAtWait && (unlock == true && otherCollectible.unlock == true) && atDoor == true && otherCollectible.atDoor == true) || (otherCollectible.curAtWait && !curAtWait))
             {
                 audioSource.PlayOneShot(doorOpenSound, 0.4F);
                 /*
@@ -54,11 +57,24 @@ public class CheckCollectibles : MonoBehaviour
                     Destroy(child.gameObject);
                 }*/
                 //Destroy(other.gameObject.transform.parent.gameObject);
-                Destroy(other.gameObject);
-                unlock = false;
-                atDoor = false;
+                Animator anim = other.GetComponent<Animator>();
+                anim.SetTrigger("isOpen");
+                StartCoroutine (WaitAnim(anim, other));
+                //while (!anim.GetCurrentAnimatorStateInfo(0).IsName("NoDoor")) {
+                //}
+                //Destroy(other.gameObject);
             }
         }
         
     }
+    IEnumerator WaitAnim(Animator anim, Collider2D other) {
+        curAtWait = true;
+        Debug.Log("thing: " + anim.GetCurrentAnimatorStateInfo(0).IsName("DoorOpen"));
+        Debug.Log(anim.GetCurrentAnimatorStateInfo(0).length);
+        yield return new WaitForSeconds(2);
+        Destroy(other.gameObject);
+        unlock = false;
+        atDoor = false;
+        curAtWait = false;
+    } 
 }
