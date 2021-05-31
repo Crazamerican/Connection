@@ -8,8 +8,6 @@ public class DeathScript : MonoBehaviour
     public GameObject Checkpoint;
     public GameObject player1;
     public GameObject player2;
-    public GameObject camBoi;
-    FollowPlayer cameraScript;
     GameManagementScript gameManagement;
     //public EventManager em;
 
@@ -38,7 +36,6 @@ public class DeathScript : MonoBehaviour
         timer = 0;
         camDone = false;
         dead = false;
-        cameraScript = camBoi.GetComponent<FollowPlayer>();
     }
 
     // Update is called once per frame
@@ -53,7 +50,7 @@ public class DeathScript : MonoBehaviour
             if (timer == 20)
             {
                 camDone = false;
-                cameraScript.freezePlayers = false;
+                gameManagement.freezePlayer = false;
                 timer = 0;
                 dead = false;
             } else
@@ -69,7 +66,7 @@ public class DeathScript : MonoBehaviour
     public void PlayerDiedMovePlayers()
     {
         dead = true;
-        cameraScript.freezePlayers = true;
+        gameManagement.freezePlayer = true;
         Vector3 topPos, botPos;
         if (gameManagement.CheckStartingPoints()) {
             (topPos, botPos) = gameManagement.GetCheckPointPositionToMovePlayersTo();

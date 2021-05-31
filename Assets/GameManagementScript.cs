@@ -11,6 +11,7 @@ public class GameManagementScript : MonoBehaviour
     private string fileNum;
     public bool unlock { get; set; }
     public List<GameObject> checkPoints;
+    public bool freezePlayer;
     //Create the singleton
     private void Awake()
     {

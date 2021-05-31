@@ -50,8 +50,8 @@ public class VerticalMaster : MonoBehaviour
     public GameObject char_base;
     public GameObject ghost;
 
-    public GameObject cameraBoi;
-    FollowPlayer cameraScript;
+    private GameManagementScript gameManagement;
+
     //similar to grounded but with a bit of extra wiggle room so player can be near ground and still jump
     public bool forgiveGround;
     public bool forgiveGround2;
@@ -87,6 +87,7 @@ public class VerticalMaster : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        gameManagement = GameObject.Find("EndOfLevel").GetComponent<GameManagementScript>();
         changeGravityFreeze = 0;
         changeGravity = false;
         coyoteTimer = 0;
@@ -105,7 +106,6 @@ public class VerticalMaster : MonoBehaviour
         inTunnel = false;
         floatTimer = 0;
         floatTop = false;
-        cameraScript = cameraBoi.GetComponent<FollowPlayer>();
         Application.targetFrameRate = 60;
         grounded = true;
         grounded2 = true;
@@ -155,7 +155,7 @@ public class VerticalMaster : MonoBehaviour
             }
         }
         //if jump button pressed and a character is on or extremely near the ground and not frozen
-        if (Input.GetButtonDown("Jump") && changeGravity == false && (forgiveGround || forgiveGround2 || coyoteGround || coyoteGround2 || grounded || grounded2) && cameraScript.freezePlayers == false && (!otherPlayer.GetComponent<HorizontalMovement>().touchingMoving && !this.GetComponent<HorizontalMovement>().touchingMoving))
+        if (Input.GetButtonDown("Jump") && changeGravity == false && (forgiveGround || forgiveGround2 || coyoteGround || coyoteGround2 || grounded || grounded2) && gameManagement.freezePlayer == false && (!otherPlayer.GetComponent<HorizontalMovement>().touchingMoving && !this.GetComponent<HorizontalMovement>().touchingMoving))
         {
             //jumps in opposite direction if inverted
             if (inverted == true || inverted2 == true)
@@ -185,7 +185,7 @@ public class VerticalMaster : MonoBehaviour
 
         }
         //if gotten gravity inverting powerup, user can invert gravity while grounded
-        if (Input.GetButtonDown("Invert") && invertOnCommand == true && (grounded || grounded2) && cameraScript.freezePlayers == false)
+        if (Input.GetButtonDown("Invert") && invertOnCommand == true && (grounded || grounded2) && gameManagement.freezePlayer == false)
         {
             inverted2 = !inverted2;
             inverted = !inverted;
