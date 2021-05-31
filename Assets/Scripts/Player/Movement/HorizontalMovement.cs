@@ -434,6 +434,9 @@ public class HorizontalMovement : MonoBehaviour {
                 }
             }
         }
+
+        charAnim.SetBool("pushRight", pushRight);
+        charAnim.SetBool("pushLeft", pushLeft);
     }
     private void colliderHelper(Collider2D[] collider, bool allColliders) {
         bool leftCol = false;
