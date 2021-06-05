@@ -34788,7 +34788,6 @@ MonoBehaviour:
   firstStop: {fileID: 1877727613}
   secondStop: {fileID: 1571936456}
   switchToSecond: 0
-  freezePlayers: 0
   playBoth: {fileID: 260612608}
   secondInit: 46
 --- !u!1 &526391014
@@ -69652,6 +69651,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: TopWorldSign
       objectReference: {fileID: 0}
+    - target: {fileID: 5672603037975157675, guid: 8ce886d6ac5f62343af0f88700c4a121,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 7.280031
+      objectReference: {fileID: 0}
+    - target: {fileID: 5672603037975157675, guid: 8ce886d6ac5f62343af0f88700c4a121,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5.621854
+      objectReference: {fileID: 0}
+    - target: {fileID: 5672603037975157675, guid: 8ce886d6ac5f62343af0f88700c4a121,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.112
+      objectReference: {fileID: 0}
     - target: {fileID: 2567113529486258845, guid: 8ce886d6ac5f62343af0f88700c4a121,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -69771,21 +69785,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontSizeBase
       value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 5672603037975157675, guid: 8ce886d6ac5f62343af0f88700c4a121,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 7.280031
-      objectReference: {fileID: 0}
-    - target: {fileID: 5672603037975157675, guid: 8ce886d6ac5f62343af0f88700c4a121,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 5.621854
-      objectReference: {fileID: 0}
-    - target: {fileID: 5672603037975157675, guid: 8ce886d6ac5f62343af0f88700c4a121,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.112
       objectReference: {fileID: 0}
     - target: {fileID: 5672603039789187658, guid: 8ce886d6ac5f62343af0f88700c4a121,
         type: 3}
@@ -123248,6 +123247,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: BottomWorldSign
       objectReference: {fileID: 0}
+    - target: {fileID: 5672603037975157675, guid: 9691299ff79041c4fb1b43bb802e749e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.264
+      objectReference: {fileID: 0}
+    - target: {fileID: 5672603037975157675, guid: 9691299ff79041c4fb1b43bb802e749e,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5.621854
+      objectReference: {fileID: 0}
+    - target: {fileID: 5672603037975157675, guid: 9691299ff79041c4fb1b43bb802e749e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.112
+      objectReference: {fileID: 0}
+    - target: {fileID: 5672603037975157675, guid: 9691299ff79041c4fb1b43bb802e749e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 7.280031
+      objectReference: {fileID: 0}
     - target: {fileID: 2567113529486258845, guid: 9691299ff79041c4fb1b43bb802e749e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -123363,26 +123382,6 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 5672603037975157675, guid: 9691299ff79041c4fb1b43bb802e749e,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 4.264
-      objectReference: {fileID: 0}
-    - target: {fileID: 5672603037975157675, guid: 9691299ff79041c4fb1b43bb802e749e,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 5.621854
-      objectReference: {fileID: 0}
-    - target: {fileID: 5672603037975157675, guid: 9691299ff79041c4fb1b43bb802e749e,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.112
-      objectReference: {fileID: 0}
-    - target: {fileID: 5672603037975157675, guid: 9691299ff79041c4fb1b43bb802e749e,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 7.280031
-      objectReference: {fileID: 0}
     - target: {fileID: 5672603039789187658, guid: 9691299ff79041c4fb1b43bb802e749e,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -123429,6 +123428,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 258c5af50b3b3ec4aaab227321c1d8ae,
         type: 3}
+    - target: {fileID: 5672603039789187659, guid: 9691299ff79041c4fb1b43bb802e749e,
+        type: 3}
+      propertyPath: freezePlayer
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9691299ff79041c4fb1b43bb802e749e, type: 3}
 --- !u!1001 &3637233861127764284
