@@ -22,8 +22,7 @@ public class InteractableScript : MonoBehaviour
         if(interactable && Input.GetKeyDown(KeyCode.N))
         {
             overheadSprite.SetActive(false);
-
-            script.TurnOn();
+            script.runTeleType();
         }
     }
 
@@ -47,9 +46,9 @@ public class InteractableScript : MonoBehaviour
         if (collider.gameObject.tag.Equals("Player"))
         {
             Debug.Log("The player ran away");
+            script.TurnOff();
             overheadSprite.SetActive(false);
             interactable = false;
-            script.TurnOff();
         }
     }
 }
