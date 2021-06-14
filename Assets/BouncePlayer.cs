@@ -37,6 +37,9 @@ public class BouncePlayer : MonoBehaviour
 
             verticalMaster.charAnim.SetTrigger("jumped");
             verticalMaster.otherCharAnim.SetTrigger("jumped");
+
+            Animator anim = this.GetComponent<Animator>();
+            anim.SetTrigger("isJumped");
         }
     }
 }
