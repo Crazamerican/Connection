@@ -16,6 +16,9 @@ public class TeleType : MonoBehaviour
     private SpeechEnum type;
     public Sprite board;
     public Sprite bubble;
+    public bool freezePlayer = false;
+    private GameManagementScript manager;
+    private bool done = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +28,7 @@ public class TeleType : MonoBehaviour
         running = false;
         secondString = "This is the second string to Test with heheXD";
         bg.GetComponent<SpriteRenderer>().enabled = false;
+        manager = GameObject.Find("EndOfLevel").GetComponent<GameManagementScript>();
         if(speechType.ToLower().Equals("bubble"))
         {
             type = SpeechEnum.Bubble;
@@ -45,24 +49,54 @@ public class TeleType : MonoBehaviour
 
     }
 
+    public void runTeleType()
+    {
+        if(!running)
+        {
+            TurnOn();
+        }
+        else if(!done)
+        {
+            StopCoroutine(WriteText());
+            WriteAll();
+        }
+        else
+        {
+            TurnOff();
+        }
+    }
+
     public void TurnOn()
     {
-        if (!running)
+        if(freezePlayer)
         {
-            bg.GetComponent<SpriteRenderer>().enabled = true;
-            this.GetComponent<MeshRenderer>().enabled = true;
-            running = true;
-            StartCoroutine(Wait(secondsToWait));
-            StartCoroutine(WriteText());
+             manager.freezePlayer = true;
         }
+        bg.GetComponent<SpriteRenderer>().enabled = true;
+        this.GetComponent<MeshRenderer>().enabled = true;
+        running = true;
+        StartCoroutine(Wait(secondsToWait));
+        StartCoroutine(WriteText());
     }
 
     public void TurnOff()
     {
-         bg.GetComponent<SpriteRenderer>().enabled = false;
-         this.GetComponent<MeshRenderer>().enabled = false;
+        StopCoroutine(WriteText());
+        bg.GetComponent<SpriteRenderer>().enabled = false;
+        this.GetComponent<MeshRenderer>().enabled = false;
         running = false;
+        if(freezePlayer)
+        {
+            manager.freezePlayer = false;
+        }
 
+    }
+
+    private void WriteAll()
+    {
+        textMeshPro.ForceMeshUpdate();
+        textMeshPro.maxVisibleCharacters = textMeshPro.textInfo.characterCount;
+        done = true;
     }
 
     public IEnumerator Wait(float seconds)
@@ -80,16 +114,19 @@ public class TeleType : MonoBehaviour
         bg.SetActive(true);
         float speed = 0.1f;
         int counter = 0;
-        bool done = false;
+        done = false;
         while(!done)
         {
+            if(!running)
+            {
+                yield break;
+            }
             counter++;
             int visibleCount = counter % (totalVisibleCharacters + 1);
             textMeshPro.maxVisibleCharacters = visibleCount;
             if(visibleCount >= totalVisibleCharacters)
             {
                 done = true;
-                running = false;
             }
             yield return new WaitForSeconds(speed);
         }

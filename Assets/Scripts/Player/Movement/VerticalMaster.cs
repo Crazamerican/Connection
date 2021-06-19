@@ -76,8 +76,8 @@ public class VerticalMaster : MonoBehaviour
     bool topHold;
     int topTimer;
 
-    bool coyoteGround;
-    bool coyoteGround2;
+    public bool coyoteGround;
+    public bool coyoteGround2;
     int coyoteTimer;
     int coyoteTimer2;
 
