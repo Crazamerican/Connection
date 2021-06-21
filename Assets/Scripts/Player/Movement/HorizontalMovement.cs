@@ -42,6 +42,9 @@ public class HorizontalMovement : MonoBehaviour {
     public bool pushRight;
     public bool nonPushRight;
 
+    public bool grabState;
+
+    
     // Use this for initialization
     void Start()
     {
@@ -63,6 +66,22 @@ public class HorizontalMovement : MonoBehaviour {
         distanceToCollision = 0f;
         extraSpeed = 0f;
     }
+
+    private void Update()
+    {
+
+        
+        if (grabState && Input.GetButtonUp("Push"))
+        {
+            Debug.Log(Input.GetButtonUp("Push"));
+            grabState = false;
+            charAnim.SetTrigger("backtoidle");
+        }
+
+        //Debug.Log(grabState);
+        
+    }
+
 
     //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
     void FixedUpdate()
@@ -109,10 +128,6 @@ public class HorizontalMovement : MonoBehaviour {
 
         //send data to animator
         charAnim.SetFloat("horizontalSpeed", moveDirection);
-
-
-
-        
 
         //Use the two store floats to create a new Vector2 variable movement.
         //Vector2 movement = new Vector2(moveHorizontal, 0);
@@ -396,30 +411,41 @@ public class HorizontalMovement : MonoBehaviour {
                 leftCol = pushScript.leftCol;
                 rightCol = pushScript.rightCol;
             }
-            if (collide.gameObject.tag == "Push" && ((!leftCol && moveDirection == -1) || (!rightCol && moveDirection == 1)) && Input.GetButton("Push"))
+            if (collide.gameObject.tag == "Push" && Input.GetButton("Push"))
             {
-                if (onLeft)
+                if (!grabState)
                 {
-                    pushLeft = true;
+                    grabState = true;
+                    charAnim.SetTrigger("grabStart");
                 }
-                else
+                //Debug.Log(grabState);
+                //charAnim.SetBool("grabbing", true);
+                if ((!leftCol && moveDirection == -1) || (!rightCol && moveDirection == 1))
                 {
-                    pushRight = true;
-                }
-                touchingMoving = true;
-                if (moveDirection == 1)
-                {
-                    if (masterScript.grounded || masterScript.grounded2) {
-                        movingPush = speed * 1 / 2;
-                        collide.gameObject.GetComponent<pushBlock>().movingPush = movingPush;
-                    }
-                }
-                else if (moveDirection == -1)
-                {
-                    if (masterScript.grounded || masterScript.grounded2)
+                    if (onLeft)
                     {
-                        movingPush = -speed * 1 / 2;
-                        collide.gameObject.GetComponent<pushBlock>().movingPush = movingPush;
+                        pushLeft = true;
+                    }
+                    else
+                    {
+                        pushRight = true;
+                    }
+                    touchingMoving = true;
+                    if (moveDirection == 1)
+                    {
+                        if (masterScript.grounded || masterScript.grounded2)
+                        {
+                            movingPush = speed * 1 / 2;
+                            collide.gameObject.GetComponent<pushBlock>().movingPush = movingPush;
+                        }
+                    }
+                    else if (moveDirection == -1)
+                    {
+                        if (masterScript.grounded || masterScript.grounded2)
+                        {
+                            movingPush = -speed * 1 / 2;
+                            collide.gameObject.GetComponent<pushBlock>().movingPush = movingPush;
+                        }
                     }
                 }
             }
@@ -437,6 +463,7 @@ public class HorizontalMovement : MonoBehaviour {
 
         charAnim.SetBool("pushRight", pushRight);
         charAnim.SetBool("pushLeft", pushLeft);
+        //charAnim.SetBool("grabbing", Input.GetButton("Push"));
     }
     private void colliderHelper(Collider2D[] collider, bool allColliders) {
         bool leftCol = false;
