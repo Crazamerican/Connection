@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class CollideSpike : MonoBehaviour
 {
-    DeathScript deathScript;
+    public DeathScript deathScript;
 
     //EventManager em;
 
@@ -23,7 +23,7 @@ public class CollideSpike : MonoBehaviour
 
         //deathScript = playBoth.GetComponent<DeathScript>();
         //checkpointScript = Checkpoint.GetComponent<CheckpointScript>();
-        deathScript = playerThings.GetComponent<DeathScript>();
+        deathScript = FindObjectOfType<DeathScript>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
