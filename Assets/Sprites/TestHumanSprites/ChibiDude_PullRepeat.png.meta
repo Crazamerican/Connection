@@ -1,37 +1,37 @@
 fileFormatVersion: 2
-guid: 684381e57a7313b45837e84cdcd290dd
+guid: 5b7f129c3e0943f4e81a519ddd2177aa
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -30359734763823690
-    second: ChibiDude_Pushing_0
+      213: -5114508957522380275
+    second: ChibiDude_PullRepeat_0
   - first:
-      213: 160200002410895810
-    second: ChibiDude_Pushing_1
+      213: 5750740787768047186
+    second: ChibiDude_PullRepeat_1
   - first:
-      213: 1886596555402407633
-    second: ChibiDude_Pushing_2
+      213: -821169737286731765
+    second: ChibiDude_PullRepeat_2
   - first:
-      213: 5632824264661400992
-    second: ChibiDude_Pushing_3
+      213: 565755212407009034
+    second: ChibiDude_PullRepeat_3
   - first:
-      213: -2580009140078749609
-    second: ChibiDude_Pushing_4
+      213: 1898455114254937592
+    second: ChibiDude_PullRepeat_4
   - first:
-      213: -9169950845138497149
-    second: ChibiDude_Pushing_5
+      213: -1531360658687102221
+    second: ChibiDude_PullRepeat_5
   - first:
-      213: 832440021110138145
-    second: ChibiDude_Pushing_6
+      213: 8801907067749989967
+    second: ChibiDude_PullRepeat_6
   - first:
-      213: -1680007406894651908
-    second: ChibiDude_Pushing_7
+      213: -395927213733871460
+    second: ChibiDude_PullRepeat_7
   - first:
-      213: 7287474591938376514
-    second: ChibiDude_Pushing_8
+      213: -5293305299008446167
+    second: ChibiDude_PullRepeat_8
   - first:
-      213: -5593925257323593652
-    second: ChibiDude_Pushing_9
+      213: 926363899042483210
+    second: ChibiDude_PullRepeat_9
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -114,211 +114,211 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ChibiDude_Pushing_0
+      name: ChibiDude_PullRepeat_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 120
         height: 135
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9d7756127dae1574fb81534380d98ab3
-      internalID: -30359734763823690
+      spriteID: fddb12994ed201e499a5e582728110ab
+      internalID: -5114508957522380275
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChibiDude_Pushing_1
+      name: ChibiDude_PullRepeat_1
       rect:
         serializedVersion: 2
         x: 120
         y: 0
         width: 120
         height: 135
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df886926be77ddc43b19f57fb3986c5c
-      internalID: 160200002410895810
+      spriteID: 6acbe6223b609894a92f90cc41683fef
+      internalID: 5750740787768047186
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChibiDude_Pushing_2
+      name: ChibiDude_PullRepeat_2
       rect:
         serializedVersion: 2
         x: 240
         y: 0
         width: 120
         height: 135
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a9fd3b3b20ca6c4980c483b8b30f9e1
-      internalID: 1886596555402407633
+      spriteID: 5243fd2ab031f3540abd4846559e8ea2
+      internalID: -821169737286731765
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChibiDude_Pushing_3
+      name: ChibiDude_PullRepeat_3
       rect:
         serializedVersion: 2
         x: 360
         y: 0
         width: 120
         height: 135
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: de43fb46f3967254d938b3b31135dab6
-      internalID: 5632824264661400992
+      spriteID: 461e5b367e5f1cc4881bedbce59ed159
+      internalID: 565755212407009034
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChibiDude_Pushing_4
+      name: ChibiDude_PullRepeat_4
       rect:
         serializedVersion: 2
         x: 480
         y: 0
         width: 120
         height: 135
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2d7c455aa052fa547b112ee9a3449f10
-      internalID: -2580009140078749609
+      spriteID: 96f6f0ba39d8c9b4dae9c0c635e9a9d1
+      internalID: 1898455114254937592
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChibiDude_Pushing_5
+      name: ChibiDude_PullRepeat_5
       rect:
         serializedVersion: 2
         x: 600
         y: 0
         width: 120
         height: 135
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 92ff0a17ef2df0140943af430585b5de
-      internalID: -9169950845138497149
+      spriteID: 5255ee56e6fa48742a248060287f5fa6
+      internalID: -1531360658687102221
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChibiDude_Pushing_6
+      name: ChibiDude_PullRepeat_6
       rect:
         serializedVersion: 2
         x: 720
         y: 0
         width: 120
         height: 135
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 208ccbcd51b65354c9e17a97ce5bb000
-      internalID: 832440021110138145
+      spriteID: dc66ec5cdd54f6d43b64260058a2d63b
+      internalID: 8801907067749989967
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChibiDude_Pushing_7
+      name: ChibiDude_PullRepeat_7
       rect:
         serializedVersion: 2
         x: 840
         y: 0
         width: 120
         height: 135
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 23b3259beeacef347a8d714ed98fbfd0
-      internalID: -1680007406894651908
+      spriteID: 78101e9b97a4a094e881919f057d6992
+      internalID: -395927213733871460
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChibiDude_Pushing_8
+      name: ChibiDude_PullRepeat_8
       rect:
         serializedVersion: 2
         x: 960
         y: 0
         width: 120
         height: 135
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b7a38236694c0c741a4b1d27c72f3f47
-      internalID: 7287474591938376514
+      spriteID: da6862c9fcce2194fbb03958a7355a9c
+      internalID: -5293305299008446167
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChibiDude_Pushing_9
+      name: ChibiDude_PullRepeat_9
       rect:
         serializedVersion: 2
         x: 1080
         y: 0
         width: 120
         height: 135
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.45, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 78fbe127872631e45b18f9ed29fcdbb7
-      internalID: -5593925257323593652
+      spriteID: c84bbca9e6214cc48a7c471edf21b9cd
+      internalID: 926363899042483210
       vertices: []
       indices: 
       edges: []
@@ -326,7 +326,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: b490661864ea82d4181b3ec49dfded32
+    spriteID: 4cbcaac7bf929194f8f59c5ffa02dd0e
     internalID: 0
     vertices: []
     indices: 

@@ -492,6 +492,7 @@ public class VerticalMaster : MonoBehaviour
         //if hit a ceiling or bottom of box
         if (col == true && topOrBottom == 1)
         {
+            //Debug.Log("ceiling?");
             velocity = 0;
             grounded = false;
         }
@@ -534,6 +535,8 @@ public class VerticalMaster : MonoBehaviour
         if ((col == true && topOrBottom == 1) || (col2 == true && topOrBottom2 == 1))
         {
             topHold = true;
+            charAnim.SetTrigger("bonk");
+            otherCharAnim.SetTrigger("bonk");
 
             //FlushCollision(col, col2);
         }
