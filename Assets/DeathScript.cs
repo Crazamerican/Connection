@@ -79,5 +79,6 @@ public class DeathScript : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+        gameManagement.freezePlayer = false;
     }
 }
