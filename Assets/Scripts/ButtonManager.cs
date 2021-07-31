@@ -8,13 +8,16 @@ public class ButtonManager : MonoBehaviour
 {
     public string fileNum;
     private static GameObject endOfLevel;
+    public bool isLoadButton = false;
     // Start is called before the first frame update
     void Start()
     {
         endOfLevel = GameObject.Find("EndOfLevel");
-        if (!System.IO.File.Exists(Application.persistentDataPath + "/GameSaveFile" + fileNum + ".dat"))
-        {
-            gameObject.GetComponent<Button>().interactable = false;
+        if(isLoadButton){
+            if (!System.IO.File.Exists(Application.persistentDataPath + "/GameSaveFile" + fileNum + ".dat"))
+            {
+                gameObject.GetComponent<Button>().interactable = false;
+            }
         }
     }
 
@@ -30,6 +33,15 @@ public class ButtonManager : MonoBehaviour
         {
             endOfLevel.GetComponent<GameManagementScript>().SetFileNumber(fileNum);
         }
-        SceneManager.LoadScene("HubWorldMusicTest");
+        if(!isLoadButton)
+        {
+            endOfLevel.GetComponent<GameManagementScript>().CreateNewFile();
+            endOfLevel.GetComponent<GameManagementScript>().LoadGame();
+        }
+        SceneManager.LoadScene("UILevelSelect");
+    }
+    public void SetThisButtonAsFirstUsable()
+    {
+        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(gameObject);
     }
 }

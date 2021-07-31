@@ -307,7 +307,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7755242211133130699
 RectTransform:
   m_ObjectHideFlags: 0
@@ -400,6 +400,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8d01626041d3954ca8932a0f63ba8c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  checkPoints: []
+  freezePlayer: 0
 --- !u!114 &7755242211133130698
 MonoBehaviour:
   m_ObjectHideFlags: 0
