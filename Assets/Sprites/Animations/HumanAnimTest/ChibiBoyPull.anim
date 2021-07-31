@@ -56,16 +56,16 @@ AnimationClip:
     - time: 0.3
       value: {fileID: -821169737286731765, guid: 5b7f129c3e0943f4e81a519ddd2177aa,
         type: 3}
-    - time: 0.45
+    - time: 0.46666667
       value: {fileID: 565755212407009034, guid: 5b7f129c3e0943f4e81a519ddd2177aa,
         type: 3}
-    - time: 0.6
+    - time: 0.6166667
       value: {fileID: 1898455114254937592, guid: 5b7f129c3e0943f4e81a519ddd2177aa,
         type: 3}
-    - time: 0.76666665
+    - time: 0.75
       value: {fileID: -1531360658687102221, guid: 5b7f129c3e0943f4e81a519ddd2177aa,
         type: 3}
-    - time: 0.9166667
+    - time: 0.9
       value: {fileID: 8801907067749989967, guid: 5b7f129c3e0943f4e81a519ddd2177aa,
         type: 3}
     - time: 1.0666667
