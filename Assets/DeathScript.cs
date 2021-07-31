@@ -8,10 +8,13 @@ public class DeathScript : MonoBehaviour
     public GameObject Checkpoint;
     public GameObject player1;
     public GameObject player2;
+    public Animator charAnim1;
+    public Animator charAnim2;
     GameManagementScript gameManagement;
     //public EventManager em;
 
     public bool dead;
+    bool respawning;
     int timer;
     public bool camDone;
 
@@ -41,7 +44,7 @@ public class DeathScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (dead == true)
+        if (dead == true && !respawning)
         {
             PlayerDiedMovePlayers();
         }
@@ -67,18 +70,50 @@ public class DeathScript : MonoBehaviour
     {
         dead = true;
         gameManagement.freezePlayer = true;
+        StartCoroutine(DeathCycle());
+        //Vector3 topPos, botPos;
+        //if (gameManagement.CheckStartingPoints()) {
+        //    (topPos, botPos) = gameManagement.GetCheckPointPositionToMovePlayersTo();
+        //    Debug.Log(topPos);
+        //    Debug.Log(botPos);
+        //    player1.transform.position = topPos;
+        //    player2.transform.position = botPos;
+        //}
+        //else
+        //{
+        //    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //}
+        //gameManagement.freezePlayer = false;
+    }
+
+    //Waits for death animation and respawn
+    private IEnumerator DeathCycle()
+    {
+        //death anim
+        respawning = true;
+        //Debug.Log("dying");
+        charAnim2.SetTrigger("death");
+        yield return new WaitForSecondsRealtime(.75f);
+
         Vector3 topPos, botPos;
-        if (gameManagement.CheckStartingPoints()) {
+        if (gameManagement.CheckStartingPoints())
+        {
             (topPos, botPos) = gameManagement.GetCheckPointPositionToMovePlayersTo();
             Debug.Log(topPos);
             Debug.Log(botPos);
-            player1.transform.position = topPos;
-            player2.transform.position = botPos;
+            player1.transform.position = new Vector3(0.4670523f, 7.777f);
+            player2.transform.position = new Vector3(0.4670523f, -0.312f);
         }
         else
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+
+        //respawn anim
+        yield return new WaitForSecondsRealtime(.75f);
+        respawning = false;
+        dead = false;
         gameManagement.freezePlayer = false;
+        
     }
 }

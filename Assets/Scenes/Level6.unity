@@ -11544,6 +11544,11 @@ PrefabInstance:
       propertyPath: cameraBoi
       value: 
       objectReference: {fileID: 532213297}
+    - target: {fileID: 3637233861961558048, guid: b58a7ae9c2bd1ba4abe4a6cef800b1a8,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b58a7ae9c2bd1ba4abe4a6cef800b1a8, type: 3}
 --- !u!1001 &462005622
@@ -32016,17 +32021,17 @@ PrefabInstance:
     - target: {fileID: 4440464785757237974, guid: 69c7c3d4b9a485543bab8a4bd09f9a42,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4440464785757237970, guid: 69c7c3d4b9a485543bab8a4bd09f9a42,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5
+      value: 1.89
       objectReference: {fileID: 0}
     - target: {fileID: 4440464785757237970, guid: 69c7c3d4b9a485543bab8a4bd09f9a42,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.3
+      value: 8.64
       objectReference: {fileID: 0}
     - target: {fileID: 4440464785757237970, guid: 69c7c3d4b9a485543bab8a4bd09f9a42,
         type: 3}
