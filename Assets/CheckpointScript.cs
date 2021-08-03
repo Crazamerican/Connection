@@ -11,6 +11,8 @@ public class CheckpointScript : MonoBehaviour
     public GameObject player2;
     public Vector3 thisRespawnPoint;
     public Vector3 thisRespawnPoint2;
+    public Vector3 respawnPoint;
+    public Vector3 respawnPoint2;
     public int curCheckPoint;
     private GameObject endOfLevel;
     GameManagementScript gameManager;
@@ -18,6 +20,8 @@ public class CheckpointScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        respawnPoint = player1.transform.position;
+        respawnPoint2 = player2.transform.position;
         bottomCheckPoint = gameObject.transform.GetChild(0);
         checkpointSpriteRenderer = GetComponent<SpriteRenderer>();
         endOfLevel = GameObject.Find("EndOfLevel");
@@ -30,7 +34,9 @@ public class CheckpointScript : MonoBehaviour
     {
         if (collision.tag == "Player") {
             checkpointSpriteRenderer.sprite = greenCheckpoint;
-            gameManager.UpdateLocations(player1.transform.position, player2.transform.position);
+            respawnPoint = player1.transform.position;
+            respawnPoint2 = player2.transform.position;
+            //gameManager.UpdateLocations(player1.transform.position, player2.transform.position);
             Debug.Log("Setting the world position to: " + player1.transform.position + " And second position to: " + player2.transform.position);
         }
     }

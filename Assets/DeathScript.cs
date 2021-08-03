@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class DeathScript : MonoBehaviour
 {
     public GameObject Checkpoint;
+    CheckpointScript checkpointScript;
     public GameObject player1;
     public GameObject player2;
     public Animator charAnim1;
@@ -39,6 +40,7 @@ public class DeathScript : MonoBehaviour
         timer = 0;
         camDone = false;
         dead = false;
+        checkpointScript = Checkpoint.GetComponent<CheckpointScript>();
     }
 
     // Update is called once per frame
@@ -96,6 +98,7 @@ public class DeathScript : MonoBehaviour
         yield return new WaitForSecondsRealtime(.75f);
 
         Vector3 topPos, botPos;
+        /*
         if (gameManagement.CheckStartingPoints())
         {
             (topPos, botPos) = gameManagement.GetCheckPointPositionToMovePlayersTo();
@@ -108,6 +111,11 @@ public class DeathScript : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+        */
+        topPos = checkpointScript.respawnPoint;
+        botPos = checkpointScript.respawnPoint2;
+        player1.transform.position = topPos;
+        player2.transform.position = botPos;
 
         //respawn anim
         yield return new WaitForSecondsRealtime(.75f);

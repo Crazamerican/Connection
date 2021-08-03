@@ -22,6 +22,8 @@ public class CheckpointOther : MonoBehaviour
         if (collision.tag == "Player")
         {
             checkpointSpriteRenderer.sprite = greenCheckpoint;
+            checkpointScript.respawnPoint = checkpointScript.player1.transform.position;
+            checkpointScript.respawnPoint2 = checkpointScript.player2.transform.position;
         }
     }
 }
