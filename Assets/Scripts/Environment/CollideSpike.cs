@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class CollideSpike : MonoBehaviour
 {
-    public DeathScript deathScript;
+    DeathScript deathScript;
 
     //EventManager em;
 

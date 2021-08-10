@@ -85,7 +85,8 @@ MonoBehaviour:
   Checkpoint: {fileID: 0}
   player1: {fileID: 3637233861503871990}
   player2: {fileID: 3637233862986138178}
-  camBoi: {fileID: 0}
+  charAnim1: {fileID: 3637233861673939548}
+  charAnim2: {fileID: 3637233862896670162}
   dead: 0
   camDone: 0
 --- !u!1 &3637233861341645888
@@ -5154,6 +5155,7 @@ MonoBehaviour:
   nonPushLeft: 0
   pushRight: 0
   nonPushRight: 0
+  grabState: 0
 --- !u!114 &3637233861503871981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5171,6 +5173,7 @@ MonoBehaviour:
   doorOpenSound: {fileID: 8300000, guid: 8268561d9767b4f49bed33382c1de6c8, type: 3}
   otherPlayer: {fileID: 3637233862986138178}
   atDoor: 0
+  curAtWait: 0
 --- !u!114 &3637233861503871980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5191,12 +5194,13 @@ MonoBehaviour:
   gravity: 0.026
   gravity2: 0.026
   otherPlayer: {fileID: 3637233862986138178}
+  inverted: 0
+  inverted2: 0
   charAnim: {fileID: 0}
   otherCharAnim: {fileID: 0}
   jumpSound: {fileID: 8300000, guid: f16a06818aa40af4cbd267d16d9dfbf5, type: 3}
   char_base: {fileID: 0}
   ghost: {fileID: 0}
-  cameraBoi: {fileID: 0}
   forgiveGround: 0
   forgiveGround2: 0
   inTunnel: 0
@@ -5204,6 +5208,9 @@ MonoBehaviour:
   onSpeed: 0
   onMoving2: 0
   onSpeed2: 0
+  coyoteGround: 0
+  coyoteGround2: 0
+  changeGravity: 0
 --- !u!114 &3637233861503871987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11199,6 +11206,7 @@ MonoBehaviour:
   nonPushLeft: 0
   pushRight: 0
   nonPushRight: 0
+  grabState: 0
 --- !u!114 &3637233862986138301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11216,6 +11224,7 @@ MonoBehaviour:
   doorOpenSound: {fileID: 0}
   otherPlayer: {fileID: 3637233861503871990}
   atDoor: 0
+  curAtWait: 0
 --- !u!114 &3637233862986138300
 MonoBehaviour:
   m_ObjectHideFlags: 0

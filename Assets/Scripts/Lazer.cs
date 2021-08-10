@@ -180,7 +180,6 @@ public class Lazer : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D col)
     {
-        Debug.Log(col.transform.position);
 
         if (on && (col.gameObject.name.Equals("Player") || col.gameObject.name.Equals("Player2")))
         {
