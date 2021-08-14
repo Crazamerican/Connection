@@ -94,6 +94,7 @@ public class DeathScript : MonoBehaviour
         //death anim
         respawning = true;
         //Debug.Log("dying");
+        charAnim1.SetTrigger("death");
         charAnim2.SetTrigger("death");
         yield return new WaitForSecondsRealtime(.75f);
 
