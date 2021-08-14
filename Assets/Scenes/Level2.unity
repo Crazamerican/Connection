@@ -15580,7 +15580,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 413c1bd4319a11748aa073829ede1bd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
+  cam: {fileID: 519420028}
   parallaxEffect: 0.5
 --- !u!212 &427127788
 SpriteRenderer:
@@ -44579,6 +44579,7 @@ MonoBehaviour:
   nonPushLeft: 0
   pushRight: 0
   nonPushRight: 0
+  grabState: 0
 --- !u!1 &1141585044
 GameObject:
   m_ObjectHideFlags: 0
@@ -52491,7 +52492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 413c1bd4319a11748aa073829ede1bd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
+  cam: {fileID: 519420028}
   parallaxEffect: 0.4
 --- !u!212 &1290333657
 SpriteRenderer:
@@ -58236,7 +58237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 413c1bd4319a11748aa073829ede1bd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
+  cam: {fileID: 519420028}
   parallaxEffect: 0.2
 --- !u!212 &1429806158
 SpriteRenderer:
@@ -65119,6 +65120,7 @@ MonoBehaviour:
   nonPushLeft: 0
   pushRight: 0
   nonPushRight: 0
+  grabState: 0
 --- !u!1 &1591632370
 GameObject:
   m_ObjectHideFlags: 0
