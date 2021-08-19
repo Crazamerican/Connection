@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MoveCharacterUI : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class MoveCharacterUI : MonoBehaviour
     float yMove;
     int level;
     GameObject nextlevel = null;
+    private States state;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +28,7 @@ public class MoveCharacterUI : MonoBehaviour
         moveStart = false;
         xMove = 0f;
         yMove = 0f;
+        state = States.LEVELONE;
         level1UI.SetActive(true);
         level2UI.SetActive(false);
         level3UI.SetActive(false);
@@ -33,11 +36,26 @@ public class MoveCharacterUI : MonoBehaviour
         level5UI.SetActive(false);
     }
 
+    private enum States
+    {
+        LEVELONE,
+        LEVELTWO,
+        LEVELTHREE,
+        LEVELFOUR,
+        LEVELFIVE,
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
         bool xPosEnd = false;
         bool yPosEnd = false;
+        if(Input.GetKey(KeyCode.Return) && !moveStart)
+        {
+            Debug.Log("" + (int)States.LEVELTWO);
+            int level = (int)state + 1;
+            SceneManager.LoadScene("Level" + level);
+        }
         if ((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) && level != 5 && !moveStart)
         {
             level++;
@@ -108,21 +126,26 @@ public class MoveCharacterUI : MonoBehaviour
                 if (level == 1)
                 {
                     level1UI.SetActive(true);
+                    state = States.LEVELONE;
                 }
                 else if (level == 2) {
                     level2UI.SetActive(true);
+                    state = States.LEVELTWO;
                 }
                 else if (level == 3)
                 {
                     level3UI.SetActive(true);
+                    state = States.LEVELTHREE;
                 }
                 else if (level == 4)
                 {
                     level4UI.SetActive(true);
+                    state = States.LEVELFOUR;
                 }
                 else if (level == 5)
                 {
                     level5UI.SetActive(true);
+                    state = States.LEVELFIVE;
                 }
             }
         }
