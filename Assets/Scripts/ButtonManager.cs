@@ -32,6 +32,7 @@ public class ButtonManager : MonoBehaviour
         if (fileNum != null)
         {
             endOfLevel.GetComponent<GameManagementScript>().SetFileNumber(fileNum);
+            endOfLevel.GetComponent<GameManagementScript>().LoadGame();
         }
         if(!isLoadButton)
         {

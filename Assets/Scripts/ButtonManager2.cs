@@ -29,6 +29,11 @@ public class ButtonManager2 : MonoBehaviour
         endOfLevel.GetComponent<GameManagementScript>().SetFileNumber(fileNum);
         endOfLevel.GetComponent<GameManagementScript>().CreateNewFile();
         endOfLevel.GetComponent<GameManagementScript>().LoadGame();
-        SceneManager.LoadScene("HubWorldMusicTest");
+        SceneManager.LoadScene("TitleCard_Demo");
+    }
+
+    public void SetThisButtonAsFirstUsable()
+    {
+        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(gameObject);
     }
 }

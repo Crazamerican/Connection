@@ -68,4 +68,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HubWorldMusicTest.unity
     guid: 0567b3d0a4584bc45a87c79dfbe82a62
+  - enabled: 1
+    path: Assets/Scenes/UILevelSelect.unity
+    guid: 44f7ee782a7f3e54ab71a0ffd1c53bf2
+  - enabled: 1
+    path: Assets/Scenes/UILevelSelect_EvanTest.unity
+    guid: 6dee66a6df49f1e438379c8a6103c91c
   m_configObjects: {}
