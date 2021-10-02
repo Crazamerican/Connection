@@ -30,7 +30,7 @@ public class SkullRiseAndFade : MonoBehaviour
                 if (count >= timer * .75f)
                 {
                     this.GetComponent<SpriteRenderer>().color = new Color(1.0f, 1.0f, 1.0f, this.GetComponent<SpriteRenderer>().color.a - (1.0f / (timer / 4.0f)));
-                    Debug.Log(this.GetComponent<SpriteRenderer>().color.a);
+                    //Debug.Log(this.GetComponent<SpriteRenderer>().color.a);
                 }
             }
             else
