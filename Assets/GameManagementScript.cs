@@ -109,7 +109,6 @@ public class GameManagementScript : MonoBehaviour
     
     public (Vector3 p1, Vector3 p2) GetCheckPointPositionToMovePlayersTo()
     {
-        Debug.Log("got to checkpoint position");
         Vector3 topCharPos = gameSaver.GetLevelData().topCharacterStartPosition;
         Vector3 botCharPos = gameSaver.GetLevelData().bottomCharacterStartPosition;
         Debug.Log(topCharPos);
