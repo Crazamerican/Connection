@@ -8,6 +8,14 @@ public class PitCutsceneTrigger : MonoBehaviour
     public GameObject topGirl;
     public GameObject botBoy;
     public GameManagementScript gameManager;
+
+    public FollowPlayer cameraScript;
+
+    bool movingCamera;
+
+    Vector3 velocity;
+    Vector3 cameraTargetPosition;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +25,10 @@ public class PitCutsceneTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (movingCamera == true)
+        {
+            cameraScript.transform.position = Vector3.SmoothDamp(cameraScript.transform.position, cameraTargetPosition, ref velocity, 4f);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -26,7 +37,6 @@ public class PitCutsceneTrigger : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             StartCoroutine(PitCutscene());
-            
         }
     }
 
@@ -48,6 +58,11 @@ public class PitCutsceneTrigger : MonoBehaviour
         //resume boy's fall
         verticalController.gravity2 = originalBoyGrav;
         verticalController.gravity = originalGirlGrav;
+
+        yield return new WaitForSecondsRealtime(2.5f);
+
+        cameraTargetPosition = new Vector3(cameraScript.transform.position.x, 2.28f, cameraScript.transform.position.z);
+        movingCamera = true;
 
         //TODO play girl's animations as well
     }
