@@ -1,46 +1,37 @@
 fileFormatVersion: 2
-guid: 9a13b9e15f1fd394cbc7a46c5b838dc8
+guid: 350a0ac297f8f8640a8ab3539acc1d98
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 9169937670497908460
-    second: ChibiDude_OpeningLvl_Questioning_0
+      213: 6907774504663078852
+    second: ChibiGirl_Sleeping_0
   - first:
-      213: 1728994777990608707
-    second: ChibiDude_OpeningLvl_Questioning_1
+      213: -5306256663528227101
+    second: ChibiGirl_Sleeping_1
   - first:
-      213: 6548977087954735657
-    second: ChibiDude_OpeningLvl_Questioning_2
+      213: -4336955858082585862
+    second: ChibiGirl_Sleeping_2
   - first:
-      213: 5897569486080035595
-    second: ChibiDude_OpeningLvl_Questioning_3
+      213: 2747346435347114322
+    second: ChibiGirl_Sleeping_3
   - first:
-      213: -2646918187163445787
-    second: ChibiDude_OpeningLvl_Questioning_4
+      213: -4414829683821779796
+    second: ChibiGirl_Sleeping_4
   - first:
-      213: 4922827424961002486
-    second: ChibiDude_OpeningLvl_Questioning_5
+      213: 1293264124388852698
+    second: ChibiGirl_Sleeping_5
   - first:
-      213: -595909016882537254
-    second: ChibiDude_OpeningLvl_Questioning_6
+      213: 8307645763340569956
+    second: ChibiGirl_Sleeping_6
   - first:
-      213: -40796656006497154
-    second: ChibiDude_OpeningLvl_Questioning_7
+      213: 6233626155161870914
+    second: ChibiGirl_Sleeping_7
   - first:
-      213: -4942178891114664440
-    second: ChibiDude_OpeningLvl_Questioning_8
+      213: -2620122279571635826
+    second: ChibiGirl_Sleeping_8
   - first:
-      213: -6387899574522329049
-    second: ChibiDude_OpeningLvl_Questioning_9
-  - first:
-      213: -5187878866154691769
-    second: ChibiDude_OpeningLvl_Questioning_10
-  - first:
-      213: -4097984713238282571
-    second: ChibiDude_OpeningLvl_Questioning_11
-  - first:
-      213: -3550505056178373803
-    second: ChibiDude_OpeningLvl_Questioning_12
+      213: 8334331295910012136
+    second: ChibiGirl_Sleeping_9
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -123,253 +114,211 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ChibiDude_OpeningLvl_Questioning_0
+      name: ChibiGirl_Sleeping_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 130
-        height: 200
+        height: 180
       alignment: 9
-      pivot: {x: 0.45, y: 0.32}
+      pivot: {x: 0.54, y: 0.38}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7efd4e72756d62c40939cc2fbe3b2c9f
-      internalID: 9169937670497908460
+      spriteID: a57cc9e89eb72884aa510ad3dd204f63
+      internalID: 6907774504663078852
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChibiDude_OpeningLvl_Questioning_1
+      name: ChibiGirl_Sleeping_1
       rect:
         serializedVersion: 2
         x: 130
         y: 0
         width: 130
-        height: 200
+        height: 180
       alignment: 9
-      pivot: {x: 0.45, y: 0.32}
+      pivot: {x: 0.54, y: 0.38}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 31728dc08e9a20a42a1f922252703d12
-      internalID: 1728994777990608707
+      spriteID: 45a7a574821b7ed46bfdcf0960950816
+      internalID: -5306256663528227101
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChibiDude_OpeningLvl_Questioning_2
+      name: ChibiGirl_Sleeping_2
       rect:
         serializedVersion: 2
         x: 260
         y: 0
         width: 130
-        height: 200
+        height: 180
       alignment: 9
-      pivot: {x: 0.45, y: 0.32}
+      pivot: {x: 0.54, y: 0.38}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a9dbda374e1184040a7d3bc8a579b031
-      internalID: 6548977087954735657
+      spriteID: e0c462c1cbba62343a5b813e94355061
+      internalID: -4336955858082585862
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChibiDude_OpeningLvl_Questioning_3
+      name: ChibiGirl_Sleeping_3
       rect:
         serializedVersion: 2
         x: 390
         y: 0
         width: 130
-        height: 200
+        height: 180
       alignment: 9
-      pivot: {x: 0.45, y: 0.32}
+      pivot: {x: 0.54, y: 0.38}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec53ae60a348dfb4d80149fa2bbd7267
-      internalID: 5897569486080035595
+      spriteID: 2891aeec0fdd05c4583a7aaaffbd63af
+      internalID: 2747346435347114322
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChibiDude_OpeningLvl_Questioning_4
+      name: ChibiGirl_Sleeping_4
       rect:
         serializedVersion: 2
         x: 520
         y: 0
         width: 130
-        height: 200
+        height: 180
       alignment: 9
-      pivot: {x: 0.45, y: 0.32}
+      pivot: {x: 0.54, y: 0.38}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ff21ce45700da24eb95c49d23d30cf6
-      internalID: -2646918187163445787
+      spriteID: 06bf02820bc43514f85f7a36758a8594
+      internalID: -4414829683821779796
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChibiDude_OpeningLvl_Questioning_5
+      name: ChibiGirl_Sleeping_5
       rect:
         serializedVersion: 2
         x: 650
         y: 0
         width: 130
-        height: 200
+        height: 180
       alignment: 9
-      pivot: {x: 0.45, y: 0.32}
+      pivot: {x: 0.54, y: 0.38}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c417066d46557cb428db0a4e040dddd1
-      internalID: 4922827424961002486
+      spriteID: 021de968df226b84e89a22acf64bbead
+      internalID: 1293264124388852698
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChibiDude_OpeningLvl_Questioning_6
+      name: ChibiGirl_Sleeping_6
       rect:
         serializedVersion: 2
         x: 780
         y: 0
         width: 130
-        height: 200
+        height: 180
       alignment: 9
-      pivot: {x: 0.45, y: 0.32}
+      pivot: {x: 0.54, y: 0.38}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d530782d458035e4faf2dc8c85f2a746
-      internalID: -595909016882537254
+      spriteID: 810aa66f1c83cbe47bae8237e86d8b10
+      internalID: 8307645763340569956
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChibiDude_OpeningLvl_Questioning_7
+      name: ChibiGirl_Sleeping_7
       rect:
         serializedVersion: 2
         x: 910
         y: 0
         width: 130
-        height: 200
+        height: 180
       alignment: 9
-      pivot: {x: 0.45, y: 0.32}
+      pivot: {x: 0.54, y: 0.38}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 69243986d908f244c88529f3aaa3b544
-      internalID: -40796656006497154
+      spriteID: c4ca093d370b31948ab2c7f8913aa301
+      internalID: 6233626155161870914
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChibiDude_OpeningLvl_Questioning_8
+      name: ChibiGirl_Sleeping_8
       rect:
         serializedVersion: 2
         x: 1040
         y: 0
         width: 130
-        height: 200
+        height: 180
       alignment: 9
-      pivot: {x: 0.45, y: 0.32}
+      pivot: {x: 0.54, y: 0.38}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf065966cf90a8b49a8f0aa7b3035a04
-      internalID: -4942178891114664440
+      spriteID: 1393b05652decf24d84128aacb4171c9
+      internalID: -2620122279571635826
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ChibiDude_OpeningLvl_Questioning_9
+      name: ChibiGirl_Sleeping_9
       rect:
         serializedVersion: 2
         x: 1170
         y: 0
         width: 130
-        height: 200
+        height: 180
       alignment: 9
-      pivot: {x: 0.45, y: 0.32}
+      pivot: {x: 0.54, y: 0.38}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7f87e731c3ec4e34394e7851061eaedd
-      internalID: -6387899574522329049
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ChibiDude_OpeningLvl_Questioning_10
-      rect:
-        serializedVersion: 2
-        x: 1300
-        y: 0
-        width: 130
-        height: 200
-      alignment: 9
-      pivot: {x: 0.45, y: 0.32}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 66f8ea7519123c1429cfa6b1553ceb5c
-      internalID: -5187878866154691769
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ChibiDude_OpeningLvl_Questioning_11
-      rect:
-        serializedVersion: 2
-        x: 1430
-        y: 0
-        width: 130
-        height: 200
-      alignment: 9
-      pivot: {x: 0.45, y: 0.32}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c46a66279ceea37439b042b9dbfca552
-      internalID: -4097984713238282571
+      spriteID: 7397ba42e8143d941a4503f636a44983
+      internalID: 8334331295910012136
       vertices: []
       indices: 
       edges: []
@@ -377,7 +326,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: d7a9439f5e289504ea5068d1e7070d86
+    spriteID: 12ea73ed94c282a498b6412726aff17d
     internalID: 0
     vertices: []
     indices: 

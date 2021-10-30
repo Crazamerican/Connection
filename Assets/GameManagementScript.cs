@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManagementScript : MonoBehaviour
 {
@@ -138,4 +139,20 @@ public class GameManagementScript : MonoBehaviour
         }
     }
 
+    //helper method to load level, so we can do things like scene transitions
+    public void LoadLevel(string levelName)
+    {
+        freezePlayer = true;
+
+        StartCoroutine(LevelTransition(levelName));
+    }
+
+    private IEnumerator LevelTransition(string levelName) //probably don't do as Coroutuine
+    {
+        Debug.Log("level transitioning");
+        yield return new WaitForSecondsRealtime(1f); //TODO: change this to animation time
+
+        SceneManager.LoadScene(levelName);
+        freezePlayer = false;
+    }
 }

@@ -21,7 +21,7 @@ public class FollowPlayer : MonoBehaviour
     float playerAvg;
     Vector3 camDif;
     Vector3 camLeft;
-    Vector3 initCam;
+    public Vector3 initCam;
     Vector3 camRight;
 
     public GameObject firstStop;
@@ -115,8 +115,8 @@ public class FollowPlayer : MonoBehaviour
     // LateUpdate is called after Update each frame
     void LateUpdate()
     {
-        Debug.Log("Player1: " + player.transform.position.x);
-        Debug.Log("Player2: " + player2.transform.position.x);
+        //Debug.Log("Player1: " + player.transform.position.x);
+        //Debug.Log("Player2: " + player2.transform.position.x);
         //when transitioning between parts of levels
         if (freezePlayers == true && deathScript.dead == false && deathScript.camDone == false)
         {
