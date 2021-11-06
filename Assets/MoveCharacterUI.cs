@@ -54,7 +54,8 @@ public class MoveCharacterUI : MonoBehaviour
         {
             Debug.Log("" + (int)States.LEVELTWO);
             int level = (int)state + 1;
-            SceneManager.LoadScene("Level" + level);
+            GameManagementScript.Instance.LoadLevel("Level" + level);
+            //SceneManager.LoadScene("Level" + level);
         }
         if ((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) && level != 5 && !moveStart)
         {

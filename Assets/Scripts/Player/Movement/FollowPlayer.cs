@@ -21,7 +21,7 @@ public class FollowPlayer : MonoBehaviour
     float playerAvg;
     Vector3 camDif;
     Vector3 camLeft;
-    Vector3 initCam;
+    public Vector3 initCam;
     Vector3 camRight;
 
     public GameObject firstStop;
