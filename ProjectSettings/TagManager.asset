@@ -72,3 +72,6 @@ TagManager:
   - name: Foreground
     uniqueID: 2057818357
     locked: 0
+  - name: ScreenTransition
+    uniqueID: 3785031959
+    locked: 0
