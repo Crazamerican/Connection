@@ -13,10 +13,12 @@ public class pushBlock : MonoBehaviour
     public bool leftCol = false;
     public bool rightCol = false;
     bool touchPlayer;
+    float distanceToCollision;
 
     // Start is called before the first frame update
     void Start()
     {
+        distanceToCollision = 0.0f;
         horScript = player.GetComponent<HorizontalMovement>();
         touchingMoving = horScript.touchingMoving;
         movingPush = horScript.movingPush;
@@ -28,13 +30,13 @@ public class pushBlock : MonoBehaviour
     void FixedUpdate()
     {
         //test colliders of the box's movement to the right
-        Collider2D[] colliderRight1 = Physics2D.OverlapCircleAll(transform.position + new Vector3((width / 2) + .05f, 0), 0.01f);
-        Collider2D[] colliderRight2 = Physics2D.OverlapCircleAll(transform.position + new Vector3((width / 2) + .05f, (height / 2)), 0.01f);
-        Collider2D[] colliderRight3 = Physics2D.OverlapCircleAll(transform.position + new Vector3((width / 2) + .05f, -(height / 2 - .05f)), 0.01f);
+        Collider2D[] colliderRight1 = Physics2D.OverlapCircleAll(transform.position + new Vector3((width / 2) + .03f, 0), 0.01f);
+        Collider2D[] colliderRight2 = Physics2D.OverlapCircleAll(transform.position + new Vector3((width / 2) + .03f, (height / 2)), 0.01f);
+        Collider2D[] colliderRight3 = Physics2D.OverlapCircleAll(transform.position + new Vector3((width / 2) + .03f, -(height / 2 - .05f)), 0.01f);
         //test colliders of the box's movement to the left
-        Collider2D[] colliderLeft1 = Physics2D.OverlapCircleAll(transform.position + new Vector3(-(width / 2) - .05f, 0), 0.01f);
-        Collider2D[] colliderLeft2 = Physics2D.OverlapCircleAll(transform.position + new Vector3(-(width / 2) - .05f, (height / 2)), 0.01f);
-        Collider2D[] colliderLeft3 = Physics2D.OverlapCircleAll(transform.position + new Vector3(-(width / 2) - .05f, -(height / 2 - .05f)), 0.01f);
+        Collider2D[] colliderLeft1 = Physics2D.OverlapCircleAll(transform.position + new Vector3(-(width / 2) - .03f, 0), 0.01f);
+        Collider2D[] colliderLeft2 = Physics2D.OverlapCircleAll(transform.position + new Vector3(-(width / 2) - .03f, (height / 2)), 0.01f);
+        Collider2D[] colliderLeft3 = Physics2D.OverlapCircleAll(transform.position + new Vector3(-(width / 2) - .03f, -(height / 2 - .05f)), 0.01f);
 
         rightCol = false;
         leftCol = false;
@@ -48,7 +50,7 @@ public class pushBlock : MonoBehaviour
 
         touchingMoving = horScript.touchingMoving;
         if (touchingMoving == true && ((horScript.pushLeft && !horScript.nonPushRight) || (horScript.pushRight && !horScript.nonPushLeft) || (horScript.pushLeft && horScript.nonPushRight && movingPush < 0) || (horScript.pushRight && horScript.nonPushLeft && movingPush > 0))) {
-            transform.position += new Vector3(movingPush, 0);
+            //transform.position += new Vector3(movingPush, 0);
         }
         movingPush = 0;
     }
@@ -59,9 +61,13 @@ public class pushBlock : MonoBehaviour
                 if (onRight)
                 {
                     rightCol = true;
+                    distanceToCollision = GetComponent<BoxCollider2D>().Distance(collide).distance;
+                    transform.position += new Vector3(distanceToCollision, 0);
                 }
                 else {
                     leftCol = true;
+                    distanceToCollision = GetComponent<BoxCollider2D>().Distance(collide).distance;
+                    transform.position += new Vector3(-distanceToCollision, 0);
                 }
             }
         }
