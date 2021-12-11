@@ -31420,6 +31420,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 377426634}
   player2: {fileID: 1908767614}
+  initCam: {x: 0, y: 0, z: 0}
   firstStop: {fileID: 1877727613}
   secondStop: {fileID: 1571936456}
   switchToSecond: 0
@@ -105358,6 +105359,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7755242211133130740, guid: cbbcbfa46cc664749a6f6fbbbdac2d78,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 519420031}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbbcbfa46cc664749a6f6fbbbdac2d78, type: 3}
 --- !u!1 &2016787450
@@ -112636,26 +112642,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9150625529964832025, guid: 680a128d1550cda4c9765be2fe6d5441,
         type: 3}
-    - target: {fileID: 1388275056431520513, guid: 4beb2dd80a923ba4a84c7606146c7a49,
-        type: 3}
-      propertyPath: m_Offset.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1388275056431520513, guid: 4beb2dd80a923ba4a84c7606146c7a49,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 2.82273
-      objectReference: {fileID: 0}
-    - target: {fileID: 1388275056431520513, guid: 4beb2dd80a923ba4a84c7606146c7a49,
-        type: 3}
-      propertyPath: m_Offset.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1388275056431520513, guid: 4beb2dd80a923ba4a84c7606146c7a49,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 2.8047552
-      objectReference: {fileID: 0}
     - target: {fileID: 1388275056553514848, guid: 4beb2dd80a923ba4a84c7606146c7a49,
         type: 3}
       propertyPath: m_Offset.x
@@ -112675,6 +112661,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388275056431520513, guid: 4beb2dd80a923ba4a84c7606146c7a49,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388275056431520513, guid: 4beb2dd80a923ba4a84c7606146c7a49,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 2.82273
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388275056431520513, guid: 4beb2dd80a923ba4a84c7606146c7a49,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388275056431520513, guid: 4beb2dd80a923ba4a84c7606146c7a49,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 2.8047552
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4beb2dd80a923ba4a84c7606146c7a49, type: 3}

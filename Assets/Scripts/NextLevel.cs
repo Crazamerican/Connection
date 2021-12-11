@@ -29,7 +29,7 @@ public class NextLevel : MonoBehaviour
             manager.SaveLevel();
             manager.unlock = true;
 
-            SceneManager.LoadScene("UILevelSelect");
+            manager.LoadLevel("UILevelSelect");
             //if (curLevel == 1)
             //{
             //    SceneManager.LoadScene("NewGraphics2");
