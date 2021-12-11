@@ -44,10 +44,15 @@ public class HorizontalMovement : MonoBehaviour {
 
     public bool grabState;
 
+    bool boxMoved;
+    GameObject theBox;
+
     
     // Use this for initialization
     void Start()
     {
+        theBox = null;
+        boxMoved = false;
         gameManagement = GameObject.Find("EndOfLevel").GetComponent<GameManagementScript>();
         pushLeft = false;
         nonPushLeft = false;
@@ -76,6 +81,7 @@ public class HorizontalMovement : MonoBehaviour {
             Debug.Log(Input.GetButtonUp("Push"));
             grabState = false;
             charAnim.SetTrigger("backtoidle");
+            theBox = null;
         }
 
         //Debug.Log(grabState);
@@ -86,6 +92,7 @@ public class HorizontalMovement : MonoBehaviour {
     //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
     void FixedUpdate()
     {
+        boxMoved = false;
         movingPush = 0f;
         touchingMoving = false;
         //Store the current horizontal input in the float moveHorizontal.
@@ -330,6 +337,7 @@ public class HorizontalMovement : MonoBehaviour {
         {
             if (touchingMoving == true)
             {
+                theBox.transform.position += new Vector3(movingPush, 0);
                 transform.position = transform.position + new Vector3(movingPush, 0);
             }
             //if going right and not at right edge of screen)
@@ -437,6 +445,14 @@ public class HorizontalMovement : MonoBehaviour {
                         {
                             movingPush = speed * 1 / 2;
                             collide.gameObject.GetComponent<pushBlock>().movingPush = movingPush;
+                            if (touchingMoving == true && ((pushLeft && !nonPushRight) || (pushRight && !nonPushLeft) || (pushLeft && nonPushRight && movingPush < 0) || (pushRight && nonPushLeft && movingPush > 0)))
+                            {
+                                if (boxMoved == false && theBox == null) {
+                                    theBox = collide.gameObject;
+                                    //collide.gameObject.transform.position += new Vector3(movingPush, 0);
+                                    boxMoved = true;
+                                }
+                            }
                         }
                     }
                     else if (moveDirection == -1)
@@ -445,6 +461,15 @@ public class HorizontalMovement : MonoBehaviour {
                         {
                             movingPush = -speed * 1 / 2;
                             collide.gameObject.GetComponent<pushBlock>().movingPush = movingPush;
+                            if (touchingMoving == true && ((pushLeft && !nonPushRight) || (pushRight && !nonPushLeft) || (pushLeft && nonPushRight && movingPush < 0) || (pushRight && nonPushLeft && movingPush > 0)))
+                            {
+                                if (boxMoved == false && theBox == null)
+                                {
+                                    theBox = collide.gameObject;
+                                    //collide.gameObject.transform.position += new Vector3(movingPush, 0);
+                                    boxMoved = true;
+                                }
+                            }
                         }
                     }
                 }
@@ -482,7 +507,7 @@ public class HorizontalMovement : MonoBehaviour {
                     col = true;
                     distanceToCollision = GetComponent<BoxCollider2D>().Distance(collide).distance;
                 }
-                else if (collide.gameObject.tag != "Push" || ((collide.gameObject.tag == "Push" && !Input.GetButton("Push"))) || (((collide.gameObject.tag == "Push" && Input.GetButton("Push"))) && ((leftCol && moveDirection == -1) || (rightCol && moveDirection == 1)))) {
+                else if (collide.gameObject.tag != "Push" || ((collide.gameObject.tag == "Push" && !Input.GetButton("Push"))) || ((collide.gameObject.tag == "Push" && Input.GetButton("Push") && theBox != null && theBox.name != collide.gameObject.name)) || (((collide.gameObject.tag == "Push" && Input.GetButton("Push"))) && ((leftCol && moveDirection == -1) || (rightCol && moveDirection == 1)))) {
                     col = true;
                     distanceToCollision = GetComponent<BoxCollider2D>().Distance(collide).distance;
                 }
