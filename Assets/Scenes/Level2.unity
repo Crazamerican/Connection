@@ -217,6 +217,11 @@ PrefabInstance:
       propertyPath: secondStart
       value: 25.562
       objectReference: {fileID: 0}
+    - target: {fileID: 3637233861503871982, guid: b58a7ae9c2bd1ba4abe4a6cef800b1a8,
+        type: 3}
+      propertyPath: firstStart
+      value: -19.89
+      objectReference: {fileID: 0}
     - target: {fileID: 3637233861503871980, guid: b58a7ae9c2bd1ba4abe4a6cef800b1a8,
         type: 3}
       propertyPath: cameraBoi
@@ -241,6 +246,11 @@ PrefabInstance:
         type: 3}
       propertyPath: secondStart
       value: 25.562
+      objectReference: {fileID: 0}
+    - target: {fileID: 3637233862986138302, guid: b58a7ae9c2bd1ba4abe4a6cef800b1a8,
+        type: 3}
+      propertyPath: firstStart
+      value: -19.89
       objectReference: {fileID: 0}
     - target: {fileID: 3637233862986138301, guid: b58a7ae9c2bd1ba4abe4a6cef800b1a8,
         type: 3}
@@ -19410,6 +19420,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1112644939}
   player2: {fileID: 286607915}
+  initCam: {x: 0, y: 0, z: 0}
   firstStop: {fileID: 1400458288}
   secondStop: {fileID: 1277279009}
   switchToSecond: 0
@@ -47337,7 +47348,6 @@ MonoBehaviour:
   player1: {fileID: 0}
   moveDirection: 0
   onMoveLeft: 0
-  cameraStart: 0
   firstStart: 0
   firstEnd: 0
   secondStart: 0
@@ -69148,7 +69158,6 @@ MonoBehaviour:
   player1: {fileID: 0}
   moveDirection: 0
   onMoveLeft: 0
-  cameraStart: 0
   firstStart: 0
   firstEnd: 0
   secondStart: 0

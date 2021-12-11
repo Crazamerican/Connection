@@ -28,8 +28,6 @@ public class HorizontalMovement : MonoBehaviour {
 
     public bool onMoveLeft;
 
-    public float cameraStart;
-
     public float firstStart;
     public float firstEnd;
     public float secondStart;
@@ -312,15 +310,10 @@ public class HorizontalMovement : MonoBehaviour {
 
         //Debug.Log(transform.position.x);
         //if at the left edge of screen (-18 is the left side of the screen)
-        if ((transform.position.x + moveDirection * speed) <= cameraStart)
+        if ((transform.position.x + moveDirection * speed) <= firstStart && cameraScript.switchToSecond == false)
         {
             col = true;
-            transform.position = new Vector3(cameraStart, transform.position.y);
-        }
-        else if ((transform.position.x + moveDirection * speed) <= firstStart && cameraScript.switchToSecond == false)
-        {
-            col = true;
-            transform.position = new Vector3(firstStart, transform.position.y);
+            transform.position = new Vector3(firstStart, transform.position.y, -1);
         }
         else if ((transform.position.x + moveDirection * speed) <= secondStart && cameraScript.switchToSecond == true)
         {

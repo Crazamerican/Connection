@@ -216,7 +216,7 @@ public class VerticalMaster : MonoBehaviour
 
         if (inverted2 != otherScript.inverted2 && inverted2_2 == false)
         {
-            invertOnCommand = true;
+            //invertOnCommand = true;
         }
         topOrBottom = 0;
         topOrBottom2 = 0;
