@@ -13,6 +13,8 @@ public class GameManagementScript : MonoBehaviour
     public bool unlock { get; set; }
     public List<GameObject> checkPoints;
     public bool freezePlayer;
+    public Animator screenTransition;
+    bool isTransitioning;
     //Create the singleton
     private void Awake()
     {
@@ -31,6 +33,16 @@ public class GameManagementScript : MonoBehaviour
             gameSaver = new GameSaver();
         }
         unlock = false;
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += ResetScreenTransition;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= ResetScreenTransition;
     }
 
     public void SetFileNumber(string filNum)
@@ -144,15 +156,33 @@ public class GameManagementScript : MonoBehaviour
     {
         freezePlayer = true;
 
-        StartCoroutine(LevelTransition(levelName));
+        if (!isTransitioning)
+        {
+            int transitionToChoose = Random.Range(1, 3);
+            Debug.Log("Transition: " + transitionToChoose);
+            screenTransition.Play("ScreenClose" + transitionToChoose);
+            StartCoroutine(LevelTransition(levelName));
+        }
+
+        isTransitioning = true;
+    }
+
+    public void ResetScreenTransition(Scene sceneName, LoadSceneMode mode)
+    {
+        Camera mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        GetComponent<Canvas>().worldCamera = mainCam;
+        int transitionToChoose = Random.Range(1, 3);
+        screenTransition.Play("ScreenOpen" + transitionToChoose);
+        isTransitioning = false;
     }
 
     private IEnumerator LevelTransition(string levelName) //probably don't do as Coroutuine
     {
         Debug.Log("level transitioning");
-        yield return new WaitForSecondsRealtime(1f); //TODO: change this to animation time
+        yield return new WaitForSecondsRealtime(.5f); //TODO: change this to animation time
 
         SceneManager.LoadScene(levelName);
         freezePlayer = false;
+        
     }
 }

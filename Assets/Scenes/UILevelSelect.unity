@@ -1856,11 +1856,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: EndOfLevel
       objectReference: {fileID: 0}
-    - target: {fileID: 7755242211133130736, guid: cbbcbfa46cc664749a6f6fbbbdac2d78,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7755242211133130699, guid: cbbcbfa46cc664749a6f6fbbbdac2d78,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1968,39 +1963,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7755242211133130740, guid: cbbcbfa46cc664749a6f6fbbbdac2d78,
         type: 3}
-      propertyPath: m_RenderMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7755242211133130740, guid: cbbcbfa46cc664749a6f6fbbbdac2d78,
-        type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1426554066}
-    - target: {fileID: 2821355625503603625, guid: cbbcbfa46cc664749a6f6fbbbdac2d78,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2821355625503603625, guid: cbbcbfa46cc664749a6f6fbbbdac2d78,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 2821355625503603625, guid: cbbcbfa46cc664749a6f6fbbbdac2d78,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 3735107330932344208, guid: cbbcbfa46cc664749a6f6fbbbdac2d78,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3735107330932344208, guid: cbbcbfa46cc664749a6f6fbbbdac2d78,
-        type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbbcbfa46cc664749a6f6fbbbdac2d78, type: 3}
 --- !u!1 &567658542
