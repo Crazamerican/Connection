@@ -309,16 +309,16 @@ public class HorizontalMovement : MonoBehaviour {
         collidePush(colliderLeft3, true);
 
         //Debug.Log(transform.position.x);
-        //if at the left edge of screen (-18 is the left side of the screen)
+        //if at the left edge of screen before screen transition
         if ((transform.position.x + moveDirection * speed) <= firstStart && cameraScript.switchToSecond == false)
         {
             col = true;
             transform.position = new Vector3(firstStart, transform.position.y, -1);
-        }
+        } //if at left edge of screen after screen transition
         else if ((transform.position.x + moveDirection * speed) <= secondStart && cameraScript.switchToSecond == true)
         {
             col = true;
-            transform.position = new Vector3(secondStart + .05f, transform.position.y);
+            transform.position = new Vector3(secondStart + .05f, transform.position.y, -1);
         }
         else if ((transform.position.x + moveDirection * speed) >= firstEnd && cameraScript.switchToSecond == false)
         {
@@ -334,12 +334,12 @@ public class HorizontalMovement : MonoBehaviour {
                 transform.position = transform.position + new Vector3(movingPush, 0);
             }
             //if going right and not at right edge of screen)
-            else if (cam.WorldToScreenPoint(transform.position).x <= cam.pixelWidth && moveDirection > 0)
+            else if (cam.WorldToScreenPoint(transform.position + new Vector3(width/2, 0)).x <= cam.pixelWidth && moveDirection > 0)
             {
                 transform.position = transform.position + new Vector3(moveDirection * speed, 0);
             }
             //if going left and not at left edge of screen)
-            else if (cam.WorldToScreenPoint(transform.position).x >= 0 && moveDirection < 0)
+            else if (cam.WorldToScreenPoint(transform.position - new Vector3(width/2, 0)).x >= 0 && moveDirection < 0)
             {
                 transform.position = transform.position + new Vector3(moveDirection * speed, 0);
             }

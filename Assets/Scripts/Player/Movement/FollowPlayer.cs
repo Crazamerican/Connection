@@ -120,7 +120,7 @@ public class FollowPlayer : MonoBehaviour
         //when transitioning between parts of levels
         if (freezePlayers == true && deathScript.dead == false && deathScript.camDone == false)
         {
-            if (cam.transform.position.x > initCam.x)
+            /*if (cam.transform.position.x > initCam.x)
             {
                 gameManagement.freezePlayer = false;
                 freezePlayers = false;
@@ -129,7 +129,11 @@ public class FollowPlayer : MonoBehaviour
             } else
             {
                 transform.position = transform.position + new Vector3(0.18f, 0);
-            }
+            }*/
+            gameManagement.freezePlayer = false;
+            freezePlayers = false;
+            transform.position = initCam;
+            switchToSecond = true;
         } //when player is dead and camera transitioning back to old checkpoint
         else if (freezePlayers == true && deathScript.dead == true) {
             Debug.Log("here");
