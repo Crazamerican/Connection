@@ -225,8 +225,8 @@ public class FollowPlayer : MonoBehaviour
             //initCam = new Vector3(secondInit, initCam.y);
             //used to setup next screen transition
             switchStop = true;
-            player.transform.position = new Vector3(horScript.secondStart + .05f, player.transform.position.y);
-            player2.transform.position = new Vector3(horScript.secondStart + .05f, player2.transform.position.y);
+            player.transform.position = new Vector3(horScript.secondStart + .05f, player.transform.position.y, -1);
+            player2.transform.position = new Vector3(horScript.secondStart + .05f, player2.transform.position.y, -1);
         }
     }
 }

@@ -9,8 +9,6 @@ public class CollideSpike : MonoBehaviour
 
     //EventManager em;
 
-    public GameObject playerThings;
-
     // Start is called before the first frame update
     void Start()
     {

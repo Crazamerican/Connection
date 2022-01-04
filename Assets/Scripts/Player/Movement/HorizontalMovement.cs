@@ -90,6 +90,9 @@ public class HorizontalMovement : MonoBehaviour {
     //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
     void FixedUpdate()
     {
+        if (transform.position.z > 0) {
+            transform.position = new Vector3(transform.position.x, transform.position.y, -1);
+        }
         boxMoved = false;
         movingPush = 0f;
         touchingMoving = false;
@@ -323,7 +326,7 @@ public class HorizontalMovement : MonoBehaviour {
         else if ((transform.position.x + moveDirection * speed) >= firstEnd && cameraScript.switchToSecond == false)
         {
             col = true;
-            transform.position = new Vector3(firstEnd, transform.position.y);
+            transform.position = new Vector3(firstEnd, transform.position.y, -1);
         }
         //if no collision was found
         if (col == false)
@@ -331,17 +334,17 @@ public class HorizontalMovement : MonoBehaviour {
             if (touchingMoving == true)
             {
                 theBox.transform.position += new Vector3(movingPush, 0);
-                transform.position = transform.position + new Vector3(movingPush, 0);
+                transform.position = transform.position + new Vector3(movingPush, 0, 0);
             }
             //if going right and not at right edge of screen)
             else if (cam.WorldToScreenPoint(transform.position + new Vector3(width/2, 0)).x <= cam.pixelWidth && moveDirection > 0)
             {
-                transform.position = transform.position + new Vector3(moveDirection * speed, 0);
+                transform.position = transform.position + new Vector3(moveDirection * speed, 0, 0);
             }
             //if going left and not at left edge of screen)
             else if (cam.WorldToScreenPoint(transform.position - new Vector3(width/2, 0)).x >= 0 && moveDirection < 0)
             {
-                transform.position = transform.position + new Vector3(moveDirection * speed, 0);
+                transform.position = transform.position + new Vector3(moveDirection * speed, 0, 0);
             }
         } else //col == true
         {
@@ -384,7 +387,7 @@ public class HorizontalMovement : MonoBehaviour {
         //if no collision was found
         if (col == false)
         {
-            transform.position = transform.position + new Vector3(additionalSpeed, 0);
+            transform.position = transform.position + new Vector3(additionalSpeed, 0, 0);
         }
         else 
         {

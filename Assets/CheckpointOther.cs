@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class CheckpointOther : MonoBehaviour
 {
-    public Sprite yellowCheckpoint;
-    public Sprite greenCheckpoint;
     private SpriteRenderer checkpointSpriteRenderer;
     public GameObject checkpointMaster;
     CheckpointScript checkpointScript;
@@ -21,7 +19,8 @@ public class CheckpointOther : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            checkpointSpriteRenderer.sprite = greenCheckpoint;
+            Animator anim = this.GetComponent<Animator>();
+            anim.SetBool("isChecked", true);
             checkpointScript.respawnPoint = checkpointScript.player1.transform.position;
             checkpointScript.respawnPoint2 = checkpointScript.player2.transform.position;
         }
