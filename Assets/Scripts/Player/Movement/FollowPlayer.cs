@@ -120,7 +120,7 @@ public class FollowPlayer : MonoBehaviour
         //when transitioning between parts of levels
         if (freezePlayers == true && deathScript.dead == false && deathScript.camDone == false)
         {
-            if (cam.transform.position.x > initCam.x)
+            /*if (cam.transform.position.x > initCam.x)
             {
                 gameManagement.freezePlayer = false;
                 freezePlayers = false;
@@ -129,7 +129,11 @@ public class FollowPlayer : MonoBehaviour
             } else
             {
                 transform.position = transform.position + new Vector3(0.18f, 0);
-            }
+            }*/
+            gameManagement.freezePlayer = false;
+            freezePlayers = false;
+            transform.position = initCam;
+            switchToSecond = true;
         } //when player is dead and camera transitioning back to old checkpoint
         else if (freezePlayers == true && deathScript.dead == true) {
             Debug.Log("here");
@@ -206,7 +210,8 @@ public class FollowPlayer : MonoBehaviour
         }
         //used to indicate screen transition
         //if (playerCam.x >= (width) && player2Cam.x >= (width))
-        //Debug.Log("player transform: " + player.transform.position.x + " firstend: " + firstEnd);
+        Debug.Log("player transform: " + player.transform.position.x + " firstend: " + firstEnd);
+        Debug.Log("initCam: " + initCam + " initCameStart: " + (initCam.x - cam.pixelWidth * .05f));
         if (player.transform.position.x >= firstEnd - .05f && player2.transform.position.x >= firstEnd - .05f && switchStop == false)
         {
             Debug.Log("transition time boisss");
@@ -220,8 +225,8 @@ public class FollowPlayer : MonoBehaviour
             //initCam = new Vector3(secondInit, initCam.y);
             //used to setup next screen transition
             switchStop = true;
-            player.transform.position = new Vector3(horScript.secondStart + .05f, player.transform.position.y);
-            player2.transform.position = new Vector3(horScript.secondStart + .05f, player2.transform.position.y);
+            player.transform.position = new Vector3(horScript.secondStart + .05f, player.transform.position.y, -1);
+            player2.transform.position = new Vector3(horScript.secondStart + .05f, player2.transform.position.y, -1);
         }
     }
 }

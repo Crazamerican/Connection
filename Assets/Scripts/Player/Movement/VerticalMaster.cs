@@ -40,7 +40,7 @@ public class VerticalMaster : MonoBehaviour
     public AudioClip jumpSound;
     AudioSource audioSource;
 
-    bool moving;
+    /*bool moving;
     bool isSet;
 
     bool moving2;
@@ -48,7 +48,7 @@ public class VerticalMaster : MonoBehaviour
 
     GameObject box;
     public GameObject char_base;
-    public GameObject ghost;
+    public GameObject ghost;*/
 
     private GameManagementScript gameManagement;
 
@@ -124,11 +124,11 @@ public class VerticalMaster : MonoBehaviour
         charAnim = GetComponentInChildren<Animator>();
         otherCharAnim = otherPlayer.GetComponentInChildren<Animator>();
         audioSource = GetComponent<AudioSource>();
-        moving = false;
+        /*moving = false;
         isSet = false;
         moving2 = false;
         isSet2 = false;
-        box = null;
+        box = null;*/
         hiddenGroundFlag1 = false;
         hiddenGroundFlag2 = false;
 
@@ -212,11 +212,11 @@ public class VerticalMaster : MonoBehaviour
         onSpeed = 0f;
         onMoving2 = false;
         onSpeed2 = 0f;
-        moving = false;
+        //moving = false;
 
         if (inverted2 != otherScript.inverted2 && inverted2_2 == false)
         {
-            invertOnCommand = true;
+            //invertOnCommand = true;
         }
         topOrBottom = 0;
         topOrBottom2 = 0;
@@ -319,8 +319,8 @@ public class VerticalMaster : MonoBehaviour
                 topOrBottom = -1;
                 if (collide.gameObject.GetComponent<MovingBox>())
                 {
-                    moving = true;
-                    box = collide.gameObject;
+                    //moving = true;
+                    //box = collide.gameObject;
                 }
 
                 float newDist = GetComponent<BoxCollider2D>().Distance(collide).distance;
@@ -364,8 +364,8 @@ public class VerticalMaster : MonoBehaviour
                 topOrBottom2 = -1;
                 if (collide.gameObject.GetComponent<MovingBox>())
                 {
-                    moving2 = true;
-                    box = collide.gameObject;
+                    //moving2 = true;
+                    //box = collide.gameObject;
                 }
                 float newDist = otherPlayer.GetComponent<BoxCollider2D>().Distance(collide).distance;
                 if (newDist < distToCol2)
@@ -527,8 +527,8 @@ public class VerticalMaster : MonoBehaviour
                     velocity2 = .18f;
                 }
             }
-            transform.position = transform.position + new Vector3(0, velocity);
-            otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, velocity2);
+            transform.position = transform.position + new Vector3(0, velocity, 0);
+            otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, velocity2, 0);
         }
         
         //used to move player up next to collideable object
@@ -541,7 +541,7 @@ public class VerticalMaster : MonoBehaviour
             //FlushCollision(col, col2);
         }
 
-        if (topOrBottom == -1)
+        /*if (topOrBottom == -1)
         {
             if (moving)
             {
@@ -552,7 +552,7 @@ public class VerticalMaster : MonoBehaviour
                     ghost.transform.SetParent(box.transform);
                 }
                 transform.SetParent(box.transform);
-                otherPlayer.transform.position = new Vector2(otherPlayer.transform.position.x, ghost.transform.position.y);
+                otherPlayer.transform.position = new Vector3(otherPlayer.transform.position.x, ghost.transform.position.y, -1);
             }
         }
         else
@@ -560,9 +560,9 @@ public class VerticalMaster : MonoBehaviour
             isSet = false;
             moving = false;
             //transform.SetParent(char_base.transform);
-        }
+        }*/
 
-        if (topOrBottom2 == -1)
+        /*if (topOrBottom2 == -1)
         {
             if (moving2)
             {
@@ -585,7 +585,7 @@ public class VerticalMaster : MonoBehaviour
             isSet2 = false;
             moving2 = false;
             //otherPlayer.transform.SetParent(char_base.transform);
-        }
+        }*/
 
         //if either player is on ground, then stops player from moving vertically.
         if (grounded || grounded2)

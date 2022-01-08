@@ -42,7 +42,7 @@ public class CheckCollectibles : MonoBehaviour
         if (other.tag == "Trophy")
         {
             endOfLevel.GetComponent<GameManagementScript>().UpdateLevelDataTrophy();
-            Destroy(other.gameObject);
+            //Destroy(other.gameObject);
         }
         if (other.tag == "Door")
         {
