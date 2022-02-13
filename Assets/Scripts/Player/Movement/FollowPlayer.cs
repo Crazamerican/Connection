@@ -44,6 +44,7 @@ public class FollowPlayer : MonoBehaviour
     float firstEnd;
     public float secondInit;
 
+    bool screenTransitioning;
 
     private Vector3 offset;         //Private variable to store the offset distance between the player and camera
 
@@ -120,20 +121,11 @@ public class FollowPlayer : MonoBehaviour
         //when transitioning between parts of levels
         if (freezePlayers == true && deathScript.dead == false && deathScript.camDone == false)
         {
-            /*if (cam.transform.position.x > initCam.x)
-            {
-                gameManagement.freezePlayer = false;
-                freezePlayers = false;
-                transform.position = initCam;
-                switchToSecond = true;
-            } else
-            {
-                transform.position = transform.position + new Vector3(0.18f, 0);
-            }*/
+            
             gameManagement.freezePlayer = false;
             freezePlayers = false;
-            transform.position = initCam;
-            switchToSecond = true;
+            //transform.position = initCam;
+            //switchToSecond = true;
         } //when player is dead and camera transitioning back to old checkpoint
         else if (freezePlayers == true && deathScript.dead == true) {
             Debug.Log("here");
@@ -214,19 +206,56 @@ public class FollowPlayer : MonoBehaviour
         Debug.Log("initCam: " + initCam + " initCameStart: " + (initCam.x - cam.pixelWidth * .05f));
         if (player.transform.position.x >= firstEnd - .05f && player2.transform.position.x >= firstEnd - .05f && switchStop == false)
         {
+            if (!screenTransitioning)
+            {
+                StartCoroutine(MidLevelTransition());
+            }
+
             Debug.Log("transition time boisss");
-            gameManagement.freezePlayer = true;
-            freezePlayers = true;
-            playerCam = cam.WorldToScreenPoint(player.transform.position);
-            player2Cam = cam.WorldToScreenPoint(player2.transform.position);
-            playerAvg = (playerCam.x + player2Cam.x) / 2;
-            initCam = (cam.ScreenToWorldPoint(new Vector3(playerAvg + width / 2, height / 2)));
-            initCam -= new Vector3(p1width * 1 / 2, 0);
-            //initCam = new Vector3(secondInit, initCam.y);
-            //used to setup next screen transition
-            switchStop = true;
-            player.transform.position = new Vector3(horScript.secondStart + .05f, player.transform.position.y, -1);
-            player2.transform.position = new Vector3(horScript.secondStart + .05f, player2.transform.position.y, -1);
+            //gameManagement.freezePlayer = true;
+            //freezePlayers = true;
+
+            //playerCam = cam.WorldToScreenPoint(player.transform.position);
+            //player2Cam = cam.WorldToScreenPoint(player2.transform.position);
+            //playerAvg = (playerCam.x + player2Cam.x) / 2;
+            //initCam = (cam.ScreenToWorldPoint(new Vector3(playerAvg + width / 2, height / 2)));
+            //initCam -= new Vector3(p1width * 1 / 2, 0);
+            ////initCam = new Vector3(secondInit, initCam.y);
+            ////used to setup next screen transition
+            //switchStop = true;
+            //player.transform.position = new Vector3(horScript.secondStart + .05f, player.transform.position.y, -1);
+            //player2.transform.position = new Vector3(horScript.secondStart + .05f, player2.transform.position.y, -1);
         }
+    }
+
+    IEnumerator MidLevelTransition()
+    {
+        screenTransitioning = true;
+        gameManagement.freezePlayer = true;
+        freezePlayers = true;
+        gameManagement.ScreenTransitionToBlack();
+
+        yield return new WaitForSecondsRealtime(.5f);
+
+        playerCam = cam.WorldToScreenPoint(player.transform.position);
+        player2Cam = cam.WorldToScreenPoint(player2.transform.position);
+        playerAvg = (playerCam.x + player2Cam.x) / 2;
+        initCam = (cam.ScreenToWorldPoint(new Vector3(playerAvg + width / 2, height / 2)));
+        initCam -= new Vector3(p1width * 1 / 2, 0);
+        //initCam = new Vector3(secondInit, initCam.y);
+        //used to setup next screen transition
+        
+        player.transform.position = new Vector3(horScript.secondStart + .05f, player.transform.position.y, -1);
+        player2.transform.position = new Vector3(horScript.secondStart + .05f, player2.transform.position.y, -1);
+
+        yield return new WaitForSecondsRealtime(.5f);
+
+        switchStop = true;
+        screenTransitioning = false;
+
+        transform.position = initCam;
+        switchToSecond = true;
+
+        gameManagement.ScreenTransitionUp();
     }
 }

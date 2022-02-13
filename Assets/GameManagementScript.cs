@@ -185,4 +185,19 @@ public class GameManagementScript : MonoBehaviour
         freezePlayer = false;
         
     }
+
+    public void ScreenTransitionToBlack()
+    {
+        int transitionToChoose = Random.Range(1, 3);
+        Debug.Log("Transition: " + transitionToChoose);
+        screenTransition.Play("ScreenClose" + transitionToChoose);
+
+    }
+
+    public void ScreenTransitionUp()
+    {
+        int transitionToChoose = Random.Range(1, 3);
+        screenTransition.Play("ScreenOpen" + transitionToChoose);
+    }
+
 }
