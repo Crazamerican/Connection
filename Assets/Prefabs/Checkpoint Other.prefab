@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5170623116038539620}
   - component: {fileID: 375320326118522448}
   - component: {fileID: 5890163448067985032}
+  - component: {fileID: 4628769641267408744}
   m_Layer: 0
   m_Name: Checkpoint Other
   m_TagString: Untagged
@@ -70,7 +71,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c6dc065a1b3ce96428f911f508101f24, type: 3}
+  m_Sprite: {fileID: -7296654041555726600, guid: ce0143e769d87974883cca65a0ec6f13,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,7 +100,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.72, y: 0.73}
+    oldSize: {x: 1.05, y: 1.05}
     newSize: {x: 0.72, y: 0.73}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -119,8 +121,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62ae1cda1baa87f459d4e2f61845fe46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  yellowCheckpoint: {fileID: 21300000, guid: c6dc065a1b3ce96428f911f508101f24, type: 3}
-  greenCheckpoint: {fileID: 21300000, guid: 72d5b77e9416f0247b0480638f06d427, type: 3}
   checkpointMaster: {fileID: 0}
-  thisRespawnPoint: {x: 0, y: 0, z: 0}
-  thisRespawnPoint2: {x: 0, y: 0, z: 0}
+  curCheckPoint: 0
+--- !u!95 &4628769641267408744
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9125435723761800501}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 59e074244d9f21c4090e09268b222fa5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
