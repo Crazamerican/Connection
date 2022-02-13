@@ -11,12 +11,14 @@ public class PauseMenuController : MonoBehaviour
     public GameObject go;
     AudioSource audioSource;
     GameObject endOfLevel;
+    private int location;
 
 
     public void Start()
     {
         audioSource = go.GetComponent<AudioSource>();
         endOfLevel = endOfLevel = GameObject.Find("EndOfLevel");
+        location = 0;
     }
 
     private void Update()
@@ -36,6 +38,10 @@ public class PauseMenuController : MonoBehaviour
                 audioSource.Pause();
             }
         }
+        if(isPaused)
+        {
+
+        }
     }
 
     public void ResumeGame() {
@@ -53,10 +59,11 @@ public class PauseMenuController : MonoBehaviour
     }
 
     public void ReturnToMain() {
+        Debug.Log("Should be returning to titleCard screen.");
         isPaused = false;
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
         endOfLevel.GetComponent<GameManagementScript>().SaveLevel();
-        SceneManager.LoadScene("Main Menu");
+        SceneManager.LoadScene("TitleCard_Demo");
     }
 }

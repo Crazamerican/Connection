@@ -210,8 +210,8 @@ public class FollowPlayer : MonoBehaviour
         }
         //used to indicate screen transition
         //if (playerCam.x >= (width) && player2Cam.x >= (width))
-        Debug.Log("player transform: " + player.transform.position.x + " firstend: " + firstEnd);
-        Debug.Log("initCam: " + initCam + " initCameStart: " + (initCam.x - cam.pixelWidth * .05f));
+        //Debug.Log("player transform: " + player.transform.position.x + " firstend: " + firstEnd);
+        //Debug.Log("initCam: " + initCam + " initCameStart: " + (initCam.x - cam.pixelWidth * .05f));
         if (player.transform.position.x >= firstEnd - .05f && player2.transform.position.x >= firstEnd - .05f && switchStop == false)
         {
             Debug.Log("transition time boisss");
