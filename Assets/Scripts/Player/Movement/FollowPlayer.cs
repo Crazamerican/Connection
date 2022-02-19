@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class FollowPlayer : MonoBehaviour
@@ -234,6 +234,8 @@ public class FollowPlayer : MonoBehaviour
         gameManagement.freezePlayer = true;
         freezePlayers = true;
         gameManagement.ScreenTransitionToBlack();
+
+        player.GetComponentInChildren<Animator>().Play("ScreenTransitionOff");
 
         yield return new WaitForSecondsRealtime(.5f);
 
