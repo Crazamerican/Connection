@@ -11,6 +11,7 @@ public class PauseHoverArrow : MonoBehaviour
     public GameObject firstOption;
     public GameObject secondOption;
     public GameObject thirdOption;
+    public GameObject fourthOption;
     bool change;
     public int changeTime;
     int count;
@@ -39,7 +40,11 @@ public class PauseHoverArrow : MonoBehaviour
             {
                 HandleRestart();
             }
-            if (position == HoverEnum.THIRD_OPTION)
+            if(position == HoverEnum.THIRD_OPTION)
+            {
+                HandleWorldSelectMenu();
+            }
+            if (position == HoverEnum.FOURTH_OPTION)
             {
                 HandleMainMenu();
             }
@@ -81,9 +86,14 @@ public class PauseHoverArrow : MonoBehaviour
                 transform.position = new Vector3(transform.position.x, thirdOption.transform.position.y);
                 otherSelector.transform.position = new Vector3(otherSelector.transform.position.x, transform.position.y);
                 position = HoverEnum.THIRD_OPTION;
+            } else if (arrowPos == 3)
+            {
+                transform.position = new Vector3(transform.position.x, fourthOption.transform.position.y);
+                otherSelector.transform.position = new Vector3(otherSelector.transform.position.x, transform.position.y);
+                position = HoverEnum.FOURTH_OPTION;
             }
         }
-        if ((Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) && arrowPos != 2 && !change)
+        if ((Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) && arrowPos != 3 && !change)
         {
             arrowPos = arrowPos + 1;
             change = true;
@@ -99,7 +109,8 @@ public class PauseHoverArrow : MonoBehaviour
     {
         FIRST_OPTION,
         SECOND_OPTION,
-        THIRD_OPTION
+        THIRD_OPTION,
+        FOURTH_OPTION
     }
 
 
@@ -114,5 +125,10 @@ public class PauseHoverArrow : MonoBehaviour
     private void HandleMainMenu()
     {
         menu.GetComponent<PauseMenuController>().ReturnToMain();
+    }
+
+    private void HandleWorldSelectMenu()
+    {
+        menu.GetComponent<PauseMenuController>().HandleWorldSelectMenu();
     }
 }

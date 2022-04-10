@@ -15,6 +15,8 @@ public class GameManagementScript : MonoBehaviour
     public bool freezePlayer;
     public Animator screenTransition;
     bool isTransitioning;
+
+    private CanvasProper.SELECTOR_ENUM _enum = CanvasProper.SELECTOR_ENUM.NO_SELECT;
     //Create the singleton
     private void Awake()
     {
@@ -200,4 +202,13 @@ public class GameManagementScript : MonoBehaviour
         screenTransition.Play("ScreenOpen" + transitionToChoose);
     }
 
+    public CanvasProper.SELECTOR_ENUM getEnum()
+    {
+        return this._enum;
+    }
+    
+    public void setEnum(CanvasProper.SELECTOR_ENUM e)
+    {
+        this._enum = e;
+    }
 }
