@@ -66,4 +66,13 @@ public class PauseMenuController : MonoBehaviour
         endOfLevel.GetComponent<GameManagementScript>().SaveLevel();
         SceneManager.LoadScene("TitleCard_Demo");
     }
+
+    public void HandleWorldSelectMenu()
+    {
+        isPaused = false;
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1f;
+        endOfLevel.GetComponent<GameManagementScript>().SaveLevel();
+        SceneManager.LoadScene("UILevelSelect");
+    }
 }

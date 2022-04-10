@@ -19,6 +19,7 @@ public class WorldSelectorScript : MonoBehaviour
     int direction = -1;
     float curTime = 0;
     int arrowPos = 0;
+    public CanvasProper.SELECTOR_ENUM eNUM;
 
     private CanvasProper canvasProperScript;
     // Start is called before the first frame update
@@ -46,7 +47,9 @@ public class WorldSelectorScript : MonoBehaviour
                 {
 
                 }
+                canvasProperScript.SetENUM(eNUM);
                 canvasProperScript.ActivatePanel(worldCanvases[level]);
+
                 //worldCanvases[level].SetActive(true);
                 //rootcanvas.SetActive(false);
             }
@@ -56,6 +59,7 @@ public class WorldSelectorScript : MonoBehaviour
                 level++;
                 xMove = (worldImages[level].transform.position.x - transform.position.x) / 40f;
                 yMove = (worldImages[level].transform.position.y - transform.position.y) / 40f;
+                eNUM = (CanvasProper.SELECTOR_ENUM)level;
                 moveStart = true;
             }
             else if ((Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) && level > 0 && !moveStart)
@@ -64,6 +68,7 @@ public class WorldSelectorScript : MonoBehaviour
                 level--;
                 xMove = (worldImages[level].transform.position.x - transform.position.x) / 40f;
                 yMove = (worldImages[level].transform.position.y - transform.position.y) / 40f;
+                eNUM = (CanvasProper.SELECTOR_ENUM)level;
                 moveStart = true;
             }
             if (moveStart == true)
@@ -103,5 +108,14 @@ public class WorldSelectorScript : MonoBehaviour
     public void SetMoveable(bool canMove)
     {
         moveable = canMove;
+    }
+
+    public void SetUpArrowAndScene(CanvasProper.SELECTOR_ENUM num)
+    {
+        level = (int)num;
+        xMove = (worldImages[level].transform.position.x - transform.position.x) / 40f;
+        yMove = (worldImages[level].transform.position.y - transform.position.y) / 40f;
+        rootcanvas.GetComponent<CanvasProper>().ActivatePanel(worldCanvases[level]);
+
     }
 }
