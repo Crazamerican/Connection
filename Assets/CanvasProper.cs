@@ -12,10 +12,23 @@ public class CanvasProper : MonoBehaviour
     public GameObject[] panels;
 
     public GameObject selector;
-    // Start is called before the first frame update
-    void Start()
+
+
+    private SELECTOR_ENUM _ENUM;
+
+    private GameObject endOfLevel;
+    private GameManagementScript gameManager;
+    private void Start()
     {
-        
+        endOfLevel = GameObject.Find("EndOfLevel");
+        gameManager = endOfLevel.GetComponent<GameManagementScript>();
+        SELECTOR_ENUM temp = gameManager.getEnum();
+        if(!temp.Equals(SELECTOR_ENUM.NO_SELECT))
+        {
+            _ENUM = temp;
+            selector.GetComponent<WorldSelectorScript>().SetUpArrowAndScene(_ENUM);
+            SetENUM(SELECTOR_ENUM.NO_SELECT);
+        }
     }
 
     // Update is called once per frame
@@ -74,4 +87,22 @@ public class CanvasProper : MonoBehaviour
             currentActive.GetComponent<PanelUiPlayerController>().TurnPlayerUiOn();
         }
     }
+
+    public enum SELECTOR_ENUM {
+        TREE_WORLD,
+        CAVE_WORLD,
+        NO_SELECT
+    }
+
+    public SELECTOR_ENUM GetENUM()
+    {
+        return _ENUM;
+    }
+
+    public void SetENUM(SELECTOR_ENUM num)
+    {
+        _ENUM = num;
+        gameManager.setEnum(num);
+    }
+
 }
