@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -59,6 +59,7 @@ public class PitCutsceneTrigger : MonoBehaviour
         float originalBoyGrav = verticalController.gravity2;
         float originalGirlGrav = verticalController.gravity;
 
+        //TODO: smooth this to zero
         verticalController.velocity = 0;
         verticalController.velocity2 = 0;
         verticalController.gravity2 = 0f;
@@ -71,8 +72,8 @@ public class PitCutsceneTrigger : MonoBehaviour
         //resume boy's fall
         //verticalController.velocity = -.1f;
         //verticalController.velocity2 = -.1f;
-        verticalController.gravity2 = originalBoyGrav;
-        verticalController.gravity = originalGirlGrav;
+        verticalController.gravity2 = .005f;
+        verticalController.gravity = .005f;
 
         yield return new WaitForSecondsRealtime(2.5f);
 
@@ -81,11 +82,14 @@ public class PitCutsceneTrigger : MonoBehaviour
 
         //TODO play girl's animations as well
 
-        yield return new WaitForSecondsRealtime(10f); //TODO: get the right timing
+        yield return new WaitForSecondsRealtime(13f); //TODO: get the right timing
 
         movingCamera = false;
         gameManager.freezePlayer = false;
 
+
+        verticalController.gravity2 = originalBoyGrav;
+        verticalController.gravity = originalGirlGrav;
         botBoy.GetComponentInChildren<Animator>().Play("Idle");
         topGirl.GetComponentInChildren<Animator>().Play("Idle");
         ParticleSystem ps = topGirl.GetComponentInChildren<ParticleSystem>(); 
