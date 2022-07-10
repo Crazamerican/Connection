@@ -181,8 +181,6 @@ public class VerticalMaster : MonoBehaviour
 
             charAnim.SetTrigger("jumped");
             otherCharAnim.SetTrigger("jumped");
-
-
         }
         //if gotten gravity inverting powerup, user can invert gravity while grounded
         if (Input.GetButtonDown("Invert") && invertOnCommand == true && (grounded || grounded2) && gameManagement.freezePlayer == false)
@@ -197,9 +195,6 @@ public class VerticalMaster : MonoBehaviour
                 velocity2 = 0;
             }
         }
-        
-
-
     }
 
     //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
@@ -590,10 +585,12 @@ public class VerticalMaster : MonoBehaviour
         //if either player is on ground, then stops player from moving vertically.
         if (grounded || grounded2)
         {
-         
-
             charAnim.SetTrigger("grounded");
             otherCharAnim.SetTrigger("grounded");
+        } else
+        {
+            charAnim.ResetTrigger("grounded");
+            otherCharAnim.ResetTrigger("grounded");
         }
 
         charAnim.SetFloat("verticalSpeed", velocity);

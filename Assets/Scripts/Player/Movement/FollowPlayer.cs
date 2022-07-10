@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class FollowPlayer : MonoBehaviour
@@ -211,7 +211,7 @@ public class FollowPlayer : MonoBehaviour
                 StartCoroutine(MidLevelTransition());
             }
 
-            Debug.Log("transition time boisss");
+            //Debug.Log("transition time boisss");
             //gameManagement.freezePlayer = true;
             //freezePlayers = true;
 
@@ -235,6 +235,12 @@ public class FollowPlayer : MonoBehaviour
         freezePlayers = true;
         gameManagement.ScreenTransitionToBlack();
 
+        player.GetComponent<HiddenGroundParticles>().enabled = false;
+        //hidden ground is only on player1
+        //player2.GetComponent<HiddenGroundParticles>().enabled = false;
+
+        player.GetComponentInChildren<Animator>().Play("ScreenTransitionOff");
+
         yield return new WaitForSecondsRealtime(.5f);
 
         playerCam = cam.WorldToScreenPoint(player.transform.position);
@@ -257,5 +263,11 @@ public class FollowPlayer : MonoBehaviour
         switchToSecond = true;
 
         gameManagement.ScreenTransitionUp();
+        
+        player.GetComponentInChildren<Animator>().Play("Idle");
+        player2.GetComponentInChildren<Animator>().Play("Idle");
+
+        yield return new WaitForSecondsRealtime(.5f); //wait for screentransitionup to finish
+        player.GetComponent<HiddenGroundParticles>().enabled = true;
     }
 }

@@ -25,23 +25,8 @@ AnimationClip:
     - time: 0.05
       value: {fileID: 9127895959664975634, guid: f3bc3b645341e804fada185902cac975,
         type: 3}
-    - time: 0.1
+    - time: 0.16666667
       value: {fileID: 5732237034563518701, guid: f3bc3b645341e804fada185902cac975,
-        type: 3}
-    - time: 0.26666668
-      value: {fileID: 4575683000209641719, guid: f3bc3b645341e804fada185902cac975,
-        type: 3}
-    - time: 0.43333334
-      value: {fileID: -4332342159738388391, guid: f3bc3b645341e804fada185902cac975,
-        type: 3}
-    - time: 0.6
-      value: {fileID: 7856246124664083959, guid: f3bc3b645341e804fada185902cac975,
-        type: 3}
-    - time: 0.76666665
-      value: {fileID: 2970728531911788596, guid: f3bc3b645341e804fada185902cac975,
-        type: 3}
-    - time: 0.93333334
-      value: {fileID: 2970728531911788596, guid: f3bc3b645341e804fada185902cac975,
         type: 3}
     attribute: m_Sprite
     path: 
@@ -65,17 +50,12 @@ AnimationClip:
     - {fileID: -1063573400392367752, guid: f3bc3b645341e804fada185902cac975, type: 3}
     - {fileID: 9127895959664975634, guid: f3bc3b645341e804fada185902cac975, type: 3}
     - {fileID: 5732237034563518701, guid: f3bc3b645341e804fada185902cac975, type: 3}
-    - {fileID: 4575683000209641719, guid: f3bc3b645341e804fada185902cac975, type: 3}
-    - {fileID: -4332342159738388391, guid: f3bc3b645341e804fada185902cac975, type: 3}
-    - {fileID: 7856246124664083959, guid: f3bc3b645341e804fada185902cac975, type: 3}
-    - {fileID: 2970728531911788596, guid: f3bc3b645341e804fada185902cac975, type: 3}
-    - {fileID: 2970728531911788596, guid: f3bc3b645341e804fada185902cac975, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.95
+    m_StopTime: 0.18333334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -95,14 +75,7 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.1
-    functionName: EmitDust
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.6
+  - time: 0.16666667
     functionName: EmitDust
     data: 
     objectReferenceParameter: {fileID: 0}
