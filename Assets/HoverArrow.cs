@@ -1,9 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HoverArrow : MonoBehaviour
 {
+    private static GameObject endOfLevel;
+    //0 for NewLoadQuit, 1 for NewGame, 2 for LoadGame
+    public int screen = 0;
     public int timer = 4;
     int direction = -1;
     int curTime = 0;
@@ -25,6 +29,7 @@ public class HoverArrow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        endOfLevel = GameObject.Find("EndOfLevel");
         count = 0;
         change = false;
         arrowPos = 0;
@@ -33,19 +38,70 @@ public class HoverArrow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.Return))
+        if(Input.GetButtonDown("Jump"))
         {
-            if(position == HoverEnum.FIRST_OPTION)
+            arrowPos = 0;
+            transform.position = new Vector3(transform.position.x, firstOption.transform.position.y + 2.1f);
+            position = HoverEnum.FIRST_OPTION;
+            if (screen == 0)
             {
-                HandleNewGameMenu();
+                if (position == HoverEnum.FIRST_OPTION)
+                {
+                    HandleNewGameMenu();
+                }
+                if (position == HoverEnum.SECOND_OPTION)
+                {
+                    HandleLoadGameMenu();
+                }
+                if (position == HoverEnum.THIRD_OPTION)
+                {
+                    Application.Quit();
+                }
             }
-            if(position == HoverEnum.SECOND_OPTION)
+            else if (screen == 2)
             {
-                HandleLoadGameMenu();
+                if (position == HoverEnum.FIRST_OPTION)
+                {
+                    endOfLevel.GetComponent<GameManagementScript>().SetFileNumber("1");
+                    endOfLevel.GetComponent<GameManagementScript>().LoadGame();
+                }
+                if (position == HoverEnum.SECOND_OPTION)
+                {
+                    endOfLevel.GetComponent<GameManagementScript>().SetFileNumber("2");
+                    endOfLevel.GetComponent<GameManagementScript>().LoadGame();
+                }
+                if (position == HoverEnum.THIRD_OPTION)
+                {
+                    endOfLevel.GetComponent<GameManagementScript>().SetFileNumber("3");
+                    endOfLevel.GetComponent<GameManagementScript>().LoadGame();
+                }
+                SceneManager.LoadScene("UILevelSelect");
             }
-            if(position == HoverEnum.THIRD_OPTION)
-            {
-                Application.Quit();
+            else if (screen == 1) {
+                if (position == HoverEnum.FIRST_OPTION)
+                {
+                    endOfLevel.GetComponent<GameManagementScript>().CreateNewFile();
+                    endOfLevel.GetComponent<GameManagementScript>().LoadGame();
+                }
+                if (position == HoverEnum.SECOND_OPTION)
+                {
+                    endOfLevel.GetComponent<GameManagementScript>().CreateNewFile();
+                    endOfLevel.GetComponent<GameManagementScript>().LoadGame();
+                }
+                if (position == HoverEnum.THIRD_OPTION)
+                {
+                    endOfLevel.GetComponent<GameManagementScript>().CreateNewFile();
+                    endOfLevel.GetComponent<GameManagementScript>().LoadGame();
+                }
+                SceneManager.LoadScene("UILevelSelect");
+            }
+        }
+        if (Input.GetButtonDown("Push")) {
+            if (screen == 1 || screen == 2) {
+                arrowPos = 0;
+                transform.position = new Vector3(transform.position.x, firstOption.transform.position.y + 2.1f);
+                position = HoverEnum.FIRST_OPTION;
+                HandleNewLoadQuiteMenu();
             }
         }
         if (curTime < timer)
@@ -77,17 +133,17 @@ public class HoverArrow : MonoBehaviour
             count++;
             if (arrowPos == 0)
             {
-                transform.position = new Vector3(transform.position.x, firstOption.transform.position.y);
+                transform.position = new Vector3(transform.position.x, firstOption.transform.position.y + 2.1f);
                 position = HoverEnum.FIRST_OPTION;
             }
             else if (arrowPos == 1)
             {
-                transform.position = new Vector3(transform.position.x, secondOption.transform.position.y);
+                transform.position = new Vector3(transform.position.x, secondOption.transform.position.y + 2.1f);
                 position = HoverEnum.SECOND_OPTION;
             }
             else if (arrowPos == 2)
             {
-                transform.position = new Vector3(transform.position.x, thirdOption.transform.position.y);
+                transform.position = new Vector3(transform.position.x, thirdOption.transform.position.y + 2.1f);
                 position = HoverEnum.THIRD_OPTION;
             }
         }
@@ -113,5 +169,10 @@ public class HoverArrow : MonoBehaviour
         newLoadQuitPanel.SetActive(false);
         loadGameSelect.SetActive(true);
         firstButtonLoad.GetComponent<ButtonManager>().SetThisButtonAsFirstUsable();
+    }
+    private void HandleNewLoadQuiteMenu() {
+        newGameSelect.SetActive(false);
+        loadGameSelect.SetActive(false);
+        newLoadQuitPanel.SetActive(true);
     }
 }
