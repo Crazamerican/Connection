@@ -12,9 +12,9 @@ public class PauseHoverArrow : MonoBehaviour
     public GameObject secondOption;
     public GameObject thirdOption;
     public GameObject fourthOption;
-    bool change;
-    public int changeTime;
-    int count;
+    bool change = false;
+    public float changeTime;
+    float count;
     private HoverEnum position = HoverEnum.FIRST_OPTION;
     public GameObject menu;
     public GameObject otherSelector;
@@ -22,7 +22,7 @@ public class PauseHoverArrow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        count = 0;
+        count = 0.0f;
         change = false;
         arrowPos = 0;
     }
@@ -30,7 +30,7 @@ public class PauseHoverArrow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Return))
+        if (Input.GetKey(KeyCode.Return) || Input.GetButtonDown("Jump"))
         {
             if (position == HoverEnum.FIRST_OPTION)
             {
@@ -60,7 +60,6 @@ public class PauseHoverArrow : MonoBehaviour
             curTime = 0;
             direction = direction * -1;
         }
-
         if (change)
         {
             if (count > changeTime)
@@ -68,7 +67,7 @@ public class PauseHoverArrow : MonoBehaviour
                 count = 0;
                 change = false;
             }
-            count++;
+            count = count + Time.fixedUnscaledDeltaTime;
             if (arrowPos == 0)
             {
                 transform.position = new Vector3(transform.position.x, firstOption.transform.position.y);
@@ -86,7 +85,8 @@ public class PauseHoverArrow : MonoBehaviour
                 transform.position = new Vector3(transform.position.x, thirdOption.transform.position.y);
                 otherSelector.transform.position = new Vector3(otherSelector.transform.position.x, transform.position.y);
                 position = HoverEnum.THIRD_OPTION;
-            } else if (arrowPos == 3)
+            }
+            else if (arrowPos == 3)
             {
                 transform.position = new Vector3(transform.position.x, fourthOption.transform.position.y);
                 otherSelector.transform.position = new Vector3(otherSelector.transform.position.x, transform.position.y);
@@ -103,6 +103,11 @@ public class PauseHoverArrow : MonoBehaviour
             arrowPos = arrowPos - 1;
             change = true;
         }
+    }
+
+    private void FixedUpdate()
+    {
+        
     }
 
     enum HoverEnum

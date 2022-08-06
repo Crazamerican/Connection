@@ -34785,6 +34785,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 377426634}
   player2: {fileID: 1908767614}
+  initCam: {x: 0, y: 0, z: 0}
   firstStop: {fileID: 1877727613}
   secondStop: {fileID: 1571936456}
   switchToSecond: 0
@@ -35208,17 +35209,17 @@ PrefabInstance:
     - target: {fileID: 7755242211133130699, guid: cbbcbfa46cc664749a6f6fbbbdac2d78,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7755242211133130699, guid: cbbcbfa46cc664749a6f6fbbbdac2d78,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7755242211133130699, guid: cbbcbfa46cc664749a6f6fbbbdac2d78,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7755242211133130699, guid: cbbcbfa46cc664749a6f6fbbbdac2d78,
         type: 3}
@@ -69744,7 +69745,7 @@ PrefabInstance:
     - target: {fileID: 5672603039789187656, guid: 8ce886d6ac5f62343af0f88700c4a121,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5672603039789187656, guid: 8ce886d6ac5f62343af0f88700c4a121,
         type: 3}
@@ -69786,6 +69787,23 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 5672603039789187656, guid: 8ce886d6ac5f62343af0f88700c4a121,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 9b3140629bf49b3429e413568e6acd6d,
+        type: 2}
+    - target: {fileID: 5672603039789187656, guid: 8ce886d6ac5f62343af0f88700c4a121,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -1291200792612829277, guid: 9b3140629bf49b3429e413568e6acd6d,
+        type: 2}
+    - target: {fileID: 5672603039789187656, guid: 8ce886d6ac5f62343af0f88700c4a121,
+        type: 3}
+      propertyPath: m_margin.z
+      value: -0.8780473
+      objectReference: {fileID: 0}
     - target: {fileID: 5672603039789187658, guid: 8ce886d6ac5f62343af0f88700c4a121,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -69794,12 +69812,12 @@ PrefabInstance:
     - target: {fileID: 5672603039789187658, guid: 8ce886d6ac5f62343af0f88700c4a121,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.8
+      value: 1.71
       objectReference: {fileID: 0}
     - target: {fileID: 5672603039789187658, guid: 8ce886d6ac5f62343af0f88700c4a121,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -0.29
       objectReference: {fileID: 0}
     - target: {fileID: 8303536825094167142, guid: 8ce886d6ac5f62343af0f88700c4a121,
         type: 3}
@@ -69832,6 +69850,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 258c5af50b3b3ec4aaab227321c1d8ae,
         type: 3}
+    - target: {fileID: 5672603039789187663, guid: 8ce886d6ac5f62343af0f88700c4a121,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -1291200792612829277, guid: 9b3140629bf49b3429e413568e6acd6d,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ce886d6ac5f62343af0f88700c4a121, type: 3}
 --- !u!1 &1135758528
@@ -70251,6 +70275,7 @@ MonoBehaviour:
   doorOpenSound: {fileID: 0}
   otherPlayer: {fileID: 0}
   atDoor: 0
+  curAtWait: 0
 --- !u!114 &1139632629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70272,7 +70297,6 @@ MonoBehaviour:
   player1: {fileID: 0}
   moveDirection: 0
   onMoveLeft: 0
-  cameraStart: 0
   firstStart: 0
   firstEnd: 0
   secondStart: 0
@@ -70282,6 +70306,7 @@ MonoBehaviour:
   nonPushLeft: 0
   pushRight: 0
   nonPushRight: 0
+  grabState: 0
 --- !u!1 &1139773655
 GameObject:
   m_ObjectHideFlags: 0
@@ -93193,6 +93218,7 @@ MonoBehaviour:
   doorOpenSound: {fileID: 0}
   otherPlayer: {fileID: 0}
   atDoor: 0
+  curAtWait: 0
 --- !u!61 &1586010093
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -93240,7 +93266,6 @@ MonoBehaviour:
   player1: {fileID: 0}
   moveDirection: 0
   onMoveLeft: 0
-  cameraStart: 0
   firstStart: 0
   firstEnd: 0
   secondStart: 0
@@ -93250,6 +93275,7 @@ MonoBehaviour:
   nonPushLeft: 0
   pushRight: 0
   nonPushRight: 0
+  grabState: 0
 --- !u!1 &1587954419
 GameObject:
   m_ObjectHideFlags: 0
