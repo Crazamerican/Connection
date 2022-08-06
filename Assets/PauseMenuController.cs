@@ -38,9 +38,11 @@ public class PauseMenuController : MonoBehaviour
                 audioSource.Pause();
             }
         }
-        if(isPaused)
-        {
-
+        if (Input.GetButtonDown("Push") && isPaused) {
+            isPaused = false;
+            pauseMenu.SetActive(false);
+            Time.timeScale = 1f;
+            audioSource.Play();
         }
     }
 

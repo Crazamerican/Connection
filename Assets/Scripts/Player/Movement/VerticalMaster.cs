@@ -82,11 +82,14 @@ public class VerticalMaster : MonoBehaviour
     int coyoteTimer2;
 
     public bool changeGravity;
-    int changeGravityFreeze; 
+    int changeGravityFreeze;
+
+    PauseMenuController pauseScript;
 
     // Use this for initialization
     void Start()
     {
+        pauseScript = GameObject.Find("Canvas").GetComponent<PauseMenuController>();
         gameManagement = GameObject.Find("EndOfLevel").GetComponent<GameManagementScript>();
         changeGravityFreeze = 0;
         changeGravity = false;
@@ -155,7 +158,7 @@ public class VerticalMaster : MonoBehaviour
             }
         }
         //if jump button pressed and a character is on or extremely near the ground and not frozen
-        if (Input.GetButtonDown("Jump") && changeGravity == false && (forgiveGround || forgiveGround2 || coyoteGround || coyoteGround2 || grounded || grounded2) && gameManagement.freezePlayer == false && (!otherPlayer.GetComponent<HorizontalMovement>().touchingMoving && !this.GetComponent<HorizontalMovement>().touchingMoving))
+        if (Input.GetButtonDown("Jump") && !pauseScript.isPaused && changeGravity == false && (forgiveGround || forgiveGround2 || coyoteGround || coyoteGround2 || grounded || grounded2) && gameManagement.freezePlayer == false && (!otherPlayer.GetComponent<HorizontalMovement>().touchingMoving && !this.GetComponent<HorizontalMovement>().touchingMoving))
         {
             //jumps in opposite direction if inverted
             if (inverted == true || inverted2 == true)
