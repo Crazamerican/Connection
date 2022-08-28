@@ -7,6 +7,7 @@ public class PauseMenuController : MonoBehaviour
 {
     public string level;
     public GameObject pauseMenu;
+    public GameObject worldMenu;
     public bool isPaused;
     public GameObject go;
     AudioSource audioSource;

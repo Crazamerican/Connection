@@ -211,11 +211,11 @@ public class VerticalMaster : MonoBehaviour
         onMoving2 = false;
         onSpeed2 = 0f;
         //moving = false;
-
-        if (inverted2 != otherScript.inverted2 && inverted2_2 == false)
+        
+        /*if (inverted2 != otherScript.inverted2 && inverted2_2 == false)
         {
             //invertOnCommand = true;
-        }
+        }*/
         topOrBottom = 0;
         topOrBottom2 = 0;
         if (changeGravity == true) {
