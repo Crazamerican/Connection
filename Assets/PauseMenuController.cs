@@ -7,6 +7,7 @@ public class PauseMenuController : MonoBehaviour
 {
     public string level;
     public GameObject pauseMenu;
+    public GameObject worldMenu;
     public bool isPaused;
     public GameObject go;
     AudioSource audioSource;
@@ -38,9 +39,11 @@ public class PauseMenuController : MonoBehaviour
                 audioSource.Pause();
             }
         }
-        if(isPaused)
-        {
-
+        if (Input.GetButtonDown("Push") && isPaused) {
+            isPaused = false;
+            pauseMenu.SetActive(false);
+            Time.timeScale = 1f;
+            audioSource.Play();
         }
     }
 
