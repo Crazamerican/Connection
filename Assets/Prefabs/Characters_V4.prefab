@@ -5198,7 +5198,8 @@ MonoBehaviour:
   inverted2: 0
   charAnim: {fileID: 0}
   otherCharAnim: {fileID: 0}
-  jumpSound: {fileID: 8300000, guid: f16a06818aa40af4cbd267d16d9dfbf5, type: 3}
+  playerSFXController: {fileID: 1657438233379562679}
+  jumpSound: {fileID: 8300000, guid: 1c7de7082d8cc8549bb11cf62fdd7d79, type: 3}
   forgiveGround: 0
   forgiveGround2: 0
   inTunnel: 0
@@ -11498,3 +11499,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 8935830063097247695}
   headBonk: {fileID: 8300000, guid: 57613c3121f551b4a8425a46c0cae2af, type: 3}
+  jump: {fileID: 8300000, guid: 1c7de7082d8cc8549bb11cf62fdd7d79, type: 3}
