@@ -44660,7 +44660,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &762324275
 RectTransform:
   m_ObjectHideFlags: 0
@@ -114306,6 +114306,11 @@ PrefabInstance:
       propertyPath: cameraBoi
       value: 
       objectReference: {fileID: 519420028}
+    - target: {fileID: 3637233861503871980, guid: b58a7ae9c2bd1ba4abe4a6cef800b1a8,
+        type: 3}
+      propertyPath: jumpSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 1c7de7082d8cc8549bb11cf62fdd7d79, type: 3}
     - target: {fileID: 3637233862986138302, guid: b58a7ae9c2bd1ba4abe4a6cef800b1a8,
         type: 3}
       propertyPath: cam
@@ -114316,6 +114321,21 @@ PrefabInstance:
       propertyPath: cameraBoi
       value: 
       objectReference: {fileID: 519420028}
+    - target: {fileID: 3637233861503871985, guid: b58a7ae9c2bd1ba4abe4a6cef800b1a8,
+        type: 3}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3637233861503871985, guid: b58a7ae9c2bd1ba4abe4a6cef800b1a8,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 1c7de7082d8cc8549bb11cf62fdd7d79, type: 3}
+    - target: {fileID: 1657438233379562679, guid: b58a7ae9c2bd1ba4abe4a6cef800b1a8,
+        type: 3}
+      propertyPath: headBonk
+      value: 
+      objectReference: {fileID: 8300000, guid: 09e75d117f519a74b8edf7861b85184c, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b58a7ae9c2bd1ba4abe4a6cef800b1a8, type: 3}
 --- !u!114 &4145983742394706885

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -171,11 +171,19 @@ public class GameManagementScript : MonoBehaviour
 
     public void ResetScreenTransition(Scene sceneName, LoadSceneMode mode)
     {
+        freezePlayer = true;
         Camera mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         GetComponent<Canvas>().worldCamera = mainCam;
         int transitionToChoose = Random.Range(1, 3);
         screenTransition.Play("ScreenOpen" + transitionToChoose);
         isTransitioning = false;
+        StartCoroutine(levelStartHelper());
+    }
+
+    private IEnumerator levelStartHelper()
+    {
+        yield return new WaitForSecondsRealtime(2f);
+        freezePlayer = false;
     }
 
     private IEnumerator LevelTransition(string levelName) //probably don't do as Coroutuine
@@ -184,8 +192,6 @@ public class GameManagementScript : MonoBehaviour
         yield return new WaitForSecondsRealtime(.5f); //TODO: change this to animation time
 
         SceneManager.LoadScene(levelName);
-        freezePlayer = false;
-        
     }
 
     public void ScreenTransitionToBlack()

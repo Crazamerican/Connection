@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -37,6 +37,7 @@ public class VerticalMaster : MonoBehaviour
     public Animator charAnim;
     public Animator otherCharAnim;
 
+    public PlayerSFX playerSFXController;
     public AudioClip jumpSound;
     AudioSource audioSource;
 
@@ -177,7 +178,8 @@ public class VerticalMaster : MonoBehaviour
             forgiveGround2 = false;
             coyoteGround = false;
             coyoteGround2 = false;
-            audioSource.PlayOneShot(jumpSound, 0.7F);
+            playerSFXController.playPlayerSFX(PlayerSFX.ClipName.JUMP);
+            //audioSource.PlayOneShot(jumpSound, 0.7F);
 
             charAnim.ResetTrigger("grounded");
             otherCharAnim.ResetTrigger("grounded");
