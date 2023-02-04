@@ -17,7 +17,7 @@ public class LevelSelection : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         int curWorld = worldController.selectedWorld;
         int curLevel = worldController.selectedLevel;
