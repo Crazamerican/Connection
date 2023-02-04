@@ -257,6 +257,11 @@ PrefabInstance:
       propertyPath: keyGetSound
       value: 
       objectReference: {fileID: 8300000, guid: e616b4a899870e24e8e6d81c2cd166c1, type: 3}
+    - target: {fileID: 1657438233379562679, guid: b58a7ae9c2bd1ba4abe4a6cef800b1a8,
+        type: 3}
+      propertyPath: headBonk
+      value: 
+      objectReference: {fileID: 8300000, guid: 57613c3121f551b4a8425a46c0cae2af, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b58a7ae9c2bd1ba4abe4a6cef800b1a8, type: 3}
 --- !u!1 &2706410
@@ -6272,7 +6277,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: Level 0
   pauseMenu: {fileID: 323008252}
-  worldMenu: {fileID: 1871698166}
+  worldMenu: {fileID: 0}
   isPaused: 0
   go: {fileID: 683666292}
 --- !u!114 &177644585
@@ -75621,6 +75626,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 272ba847f100d4251bb8260575189042, type: 2}
+    - target: {fileID: 374516802207520764, guid: b3b98ab60330aa04d80d299930846453,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 59992164055859377, guid: b3b98ab60330aa04d80d299930846453,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3b98ab60330aa04d80d299930846453, type: 3}
 --- !u!1 &1711575168

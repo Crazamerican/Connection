@@ -29,6 +29,7 @@ public class PauseMenuController : MonoBehaviour
             {
                 isPaused = false;
                 pauseMenu.SetActive(false);
+                worldMenu.SetActive(false);
                 Time.timeScale = 1f;
                 audioSource.Play();
             }
@@ -39,7 +40,7 @@ public class PauseMenuController : MonoBehaviour
                 audioSource.Pause();
             }
         }
-        if (Input.GetButtonDown("Push") && isPaused) {
+        if (Input.GetButtonDown("Push") && isPaused && pauseMenu.activeSelf) {
             isPaused = false;
             pauseMenu.SetActive(false);
             Time.timeScale = 1f;
@@ -50,6 +51,7 @@ public class PauseMenuController : MonoBehaviour
     public void ResumeGame() {
         isPaused = false;
         pauseMenu.SetActive(false);
+        worldMenu.SetActive(false);
         Time.timeScale = 1f;
         audioSource.Play();
     }
@@ -72,10 +74,17 @@ public class PauseMenuController : MonoBehaviour
 
     public void HandleWorldSelectMenu()
     {
-        isPaused = false;
+        //isPaused = false;
+        //pauseMenu.SetActive(false);
+        //Time.timeScale = 1f;
+        //endOfLevel.GetComponent<GameManagementScript>().SaveLevel();
+        //SceneManager.LoadScene("UILevelSelect");
         pauseMenu.SetActive(false);
-        Time.timeScale = 1f;
-        endOfLevel.GetComponent<GameManagementScript>().SaveLevel();
-        SceneManager.LoadScene("UILevelSelect");
+        worldMenu.SetActive(true);
+    }
+
+    public void HandlePauseMenu() {
+        pauseMenu.SetActive(true);
+        worldMenu.SetActive(false);
     }
 }

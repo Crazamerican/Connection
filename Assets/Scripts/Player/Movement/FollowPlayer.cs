@@ -241,7 +241,7 @@ public class FollowPlayer : MonoBehaviour
 
         player.GetComponentInChildren<Animator>().Play("ScreenTransitionOff");
 
-        yield return new WaitForSecondsRealtime(.5f);
+        yield return new WaitForSecondsRealtime(1f);
 
         playerCam = cam.WorldToScreenPoint(player.transform.position);
         player2Cam = cam.WorldToScreenPoint(player2.transform.position);
