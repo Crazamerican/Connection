@@ -233,14 +233,16 @@ public class FollowPlayer : MonoBehaviour
         screenTransitioning = true;
         gameManagement.freezePlayer = true;
         freezePlayers = true;
-        gameManagement.ScreenTransitionToBlack();
-
-        player.GetComponent<HiddenGroundParticles>().enabled = false;
-        //hidden ground is only on player1
-        //player2.GetComponent<HiddenGroundParticles>().enabled = false;
 
         player.GetComponentInChildren<Animator>().Play("ScreenTransitionOff");
 
+        player.GetComponent<HiddenGroundParticles>().enabled = false;
+
+
+        yield return new WaitForSecondsRealtime(.45f);
+        gameManagement.ScreenTransitionToBlack();
+        //hidden ground is only on player1
+        //player2.GetComponent<HiddenGroundParticles>().enabled = false;
         yield return new WaitForSecondsRealtime(1f);
 
         playerCam = cam.WorldToScreenPoint(player.transform.position);
