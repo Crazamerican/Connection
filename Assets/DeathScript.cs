@@ -44,7 +44,7 @@ public class DeathScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         if (dead == true && !respawning)
         {
@@ -52,7 +52,8 @@ public class DeathScript : MonoBehaviour
         }
         if (camDone == true)
         {
-            if (timer == 20)
+            Debug.Log("camDone");
+            if (timer >= 100)
             {
                 camDone = false;
                 gameManagement.freezePlayer = false;
@@ -122,7 +123,7 @@ public class DeathScript : MonoBehaviour
         yield return new WaitForSecondsRealtime(.75f);
         respawning = false;
         dead = false;
-        gameManagement.freezePlayer = false;
+        //gameManagement.freezePlayer = false;
         
     }
 }

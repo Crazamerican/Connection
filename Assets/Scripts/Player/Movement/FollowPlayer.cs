@@ -48,9 +48,15 @@ public class FollowPlayer : MonoBehaviour
 
     private Vector3 offset;         //Private variable to store the offset distance between the player and camera
 
+    bool frozenPlayer;
+
+    CheckpointScript checkpoint;
+
     // Use this for initialization
     void Start()
     {
+        checkpoint = GameObject.Find("Checkpoint").GetComponent<CheckpointScript>();
+        frozenPlayer = false;
         gameManagement = GameObject.Find("EndOfLevel").GetComponent<GameManagementScript>();
         horScript = player.GetComponent<HorizontalMovement>();
         firstEnd = horScript.firstEnd;
@@ -116,19 +122,23 @@ public class FollowPlayer : MonoBehaviour
     // LateUpdate is called after Update each frame
     void LateUpdate()
     {
+        if (deathScript.dead == true && checkpoint.respawnPoint.x == player.transform.position.x && frozenPlayer == false) {
+            frozenPlayer = true;
+            freezePlayers = gameManagement.freezePlayer;
+        }
         //Debug.Log("Player1: " + player.transform.position.x);
         //Debug.Log("Player2: " + player2.transform.position.x);
+        //Debug.Log("deathScript = " + deathScript.dead + " freezePlayers = " + freezePlayers);
         //when transitioning between parts of levels
         if (freezePlayers == true && deathScript.dead == false && deathScript.camDone == false)
-        {
-            
+        {           
             gameManagement.freezePlayer = false;
             freezePlayers = false;
             //transform.position = initCam;
             //switchToSecond = true;
         } //when player is dead and camera transitioning back to old checkpoint
         else if (freezePlayers == true && deathScript.dead == true) {
-            Debug.Log("here");
+            //Debug.Log("AHHHHHHHHHHHADFADFADF");
             if (startDead == true)
             {
                 Debug.Log("1");
@@ -149,6 +159,7 @@ public class FollowPlayer : MonoBehaviour
                     transform.position = initCam;
                     deathScript.dead = false;
                     startDead = true;
+                    frozenPlayer = false;
                 }
                 else
                 {
@@ -169,6 +180,7 @@ public class FollowPlayer : MonoBehaviour
                     deathScript.camDone = true;
                     deathScript.dead = false;
                     startDead = true;
+                    frozenPlayer = false;
                 }
             }
         }
@@ -204,8 +216,10 @@ public class FollowPlayer : MonoBehaviour
         //if (playerCam.x >= (width) && player2Cam.x >= (width))
         //Debug.Log("player transform: " + player.transform.position.x + " firstend: " + firstEnd);
         //Debug.Log("initCam: " + initCam + " initCameStart: " + (initCam.x - cam.pixelWidth * .05f));
+        //Debug.Log("Player1Pos: " + player.transform.position.x + " Player2Pos: " + player2.transform.position.x);
         if (player.transform.position.x >= firstEnd - .05f && player2.transform.position.x >= firstEnd - .05f && switchStop == false)
         {
+            Debug.Log("HITTTTTTTT");
             if (!screenTransitioning)
             {
                 StartCoroutine(MidLevelTransition());
