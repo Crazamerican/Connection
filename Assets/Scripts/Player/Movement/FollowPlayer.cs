@@ -235,14 +235,12 @@ public class FollowPlayer : MonoBehaviour
         freezePlayers = true;
 
         player.GetComponentInChildren<Animator>().Play("ScreenTransitionOff");
+        player2.GetComponentInChildren<Animator>().Play("ScreenTransitionOff");
 
         player.GetComponent<HiddenGroundParticles>().enabled = false;
 
-
         yield return new WaitForSecondsRealtime(.45f);
         gameManagement.ScreenTransitionToBlack();
-        //hidden ground is only on player1
-        //player2.GetComponent<HiddenGroundParticles>().enabled = false;
         yield return new WaitForSecondsRealtime(1f);
 
         playerCam = cam.WorldToScreenPoint(player.transform.position);
@@ -265,11 +263,11 @@ public class FollowPlayer : MonoBehaviour
         switchToSecond = true;
 
         gameManagement.ScreenTransitionUp();
-        
-        player.GetComponentInChildren<Animator>().Play("Idle");
-        player2.GetComponentInChildren<Animator>().Play("Idle");
 
-        yield return new WaitForSecondsRealtime(.5f); //wait for screentransitionup to finish
+        player.GetComponentInChildren<Animator>().Play("ScreenTransitionOn");
+        player2.GetComponentInChildren<Animator>().Play("ScreenTransitionOn");
+
+        yield return new WaitForSecondsRealtime(1.5f); //wait for screentransitionup to finish
         player.GetComponent<HiddenGroundParticles>().enabled = true;
     }
 }
