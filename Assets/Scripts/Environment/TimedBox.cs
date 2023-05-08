@@ -48,7 +48,7 @@ public class TimedBox : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Collided with timed box");
+        //Debug.Log("Collided with timed box");
 
         if (collision.gameObject.CompareTag("Player"))
         {
