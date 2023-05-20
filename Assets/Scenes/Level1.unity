@@ -52066,7 +52066,7 @@ PrefabInstance:
     - target: {fileID: 4440464785757237974, guid: 69c7c3d4b9a485543bab8a4bd09f9a42,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4440464785757237970, guid: 69c7c3d4b9a485543bab8a4bd09f9a42,
         type: 3}
@@ -52081,7 +52081,7 @@ PrefabInstance:
     - target: {fileID: 4440464785757237970, guid: 69c7c3d4b9a485543bab8a4bd09f9a42,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4440464785757237970, guid: 69c7c3d4b9a485543bab8a4bd09f9a42,
         type: 3}
@@ -52123,6 +52123,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4440464785757237975, guid: 69c7c3d4b9a485543bab8a4bd09f9a42,
+        type: 3}
+      propertyPath: player1
+      value: 
+      objectReference: {fileID: 377426634}
+    - target: {fileID: 4440464785757237975, guid: 69c7c3d4b9a485543bab8a4bd09f9a42,
+        type: 3}
+      propertyPath: player2
+      value: 
+      objectReference: {fileID: 1908767614}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69c7c3d4b9a485543bab8a4bd09f9a42, type: 3}
 --- !u!1 &891470437
@@ -113126,11 +113136,6 @@ PrefabInstance:
       propertyPath: cameraBoi
       value: 
       objectReference: {fileID: 519420028}
-    - target: {fileID: 1657438233379562679, guid: b58a7ae9c2bd1ba4abe4a6cef800b1a8,
-        type: 3}
-      propertyPath: headBonk
-      value: 
-      objectReference: {fileID: 8300000, guid: 09e75d117f519a74b8edf7861b85184c, type: 3}
     - target: {fileID: 3637233861503871985, guid: b58a7ae9c2bd1ba4abe4a6cef800b1a8,
         type: 3}
       propertyPath: m_Volume
@@ -113141,6 +113146,11 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 1c7de7082d8cc8549bb11cf62fdd7d79, type: 3}
+    - target: {fileID: 1657438233379562679, guid: b58a7ae9c2bd1ba4abe4a6cef800b1a8,
+        type: 3}
+      propertyPath: headBonk
+      value: 
+      objectReference: {fileID: 8300000, guid: 09e75d117f519a74b8edf7861b85184c, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b58a7ae9c2bd1ba4abe4a6cef800b1a8, type: 3}
 --- !u!1001 &6939731712517056950
