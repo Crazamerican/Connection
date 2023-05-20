@@ -69,8 +69,8 @@ public class CheckCollectibles : MonoBehaviour
     }
     IEnumerator WaitAnim(Animator anim, Collider2D other) {
         curAtWait = true;
-        Debug.Log("thing: " + anim.GetCurrentAnimatorStateInfo(0).IsName("DoorOpen"));
-        Debug.Log(anim.GetCurrentAnimatorStateInfo(0).length);
+        //Debug.Log("thing: " + anim.GetCurrentAnimatorStateInfo(0).IsName("DoorOpen"));
+        //Debug.Log(anim.GetCurrentAnimatorStateInfo(0).length);
         yield return new WaitForSeconds(2);
         Destroy(other.gameObject);
         unlock = false;

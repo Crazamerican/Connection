@@ -34,7 +34,7 @@ public class CheckpointScript : MonoBehaviour
             respawnPoint = player1.transform.position;
             respawnPoint2 = player2.transform.position;
             //gameManager.UpdateLocations(player1.transform.position, player2.transform.position);
-            Debug.Log("Setting the world position to: " + player1.transform.position + " And second position to: " + player2.transform.position);
+            //Debug.Log("Setting the world position to: " + player1.transform.position + " And second position to: " + player2.transform.position);
         }
     }
 }
