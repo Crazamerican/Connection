@@ -14,7 +14,7 @@ public class TimedBox : MonoBehaviour
     BoxCollider2D collider;
     public bool collided;
 
-    SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer;
     public TextMeshProUGUI textpro;
 
     public bool active = true;
@@ -92,12 +92,6 @@ public class TimedBox : MonoBehaviour
         {
             timer += Time.deltaTime;
 
-            Color tempColor = spriteRenderer.color;
-            tempColor.a = Mathf.SmoothDamp(spriteRenderer.color.a, .8f, ref velocityref, fadeTime - timer);
-            spriteRenderer.color = tempColor;
-            
-
-
             textpro.text = Mathf.FloorToInt(fadeTime - timer).ToString();
             yield return 0;
         }
@@ -115,9 +109,6 @@ public class TimedBox : MonoBehaviour
         while (timer < respawnTime)
         {
             timer += Time.deltaTime;
-            Color tempColor = spriteRenderer.color;
-            tempColor.a = Mathf.SmoothDamp(spriteRenderer.color.a, .75f, ref velocityref, respawnTime - timer);
-            spriteRenderer.color = tempColor;
             yield return 0;
         }
         
