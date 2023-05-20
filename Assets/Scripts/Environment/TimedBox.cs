@@ -111,8 +111,6 @@ public class TimedBox : MonoBehaviour
             timer += Time.deltaTime;
             yield return 0;
         }
-        
-
 
         //Delay reactivation of box until player is not colliding
         while (playerInBounds)
