@@ -24,26 +24,67 @@ public class MoveCharacterUI : MonoBehaviour
     private bool moveable;
     public GameObject returnPanel;
     bool allowEnterLevel = false;
+    private GameObject endOfLevel;
 
     float externalTimer;
     // Start is called before the first frame update
     void Start()
     {
-        level = 1;
-        moveStart = false;
-        xMove = 0f;
-        yMove = 0f;
-        state = States.LEVELONE;
-        level1UI.SetActive(true);
+        endOfLevel = GameObject.Find("EndOfLevel");
+        if (endOfLevel.GetComponent<GameManagementScript>().previousState != null)
+        {
+            state = endOfLevel.GetComponent<GameManagementScript>().previousState;
+        } else
+        {
+            state = States.LEVELONE;
+        }
+        SetupLocation(state);
+    }
+
+    private void SetupLocation(States state)
+    {
+
+        level1UI.SetActive(false);
         level2UI.SetActive(false);
         level3UI.SetActive(false);
         level4UI.SetActive(false);
         level5UI.SetActive(false);
+        switch (state)
+        {
+            case States.LEVELONE:
+                level = 1;
+                level1UI.SetActive(true);
+                transform.position.Set(level1.transform.position.x, level1.transform.position.y, transform.position.z);
+                break;
+            case States.LEVELTWO:
+                level = 2;
+                level2UI.SetActive(true);
+                transform.position.Set(level2.transform.position.x, level2.transform.position.y, transform.position.z);
+                break;
+            case States.LEVELTHREE:
+                level = 3;
+                level3UI.SetActive(true);
+                transform.position.Set(level3.transform.position.x, level3.transform.position.y, transform.position.z);
+                break;
+            case States.LEVELFOUR:
+                level = 4;
+                level4UI.SetActive(true);
+                transform.position.Set(level5.transform.position.x, level5.transform.position.y, transform.position.z);
+                break;
+            case States.LEVELFIVE:
+                level = 5;
+                level5UI.SetActive(true);
+                break;
+        }
+        moveStart = false;
+        xMove = 0f;
+        yMove = 0f;
+        Debug.Log("The previous state was: " + state);
         moveable = false;
         returnPanel.SetActive(false);
     }
 
-    private enum States
+    public enum States
     {
         LEVELONE,
         LEVELTWO,
@@ -70,9 +111,9 @@ public class MoveCharacterUI : MonoBehaviour
             bool yPosEnd = false;
             if (Input.GetKeyDown(KeyCode.Return) && !moveStart)
             {
-                Debug.Log("" + (int)States.LEVELTWO);
                 int level = (int)state + 1;
                 GameManagementScript.Instance.LoadLevel("Level" + level);
+                endOfLevel.GetComponent<GameManagementScript>().previousState = state;
                 //SceneManager.LoadScene("Level" + level);
             }
             if ((Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) && level != 5 && !moveStart)
