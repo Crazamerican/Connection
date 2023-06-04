@@ -54,26 +54,27 @@ public class MoveCharacterUI : MonoBehaviour
             case States.LEVELONE:
                 level = 1;
                 level1UI.SetActive(true);
-                transform.position.Set(level1.transform.position.x, level1.transform.position.y, transform.position.z);
+                transform.position = new Vector3(level1.transform.position.x, level1.transform.position.y, transform.position.z);
                 break;
             case States.LEVELTWO:
                 level = 2;
                 level2UI.SetActive(true);
-                transform.position.Set(level2.transform.position.x, level2.transform.position.y, transform.position.z);
+                transform.position = new Vector3(level2.transform.position.x, level2.transform.position.y, transform.position.z);
                 break;
             case States.LEVELTHREE:
                 level = 3;
                 level3UI.SetActive(true);
-                transform.position.Set(level3.transform.position.x, level3.transform.position.y, transform.position.z);
+                transform.position = new Vector3(level3.transform.position.x, level3.transform.position.y, transform.position.z);
                 break;
             case States.LEVELFOUR:
                 level = 4;
                 level4UI.SetActive(true);
-                transform.position.Set(level5.transform.position.x, level5.transform.position.y, transform.position.z);
+                transform.position = new Vector3(level4.transform.position.x, level4.transform.position.y, transform.position.z);
                 break;
             case States.LEVELFIVE:
                 level = 5;
                 level5UI.SetActive(true);
+                transform.position = new Vector3(level5.transform.position.x, level5.transform.position.y, transform.position.z);
                 break;
         }
         moveStart = false;
