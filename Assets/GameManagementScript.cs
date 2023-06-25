@@ -15,6 +15,7 @@ public class GameManagementScript : MonoBehaviour
     public bool freezePlayer;
     public Animator screenTransition;
     bool isTransitioning;
+    public MoveCharacterUI.States previousState;
 
     private CanvasProper.SELECTOR_ENUM _enum = CanvasProper.SELECTOR_ENUM.NO_SELECT;
     //Create the singleton
@@ -51,6 +52,11 @@ public class GameManagementScript : MonoBehaviour
     {
         Debug.Log("Setting the file Number: " + filNum);
         this.fileNum = filNum;
+    }
+
+    public ClearPercent GetClearPercent(string fileNum)
+    {
+        return gameSaver.getClearPercent(fileNum);
     }
 
     public void LoadGame()

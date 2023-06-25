@@ -18,6 +18,12 @@ public class ButtonManager : MonoBehaviour
             {
                 gameObject.GetComponent<Button>().interactable = false;
             }
+            else
+            {
+                ClearPercent cleared = endOfLevel.GetComponent<GameManagementScript>().GetComponent<GameSaver>().getClearPercent(fileNum);
+                gameObject.GetComponent<Button>().interactable = true;
+                gameObject.GetComponentInChildren<Text>().text = "File" + fileNum + ": " + cleared;
+            }
         }
     }
 

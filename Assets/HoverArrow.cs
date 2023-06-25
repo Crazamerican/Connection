@@ -156,6 +156,23 @@ public class HoverArrow : MonoBehaviour
             arrowPos = arrowPos - 1;
             change = true;
         }
+        if(screen == 2)
+        {
+            ClearPercent percent;
+            if (position == HoverEnum.FIRST_OPTION)
+            { 
+                percent = endOfLevel.GetComponent<GameManagementScript>().GetClearPercent("1");
+            }
+            if (position == HoverEnum.SECOND_OPTION)
+            {
+                percent = endOfLevel.GetComponent<GameManagementScript>().GetClearPercent("2");
+            }
+            if (position == HoverEnum.THIRD_OPTION)
+            {
+                percent = endOfLevel.GetComponent<GameManagementScript>().GetClearPercent("3");
+            }
+            SceneManager.LoadScene("UILevelSelect");
+        }
     }
 
     private void HandleNewGameMenu()
