@@ -28,6 +28,34 @@ public class GameSaver : MonoBehaviour
 
     }
 
+
+    public ClearPercent getClearPercent(String fileNum)
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Open(Application.persistentDataPath + "/GameSaveFile" + fileNum + ".dat", FileMode.Open);
+        SaveData data = (SaveData)bf.Deserialize(file);
+        file.Close();
+        levelsCleared = data.levelsData;
+        ClearPercent clearpercent = new ClearPercent();
+        int clearedLevels = 0;
+        int trophies = 0;
+        foreach (var values in levelsCleared)
+        {
+            if (values.Value.levelCleared)
+            {
+                clearedLevels++;
+            }
+            if(values.Value.trophyGot)
+            {
+                trophies++;
+            }
+        }
+        clearpercent.levelsCleared = levelsCleared.Keys.Count / clearedLevels;
+        clearpercent.trophiesAcquired = levelsCleared.Keys.Count / trophies;
+        levelsCleared.Clear();
+        return clearpercent;
+    }
+
     private void SaveGame(String fileNum, SaveData saveData)
     {
         Debug.Log("saving the game to " + Application.persistentDataPath + "/GameSaveFile" + fileNum + ".dat");
@@ -177,6 +205,12 @@ public class GameSaver : MonoBehaviour
 
     }
 
+}
+
+public class ClearPercent
+{
+    public float levelsCleared;
+    public float trophiesAcquired;
 }
 
 [Serializable]
