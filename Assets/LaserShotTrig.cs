@@ -13,6 +13,7 @@ public class LaserShotTrig : MonoBehaviour
         parent_Anim = this.transform.parent.gameObject.GetComponent<Animator>();
         anim = this.GetComponent<Animator>();
         deathScript = FindObjectOfType<DeathScript>();
+
     }
 
     // Update is called once per frame
