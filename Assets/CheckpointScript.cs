@@ -29,6 +29,7 @@ public class CheckpointScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player") {
+            collision.GetComponent<CheckCollectibles>().hitCheckpoint = true;
             Animator anim = this.GetComponent<Animator>();
             anim.SetBool("isChecked", true);
             respawnPoint = player1.transform.position;
