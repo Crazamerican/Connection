@@ -25,6 +25,7 @@ public class MoveCharacterUI : MonoBehaviour
     public GameObject returnPanel;
     bool allowEnterLevel = false;
     private GameObject endOfLevel;
+    public float fractionSpeed = 20f;
 
     float externalTimer;
     // Start is called before the first frame update
@@ -140,8 +141,8 @@ public class MoveCharacterUI : MonoBehaviour
                     nextlevel = level5;
                     level4UI.SetActive(false);
                 }
-                xMove = (nextlevel.transform.position.x - transform.position.x) / 40f;
-                yMove = (nextlevel.transform.position.y - transform.position.y) / 40f;
+                xMove = (nextlevel.transform.position.x - transform.position.x) / fractionSpeed;
+                yMove = (nextlevel.transform.position.y - transform.position.y) / fractionSpeed;
                 moveStart = true;
             }
             else if ((Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) && level != 1 && !moveStart)
@@ -167,8 +168,8 @@ public class MoveCharacterUI : MonoBehaviour
                     nextlevel = level4;
                     level5UI.SetActive(false);
                 }
-                xMove = (nextlevel.transform.position.x - transform.position.x) / 40f;
-                yMove = (nextlevel.transform.position.y - transform.position.y) / 40f;
+                xMove = (nextlevel.transform.position.x - transform.position.x) / fractionSpeed;
+                yMove = (nextlevel.transform.position.y - transform.position.y) / fractionSpeed;
                 moveStart = true;
             }
             if (moveStart == true)
