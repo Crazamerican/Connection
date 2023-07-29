@@ -52,6 +52,9 @@ public class FollowPlayer : MonoBehaviour
 
     CheckpointScript checkpoint;
 
+    float oldPlayerPos;
+    float oldPlayer2Pos;
+
     // Use this for initialization
     void Start()
     {
@@ -89,6 +92,8 @@ public class FollowPlayer : MonoBehaviour
         switchStop = false;
         freezePlayers = false;
         switchToSecond = false;
+        oldPlayerPos = player.transform.position.x;
+        oldPlayer2Pos = player2.transform.position.x;
     }
     private void Update()
     {
@@ -126,35 +131,41 @@ public class FollowPlayer : MonoBehaviour
             frozenPlayer = true;
             freezePlayers = gameManagement.freezePlayer;
         }
-        //Debug.Log("Player1: " + player.transform.position.x);
-        //Debug.Log("Player2: " + player2.transform.position.x);
+        Debug.Log("Player1: " + player.transform.position.x);
+        Debug.Log("Player2: " + player2.transform.position.x);
         //Debug.Log("deathScript = " + deathScript.dead + " freezePlayers = " + freezePlayers);
+        //Debug.Log("onInit = " + onInit);
         //when transitioning between parts of levels
         if (freezePlayers == true && deathScript.dead == false && deathScript.camDone == false)
-        {           
+        {
             gameManagement.freezePlayer = false;
             freezePlayers = false;
             //transform.position = initCam;
             //switchToSecond = true;
         } //when player is dead and camera transitioning back to old checkpoint
-        else if (freezePlayers == true && deathScript.dead == true) {
+        else if (freezePlayers == true && deathScript.dead == true)
+        {
             //Debug.Log("AHHHHHHHHHHHADFADFADF");
             if (startDead == true)
             {
                 Debug.Log("1");
                 startDead = false;
-                if (player.transform.position.x <= initCam.x) {
+                if (player.transform.position.x <= initCam.x)
+                {
                     onInit = true;
-                } else
+                }
+                else
                 {
                     onInit = false;
                 }
                 Debug.Log("onInit" + onInit);
             }
-            if (onInit == true) {
+            if (onInit == true)
+            {
                 Debug.Log("2");
                 if (transform.position.x <= initCam.x)
                 {
+                    Debug.Log("True done");
                     deathScript.camDone = true;
                     transform.position = initCam;
                     deathScript.dead = false;
@@ -165,13 +176,15 @@ public class FollowPlayer : MonoBehaviour
                 {
                     transform.position = transform.position - new Vector3(0.18f, 0);
                 }
-            } else
+            }
+            else
             {
                 Debug.Log("3");
                 if (playerCam.x <= (width * .48) && player2Cam.x <= (width * .48))
                 {
                     transform.position = transform.position - new Vector3(0.18f, 0);
-                } else if (playerCam.x >= (width * .52) && player2Cam.x >= (width * .52))
+                }
+                else if (playerCam.x >= (width * .52) && player2Cam.x >= (width * .52))
                 {
                     transform.position = transform.position + new Vector3(0.18f, 0);
                 }
@@ -185,7 +198,7 @@ public class FollowPlayer : MonoBehaviour
             }
         }
         //move camera right
-        else if (moveHorizontal > 0)
+        else if (moveHorizontal > 0 || (player.transform.position.x > oldPlayerPos) || (player2.transform.position.x > oldPlayer2Pos))
         {
             if (playerAvg - cam.pixelWidth * .05f > cam.pixelWidth * .5f && curCamEnd == false)
             {
@@ -196,7 +209,7 @@ public class FollowPlayer : MonoBehaviour
             }
         }
         //if moving left and left side of screen is greater than -18 (which is the very left side of the level) 
-        else if (moveHorizontal < 0 && camLeft.x > cam.ScreenToWorldPoint(initCam).x)
+        else if ((moveHorizontal < 0 || (player.transform.position.x > oldPlayerPos) || (player2.transform.position.x > oldPlayer2Pos)) && camLeft.x > cam.ScreenToWorldPoint(initCam).x)
         {
             if (playerAvg + cam.pixelWidth * .05f < cam.pixelWidth / 2)
             {
@@ -209,7 +222,8 @@ public class FollowPlayer : MonoBehaviour
             //camDif = cam.ScreenToWorldPoint(new Vector3(playerAvg, height / 2));
             //transform.position = camDif;
         } //move camera to initial position
-        else if (curCamEnd == false) {
+        else if (curCamEnd == false)
+        {
             transform.position = initCam;
         }
         //used to indicate screen transition
@@ -240,6 +254,8 @@ public class FollowPlayer : MonoBehaviour
             //player.transform.position = new Vector3(horScript.secondStart + .05f, player.transform.position.y, -1);
             //player2.transform.position = new Vector3(horScript.secondStart + .05f, player2.transform.position.y, -1);
         }
+        oldPlayerPos = player.transform.position.x;
+        oldPlayer2Pos = player2.transform.position.x;
     }
 
     IEnumerator MidLevelTransition()

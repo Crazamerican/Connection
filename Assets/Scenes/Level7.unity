@@ -7097,7 +7097,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7edf78cfcb7bbd14281e1dd3852bf269, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4c5b77f09ae235a41bb3005feacb6680, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -36631,21 +36631,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4440464785757237973, guid: 69c7c3d4b9a485543bab8a4bd09f9a42,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4440464785757237973, guid: 69c7c3d4b9a485543bab8a4bd09f9a42,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4440464785757237973, guid: 69c7c3d4b9a485543bab8a4bd09f9a42,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4440464785757237975, guid: 69c7c3d4b9a485543bab8a4bd09f9a42,
         type: 3}
       propertyPath: player1
@@ -36695,6 +36680,21 @@ PrefabInstance:
         type: 3}
       propertyPath: thisRespawnPoint2.y
       value: -1.436497
+      objectReference: {fileID: 0}
+    - target: {fileID: 4440464785757237973, guid: 69c7c3d4b9a485543bab8a4bd09f9a42,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4440464785757237973, guid: 69c7c3d4b9a485543bab8a4bd09f9a42,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4440464785757237973, guid: 69c7c3d4b9a485543bab8a4bd09f9a42,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69c7c3d4b9a485543bab8a4bd09f9a42, type: 3}
@@ -71292,7 +71292,7 @@ PrefabInstance:
     - target: {fileID: 7483990202993611119, guid: cbb950fea99bd964c9eb829f242dd3f7,
         type: 3}
       propertyPath: timer
-      value: 80
+      value: 110
       objectReference: {fileID: 0}
     - target: {fileID: 7483990202993611119, guid: cbb950fea99bd964c9eb829f242dd3f7,
         type: 3}

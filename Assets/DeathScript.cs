@@ -122,7 +122,7 @@ public class DeathScript : MonoBehaviour
         //respawn anim
         yield return new WaitForSecondsRealtime(.75f);
         respawning = false;
-        dead = false;
+        //dead = false;
         //gameManagement.freezePlayer = false;
         
     }
