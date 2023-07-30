@@ -23,6 +23,9 @@ public class NextLevel : MonoBehaviour
     {
         if(collision.tag == "Player")
         {
+            if (collision.GetComponent<CheckCollectibles>().hasTrophy == true) {
+                endOfLevel.GetComponent<GameManagementScript>().UpdateLevelDataTrophy();
+            }
             GameManagementScript manager = endOfLevel.GetComponent<GameManagementScript>();
             manager.UpdateLevelDataCleared();
             manager.UnlockNextLevel();
