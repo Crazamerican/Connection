@@ -7,11 +7,14 @@ public class NextLevel : MonoBehaviour
 {
     public int curLevel;
     private static GameObject endOfLevel;
+    int world;
     // Start is called before the first frame update
     void Start()
     {
         endOfLevel = GameObject.Find("EndOfLevel");
         endOfLevel.GetComponent<GameManagementScript>().unlock = false;
+        world = (curLevel - 1) / 5 + 1;
+        Debug.Log("world: " + world);
     }
 
     // Update is called once per frame
@@ -32,7 +35,7 @@ public class NextLevel : MonoBehaviour
             manager.SaveLevel();
             manager.unlock = true;
 
-            manager.LoadLevel("UILevelSelect");
+            manager.LoadLevel("UILevelSelect" + world);
             //if (curLevel == 1)
             //{
             //    SceneManager.LoadScene("NewGraphics2");
