@@ -19,6 +19,7 @@ public class CheckpointOther : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            collision.GetComponent<CheckCollectibles>().hitCheckpoint = true;
             Animator anim = this.GetComponent<Animator>();
             anim.SetBool("isChecked", true);
             checkpointScript.respawnPoint = checkpointScript.player1.transform.position;

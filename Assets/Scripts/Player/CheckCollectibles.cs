@@ -13,9 +13,13 @@ public class CheckCollectibles : MonoBehaviour
     public bool atDoor;
     private static GameObject endOfLevel;
     public bool curAtWait = false;
+    public bool hitCheckpoint;
+    public bool hasTrophy;
     // Start is called before the first frame update
     void Start()
     {
+        hasTrophy = false;
+        hitCheckpoint = false;
         curAtWait = false;
         atDoor = false;
         unlock = false;
@@ -27,6 +31,7 @@ public class CheckCollectibles : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        hitCheckpoint = false;
         atDoor = false;
     }
 
@@ -37,11 +42,13 @@ public class CheckCollectibles : MonoBehaviour
             Debug.Log("thing");
             unlock = true;
             audioSource.PlayOneShot(keyGetSound, 0.7F);
-            Destroy(other.gameObject);
+            other.GetComponent<KeyRespawn>().collected = true;
+            //Destroy(other.gameObject);
         }
         if (other.tag == "Trophy")
         {
-            endOfLevel.GetComponent<GameManagementScript>().UpdateLevelDataTrophy();
+            other.GetComponent<TrophyGetAnimTrigger>().collected = true;
+            //endOfLevel.GetComponent<GameManagementScript>().UpdateLevelDataTrophy();
             //Destroy(other.gameObject);
         }
         if (other.tag == "Door")
@@ -76,5 +83,5 @@ public class CheckCollectibles : MonoBehaviour
         unlock = false;
         atDoor = false;
         curAtWait = false;
-    } 
+    }
 }
