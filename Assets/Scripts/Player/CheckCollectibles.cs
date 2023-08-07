@@ -14,9 +14,11 @@ public class CheckCollectibles : MonoBehaviour
     private static GameObject endOfLevel;
     public bool curAtWait = false;
     public bool hitCheckpoint;
+    public bool hasTrophy;
     // Start is called before the first frame update
     void Start()
     {
+        hasTrophy = false;
         hitCheckpoint = false;
         curAtWait = false;
         atDoor = false;
@@ -45,7 +47,8 @@ public class CheckCollectibles : MonoBehaviour
         }
         if (other.tag == "Trophy")
         {
-            endOfLevel.GetComponent<GameManagementScript>().UpdateLevelDataTrophy();
+            other.GetComponent<TrophyGetAnimTrigger>().collected = true;
+            //endOfLevel.GetComponent<GameManagementScript>().UpdateLevelDataTrophy();
             //Destroy(other.gameObject);
         }
         if (other.tag == "Door")
