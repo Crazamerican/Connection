@@ -6010,6 +6010,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 798fc83cf984b4248afab95f807d01a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collected: 0
+  trulyCollected: 0
 --- !u!95 &114060172
 Animator:
   serializedVersion: 3
@@ -92076,7 +92078,7 @@ PrefabInstance:
     - target: {fileID: 8174120506778532047, guid: 754492b1f15849d4a8aad26714cb16b8,
         type: 3}
       propertyPath: curLevel
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 754492b1f15849d4a8aad26714cb16b8, type: 3}
