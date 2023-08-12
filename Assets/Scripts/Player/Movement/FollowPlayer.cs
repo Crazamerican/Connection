@@ -136,7 +136,7 @@ public class FollowPlayer : MonoBehaviour
         //Debug.Log("deathScript = " + deathScript.dead + " freezePlayers = " + freezePlayers);
         //Debug.Log("onInit = " + onInit);
         //when transitioning between parts of levels
-        if (freezePlayers == true && deathScript.dead == false && deathScript.camDone == false)
+        if (freezePlayers == true && deathScript.dead == false && deathScript.camDone == false && screenTransitioning == false)
         {
             gameManagement.freezePlayer = false;
             freezePlayers = false;
@@ -287,7 +287,6 @@ public class FollowPlayer : MonoBehaviour
         yield return new WaitForSecondsRealtime(.5f);
 
         switchStop = true;
-        screenTransitioning = false;
 
         transform.position = initCam;
         switchToSecond = true;
@@ -298,6 +297,7 @@ public class FollowPlayer : MonoBehaviour
         player2.GetComponentInChildren<Animator>().Play("ScreenTransitionOn");
 
         yield return new WaitForSecondsRealtime(1.5f); //wait for screentransitionup to finish
+        screenTransitioning = false;
         player.GetComponent<HiddenGroundParticles>().enabled = true;
     }
 }
