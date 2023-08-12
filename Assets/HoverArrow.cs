@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -93,7 +93,7 @@ public class HoverArrow : MonoBehaviour
                     endOfLevel.GetComponent<GameManagementScript>().CreateNewFile();
                     endOfLevel.GetComponent<GameManagementScript>().LoadGame();
                 }
-                SceneManager.LoadScene("UILevelSelect");
+                SceneManager.LoadScene("UILevelSelect1");
             }
         }
         if (Input.GetButtonDown("Push")) {

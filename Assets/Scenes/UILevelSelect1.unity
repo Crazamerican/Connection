@@ -1204,6 +1204,7 @@ MonoBehaviour:
   level4UI: {fileID: 366791976}
   level5UI: {fileID: 1366543310}
   worldShiftPoint: {fileID: 737654319}
+  worldPreviousPoint: {fileID: 0}
   returnPanel: {fileID: 383059057}
   fractionSpeed: 50
   worldNumber: 1
@@ -3710,6 +3711,7 @@ MonoBehaviour:
   level4UI: {fileID: 1538401899}
   level5UI: {fileID: 436862286}
   worldShiftPoint: {fileID: 581954470}
+  worldPreviousPoint: {fileID: 0}
   returnPanel: {fileID: 383059057}
   fractionSpeed: 50
   worldNumber: 1
@@ -6661,7 +6663,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &2100346909
 AudioSource:
   m_ObjectHideFlags: 0

@@ -1,35 +1,41 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class BGM : MonoBehaviour
 {
-    public AudioSource subduedTrack;
-    public AudioSource fullTrack;
+    public AudioSource BGMSource;
+    public AudioClip MainMenuAudioClip;
+    public AudioClip Level1AudioClip;
+
+    public static BGM Instance { get; private set; }
 
     Vector3 subduedVelocity;
     Vector3 fullVelocity;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        //Make sure we don't create multiple copies of BGM
-        GameObject[] otherInstances = GameObject.FindGameObjectsWithTag("Music");
-
-        if (otherInstances.Length > 1)
+        if (Instance != null && Instance != this)
         {
-            Destroy(this.gameObject);
+            Destroy(this);
         }
         else
         {
+            Instance = this;
             DontDestroyOnLoad(this.gameObject);
+            DontDestroyOnLoad(this.gameObject.transform.parent);
         }
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
     }
 
     void OnEnable()
     {
-        SceneManager.sceneLoaded += CheckIfFadeHappens;
+        SceneManager.sceneLoaded += CheckIfMusicNeedsToChange;
     }
 
     // Update is called once per frame
@@ -38,29 +44,18 @@ public class BGM : MonoBehaviour
         
     }
 
-    void CheckIfFadeHappens(Scene scene, LoadSceneMode mode)
+    void CheckIfMusicNeedsToChange(Scene scene, LoadSceneMode mod)
     {
-        if (scene.name != "HubWorldMusicTest")
+        if (scene.name == "TitleCard_Demo")
         {
-            FadeInFull();
+            BGMSource.clip = MainMenuAudioClip;
+            BGMSource.Play();
         }
-    }
-
-    public void FadeInFull()
-    {
-        StartCoroutine(BringingInFullTrack());
-    }
-
-    private IEnumerator BringingInFullTrack()
-    {
-        //Bring in the full track in 1.6 seconds
-        while (fullTrack.volume < .32)
+        else if (scene.name == "UILevelSelect1")
         {
-            fullTrack.volume += .02f;
-            subduedTrack.volume -= .02f;
-
-            yield return new WaitForSecondsRealtime(.1f) ;
+            BGMSource.volume = .5f;
+            BGMSource.clip = Level1AudioClip;
+            BGMSource.Play();
         }
-        
     }
 }
