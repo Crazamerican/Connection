@@ -25334,7 +25334,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &683666293
 AudioSource:
   m_ObjectHideFlags: 0
@@ -25603,6 +25603,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collected: 0
+  trulyCollected: 0
 --- !u!1 &686836584
 GameObject:
   m_ObjectHideFlags: 0
@@ -92784,6 +92785,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collected: 0
+  trulyCollected: 0
 --- !u!1001 &8174120506779916192
 PrefabInstance:
   m_ObjectHideFlags: 0

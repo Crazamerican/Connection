@@ -28,6 +28,7 @@ public class CollideSpike : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            Debug.Log("spiketrigger");
             deathScript.dead = true;
         }
         /*

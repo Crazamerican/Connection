@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -75,7 +75,7 @@ public class HoverArrow : MonoBehaviour
                     endOfLevel.GetComponent<GameManagementScript>().SetFileNumber("3");
                     endOfLevel.GetComponent<GameManagementScript>().LoadGame();
                 }
-                SceneManager.LoadScene("UILevelSelect");
+                SceneManager.LoadScene("Level1_Cutscene");
             }
             else if (screen == 1) {
                 if (position == HoverEnum.FIRST_OPTION)
@@ -93,7 +93,7 @@ public class HoverArrow : MonoBehaviour
                     endOfLevel.GetComponent<GameManagementScript>().CreateNewFile();
                     endOfLevel.GetComponent<GameManagementScript>().LoadGame();
                 }
-                SceneManager.LoadScene("UILevelSelect");
+                SceneManager.LoadScene("Level1_Cutscene");
             }
         }
         if (Input.GetButtonDown("Push")) {
@@ -171,7 +171,7 @@ public class HoverArrow : MonoBehaviour
             {
                 percent = endOfLevel.GetComponent<GameManagementScript>().GetClearPercent("3");
             }
-            SceneManager.LoadScene("UILevelSelect");
+            SceneManager.LoadScene("UILevelSelect1");
         }
     }
 
