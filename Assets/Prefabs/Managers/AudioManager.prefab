@@ -144,6 +144,7 @@ MonoBehaviour:
   BGMSource: {fileID: 7743058199899984306}
   MainMenuAudioClip: {fileID: 8300000, guid: 538a4d641c5b7d44d80a87497c908e22, type: 3}
   Level1AudioClip: {fileID: 8300000, guid: 25a4047afb0fe2d489ceaccf086ffce0, type: 3}
+  World2AudioClip: {fileID: 8300000, guid: e2a4304e1d9d4ee4a97ce2647cee37a0, type: 3}
 --- !u!1 &6334890888435710331
 GameObject:
   m_ObjectHideFlags: 0
