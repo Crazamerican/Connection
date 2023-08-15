@@ -203,7 +203,7 @@ public class HorizontalMovement : MonoBehaviour {
             }
             else if (player == 2)
             {
-                Debug.Log("additional speed 2 bois");
+                //Debug.Log("additional speed 2 bois");
                 if (masterScript.onMoving2 == false)
                 {
                     if (!onMoveLeft && extraSpeed >= 0)
@@ -360,7 +360,7 @@ public class HorizontalMovement : MonoBehaviour {
         }
         col = false;
         if (additionalSpeed != 0) {
-            Debug.Log("wubba");
+            //Debug.Log("wubba");
             //colliders test if these overlaping circles collide with anything, and list the colliders
             //three colliders for two corners on side of box and midpoint inbetween them
             Collider2D[] collider16 = Physics2D.OverlapCircleAll(transform.position + new Vector3(additionalSpeed, 0), 0.01f);
@@ -535,7 +535,7 @@ public class HorizontalMovement : MonoBehaviour {
             {
                 if (collide.gameObject.tag == "MoveBox")
                 {
-                    Debug.Log("in movebox");
+                    //Debug.Log("in movebox");
                     extraSpeed = collide.gameObject.GetComponent<HorizontalBox>().speed;
                     onMoveLeft = leftside;
                 }
