@@ -82,6 +82,10 @@ public class GameSaver : MonoBehaviour
     {
         Scene scene = SceneManager.GetActiveScene();
         string level = scene.name;
+        if(level.Equals("Level1_Cutscene"))
+        {
+            level = "Level1";
+        }
         if(levelsCleared.TryGetValue(level, out LevelData data))
         {
             data.trophyGot = gotTrophy;
@@ -95,6 +99,10 @@ public class GameSaver : MonoBehaviour
     {
         Scene scene = SceneManager.GetActiveScene();
         string level = scene.name;
+        if(level.Equals("Level1_Cutscene"))
+        {
+            level = "Level1";
+        }
         if (levelsCleared.TryGetValue(level, out LevelData data)){
             return data;
         }
