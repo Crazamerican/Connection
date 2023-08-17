@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/Scenes/HubWorld.unity
     guid: 96ea43cfffe6aef4eaa5095e0a3d4bfe
   - enabled: 1
+    path: Assets/Scenes/Level1_Cutscene.unity
+    guid: 0c6d3c9a989563a469484c634798a03e
+  - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: e07897313eb290b4db3d649c84ae8ed8
   - enabled: 1
@@ -41,9 +44,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level5.unity
     guid: 6dbc3576699823941a9e3a2893b5a712
-  - enabled: 1
-    path: Assets/Scenes/Level6.unity
-    guid: bfa23dff29430a248a46c9f884454c41
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Level7.unity
     guid: be048ab88e4aab14d98d4a636a3a9048

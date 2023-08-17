@@ -136,7 +136,7 @@ public class FollowPlayer : MonoBehaviour
         //Debug.Log("deathScript = " + deathScript.dead + " freezePlayers = " + freezePlayers);
         //Debug.Log("onInit = " + onInit);
         //when transitioning between parts of levels
-        if (freezePlayers == true && deathScript.dead == false && deathScript.camDone == false)
+        if (freezePlayers == true && deathScript.dead == false && deathScript.camDone == false && screenTransitioning == false)
         {
             gameManagement.freezePlayer = false;
             freezePlayers = false;
@@ -145,10 +145,10 @@ public class FollowPlayer : MonoBehaviour
         } //when player is dead and camera transitioning back to old checkpoint
         else if (freezePlayers == true && deathScript.dead == true)
         {
-            //Debug.Log("AHHHHHHHHHHHADFADFADF");
+            Debug.Log("AHHHHHHHHHHHADFADFADF");
             if (startDead == true)
             {
-                Debug.Log("1");
+                //Debug.Log("1");
                 startDead = false;
                 if (player.transform.position.x <= initCam.x)
                 {
@@ -158,11 +158,11 @@ public class FollowPlayer : MonoBehaviour
                 {
                     onInit = false;
                 }
-                Debug.Log("onInit" + onInit);
+                //Debug.Log("onInit" + onInit);
             }
             if (onInit == true)
             {
-                Debug.Log("2");
+                //Debug.Log("2");
                 if (transform.position.x <= initCam.x)
                 {
                     Debug.Log("True done");
@@ -180,16 +180,35 @@ public class FollowPlayer : MonoBehaviour
             else
             {
                 Debug.Log("3");
+                Debug.Log("playerCam.x = " + playerCam.x);
+                Debug.Log("player2Cam.x = " + player2Cam.x);
+                Debug.Log("width * .48 = " + (width * .48));
+                Debug.Log("width * .52 = " + (width * .52));
+                float playerMedium = (playerCam.x + player2Cam.x) / 2;
                 if (playerCam.x <= (width * .48) && player2Cam.x <= (width * .48))
                 {
+                    Debug.Log("OnLeft");
                     transform.position = transform.position - new Vector3(0.18f, 0);
                 }
                 else if (playerCam.x >= (width * .52) && player2Cam.x >= (width * .52))
                 {
+                    Debug.Log("OnRight");
                     transform.position = transform.position + new Vector3(0.18f, 0);
+                }
+                else if (playerMedium >= (width * .52) || playerMedium <= (width * .48)) {
+                    Debug.Log("InTheMiddle");
+                    if (playerMedium <= (width * .48))
+                    {
+                        transform.position = transform.position - new Vector3(0.18f, 0);
+                    }
+                    else if (playerMedium >= (width * .52))
+                    {
+                        transform.position = transform.position + new Vector3(0.18f, 0);
+                    }
                 }
                 else
                 {
+                    Debug.Log("Done");
                     deathScript.camDone = true;
                     deathScript.dead = false;
                     startDead = true;
@@ -233,7 +252,7 @@ public class FollowPlayer : MonoBehaviour
         //Debug.Log("Player1Pos: " + player.transform.position.x + " Player2Pos: " + player2.transform.position.x);
         if (player.transform.position.x >= firstEnd - .05f && player2.transform.position.x >= firstEnd - .05f && switchStop == false)
         {
-            Debug.Log("HITTTTTTTT");
+            //Debug.Log("HITTTTTTTT");
             if (!screenTransitioning)
             {
                 StartCoroutine(MidLevelTransition());
@@ -287,7 +306,6 @@ public class FollowPlayer : MonoBehaviour
         yield return new WaitForSecondsRealtime(.5f);
 
         switchStop = true;
-        screenTransitioning = false;
 
         transform.position = initCam;
         switchToSecond = true;
@@ -298,6 +316,7 @@ public class FollowPlayer : MonoBehaviour
         player2.GetComponentInChildren<Animator>().Play("ScreenTransitionOn");
 
         yield return new WaitForSecondsRealtime(1.5f); //wait for screentransitionup to finish
+        screenTransitioning = false;
         player.GetComponent<HiddenGroundParticles>().enabled = true;
     }
 }

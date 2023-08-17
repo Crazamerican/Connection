@@ -53,7 +53,7 @@ public class DeathScript : MonoBehaviour
         if (camDone == true)
         {
             Debug.Log("camDone");
-            if (timer >= 100)
+            if (timer >= 40)
             {
                 camDone = false;
                 gameManagement.freezePlayer = false;

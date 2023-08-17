@@ -25,7 +25,7 @@ public class PitCutsceneTrigger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameManager = GameObject.Find("EndOfLevel").GetComponent<GameManagementScript>();
     }
 
     // Update is called once per frame

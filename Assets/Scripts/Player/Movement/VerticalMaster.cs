@@ -205,6 +205,7 @@ public class VerticalMaster : MonoBehaviour
     //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
     void FixedUpdate()
     {
+        Debug.Log("player.y = " + transform.position.y + "player2.y = " + otherPlayer.transform.position.y);
         player1NearGround = false;
         player2NearGround = false;
         player2OnBottom = false;
@@ -383,7 +384,7 @@ public class VerticalMaster : MonoBehaviour
         {
             if (collide.gameObject.tag == "MoveBox")
             {
-                Debug.Log("onMovingBox");
+                //Debug.Log("onMovingBox");
                 onMoving2 = true;
                 onSpeed2 = collide.gameObject.GetComponent<HorizontalBox>().speed;
             }
@@ -487,6 +488,10 @@ public class VerticalMaster : MonoBehaviour
         if (!grounded && (col || col2))
         {
             FlushCollision(col, col2, topOrBottom, topOrBottom2);
+        }
+        else if (col || col2) {
+            //Debug.Log("hit collision, topOrBottom: " + topOrBottom + " topOrBottom2: " + topOrBottom2);
+            //FlushCollision(col, col2, topOrBottom, topOrBottom2);
         }
 
         //if hit a ceiling or bottom of box
@@ -641,9 +646,9 @@ public class VerticalMaster : MonoBehaviour
 
     private void FlushCollision(bool col, bool col2, int topbottom1, int topbottom2)
     {
-
+        Debug.Log("FlushCollision");
         float direction = -1f;
-        float padding = .01f;
+        float padding = -.015f;
         //determine proper direction for correction shift
         if (inverted)
         {
@@ -657,9 +662,11 @@ public class VerticalMaster : MonoBehaviour
 
         if (col && col2)
         {
+            Debug.Log("In collision player.y = " + transform.position.y + "player2.y = " + otherPlayer.transform.position.y);
             float moveDistance = 0f;
             moveDistance = distToCol < distToCol2 ? distToCol : distToCol2;
             int correctTopBottom = distToCol < distToCol2 ? topbottom1 : topbottom2;
+            Debug.Log(moveDistance);
             transform.position = transform.position + new Vector3(0, (moveDistance - padding) * direction * -correctTopBottom);
             otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, (moveDistance - padding) * direction * -correctTopBottom);
         }
