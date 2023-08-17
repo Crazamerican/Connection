@@ -121,7 +121,6 @@ public class MoveCharacterUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(level);
         if (Time.time > externalTimer)
         {
             moveable = true;
