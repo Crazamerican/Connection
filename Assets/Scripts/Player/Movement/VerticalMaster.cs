@@ -205,7 +205,7 @@ public class VerticalMaster : MonoBehaviour
     //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
     void FixedUpdate()
     {
-        Debug.Log("player.y = " + transform.position.y + "player2.y = " + otherPlayer.transform.position.y);
+        //Debug.Log("player.y = " + transform.position.y + "player2.y = " + otherPlayer.transform.position.y);
         player1NearGround = false;
         player2NearGround = false;
         player2OnBottom = false;
@@ -653,6 +653,7 @@ public class VerticalMaster : MonoBehaviour
         if (inverted)
         {
             direction *= -1f;
+            padding = .007f;
         }
 
         if (topbottom1 == 1 || topbottom2 == 1)
@@ -662,11 +663,11 @@ public class VerticalMaster : MonoBehaviour
 
         if (col && col2)
         {
-            Debug.Log("In collision player.y = " + transform.position.y + "player2.y = " + otherPlayer.transform.position.y);
+            //Debug.Log("In collision player.y = " + transform.position.y + "player2.y = " + otherPlayer.transform.position.y);
             float moveDistance = 0f;
             moveDistance = distToCol < distToCol2 ? distToCol : distToCol2;
             int correctTopBottom = distToCol < distToCol2 ? topbottom1 : topbottom2;
-            Debug.Log(moveDistance);
+            //Debug.Log(moveDistance);
             transform.position = transform.position + new Vector3(0, (moveDistance - padding) * direction * -correctTopBottom);
             otherPlayer.transform.position = otherPlayer.transform.position + new Vector3(0, (moveDistance - padding) * direction * -correctTopBottom);
         }
