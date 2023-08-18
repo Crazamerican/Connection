@@ -40,7 +40,7 @@ public class LevelNameScript : MonoBehaviour
             {
                 helper += 5;
                 thisGameObject.GetComponent<TextMeshProUGUI>().faceColor = new Color32(text.r, text.g, text.b, helper);
-                thisGameObject.GetComponent<TextMeshProUGUI>().outlineColor = new Color32(text.r, text.g, text.b, helper);
+                thisGameObject.GetComponent<TextMeshProUGUI>().outlineColor = new Color32(outline.r, outline.g, outline.b, helper);
                 if (helper >= 254)
                 {
                     turnOn = false;
@@ -60,7 +60,7 @@ public class LevelNameScript : MonoBehaviour
             {
                 helper -= 5;
                 thisGameObject.GetComponent<TextMeshProUGUI>().faceColor = new Color32(text.r, text.g, text.b, helper);
-                thisGameObject.GetComponent<TextMeshProUGUI>().outlineColor = new Color32(text.r, text.g, text.b, helper);
+                thisGameObject.GetComponent<TextMeshProUGUI>().outlineColor = new Color32(outline.r, outline.g, outline.b, helper);
                 if (helper < 1)
                 {
                     turnOff = false;
