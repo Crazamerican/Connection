@@ -11,7 +11,7 @@ public class HoverArrow : MonoBehaviour
     public int timer = 4;
     int direction = -1;
     int curTime = 0;
-    int arrowPos = 0;
+    public int arrowPos = 0;
     public GameObject firstOption;
     public GameObject secondOption;
     public GameObject thirdOption;
@@ -26,6 +26,8 @@ public class HoverArrow : MonoBehaviour
 
     public GameObject firstButtonNew;
     public GameObject firstButtonLoad;
+    bool cooldown;
+    int timeout;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,30 +35,33 @@ public class HoverArrow : MonoBehaviour
         count = 0;
         change = false;
         arrowPos = 0;
+        cooldown = false;
+        timeout = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Jump"))
+        if(Input.GetButtonDown("Jump") && cooldown == false)
         {
-            arrowPos = 0;
-            transform.position = new Vector3(transform.position.x, firstOption.transform.position.y + 2.1f);
-            position = HoverEnum.FIRST_OPTION;
+            cooldown = true;
             if (screen == 0)
             {
-                if (position == HoverEnum.FIRST_OPTION)
+                if (arrowPos == 0)
                 {
                     HandleNewGameMenu();
                 }
-                if (position == HoverEnum.SECOND_OPTION)
+                else if (arrowPos == 1)
                 {
                     HandleLoadGameMenu();
                 }
-                if (position == HoverEnum.THIRD_OPTION)
+                else if (arrowPos == 2)
                 {
                     Application.Quit();
                 }
+                arrowPos = 0;
+                transform.position = new Vector3(transform.position.x, firstOption.transform.position.y + 2.1f);
+                position = HoverEnum.FIRST_OPTION;
             }
             else if (screen == 2)
             {
@@ -112,6 +117,16 @@ public class HoverArrow : MonoBehaviour
         else {
             curTime = 0;
             direction = direction * -1;
+        }
+        if (cooldown == true) {
+            if (timeout < 15)
+            {
+                timeout++;
+            }
+            else
+            {
+                cooldown = false;
+            }
         }
     }
 
