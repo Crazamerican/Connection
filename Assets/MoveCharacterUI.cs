@@ -118,8 +118,19 @@ public class MoveCharacterUI : MonoBehaviour
         moveable = move;
     }
 
+    private void Update()
+    {
+        if ((Input.GetKeyDown(KeyCode.Return) || Input.GetButtonDown("Jump")) && !moveStart)
+        {
+            int level = (int)state + (5 * (worldNumber - 1) + 1);
+            GameManagementScript.Instance.LoadLevel("Level" + level);
+            endOfLevel.GetComponent<GameManagementScript>().previousState = state;
+            //SceneManager.LoadScene("Level" + level);
+        }
+    }
+
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (Time.time > externalTimer)
         {
@@ -129,13 +140,6 @@ public class MoveCharacterUI : MonoBehaviour
         {
             bool xPosEnd = false;
             bool yPosEnd = false;
-            if ((Input.GetKeyDown(KeyCode.Return) || Input.GetButtonDown("Jump")) && !moveStart)
-            {
-                int level = (int)state + (5 * (worldNumber - 1) + 1);
-                GameManagementScript.Instance.LoadLevel("Level" + level);
-                endOfLevel.GetComponent<GameManagementScript>().previousState = state;
-                //SceneManager.LoadScene("Level" + level);
-            }
             int maxLevel = 6;
             if (worldNumber == 2) {
                 maxLevel = 5;

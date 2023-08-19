@@ -1206,7 +1206,7 @@ MonoBehaviour:
   worldShiftPoint: {fileID: 0}
   worldPreviousPoint: {fileID: 737654319}
   returnPanel: {fileID: 383059057}
-  fractionSpeed: 45
+  fractionSpeed: 30
   worldNumber: 2
 --- !u!1 &366791976
 GameObject:
@@ -3740,7 +3740,7 @@ MonoBehaviour:
   worldShiftPoint: {fileID: 0}
   worldPreviousPoint: {fileID: 581954470}
   returnPanel: {fileID: 383059057}
-  fractionSpeed: 45
+  fractionSpeed: 30
   worldNumber: 2
 --- !u!61 &1128596812
 BoxCollider2D:
