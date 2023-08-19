@@ -119,7 +119,7 @@ public class MoveCharacterUI : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (Time.time > externalTimer)
         {
