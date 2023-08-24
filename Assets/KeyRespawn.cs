@@ -10,9 +10,17 @@ public class KeyRespawn : MonoBehaviour
     GameObject players;
     GameObject player;
     GameObject player2;
+    public bool player1World;
     // Start is called before the first frame update
     void Start()
     {
+        if (this.transform.position.y >= 2.3f)
+        {
+            player1World = true;
+        }
+        else {
+            player1World = false;
+        }
         players = GameObject.Find("Characters_V4");
         player = players.transform.Find("Player").gameObject;
         player2 = players.transform.Find("Player2").gameObject;
@@ -24,15 +32,21 @@ public class KeyRespawn : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        bool doorOpen = player.GetComponent<CheckCollectibles>().doorOpen;
         if (collected == true && this.isActiveAndEnabled) {
             this.gameObject.GetComponent<BoxCollider2D>().enabled = false;
             this.gameObject.GetComponent<SpriteRenderer>().enabled = false;
         }
-        if (trulyCollected == false && deathScript.dead == true) {
+        if (trulyCollected == false && deathScript.dead == true && doorOpen == false) {
             this.gameObject.GetComponent<BoxCollider2D>().enabled = true;
             this.gameObject.GetComponent<SpriteRenderer>().enabled = true;
-            player.GetComponent<CheckCollectibles>().unlock = false;
-            player2.GetComponent<CheckCollectibles>().unlock = false;
+            if (player1World == true)
+            {
+                player.GetComponent<CheckCollectibles>().unlock = false;
+            }
+            else if (player1World == false) {
+                player2.GetComponent<CheckCollectibles>().unlock = false;
+            }
             collected = false;
         }
     }

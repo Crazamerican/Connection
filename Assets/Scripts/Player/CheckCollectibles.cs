@@ -15,9 +15,11 @@ public class CheckCollectibles : MonoBehaviour
     public bool curAtWait = false;
     public bool hitCheckpoint;
     public bool hasTrophy;
+    public bool doorOpen;
     // Start is called before the first frame update
     void Start()
     {
+        doorOpen = false;
         hasTrophy = false;
         hitCheckpoint = false;
         curAtWait = false;
@@ -58,6 +60,7 @@ public class CheckCollectibles : MonoBehaviour
             //if (!curAtWait && (unlock == true && otherCollectible.unlock == true) && atDoor == true && otherCollectible.atDoor == true)
             if ((!curAtWait && (unlock == true && otherCollectible.unlock == true) && atDoor == true && otherCollectible.atDoor == true) || (otherCollectible.curAtWait && !curAtWait))
             {
+                doorOpen = true;
                 audioSource.PlayOneShot(doorOpenSound, 0.4F);
                 /*
                 foreach (Transform child in other.gameObject.transform.parent.transform) {
