@@ -131,8 +131,8 @@ public class FollowPlayer : MonoBehaviour
             frozenPlayer = true;
             freezePlayers = gameManagement.freezePlayer;
         }
-        //Debug.Log("Player1: " + player.transform.position.x);
-        //Debug.Log("Player2: " + player2.transform.position.x);
+        Debug.Log("Player1: " + player.transform.position.x);
+        Debug.Log("Player2: " + player2.transform.position.x);
         //Debug.Log("deathScript = " + deathScript.dead + " freezePlayers = " + freezePlayers);
         //Debug.Log("onInit = " + onInit);
         //when transitioning between parts of levels
