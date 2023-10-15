@@ -86,10 +86,12 @@ public class VerticalMaster : MonoBehaviour
     int changeGravityFreeze;
 
     PauseMenuController pauseScript;
+    FreezeSwitch freezeSwitch;
 
     // Use this for initialization
     void Start()
     {
+        freezeSwitch = GameObject.Find("Characters_V4").GetComponent<FreezeSwitch>();
         pauseScript = GameObject.Find("Canvas").GetComponent<PauseMenuController>();
         gameManagement = GameObject.Find("EndOfLevel").GetComponent<GameManagementScript>();
         changeGravityFreeze = 0;
@@ -140,7 +142,7 @@ public class VerticalMaster : MonoBehaviour
 
     private void Update()
     {
-        if (gameManagement.freezePlayer == false) {
+        if (gameManagement.freezePlayer == false || (gameManagement.freezePlayer == true && freezeSwitch.switchLevel == false)) {
             if (coyoteGround == true)
             {
                 coyoteTimer++;
@@ -160,7 +162,7 @@ public class VerticalMaster : MonoBehaviour
                 }
             }
             //if jump button pressed and a character is on or extremely near the ground and not frozen
-            if (Input.GetButtonDown("Jump") && !pauseScript.isPaused && changeGravity == false && (forgiveGround || forgiveGround2 || coyoteGround || coyoteGround2 || grounded || grounded2) && gameManagement.freezePlayer == false && (!otherPlayer.GetComponent<HorizontalMovement>().touchingMoving && !this.GetComponent<HorizontalMovement>().touchingMoving))
+            if (Input.GetButtonDown("Jump") && !pauseScript.isPaused && changeGravity == false && (forgiveGround || forgiveGround2 || coyoteGround || coyoteGround2 || grounded || grounded2) && (gameManagement.freezePlayer == false || (gameManagement.freezePlayer == true && freezeSwitch.switchLevel == false)) && (!otherPlayer.GetComponent<HorizontalMovement>().touchingMoving && !this.GetComponent<HorizontalMovement>().touchingMoving))
             {
                 //jumps in opposite direction if inverted
                 if (inverted == true || inverted2 == true)
@@ -189,7 +191,7 @@ public class VerticalMaster : MonoBehaviour
                 otherCharAnim.SetTrigger("jumped");
             }
             //if gotten gravity inverting powerup, user can invert gravity while grounded
-            if (Input.GetButtonDown("Invert") && invertOnCommand == true && (grounded || grounded2) && gameManagement.freezePlayer == false)
+            if (Input.GetButtonDown("Invert") && invertOnCommand == true && (grounded || grounded2) && (gameManagement.freezePlayer == false || (gameManagement.freezePlayer == true && freezeSwitch.switchLevel == false)))
             {
                 inverted2 = !inverted2;
                 inverted = !inverted;
@@ -208,7 +210,8 @@ public class VerticalMaster : MonoBehaviour
     //FixedUpdate is called at a fixed interval and is independent of frame rate. Put physics code here.
     void FixedUpdate()
     {
-        if (gameManagement.freezePlayer == false) {
+        if (gameManagement.freezePlayer == false || (gameManagement.freezePlayer == true && freezeSwitch.switchLevel == false))
+        {
             //Debug.Log("player.y = " + transform.position.y + "player2.y = " + otherPlayer.transform.position.y);
             player1NearGround = false;
             player2NearGround = false;

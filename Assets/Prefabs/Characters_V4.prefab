@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3637233861336914751}
   - component: {fileID: 3637233861336914750}
   - component: {fileID: 3637233861336914749}
+  - component: {fileID: 2828722247820693175}
   m_Layer: 0
   m_Name: Characters_V4
   m_TagString: Untagged
@@ -90,6 +91,21 @@ MonoBehaviour:
   charAnim2: {fileID: 3637233862896670162}
   dead: 0
   camDone: 0
+--- !u!114 &2828722247820693175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3637233861336914748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a982c320ffd725429976afdb5781388, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  switchLevel: 0
+  timer: 0
+  recharge: 0
 --- !u!1 &3637233861341645888
 GameObject:
   m_ObjectHideFlags: 0
@@ -5174,6 +5190,9 @@ MonoBehaviour:
   otherPlayer: {fileID: 3637233862986138178}
   atDoor: 0
   curAtWait: 0
+  hitCheckpoint: 0
+  hasTrophy: 0
+  doorOpen: 0
 --- !u!114 &3637233861503871980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11237,6 +11256,9 @@ MonoBehaviour:
   otherPlayer: {fileID: 3637233861503871990}
   atDoor: 0
   curAtWait: 0
+  hitCheckpoint: 0
+  hasTrophy: 0
+  doorOpen: 0
 --- !u!114 &3637233862986138300
 MonoBehaviour:
   m_ObjectHideFlags: 0
