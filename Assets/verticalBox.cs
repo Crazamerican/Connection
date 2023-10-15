@@ -15,9 +15,11 @@ public class verticalBox : MonoBehaviour
     public GameObject playerThings;
     float startX;
     float startY;
+    float padding;
     // Start is called before the first frame update
     void Start()
     {
+        padding = -.015f;
         startX = transform.position.x;
         startY = transform.position.y;
         deathScript = playerThings.GetComponent<DeathScript>();
@@ -44,7 +46,8 @@ public class verticalBox : MonoBehaviour
                 col = true;
                 distToCol = 0.0f;
                 velocity = 0;
-                //distToCol = GetComponent<BoxCollider2D>().Distance(collide).distance;
+                distToCol = GetComponent<BoxCollider2D>().Distance(collide).distance;
+                this.transform.position = this.transform.position + new Vector3(0, -(distToCol - padding));
             }
             else if (collide.tag == "Player") {
                 Debug.Log("pushdead");
