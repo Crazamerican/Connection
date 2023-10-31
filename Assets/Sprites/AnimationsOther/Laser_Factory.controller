@@ -22,7 +22,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 69e0944abd4559347931d2188cee129e, type: 2}
+  m_Motion: {fileID: 7400000, guid: ccc648b118c1e9349b3dfc342a927361, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -105,7 +105,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 68f69329f4ce4194db40859bd5f8d42a, type: 2}
+  m_Motion: {fileID: 7400000, guid: 7a91fc740e642994d836b6d796b4b8ba, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -198,7 +198,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Laser_Cave
+  m_Name: Laser_Factory
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: ShootLaser
@@ -254,7 +254,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 460ca51014607a54baa7454ab2b1a103, type: 2}
+  m_Motion: {fileID: 7400000, guid: 6e43b530d444615459a166995d1836bd, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
