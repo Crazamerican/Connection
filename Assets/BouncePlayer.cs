@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class BouncePlayer : MonoBehaviour
 {
-    public GameObject player;
+    GameObject player;
     VerticalMaster verticalMaster;
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("Player");
         verticalMaster = player.GetComponent<VerticalMaster>();
     }
 
