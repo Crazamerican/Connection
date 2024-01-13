@@ -12,7 +12,7 @@ public class GameSaver : MonoBehaviour
     private static List<String> levelNames = new List<string>()
     {
         //"NewGraphics1", "NewGraphics2", "NewGraphics3", "NewGraphics4", "NewGraphics5", "NewGraphics6", "NewGraphics7", "Level1"
-        "Level1", "NewGraphics2", "NewGraphics3", "NewGraphics4", "NewGraphics5", "NewGraphics6", "NewGraphics7"
+        "Level1", "Level2", "Level3", "Level4", "Level5", "Level6", "Level7", "Level8", "Level9", "Level10"
     };
     
 
@@ -23,8 +23,17 @@ public class GameSaver : MonoBehaviour
         FileStream file = File.Create(Application.persistentDataPath + "/GameSaveFile" + fileNum + ".dat");
         SaveData data = new SaveData();
         data.levelsData = this.levelsCleared;
+        string text = "";
+        foreach (var test in this.levelsCleared)
+        {
+            Debug.Log($"{test.Key}  :::  {test.Value.ToString()}");
+            text += $"{test.Key}  :::  {test.Value.ToString()}\n";
+
+        }
         bf.Serialize(file, data);
         file.Close();
+        File.WriteAllText(Application.persistentDataPath + "/GameSaveFile" + fileNum + ".txt", text);
+        
 
     }
 
@@ -239,6 +248,10 @@ public class LevelData
     public int checkPoint { get; set; }
     public SerializableVector3 topCharacterStartPosition { get; set; }
     public SerializableVector3 bottomCharacterStartPosition { get; set; }
+    public override string ToString()
+    {
+        return "LevelUnlocked-" + levelUnlocked + " LevelCleared-" + levelCleared + " trophyGot-" + trophyGot;
+    }
 }
 
 

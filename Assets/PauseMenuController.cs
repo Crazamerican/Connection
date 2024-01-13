@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenuController : MonoBehaviour
 {
-    public string level;
     public GameObject pauseMenu;
     public GameObject worldMenu;
     public bool isPaused;
@@ -29,7 +28,10 @@ public class PauseMenuController : MonoBehaviour
             {
                 isPaused = false;
                 pauseMenu.SetActive(false);
-                worldMenu.SetActive(false);
+                if (worldMenu != null)
+                {
+                    worldMenu.SetActive(false);
+                }
                 Time.timeScale = 1f;
                 audioSource.Play();
             }
@@ -51,7 +53,10 @@ public class PauseMenuController : MonoBehaviour
     public void ResumeGame() {
         isPaused = false;
         pauseMenu.SetActive(false);
-        worldMenu.SetActive(false);
+        if (worldMenu != null)
+        {
+            worldMenu.SetActive(false);
+        }
         Time.timeScale = 1f;
         audioSource.Play();
     }
@@ -80,11 +85,17 @@ public class PauseMenuController : MonoBehaviour
         //endOfLevel.GetComponent<GameManagementScript>().SaveLevel();
         //SceneManager.LoadScene("UILevelSelect");
         pauseMenu.SetActive(false);
-        worldMenu.SetActive(true);
+        if (worldMenu != null)
+        {
+            worldMenu.SetActive(true);
+        }
     }
 
     public void HandlePauseMenu() {
         pauseMenu.SetActive(true);
-        worldMenu.SetActive(false);
+        if (worldMenu != null)
+        {
+            worldMenu.SetActive(false);
+        }
     }
 }

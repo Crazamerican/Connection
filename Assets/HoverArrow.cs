@@ -85,16 +85,19 @@ public class HoverArrow : MonoBehaviour
             else if (screen == 1) {
                 if (position == HoverEnum.FIRST_OPTION)
                 {
+                    endOfLevel.GetComponent<GameManagementScript>().SetFileNumber("1");
                     endOfLevel.GetComponent<GameManagementScript>().CreateNewFile();
                     endOfLevel.GetComponent<GameManagementScript>().LoadGame();
                 }
                 if (position == HoverEnum.SECOND_OPTION)
                 {
+                    endOfLevel.GetComponent<GameManagementScript>().SetFileNumber("2");
                     endOfLevel.GetComponent<GameManagementScript>().CreateNewFile();
                     endOfLevel.GetComponent<GameManagementScript>().LoadGame();
                 }
                 if (position == HoverEnum.THIRD_OPTION)
                 {
+                    endOfLevel.GetComponent<GameManagementScript>().SetFileNumber("3");
                     endOfLevel.GetComponent<GameManagementScript>().CreateNewFile();
                     endOfLevel.GetComponent<GameManagementScript>().LoadGame();
                 }
@@ -119,12 +122,13 @@ public class HoverArrow : MonoBehaviour
             direction = direction * -1;
         }
         if (cooldown == true) {
-            if (timeout < 15)
+            if (timeout < 200)
             {
                 timeout++;
             }
             else
             {
+                timeout = 0;
                 cooldown = false;
             }
         }

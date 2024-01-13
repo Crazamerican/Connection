@@ -97,9 +97,8 @@ public class MoveCharacterUI : MonoBehaviour
         moveStart = false;
         xMove = 0f;
         yMove = 0f;
-        Debug.Log("The previous state was: " + state);
         moveable = false;
-        returnPanel.SetActive(false);
+        //returnPanel.SetActive(false);
     }
 
     public enum States

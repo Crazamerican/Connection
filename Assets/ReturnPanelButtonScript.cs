@@ -10,6 +10,12 @@ public class ReturnPanelButtonScript : MonoBehaviour
     public GameObject player1UI;
     public GameObject player2UI;
     public GameObject selector;
+    private static GameObject endOfLevel;
+
+    void Start()
+    {
+        endOfLevel = GameObject.Find("EndOfLevel");
+    }
 
     public void SetFirstButton()
     {
@@ -40,6 +46,8 @@ public class ReturnPanelButtonScript : MonoBehaviour
 
     public void ToMainMenu()
     {
+        Debug.Log("Attemping to save the level data");
+        endOfLevel.GetComponent<GameManagementScript>().SaveLevel();
         SceneManager.LoadScene("TitleCard_Demo");
     }
 }

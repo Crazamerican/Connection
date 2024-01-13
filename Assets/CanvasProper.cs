@@ -36,17 +36,17 @@ public class CanvasProper : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.Escape) && paused)
         {
-            returnPanel.SetActive(false);
+            //returnPanel.SetActive(false);
             paused = false;
             ReactivateCurrentPanel();
         }   
         if (Input.GetKeyUp(KeyCode.Escape) && !paused)
         {
             paused = true;
-            returnPanel.SetActive(true);
+            //returnPanel.SetActive(true);
             DeactivateCurrentPanel();
-            returnPanel.GetComponent<ReturnPanelButtonScript>().SetFirstButton();
-            returnPanel.GetComponent<ReturnPanelButtonScript>().Pause();
+            //returnPanel.GetComponent<ReturnPanelButtonScript>().SetFirstButton();
+            //returnPanel.GetComponent<ReturnPanelButtonScript>().Pause();
 
         }
         if (Input.GetKeyDown(KeyCode.X))
@@ -57,8 +57,8 @@ public class CanvasProper : MonoBehaviour
 
     public void ResumeGame()
     {
-        returnPanel.GetComponent<ReturnPanelButtonScript>().Resume();
-        returnPanel.SetActive(false);
+       // returnPanel.GetComponent<ReturnPanelButtonScript>().Resume();
+        //returnPanel.SetActive(false);
         
     }
 

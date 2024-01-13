@@ -35,6 +35,7 @@ public class ButtonManager : MonoBehaviour
 
     public void SetFileNum()
     {
+        Debug.Log("Setting the file Number:" + fileNum);
         if (fileNum != null)
         {
             endOfLevel.GetComponent<GameManagementScript>().SetFileNumber(fileNum);
