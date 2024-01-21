@@ -38,11 +38,11 @@ public class PauseMenuController : MonoBehaviour
             else {
                 isPaused = true;
                 pauseMenu.SetActive(true);
-                Time.timeScale = 0f;
+                //Time.timeScale = 0f;
                 audioSource.Pause();
             }
         }
-        if (Input.GetButtonDown("Push") && isPaused && pauseMenu.activeSelf) {
+        if (Input.GetButtonUp("Push") && isPaused && pauseMenu.activeSelf) {
             isPaused = false;
             pauseMenu.SetActive(false);
             Time.timeScale = 1f;
@@ -51,14 +51,14 @@ public class PauseMenuController : MonoBehaviour
     }
 
     public void ResumeGame() {
-        isPaused = false;
-        pauseMenu.SetActive(false);
         if (worldMenu != null)
         {
             worldMenu.SetActive(false);
         }
         Time.timeScale = 1f;
         audioSource.Play();
+        isPaused = false;
+        pauseMenu.SetActive(false);
     }
 
     public void RestartGame() {

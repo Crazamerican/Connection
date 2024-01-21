@@ -5,7 +5,7 @@ using UnityEngine;
 public class PauseHoverArrow2 : MonoBehaviour
 {
 
-    public int timer = 4;
+    public float timer = 2f;
     int direction = -1;
     float curTime = 0f;
     int arrowPos = 0;
@@ -28,7 +28,7 @@ public class PauseHoverArrow2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Return) || Input.GetButtonDown("Jump"))
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetButtonDown("Jump"))
         {
             if (position == HoverEnum.FIRST_OPTION)
             {
@@ -42,11 +42,12 @@ public class PauseHoverArrow2 : MonoBehaviour
         if (curTime < timer)
         {
             otherSelector.transform.position += new Vector3(direction * .25f * -1 * Time.deltaTime, 0);
-            transform.position += new Vector3(direction * .25f * Time.deltaTime, 0);
+            gameObject.transform.position += new Vector3(direction * .25f * Time.deltaTime, 0);
             curTime += Time.deltaTime;
         }
         else
         {
+            Debug.Log("resetting direction");
             curTime = 0;
             direction = direction * -1;
         }
@@ -71,7 +72,7 @@ public class PauseHoverArrow2 : MonoBehaviour
                 position = HoverEnum.SECOND_OPTION;
             }
         }
-        if ((Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) && arrowPos != 3 && !change)
+        if ((Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) && arrowPos != 1 && !change)
         {
             arrowPos = arrowPos + 1;
             change = true;

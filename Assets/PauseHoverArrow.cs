@@ -30,7 +30,7 @@ public class PauseHoverArrow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Return) || Input.GetButtonDown("Jump"))
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetButtonDown("Jump"))
         {
             if (position == HoverEnum.FIRST_OPTION)
             {

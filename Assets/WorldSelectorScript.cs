@@ -100,7 +100,7 @@ public class WorldSelectorScript : MonoBehaviour
             else
             {
                 curTime = 0;
-                direction = direction * -1;
+                direction *= -1;
             }
         }
     }
